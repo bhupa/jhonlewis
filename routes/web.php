@@ -12,4 +12,4 @@
 */
 
 Route::get('/','HomeController@index')->name('home');
-Route::get('/','AppointmentController@index')->name('home');
+Route::get('/appointment','AppointmentController@index')->name('appointment.index');
