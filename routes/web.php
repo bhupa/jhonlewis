@@ -12,4 +12,10 @@
 */
 
 Route::get('/','HomeController@index')->name('home');
+
+Route::get('/register','HomeController@getRegister')->name('register');
 Route::get('/appointment','AppointmentController@index')->name('appointment.index');
+Route::get('/cart','CartController@index')->name('cart.index');
+Route::get('/contact-us','ContactController@index')->name('contact-us.index');
+Route::get('/shoping-lists/single-page','ShopController@getSingle')->name('shoping-lists.single-page');
+Route::get('/shoping-lists','ShopController@index')->name('shoping-lists.index');

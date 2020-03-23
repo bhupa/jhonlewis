@@ -57,8 +57,8 @@
                 <div class="col-lg-6 text-center text-lg-right">
                     <ul class="menu list-inline mb-0">
                         <li class="list-inline-item"><a href="#" data-toggle="modal" data-target="#login-modal">Login</a></li>
-                        <li class="list-inline-item"><a href="register.html">Register</a></li>
-                        <li class="list-inline-item"><a href="contact.html">Contact</a></li>
+                        <li class="list-inline-item"><a href="{{route('register')}}">Register</a></li>
+                        <li class="list-inline-item"><a href="{{route('contact-us.index')}}">Contact</a></li>
                     </ul>
                 </div>
             </div>
@@ -101,80 +101,24 @@
             <div id="navigation" class="collapse navbar-collapse">
 
                 <ul class="navbar-nav mr-auto desktop-menu" id="menu">
-                    <li class="nav-item"> <a href="#" class="nav-link active">Home</a></li>
+                    <li class="nav-item"> <a href="{{route('home')}}" class="nav-link active">Home</a></li>
                     <li class="nav-item"> <a href="#" class="nav-link ">Appointment</a></li>
                     <li class="nav-item"> <a href="#" class="nav-link ">Packages</a></li>
                     <li class="nav-item"><a href="#" class="nav-link">Glasses</a>
                         <ul class="sub-menu">
-                            <li class="nav-item"><a href="category.html" class="nav-link">Men's Glasses</a></li>
-                            <li class="nav-item"><a href="category.html" class="nav-link">Women's Glasses</a></li>
-                            <li class="nav-item"><a href="category.html" class="nav-link">Children's Glasses</a></li>
-                            <li class="nav-item"><a href="category.html" class="nav-link">Rimless's Glasses</a></li>
+                            <li class="nav-item"><a href="{{route('shoping-lists.index')}}" class="nav-link">Men's Glasses</a></li>
+                            <li class="nav-item"><a href="{{route('shoping-lists.index')}}" class="nav-link">Women's Glasses</a></li>
+                            <li class="nav-item"><a href="{{route('shoping-lists.index')}}" class="nav-link">Children's Glasses</a></li>
+                            <li class="nav-item"><a href="{{route('shoping-lists.index')}}" class="nav-link">Rimless's Glasses</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item"><a href="#" class="nav-link">Sunglasses</a>
+                    <li class="nav-item"><a href="{{route('shoping-lists.index')}}" class="nav-link">Sunglasses</a>
                         <ul class="sub-menu">
-                            <li class="nav-item"><a href="category.html" class="nav-link">Cazal</a></li>
-                            <li class="nav-item"><a href="category.html" class="nav-link">Ray-ban Sunglass</a></li>
+                            <li class="nav-item"><a href="{{route('shoping-lists.index')}}" class="nav-link">Cazal</a></li>
+                            <li class="nav-item"><a href="{{route('shoping-lists.index')}}" class="nav-link">Ray-ban Sunglass</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item"><a href="#" class="nav-link">Designer</a>
-
-                        <ul class="sub-menu">
-
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">Stylish Frames
-                                    <i class="fa fa-angle-right fa-2x"></i>
-                                </a>
-
-                                <ul>
-                                    <li><a href='#'>Addidas</a>
-                                    </li>
-                                    <li><a href='#'>Cazal</a>
-                                    </li>
-                                    <li><a href='#'>Hugo galse</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="#">Designer Frames</a>
-
-                            </li>
-                            <li> <a href="#">Sunglasses</a>
-
-                            </li>
-                            <li> <a href="#">Contact lenses</a>
-
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item"><a href="#" class="nav-link">Lenses</a>
-                        <ul class="sub-menu">
-                            <li class="nav-item"><a href="category.html" class="nav-link">Acuvue</a></li>
-                            <li class="nav-item"><a href="category.html" class="nav-link">Copper Vision</a></li>
-                        </ul>
-                    </li>
-
-                </ul>
-
-                <ul class="navbar-nav mr-auto mobile-menu" id="menu">
-                    <li class="nav-item"> <a href="#" class="nav-link active">Home</a></li>
-                    <li class="nav-item"> <a href="#" class="nav-link ">Packages</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link">Glasses</a>
-                        <ul class="sub-menu">
-                            <li class="nav-item"><a href="category.html" class="nav-link">Men's Glasses</a></li>
-                            <li class="nav-item"><a href="category.html" class="nav-link">Women's Glasses</a></li>
-                            <li class="nav-item"><a href="category.html" class="nav-link">Children's Glasses</a></li>
-                            <li class="nav-item"><a href="category.html" class="nav-link">Rimless's Glasses</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item"><a href="#" class="nav-link">Sunglasses</a>
-                        <ul class="sub-menu">
-                            <li class="nav-item"><a href="category.html" class="nav-link">Cazal</a></li>
-                            <li class="nav-item"><a href="category.html" class="nav-link">Ray-ban Sunglass</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item"><a href="#" class="nav-link">Designer</a>
+                    <li class="nav-item"><a href="{{route('shoping-lists.index')}}" class="nav-link">Designer</a>
 
                         <ul class="sub-menu">
 
@@ -184,34 +128,90 @@
                                 </a>
 
                                 <ul>
-                                    <li><a href='#'>Addidas</a>
+                                    <li><a href='{{route('shoping-lists.index')}}'>Addidas</a>
                                     </li>
-                                    <li><a href='#'>Cazal</a>
+                                    <li><a href='{{route('shoping-lists.index')}}'>Cazal</a>
                                     </li>
-                                    <li><a href='#'>Hugo galse</a>
+                                    <li><a href='{{route('shoping-lists.index')}}'>Hugo galse</a>
                                     </li>
                                 </ul>
                             </li>
                             <li>
-                                <a href="#">Designer Frames</a>
+                                <a href="{{route('shoping-lists.index')}}">Designer Frames</a>
 
                             </li>
-                            <li> <a href="#">Sunglasses</a>
+                            <li> <a href="{{route('shoping-lists.index')}}">Sunglasses</a>
 
                             </li>
-                            <li> <a href="#">Contact lenses</a>
+                            <li> <a href="{{route('shoping-lists.index')}}">Contact lenses</a>
 
                             </li>
                         </ul>
                     </li>
-                    <li class="nav-item"><a href="#" class="nav-link">Lenses</a>
+                    <li class="nav-item"><a href="{{route('shoping-lists.index')}}" class="nav-link">Lenses</a>
                         <ul class="sub-menu">
-                            <li class="nav-item"><a href="category.html" class="nav-link">Acuvue</a></li>
-                            <li class="nav-item"><a href="category.html" class="nav-link">Copper Vision</a></li>
+                            <li class="nav-item"><a href="{{route('shoping-lists.index')}}" class="nav-link">Acuvue</a></li>
+                            <li class="nav-item"><a href="{{route('shoping-lists.index')}}" class="nav-link">Copper Vision</a></li>
                         </ul>
                     </li>
 
                 </ul>
+
+{{--                <ul class="navbar-nav mr-auto mobile-menu" id="menu">--}}
+{{--                    <li class="nav-item"> <a href="#" class="nav-link active">Home</a></li>--}}
+{{--                    <li class="nav-item"> <a href="#" class="nav-link ">Packages</a></li>--}}
+{{--                    <li class="nav-item"><a href="#" class="nav-link">Glasses</a>--}}
+{{--                        <ul class="sub-menu">--}}
+{{--                            <li class="nav-item"><a href="{{route('shoping-lists.index')}}" class="nav-link">Men's Glasses</a></li>--}}
+{{--                            <li class="nav-item"><a href="{{route('shoping-lists.index')}}" class="nav-link">Women's Glasses</a></li>--}}
+{{--                            <li class="nav-item"><a href="{{route('shoping-lists.index')}}" class="nav-link">Children's Glasses</a></li>--}}
+{{--                            <li class="nav-item"><a href="{{route('shoping-lists.index')}}" class="nav-link">Rimless's Glasses</a></li>--}}
+{{--                        </ul>--}}
+{{--                    </li>--}}
+{{--                    <li class="nav-item"><a href="#" class="nav-link">Sunglasses</a>--}}
+{{--                        <ul class="sub-menu">--}}
+{{--                            <li class="nav-item"><a href="{{route('shoping-lists.index')}}" class="nav-link">Cazal</a></li>--}}
+{{--                            <li class="nav-item"><a href="{{route('shoping-lists.index')}}" class="nav-link">Ray-ban Sunglass</a></li>--}}
+{{--                        </ul>--}}
+{{--                    </li>--}}
+{{--                    <li class="nav-item"><a href="{{route('shoping-lists.index')}}" class="nav-link">Designer</a>--}}
+
+{{--                        <ul class="sub-menu">--}}
+
+{{--                            <li class="nav-item">--}}
+{{--                                <a href="{{route('shoping-lists.index')}}" class="nav-link">Stylish Frames--}}
+{{--                                    <i class="fa fa-angle-right fa-2x"></i>--}}
+{{--                                </a>--}}
+
+{{--                                <ul>--}}
+{{--                                    <li><a href='{{route('shoping-lists.index')}}'>Addidas</a>--}}
+{{--                                    </li>--}}
+{{--                                    <li><a href='{{route('shoping-lists.index')}}'>Cazal</a>--}}
+{{--                                    </li>--}}
+{{--                                    <li><a href='{{route('shoping-lists.index')}}'>Hugo galse</a>--}}
+{{--                                    </li>--}}
+{{--                                </ul>--}}
+{{--                            </li>--}}
+{{--                            <li>--}}
+{{--                                <a href="{{route('shoping-lists.index')}}">Designer Frames</a>--}}
+
+{{--                            </li>--}}
+{{--                            <li> <a href="{{route('shoping-lists.index')}}">Sunglasses</a>--}}
+
+{{--                            </li>--}}
+{{--                            <li> <a href="{{route('shoping-lists.index')}}">Contact lenses</a>--}}
+
+{{--                            </li>--}}
+{{--                        </ul>--}}
+{{--                    </li>--}}
+{{--                    <li class="nav-item"><a href="{{route('shoping-lists.index')}}" class="nav-link">Lenses</a>--}}
+{{--                        <ul class="sub-menu">--}}
+{{--                            <li class="nav-item"><a href="{{route('shoping-lists.index')}}" class="nav-link">Acuvue</a></li>--}}
+{{--                            <li class="nav-item"><a href="{{route('shoping-lists.index')}}" class="nav-link">Copper Vision</a></li>--}}
+{{--                        </ul>--}}
+{{--                    </li>--}}
+
+{{--                </ul>--}}
 
                 <div class="navbar-buttons d-flex justify-content-end">
                     <div id="basket-overview" class="navbar-collapse collapse d-none d-lg-block"><a href="basket.html" class="btn btn-primary navbar-btn"><i class="fa fa-shopping-cart"></i><span>3 items in cart</span></a></div>
