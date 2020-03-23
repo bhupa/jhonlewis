@@ -152,12 +152,12 @@
                         <div class="product">
                             <div class="flip-container">
                                 <div class="flipper">
-                                    <div class="front"><a href="detail.html"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product1.jpg" alt="" class="img-fluid"></a></div>
-                                    <div class="back"><a href="detail.html"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product1_2.jpg" alt="" class="img-fluid"></a></div>
+                                    <div class="front"><a href="{{route('shoping-lists.single-page')}}"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product1.jpg" alt="" class="img-fluid"></a></div>
+                                    <div class="back"><a href="{{route('shoping-lists.single-page')}}"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product1_2.jpg" alt="" class="img-fluid"></a></div>
                                 </div>
-                            </div><a href="detail.html" class="invisible"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product1.jpg" alt="" class="img-fluid"></a>
+                            </div><a href="{{route('shoping-lists.single-page')}}" class="invisible"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product1.jpg" alt="" class="img-fluid"></a>
                             <div class="text">
-                                <h3><a href="detail.html">Fur coat with very but very very long name</a></h3>
+                                <h3><a href="{{route('shoping-lists.single-page')}}">Fur coat with very but very very long name</a></h3>
                                 <p class="price">
                                     <del></del>$143.00
                                 </p>
@@ -185,12 +185,12 @@
                         <div class="product">
                             <div class="flip-container">
                                 <div class="flipper">
-                                    <div class="front"><a href="detail.html"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product2.jpg" alt="" class="img-fluid"></a></div>
-                                    <div class="back"><a href="detail.html"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product2_2.jpg" alt="" class="img-fluid"></a></div>
+                                    <div class="front"><a href="{{route('shoping-lists.single-page')}}"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product2.jpg" alt="" class="img-fluid"></a></div>
+                                    <div class="back"><a href="{{route('shoping-lists.single-page')}}"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product2_2.jpg" alt="" class="img-fluid"></a></div>
                                 </div>
-                            </div><a href="detail.html" class="invisible"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product2.jpg" alt="" class="img-fluid"></a>
+                            </div><a href="{{route('shoping-lists.single-page')}}" class="invisible"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product2.jpg" alt="" class="img-fluid"></a>
                             <div class="text">
-                                <h3><a href="detail.html">White Blouse Armani</a></h3>
+                                <h3><a href="{{route('shoping-lists.single-page')}}">White Blouse Armani</a></h3>
                                 <p class="price">
                                     <del>$280</del>$143.00
                                 </p>
@@ -218,12 +218,12 @@
                         <div class="product">
                             <div class="flip-container">
                                 <div class="flipper">
-                                    <div class="front"><a href="detail.html"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product3.jpg" alt="" class="img-fluid"></a></div>
-                                    <div class="back"><a href="detail.html"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product3_2.jpg" alt="" class="img-fluid"></a></div>
+                                    <div class="front"><a href="{{route('shoping-lists.single-page')}}"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product3.jpg" alt="" class="img-fluid"></a></div>
+                                    <div class="back"><a href="{{route('shoping-lists.single-page')}}"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product3_2.jpg" alt="" class="img-fluid"></a></div>
                                 </div>
-                            </div><a href="detail.html" class="invisible"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product3.jpg" alt="" class="img-fluid"></a>
+                            </div><a href="{{route('shoping-lists.single-page')}}" class="invisible"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product3.jpg" alt="" class="img-fluid"></a>
                             <div class="text">
-                                <h3><a href="detail.html">Black Blouse Versace</a></h3>
+                                <h3><a href="{{route('shoping-lists.single-page')}}">Black Blouse Versace</a></h3>
                                 <p class="price">
                                     <del></del>$143.00
                                 </p>
@@ -236,12 +236,12 @@
                         <div class="product">
                             <div class="flip-container">
                                 <div class="flipper">
-                                    <div class="front"><a href="detail.html"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product3.jpg" alt="" class="img-fluid"></a></div>
-                                    <div class="back"><a href="detail.html"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product3_2.jpg" alt="" class="img-fluid"></a></div>
+                                    <div class="front"><a href="{{route('shoping-lists.single-page')}}"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product3.jpg" alt="" class="img-fluid"></a></div>
+                                    <div class="back"><a href="{{route('shoping-lists.single-page')}}"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product3_2.jpg" alt="" class="img-fluid"></a></div>
                                 </div>
-                            </div><a href="detail.html" class="invisible"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product3.jpg" alt="" class="img-fluid"></a>
+                            </div><a href="{{route('shoping-lists.single-page')}}" class="invisible"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product3.jpg" alt="" class="img-fluid"></a>
                             <div class="text">
-                                <h3><a href="detail.html">Black Blouse Versace</a></h3>
+                                <h3><a href="{{route('shoping-lists.single-page')}}">Black Blouse Versace</a></h3>
                                 <p class="price">
                                     <del></del>$143.00
                                 </p>
@@ -254,12 +254,12 @@
                         <div class="product">
                             <div class="flip-container">
                                 <div class="flipper">
-                                    <div class="front"><a href="detail.html"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product2.jpg" alt="" class="img-fluid"></a></div>
-                                    <div class="back"><a href="detail.html"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product2_2.jpg" alt="" class="img-fluid"></a></div>
+                                    <div class="front"><a href="{{route('shoping-lists.single-page')}}"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product2.jpg" alt="" class="img-fluid"></a></div>
+                                    <div class="back"><a href="{{route('shoping-lists.single-page')}}"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product2_2.jpg" alt="" class="img-fluid"></a></div>
                                 </div>
-                            </div><a href="detail.html" class="invisible"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product2.jpg" alt="" class="img-fluid"></a>
+                            </div><a href="{{route('shoping-lists.single-page')}}" class="invisible"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product2.jpg" alt="" class="img-fluid"></a>
                             <div class="text">
-                                <h3><a href="detail.html">White Blouse Versace</a></h3>
+                                <h3><a href="{{route('shoping-lists.single-page')}}">White Blouse Versace</a></h3>
                                 <p class="price">
                                     <del></del>$143.00
                                 </p>
@@ -277,12 +277,12 @@
                         <div class="product">
                             <div class="flip-container">
                                 <div class="flipper">
-                                    <div class="front"><a href="detail.html"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product1.jpg" alt="" class="img-fluid"></a></div>
-                                    <div class="back"><a href="detail.html"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product1_2.jpg" alt="" class="img-fluid"></a></div>
+                                    <div class="front"><a href="{{route('shoping-lists.single-page')}}"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product1.jpg" alt="" class="img-fluid"></a></div>
+                                    <div class="back"><a href="{{route('shoping-lists.single-page')}}"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product1_2.jpg" alt="" class="img-fluid"></a></div>
                                 </div>
-                            </div><a href="detail.html" class="invisible"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product1.jpg" alt="" class="img-fluid"></a>
+                            </div><a href="{{route('shoping-lists.single-page')}}" class="invisible"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product1.jpg" alt="" class="img-fluid"></a>
                             <div class="text">
-                                <h3><a href="detail.html">Fur coat</a></h3>
+                                <h3><a href="{{route('shoping-lists.single-page')}}">Fur coat</a></h3>
                                 <p class="price">
                                     <del></del>$143.00
                                 </p>
@@ -300,12 +300,12 @@
                         <div class="product">
                             <div class="flip-container">
                                 <div class="flipper">
-                                    <div class="front"><a href="detail.html"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product2.jpg" alt="" class="img-fluid"></a></div>
-                                    <div class="back"><a href="detail.html"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product2_2.jpg" alt="" class="img-fluid"></a></div>
+                                    <div class="front"><a href="{{route('shoping-lists.single-page')}}"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product2.jpg" alt="" class="img-fluid"></a></div>
+                                    <div class="back"><a href="{{route('shoping-lists.single-page')}}"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product2_2.jpg" alt="" class="img-fluid"></a></div>
                                 </div>
-                            </div><a href="detail.html" class="invisible"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product2.jpg" alt="" class="img-fluid"></a>
+                            </div><a href="{{route('shoping-lists.single-page')}}" class="invisible"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product2.jpg" alt="" class="img-fluid"></a>
                             <div class="text">
-                                <h3><a href="detail.html">White Blouse Armani</a></h3>
+                                <h3><a href="{{route('shoping-lists.single-page')}}">White Blouse Armani</a></h3>
                                 <p class="price">
                                     <del>$280</del>$143.00
                                 </p>
@@ -333,12 +333,12 @@
                         <div class="product">
                             <div class="flip-container">
                                 <div class="flipper">
-                                    <div class="front"><a href="detail.html"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product3.jpg" alt="" class="img-fluid"></a></div>
-                                    <div class="back"><a href="detail.html"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product3_2.jpg" alt="" class="img-fluid"></a></div>
+                                    <div class="front"><a href="{{route('shoping-lists.single-page')}}"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product3.jpg" alt="" class="img-fluid"></a></div>
+                                    <div class="back"><a href="{{route('shoping-lists.single-page')}}"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product3_2.jpg" alt="" class="img-fluid"></a></div>
                                 </div>
-                            </div><a href="detail.html" class="invisible"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product3.jpg" alt="" class="img-fluid"></a>
+                            </div><a href="{{route('shoping-lists.single-page')}}" class="invisible"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product3.jpg" alt="" class="img-fluid"></a>
                             <div class="text">
-                                <h3><a href="detail.html">Black Blouse Versace</a></h3>
+                                <h3><a href="{{route('shoping-lists.single-page')}}">Black Blouse Versace</a></h3>
                                 <p class="price">
                                     <del></del>$143.00
                                 </p>
