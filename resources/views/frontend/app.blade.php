@@ -15,19 +15,27 @@
     <meta property="keywords" content="Glasses | Lens |Optical"/>
 
     <!-- Bootstrap CSS-->
-    <link rel="stylesheet" href="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/vendor/bootstrap/css/bootstrap.min.css">
+    <link href="{{asset('frontend/css/bootstrap.min.css')}}" rel="stylesheet">
+
+{{--    <link href="{{asset('frontend/css/owl.carousel.css')}}" rel="stylesheet">--}}
+{{--    <link href="{{asset('frontend/css/owl.theme.default.css')}}" rel="stylesheet">--}}
+{{--    <link href="{{asset('frontend/css/owl.theme.css')}}" rel="stylesheet">--}}
+{{--    <link rel="stylesheet" href="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/vendor/bootstrap/css/bootstrap.min.css">--}}
     <!-- Font Awesome CSS-->
     <link rel="stylesheet" href="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/vendor/font-awesome/css/font-awesome.min.css">
     <!-- Google fonts - Roboto -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700">
     <!-- owl carousel-->
     <link rel="stylesheet" href="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/vendor/owl.carousel/assets/owl.carousel.css">
-    <link rel="stylesheet" href="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/vendor/owl.carousel/assets/owl.theme.default.css">
+   <link rel="stylesheet" href="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/vendor/owl.carousel/assets/owl.theme.default.css">
     <!-- theme stylesheet-->
+{{--    <link href="{{asset('frontend/css/style.default.css')}}" rel="stylesheet">--}}
     <link rel="stylesheet" href="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/css/style.default.css" id="theme-stylesheet">
+    <link href="{{asset('frontend/css/animate.min.css')}}" rel="stylesheet">
     <!-- Custom stylesheet - for your changes-->
     <link rel="stylesheet" href="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/css/custom.css">
-    <link rel="stylesheet" href="{{asset('/frontend/css/main.css')}}">
+    <link rel="stylesheet" href="{{asset('frontend/css/main.css')}}">
+
 
     <!-- Favicon-->
     <link rel="shortcut icon" href="favicon.png">
@@ -56,8 +64,13 @@
                 </div>
                 <div class="col-lg-6 text-center text-lg-right">
                     <ul class="menu list-inline mb-0">
+                        @if(Auth::check())
+                            <li class="list-inline-item"><a href="{{route('profile')}}">Profile</a></li>
+                            <li class="list-inline-item"><a href="{{route('logout')}}">Logout</a></li>
+                        @else
                         <li class="list-inline-item"><a href="#" data-toggle="modal" data-target="#login-modal">Login</a></li>
                         <li class="list-inline-item"><a href="{{route('register')}}">Register</a></li>
+                        @endif
                         <li class="list-inline-item"><a href="{{route('contact-us.index')}}">Contact</a></li>
                     </ul>
                 </div>
@@ -71,19 +84,20 @@
                         <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
                     </div>
                     <div class="modal-body">
-                        <form action="customer-orders.html" method="post">
+                        {{Form::open(['route'=>'login','method'=>'post','id'=>'login'])}}
+{{--                        <form action="customer-orders.html" method="post">--}}
                             <div class="form-group">
-                                <input id="email-modal" type="text" placeholder="email" class="form-control">
+                                <input id="email-modal" id="email" name="email" type="text" placeholder="email" class="form-control">
                             </div>
                             <div class="form-group">
-                                <input id="password-modal" type="password" placeholder="password" class="form-control">
+                                <input id="password-modal" id="password" name="password" type="password" placeholder="password" class="form-control">
                             </div>
                             <p class="text-center">
                                 <button class="btn btn-primary"><i class="fa fa-sign-in"></i> Log in</button>
                             </p>
-                        </form>
+                        {{Form::close()}}
                         <p class="text-center text-muted">Not registered yet?</p>
-                        <p class="text-center text-muted"><a href="register.html"><strong>Register now</strong></a>! It is easy and done in 1 minute and gives you access to special discounts and much more!</p>
+                        <p class="text-center text-muted"><a href="{{route('register')}}"><strong>Register now</strong></a>! It is easy and done in 1 minute and gives you access to special discounts and much more!</p>
                     </div>
                 </div>
             </div>
@@ -100,118 +114,8 @@
             </div>
             <div id="navigation" class="collapse navbar-collapse">
 
-                <ul class="navbar-nav mr-auto desktop-menu" id="menu">
-                    <li class="nav-item"> <a href="{{route('home')}}" class="nav-link active">Home</a></li>
-                    <li class="nav-item"> <a href="#" class="nav-link ">Appointment</a></li>
-                    <li class="nav-item"> <a href="#" class="nav-link ">Packages</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link">Glasses</a>
-                        <ul class="sub-menu">
-                            <li class="nav-item"><a href="{{route('shoping-lists.index')}}" class="nav-link">Men's Glasses</a></li>
-                            <li class="nav-item"><a href="{{route('shoping-lists.index')}}" class="nav-link">Women's Glasses</a></li>
-                            <li class="nav-item"><a href="{{route('shoping-lists.index')}}" class="nav-link">Children's Glasses</a></li>
-                            <li class="nav-item"><a href="{{route('shoping-lists.index')}}" class="nav-link">Rimless's Glasses</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item"><a href="{{route('shoping-lists.index')}}" class="nav-link">Sunglasses</a>
-                        <ul class="sub-menu">
-                            <li class="nav-item"><a href="{{route('shoping-lists.index')}}" class="nav-link">Cazal</a></li>
-                            <li class="nav-item"><a href="{{route('shoping-lists.index')}}" class="nav-link">Ray-ban Sunglass</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item"><a href="{{route('shoping-lists.index')}}" class="nav-link">Designer</a>
-
-                        <ul class="sub-menu">
-
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">Stylish Frames
-                                    <i class="fa fa-angle-right fa-2x"></i>
-                                </a>
-
-                                <ul>
-                                    <li><a href='{{route('shoping-lists.index')}}'>Addidas</a>
-                                    </li>
-                                    <li><a href='{{route('shoping-lists.index')}}'>Cazal</a>
-                                    </li>
-                                    <li><a href='{{route('shoping-lists.index')}}'>Hugo galse</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="{{route('shoping-lists.index')}}">Designer Frames</a>
-
-                            </li>
-                            <li> <a href="{{route('shoping-lists.index')}}">Sunglasses</a>
-
-                            </li>
-                            <li> <a href="{{route('shoping-lists.index')}}">Contact lenses</a>
-
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item"><a href="{{route('shoping-lists.index')}}" class="nav-link">Lenses</a>
-                        <ul class="sub-menu">
-                            <li class="nav-item"><a href="{{route('shoping-lists.index')}}" class="nav-link">Acuvue</a></li>
-                            <li class="nav-item"><a href="{{route('shoping-lists.index')}}" class="nav-link">Copper Vision</a></li>
-                        </ul>
-                    </li>
-
-                </ul>
-
-{{--                <ul class="navbar-nav mr-auto mobile-menu" id="menu">--}}
-{{--                    <li class="nav-item"> <a href="#" class="nav-link active">Home</a></li>--}}
-{{--                    <li class="nav-item"> <a href="#" class="nav-link ">Packages</a></li>--}}
-{{--                    <li class="nav-item"><a href="#" class="nav-link">Glasses</a>--}}
-{{--                        <ul class="sub-menu">--}}
-{{--                            <li class="nav-item"><a href="{{route('shoping-lists.index')}}" class="nav-link">Men's Glasses</a></li>--}}
-{{--                            <li class="nav-item"><a href="{{route('shoping-lists.index')}}" class="nav-link">Women's Glasses</a></li>--}}
-{{--                            <li class="nav-item"><a href="{{route('shoping-lists.index')}}" class="nav-link">Children's Glasses</a></li>--}}
-{{--                            <li class="nav-item"><a href="{{route('shoping-lists.index')}}" class="nav-link">Rimless's Glasses</a></li>--}}
-{{--                        </ul>--}}
-{{--                    </li>--}}
-{{--                    <li class="nav-item"><a href="#" class="nav-link">Sunglasses</a>--}}
-{{--                        <ul class="sub-menu">--}}
-{{--                            <li class="nav-item"><a href="{{route('shoping-lists.index')}}" class="nav-link">Cazal</a></li>--}}
-{{--                            <li class="nav-item"><a href="{{route('shoping-lists.index')}}" class="nav-link">Ray-ban Sunglass</a></li>--}}
-{{--                        </ul>--}}
-{{--                    </li>--}}
-{{--                    <li class="nav-item"><a href="{{route('shoping-lists.index')}}" class="nav-link">Designer</a>--}}
-
-{{--                        <ul class="sub-menu">--}}
-
-{{--                            <li class="nav-item">--}}
-{{--                                <a href="{{route('shoping-lists.index')}}" class="nav-link">Stylish Frames--}}
-{{--                                    <i class="fa fa-angle-right fa-2x"></i>--}}
-{{--                                </a>--}}
-
-{{--                                <ul>--}}
-{{--                                    <li><a href='{{route('shoping-lists.index')}}'>Addidas</a>--}}
-{{--                                    </li>--}}
-{{--                                    <li><a href='{{route('shoping-lists.index')}}'>Cazal</a>--}}
-{{--                                    </li>--}}
-{{--                                    <li><a href='{{route('shoping-lists.index')}}'>Hugo galse</a>--}}
-{{--                                    </li>--}}
-{{--                                </ul>--}}
-{{--                            </li>--}}
-{{--                            <li>--}}
-{{--                                <a href="{{route('shoping-lists.index')}}">Designer Frames</a>--}}
-
-{{--                            </li>--}}
-{{--                            <li> <a href="{{route('shoping-lists.index')}}">Sunglasses</a>--}}
-
-{{--                            </li>--}}
-{{--                            <li> <a href="{{route('shoping-lists.index')}}">Contact lenses</a>--}}
-
-{{--                            </li>--}}
-{{--                        </ul>--}}
-{{--                    </li>--}}
-{{--                    <li class="nav-item"><a href="{{route('shoping-lists.index')}}" class="nav-link">Lenses</a>--}}
-{{--                        <ul class="sub-menu">--}}
-{{--                            <li class="nav-item"><a href="{{route('shoping-lists.index')}}" class="nav-link">Acuvue</a></li>--}}
-{{--                            <li class="nav-item"><a href="{{route('shoping-lists.index')}}" class="nav-link">Copper Vision</a></li>--}}
-{{--                        </ul>--}}
-{{--                    </li>--}}
-
-{{--                </ul>--}}
+              @include('frontend.menu')
+                @include('frontend.mobile')
 
                 <div class="navbar-buttons d-flex justify-content-end">
                     <div id="basket-overview" class="navbar-collapse collapse d-none d-lg-block"><a href="basket.html" class="btn btn-primary navbar-btn"><i class="fa fa-shopping-cart"></i><span>3 items in cart</span></a></div>
@@ -332,18 +236,58 @@ _________________________________________________________
 <script src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/js/front.js"></script>
 @yield('js_script')
 <script type="application/javascript">
+    var baseUrl = '{!! url('') !!}';
     $(document).ready(function(){
 
+
+        $('.main-menu .nav-link').on('click',function(){
+            // $('.main-menu .sub-menu').not(this).css('display','none');
+            // $(this).parent('.main-menu').find('.sub-menu').show();
+            $(this).addClass('active');
+            if($(this).parent('.main-menu').find('.sub-menu').css('display') == 'none'){
+                $('.third-level-menu').hide();
+                $('.main-menu .sub-menu').not(this).css('display','none');
+                $(this).parent('.main-menu').find('.sub-menu').show();
+
+
+            }else{
+
+                $(this).parent('.main-menu').find('.sub-menu').hide();
+                $('.main-menu .nav-link').removeClass('active');
+            }
+
+            // if($(this).parent('.main-menu').find('.sub-menu').css('display') == 'block'){
+            //     $(this).parent('.main-menu').find('.sub-menu').css('display','none');
+            // }else if($(this).parent('.main-menu').find('.sub-menu').css('display') == 'none'){
+            //     $(this).parent('.main-menu').find('.sub-menu').css('display','block');
+            // }
+
+        });
+        $('.main-menu .sub-menu .sub-menu-btn .sub-menu-back').on('click',function(){
+            $('.main-menu .sub-menu').hide();
+        })
+
+        $('.main-menu .sub-menu .nav-link').on('click',function(){
+            if($(this).parent('.sub-menu li').find('.third-level-menu').css('display') == 'none'){
+
+                $(this).parent('.sub-menu li a').addClass('active');
+                $(this).parent('.sub-menu li').find('.third-level-menu').show();
+
+
+            }else{
+                $(this).parent('.sub-menu li').find('.third-level-menu').hide();
+
+
+            }
+        })
         // $(".small-menu .dropdown-submenu .sub-menu-child").hover(function(){
         //     $('.small-menu .dropdown-submenu .third-menu').css('display','block');
         // });
         //
-        // $('.small-menu .dropdown-submenu a').each(function (i, value) {
-        //     $(this).hover(function (e) {
-        //         $(this).find('.third-menu').not(this).css('display','none');
-        //         $(this).next('.third-menu').css('display','block');
-        //     }, function () {
-        //         $(this).next('.third-menu').css('display','none');
+        // $('.main-menu a').each(function (i, value) {
+        //     $(this).click(function (e) {
+        //
+        //         $(this).closest('.main-menu .sub-menu').css('display','block');
         //     });
         // });
 
@@ -431,6 +375,31 @@ _________________________________________________________
                 }
             }
         });
+        // $('#login').on('submit', function(){
+        //
+        //     var url = $(this).attr('action');
+        //     var form =$(this).serialize();
+        //
+        //     $.ajax({
+        //         type: "POST",
+        //         url: url,
+        //         data: form,
+        //         headers: {
+        //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        //         },
+        //         dataType: 'json',
+        //         success: function (response) {
+        //
+        //         },
+        //         error: function (xhr,data) {
+        //             $.each(xhr.responseJSON.errors, function (key, value) {
+        //                 $('#' + key).css('border','1px solid rgb(243, 78, 15)');
+        //                 $('#' + key).attr("placeholder", value);
+        //
+        //             });
+        //         }
+        //     });
+        // })
     })
 
 </script>

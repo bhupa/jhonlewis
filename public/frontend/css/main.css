@@ -383,7 +383,7 @@ ul#menu li ul.sub-menu li:hover ul {
 
     }
     ul#menu li:hover ul.sub-menu {
-        display: block;
+        display: none;
         /*width: 100%;*/
         width: 30%;
         /*background: #54bfa8;*/
@@ -401,5 +401,62 @@ ul#menu li ul.sub-menu li:hover ul {
         /* font-size: 18px; */
         right: 35px;
     }
+    .main-menu .sub-menu {
+        display: none;
+        position: relative;
+    }
+    .main-menu {
+        position: relative;
+    }
+    .main-menu .fa {
+        position: absolute;
+        top: 3px;
+        right: 20px;
+    }
+    .main-menu .sub-menu {
+        list-style: none;
+        z-index: 11111;
+        position: absolute;
+        background: #ffffff;
+        width: 100%;
+        min-height: 200px;
+    }
+    .main-menu .sub-menu .sub-menu-btn a {
+        display: inline-block;
+        margin-bottom: 12px;
+        width: 15%;
+        margin-top: 7px;
+        margin-left: 27px;
+        color: #000;
+    }
+    .main-menu .sub-menu .sub-menu-btn .sub-menu-back .fa {
+        position: absolute;
+        top: 3px;
+        left: 41px;
+    }
+    .sub-menu-next {
+        float: right;
+    }
+    .main-menu .sub-menu li  {
+        border-bottom: 1px solid #f0f0f0;
+    }
+    .main-menu .sub-menu li a {
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        font-weight: 700;
+        padding: 10px 15px !important;
+        color: #555;
+    }
+    .main-menu .sub-menu li:hover {
+        background: #4fbfa8;
+        color: #ffffff;
+
+    }
+    .third-level-menu {
+        display: none;
+        list-style: none;
+        background: #ffffff;
+    }
+
 
 }
