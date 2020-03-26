@@ -1,4 +1,57 @@
-
+.banner-wrapper {
+    max-height: 510px;
+    position: relative;
+}
+.banner-wrapper .banner-content {
+    left: 25%;
+    position: absolute;
+    top: 34%;
+    background: #ffffffed;
+    width: 50%;
+}
+.banner-content-wrapper {
+    padding: 50px 50px;
+}
+.banner-content-wrapper h2 {
+    text-align: center;
+    text-transform: capitalize;
+    font-weight: 600;
+}
+.banner-content-wrapper p {
+    text-align: justify;
+}
+#footer-menu li {
+    border-bottom: 1px solid #ffffff;
+    padding: 10px 10px;
+}
+#footer-menu li a {
+    color: #ffffff;
+}
+#footer {
+    background: #54bfa8;
+    padding: 100px 0;
+}
+#advantages h2 {
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 2.25rem;
+    color: #4fbfa8;
+    font-weight: 100;
+    text-align: center;
+}
+.blog-single-post-list {
+    list-style: none;
+    padding:0px;
+}
+.blog-single-post-list li {
+    display: inline-block;
+    margin-right: 15px;
+}
+.blog-single-post-list li .fa {
+    font-weight: 600;
+    font-size: 20px;
+    margin-right: 5px;
+}
 /*.menu-large .small-menu {*/
 /*    padding: 20px !important;*/
 /*    width: 100%;*/
@@ -383,7 +436,7 @@ ul#menu li ul.sub-menu li:hover ul {
 
     }
     ul#menu li:hover ul.sub-menu {
-        display: block;
+        display: none;
         /*width: 100%;*/
         width: 30%;
         /*background: #54bfa8;*/
@@ -401,5 +454,85 @@ ul#menu li ul.sub-menu li:hover ul {
         /* font-size: 18px; */
         right: 35px;
     }
+    .main-menu .sub-menu {
+        display: none;
+        position: relative;
+    }
+    .main-menu {
+        position: relative;
+    }
+    .main-menu .fa {
+        position: absolute;
+        top: 3px;
+        right: 20px;
+    }
+    .main-menu .sub-menu {
+        list-style: none;
+        z-index: 11111;
+        position: absolute;
+        background: #ffffff;
+        width: 100%;
+        min-height: 200px;
+    }
+    .main-menu .sub-menu .sub-menu-btn a {
+        display: inline-block;
+        margin-bottom: 12px;
+        width: 15%;
+        margin-top: 7px;
+        margin-left: 27px;
+        color: #000;
+    }
+    .main-menu .sub-menu .sub-menu-btn .sub-menu-back .fa {
+        position: absolute;
+        top: 3px;
+        left: 41px;
+    }
+    .sub-menu-next {
+        float: right;
+    }
+    .main-menu .sub-menu li  {
+        border-bottom: 1px solid #f0f0f0;
+    }
+    .main-menu .sub-menu li a {
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        font-weight: 700;
+        padding: 10px 15px !important;
+        color: #555;
+    }
+    .main-menu .sub-menu li:hover {
+        background: #4fbfa8;
+        color: #ffffff;
+
+    }
+    .third-level-menu {
+        display: none;
+        list-style: none;
+        background: #ffffff;
+    }
+    .appointment {
+        height: 664px;
+    }
+    .banner-wrapper {
+        max-height: 510px;
+    }
+    .banner-wrapper img {
+        height: 100%;
+    }
+    .banner-wrapper .banner-content {
+        position: absolute;
+        top: 18%;
+        background: #ffffffe0;
+        left: 8%;
+        width: 84%;
+
+    }
+    .banner-content-wrapper {
+        padding: 21px 17px;
+    }
+    .banner-content-wrapper h2 {
+        font-size: 17px;
+    }
+
 
 }
