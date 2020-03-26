@@ -28,7 +28,7 @@ class Blog extends Model
 
     protected $fillable =[
         'title',
-        'created_by',
+        'create_by',
         'category_id',
         'slug',
         'is_active',
