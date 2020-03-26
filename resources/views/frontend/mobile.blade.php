@@ -1,7 +1,7 @@
 <ul class="navbar-nav mr-auto mobile-menu" id="mobile-menu">
     <li class="nav-item main-menu"> <a href="{{route('home')}}" class="nav-link active">Home</a></li>
     <li class="nav-item main-menu"> <a href="{{route('appointment.index')}}" class="nav-link ">Appointment</a></li>
-    <li class="nav-item main-menu"> <a href="{{route('packages.index')}}" class="nav-link ">Packages</a></li>
+    <li class="nav-item main-menu"> <a href="{{route('package.index')}}" class="nav-link ">Packages</a></li>
     <li class="nav-item main-menu"><a href="javascript:void(0)" class="nav-link">Glasses</a>
         <i class="fa fa-angle-right fa-2x"></i>
         <ul class="sub-menu">

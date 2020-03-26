@@ -147,35 +147,28 @@ _________________________________________________________
         <div class="row">
             <div class="col-lg-3 col-md-6">
                 <h4 class="mb-3">Pages</h4>
-                <ul class="list-unstyled">
-                    <li><a href="text.html">About us</a></li>
-                    <li><a href="text.html">Terms and conditions</a></li>
-                    <li><a href="faq.html">FAQ</a></li>
-                    <li><a href="contact.html">Contact us</a></li>
-                </ul>
-                <hr>
-                <h4 class="mb-3">User section</h4>
-                <ul class="list-unstyled">
-                    <li><a href="#" data-toggle="modal" data-target="#login-modal">Login</a></li>
-                    <li><a href="register.html">Regiter</a></li>
+                <ul class="list-unstyled" id="footer-menu">
+                    <li><a href="{{route('about-us')}}">About us</a></li>
+                    <li><a href="{{route('contact-us.index')}}">Contact us</a></li>
+                    <li><a href="{{route('shipping')}}">Shipping</a></li>
+                    <li><a href="{{route('returns-refunds')}}">Returns & Refunds</a></li>
+                    <li><a href="{{route('guarantee-warranty')}}">Guarantee & Warranty</a></li>
+                    <li><a href="{{route('how-to-get-prescription')}}">How to get prescription</a></li>
+                    <li><a href="{{route('terms-conditions')}}">Terms & Conditions</a></li>
+
                 </ul>
             </div>
             <!-- /.col-lg-3-->
             <div class="col-lg-3 col-md-6">
-                <h4 class="mb-3">Top categories</h4>
-                <h5>Men</h5>
-                <ul class="list-unstyled">
-                    <li><a href="category.html">T-shirts</a></li>
-                    <li><a href="category.html">Shirts</a></li>
-                    <li><a href="category.html">Accessories</a></li>
+                <h4 class="mb-3">Links</h4>
+
+                <ul class="list-unstyled" id="footer-menu">
+                    <li><a href="{{route('about-us')}}">Services</a></li>
+                    <li><a href="{{route('blog.index')}}">Blogs</a></li>
+
+
                 </ul>
-                <h5>Ladies</h5>
-                <ul class="list-unstyled">
-                    <li><a href="category.html">T-shirts</a></li>
-                    <li><a href="category.html">Skirts</a></li>
-                    <li><a href="category.html">Pants</a></li>
-                    <li><a href="category.html">Accessories</a></li>
-                </ul>
+
             </div>
             <!-- /.col-lg-3-->
             <div class="col-lg-3 col-md-6">
@@ -312,7 +305,7 @@ _________________________________________________________
                     items: 3
                 },
                 1200: {
-                    items: 4
+                    items: 3
                 }
             }
         });
@@ -400,6 +393,20 @@ _________________________________________________________
         //         }
         //     });
         // })
+        $(function(){
+            var dtToday = new Date();
+
+            var month = dtToday.getMonth() + 1;
+            var day = dtToday.getDate();
+            var year = dtToday.getFullYear();
+            if(month < 10)
+                month = '0' + month.toString();
+            if(day < 10)
+                day = '0' + day.toString();
+
+            var maxDate = year + '-' + month + '-' + day;
+            $('#datepicker').attr('min', maxDate);
+        });
     })
 
 </script>

@@ -9,10 +9,23 @@
             <div class="row">
                 <div class="col-md-12">
                     <div id="main-slider" class="owl-carousel owl-theme">
-                        <div class="item"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/main-slider1.jpg" alt="" class="img-fluid"></div>
-                        <div class="item"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/main-slider2.jpg" alt="" class="img-fluid"></div>
-                        <div class="item"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/main-slider3.jpg" alt="" class="img-fluid"></div>
-                        <div class="item"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/main-slider4.jpg" alt="" class="img-fluid"></div>
+                        @foreach($banners as $banner)
+                        <div class="item">
+                            <div class="banner-wrapper">
+                                <img src="{{asset('storage/'.$banner->image)}}" alt="{{$banner->title}}" class="img-fluid">
+                                <div class="banner-content">
+                                    <div class="banner-content-wrapper">
+                                        <h2>{{$banner->title}}</h2>
+                                        <p>
+                                            {{str_limit($banner->short_description,'200','....')}}
+                                        </p>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                        @endforeach
                     </div>
                     <!-- /#main-slider-->
                 </div>
@@ -23,53 +36,31 @@
         _________________________________________________________
         -->
         <div id="advantages">
+            <div class="box py-4">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h2 class="mb-0">Services</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="container">
                 <div class="row mb-4">
-                    <div class="col-md-4">
+                    @foreach($services as $service)
+                    <div class="col-md-4 mb-4">
                         <div class="box clickable d-flex flex-column justify-content-center mb-0 h-100">
-                            <div class="icon"><i class="fa fa-heart"></i></div>
-                            <h3><a href="#">We love our customers</a></h3>
-                            <p class="mb-0">We are known to provide best possible service ever</p>
+                            <div class="icon">
+                                <img style="width:80px; height: 80px;opacity:0.5" src="{{asset('storage/'.$service->image)}}" alt="{{$service->title}}">
+                            </div>
+                            <h3><a href="#" style="color: #000; font-weight:500">{{$service->title}}</a></h3>
+                            <p class="mt-4 mb-0">{{str_limit($service->short_description,'100','....')}}</p>
+                            <a href="">Read More</a>
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        <div class="box clickable d-flex flex-column justify-content-center mb-0 h-100">
-                            <div class="icon"><i class="fa fa-tags"></i></div>
-                            <h3><a href="#">Best prices</a></h3>
-                            <p class="mb-0">You can check that the height of the boxes adjust when longer text like this one is used in one of them.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="box clickable d-flex flex-column justify-content-center mb-0 h-100">
-                            <div class="icon"><i class="fa fa-thumbs-up"></i></div>
-                            <h3><a href="#">100% satisfaction guaranteed</a></h3>
-                            <p class="mb-0">Free returns on everything for 3 months.</p>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
-                <div class="row mb-4">
-                    <div class="col-md-4">
-                        <div class="box clickable d-flex flex-column justify-content-center mb-0 h-100">
-                            <div class="icon"><i class="fa fa-heart"></i></div>
-                            <h3><a href="#">We love our customers</a></h3>
-                            <p class="mb-0">We are known to provide best possible service ever</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="box clickable d-flex flex-column justify-content-center mb-0 h-100">
-                            <div class="icon"><i class="fa fa-tags"></i></div>
-                            <h3><a href="#">Best prices</a></h3>
-                            <p class="mb-0">You can check that the height of the boxes adjust when longer text like this one is used in one of them.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="box clickable d-flex flex-column justify-content-center mb-0 h-100">
-                            <div class="icon"><i class="fa fa-thumbs-up"></i></div>
-                            <h3><a href="#">100% satisfaction guaranteed</a></h3>
-                            <p class="mb-0">Free returns on everything for 3 months.</p>
-                        </div>
-                    </div>
-                </div>
+
                 <!-- /.row-->
             </div>
             <!-- /.container-->
@@ -85,49 +76,30 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            <h2 class="mb-0">Our Packages</h2>
+                            <h2 class="mb-0">Packages</h2>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="container">
                 <div class="packages-slider owl-carousel owl-theme">
+                    @foreach($packages as $package)
                     <div class="item">
-                        <div class="card border-secondary mb-3" style="max-width: 18rem;margin-right: 21px;">
-                            <div class="card-header">Header</div>
-                            <div class="card-body text-secondary">
-                                <h5 class="card-title">Secondary card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <div class = "media">
+                            <a class ="pull-left" href = "{{route('package.show',[$package->slug])}}">
+                                <img style="width:100px;height:100px" class="media-object" src ="{{asset('storage/'.$package->image)}}" alt = "{{$package->title}}">
+                            </a>
+
+                            <div class="media-body" style="padding:0px 15px;">
+                                <h4 class = "media-heading">{{str_limit($package->title,'20','....')}}</h4>
+                                <p style="font-weight: 300;text-align:left;">
+                                    {{str_limit($package->short_description,'100','.....')}}
+                                </p>
+                                <a href="{{route('package.show',[$package->slug])}}">Read More</a>
                             </div>
                         </div>
                     </div>
-                    <div class="item">
-                        <div class="card border-secondary mb-3" style="max-width: 18rem;margin-right: 21px;">
-                            <div class="card-header">Header</div>
-                            <div class="card-body text-secondary">
-                                <h5 class="card-title">Secondary card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="card border-secondary mb-3" style="max-width: 18rem;margin-right: 21px;">
-                            <div class="card-header">Header</div>
-                            <div class="card-body text-secondary">
-                                <h5 class="card-title">Secondary card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="card border-secondary mb-3" style="max-width: 18rem;margin-right: 21px;">
-                            <div class="card-header">Header</div>
-                            <div class="card-body text-secondary">
-                                <h5 class="card-title">Secondary card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                     <!-- /.product-slider-->
                 </div>
                 <!-- /.container-->
@@ -411,143 +383,72 @@
         <div class="container">
 
             <div id="team-slider" class="owl-carousel owl-theme">
+
+                @foreach($doctors as  $doctor)
                 <div class="item">
 
 
-                    <div class="cover">
+                    <div class="cover" style="margin-right: 20px;">
                         <a href="#">
-                            <img class="img-responsive" src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQwDH0WNhgxWcHpepf6QDA1N20xLSj7NjPzDwHphNZFYA4ZCCnW6Q" alt="2013 Genel Katalog">
+                            @if(file_exists('storage/'.$doctor->image) && $doctor->image != '')
+                            <img style="width:100%; height:200px;" class="img-responsive" src="{{asset('storage/'.$doctor->image)}}" alt="{{$doctor->name}}">
+                            @endif
                         </a>
                         <div class="details">
                             <ul class="team-social-link">
-                                <li><a href=""><i class="fa fa-facebook"></i></a></li>
-                                <li><a href=""><i class="fa fa-twitter"></i></a></li>
-                                <li><a href=""><i class="fa fa-linkedin"></i></a></li>
+                                <li>
+                                    @if(!empty($doctor->facebook))
+                                    <a href="{{$doctor->facebook}}"><i class="fa fa-facebook"></i></a>
+                                        @endif
+                                </li>
+                                <li>
+                                    @if(!empty($doctor->twitter))
+                                    <a href="{{$doctor->twitter}}"><i class="fa fa-twitter"></i></a>
+                                        @endif
+                                </li>
+                                <li>
+                                    @if(!empty($doctor->linkedin))
+                                    <a href="{{$doctor->linkedin}}"><i class="fa fa-linkedin"></i></a>
+                                        @endif
+                                </li>
                             </ul>
                         </div>
                         <div class="team-details">
-                            <h3>Ram Shekar</h3>
-                            <p>Optometrist</p>
+                            <h3>{{$doctor->name}}</h3>
+                            <p>{{$doctor->specalists}}</p>
                         </div>
                     </div>
 
                 </div>
-                <div class="item">
 
+                @endforeach
 
-                    <div class="cover">
-                        <a href="#">
-                            <img class="img-responsive" src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQwDH0WNhgxWcHpepf6QDA1N20xLSj7NjPzDwHphNZFYA4ZCCnW6Q" alt="2013 Genel Katalog">
-                        </a>
-                        <div class="details">
-                            <ul class="team-social-link">
-                                <li><a href=""><i class="fa fa-facebook"></i></a></li>
-                                <li><a href=""><i class="fa fa-twitter"></i></a></li>
-                                <li><a href=""><i class="fa fa-linkedin"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="team-details">
-                            <h3>Ram Shekar</h3>
-                            <p>Optometrist</p>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="item">
-
-
-                    <div class="cover">
-                        <a href="#">
-                            <img class="img-responsive" src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQwDH0WNhgxWcHpepf6QDA1N20xLSj7NjPzDwHphNZFYA4ZCCnW6Q" alt="2013 Genel Katalog">
-                        </a>
-                        <div class="details">
-                            <ul class="team-social-link">
-                                <li><a href=""><i class="fa fa-facebook"></i></a></li>
-                                <li><a href=""><i class="fa fa-twitter"></i></a></li>
-                                <li><a href=""><i class="fa fa-linkedin"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="team-details">
-                            <h3>Ram Shekar</h3>
-                            <p>Optometrist</p>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="item">
-
-
-                    <div class="cover">
-                        <a href="#">
-                            <img class="img-responsive" src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQwDH0WNhgxWcHpepf6QDA1N20xLSj7NjPzDwHphNZFYA4ZCCnW6Q" alt="2013 Genel Katalog">
-                        </a>
-                        <div class="details">
-                            <ul class="team-social-link">
-                                <li><a href=""><i class="fa fa-facebook"></i></a></li>
-                                <li><a href=""><i class="fa fa-twitter"></i></a></li>
-                                <li><a href=""><i class="fa fa-linkedin"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="team-details">
-                            <h3>Ram Shekar</h3>
-                            <p>Optometrist</p>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="item">
-
-
-                    <div class="cover">
-                        <a href="#">
-                            <img class="img-responsive" src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQwDH0WNhgxWcHpepf6QDA1N20xLSj7NjPzDwHphNZFYA4ZCCnW6Q" alt="2013 Genel Katalog">
-                        </a>
-                        <div class="details">
-                            <ul class="team-social-link">
-                                <li><a href=""><i class="fa fa-facebook"></i></a></li>
-                                <li><a href=""><i class="fa fa-twitter"></i></a></li>
-                                <li><a href=""><i class="fa fa-linkedin"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="team-details">
-                            <h3>Ram Shekar</h3>
-                            <p>Optometrist</p>
-                        </div>
-                    </div>
-
-                </div>
             </div>
 
         </div>
         <div class="box text-center">
             <div class="container">
                 <div class="col-md-12">
-                    <h3 class="text-uppercase">From our blog</h3>
-                    <p class="lead mb-0">What's new in the world of fashion? <a href="blog.html">Check our blog!</a></p>
+                    <h3 class="text-uppercase">Blog</h3>
                 </div>
             </div>
         </div>
         <div class="container">
             <div class="col-md-12">
                 <div id="blog-homepage" class="row">
+                    @foreach($blogs as $blog)
                     <div class="col-sm-6">
                         <div class="post">
-                            <h4><a href="post.html">Fashion now</a></h4>
-                            <p class="author-category">By <a href="#">John Slim</a> in <a href="">Fashion and style</a></p>
+                            <h4><a href="{{route('blog.show',[$blog->slug])}}">{{$blog->title}}</a></h4>
+                            <p class="author-category">By <a href="{{route('blog.show',[$blog->slug])}}">{{$blog->author->name}}</a> Category <a href="{{route('blog.show',[$blog->slug])}}">{{$blog->category->name}}</a></p>
                             <hr>
-                            <p class="intro">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
-                            <p class="read-more"><a href="post.html" class="btn btn-primary">Continue reading</a></p>
+                            <p class="intro">
+                                {{ str_limit($blog->short_description,'200','....') }}
+                            </p>
+                            <p class="read-more"><a href="{{route('blog.show',[$blog->slug])}}" class="btn btn-primary">Continue reading</a></p>
                         </div>
                     </div>
-                    <div class="col-sm-6">
-                        <div class="post">
-                            <h4><a href="post.html">Who is who - example blog post</a></h4>
-                            <p class="author-category">By <a href="#">John Slim</a> in <a href="">About Minimal</a></p>
-                            <hr>
-                            <p class="intro">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
-                            <p class="read-more"><a href="post.html" class="btn btn-primary">Continue reading</a></p>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
                 <!-- /#blog-homepage-->
             </div>

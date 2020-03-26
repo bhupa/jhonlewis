@@ -4,69 +4,53 @@
 @endsection
 @section('content')
     <div id="all">
-        <div id="hot">
-            <div class="box py-4">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h2 class="mb-0">Our Packages</h2>
-                        </div>
+        <div id="content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <!-- breadcrumb-->
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                <li aria-current="page" class="breadcrumb-item active">Packages</li>
+                            </ol>
+                        </nav>
                     </div>
                 </div>
             </div>
-            <div class="container">
-                <div class="packages-slider owl-carousel owl-theme">
-                    <div class="item">
-                        <div class="card border-secondary mb-3" style="max-width: 18rem;margin-right: 21px;">
-                            <div class="card-header">Header</div>
-                            <div class="card-body text-secondary">
-                                <h5 class="card-title">Secondary card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="card border-secondary mb-3" style="max-width: 18rem;margin-right: 21px;">
-                            <div class="card-header">Header</div>
-                            <div class="card-body text-secondary">
-                                <h5 class="card-title">Secondary card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="card border-secondary mb-3" style="max-width: 18rem;margin-right: 21px;">
-                            <div class="card-header">Header</div>
-                            <div class="card-body text-secondary">
-                                <h5 class="card-title">Secondary card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="card border-secondary mb-3" style="max-width: 18rem;margin-right: 21px;">
-                            <div class="card-header">Header</div>
-                            <div class="card-body text-secondary">
-                                <h5 class="card-title">Secondary card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /.product-slider-->
+        </div>
+        <div id="hot">
 
+            <div class="container">
+                <div class="packages-slider-details ">
+                    <div class="row">
+                    @foreach($packages as $package)
+
+                        <div class="col-lg-4">
+                            <div class = "media mb-3">
+                                <a class ="pull-left" href = "{{route('package.show',[$package->slug])}}">
+                                    <img style="width:100px;height:100px" class="media-object" src ="{{asset('storage/'.$package->image)}}" alt = "{{$package->title}}">
+                                </a>
+
+                                <div class="media-body" style="padding:0px 15px;">
+                                    <h4 class = "media-heading">{{str_limit($package->title,'20','....')}}</h4>
+                                    <p class="mb-0" style="font-weight: 300;text-align:left;">
+                                        {{str_limit($package->short_description,'100','.....')}}
+                                    </p>
+                                    <a href="{{route('package.show',[$package->slug])}}">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    @endforeach
+                    </div>
 
                     <div class="pages">
-                        <p class="loadMore"><a href="#" class="btn btn-primary btn-lg"><i class="fa fa-chevron-down"></i> Load more</a></p>
                         <nav aria-label="Page navigation example" class="d-flex justify-content-center">
-                            <ul class="pagination">
-                                <li class="page-item"><a href="#" aria-label="Previous" class="page-link"><span aria-hidden="true">«</span><span class="sr-only">Previous</span></a></li>
-                                <li class="page-item active"><a href="#" class="page-link">1</a></li>
-                                <li class="page-item"><a href="#" class="page-link">2</a></li>
-                                <li class="page-item"><a href="#" class="page-link">3</a></li>
-                                <li class="page-item"><a href="#" class="page-link">4</a></li>
-                                <li class="page-item"><a href="#" class="page-link">5</a></li>
-                                <li class="page-item"><a href="#" aria-label="Next" class="page-link"><span aria-hidden="true">»</span><span class="sr-only">Next</span></a></li>
-                            </ul>
+                            <nav aria-label="Page navigation example" class="d-flex justify-content-center">
+                                {{ $packages->links('vendor.pagination.default') }}
+                            </nav>
                         </nav>
                     </div>
                 </div>

@@ -1,7 +1,7 @@
 <ul class="navbar-nav mr-auto desktop-menu" id="menu">
     <li class="nav-item"> <a href="{{route('home')}}" class="nav-link active">Home</a></li>
     <li class="nav-item"> <a href="{{route('appointment.index')}}" class="nav-link ">Appointment</a></li>
-    <li class="nav-item"> <a href="{{route('packages.index')}}" class="nav-link ">Packages</a></li>
+    <li class="nav-item"> <a href="{{route('package.index')}}" class="nav-link ">Packages</a></li>
     <li class="nav-item"><a href="#" class="nav-link">Glasses</a>
         <ul class="sub-menu">
             <li class="nav-item"><a href="{{route('shoping-lists.index')}}" class="nav-link">Men's Glasses</a></li>
