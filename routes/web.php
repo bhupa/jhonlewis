@@ -19,6 +19,12 @@ Route::get('/register','HomeController@getRegister')->name('register');
 Route::get('/how-to-get-prescription','HomeController@getPrescription')->name('how-to-get-prescription');
 Route::get('/guarantee-warranty','HomeController@getWarranty')->name('guarantee-warranty');
 Route::get('/returns-refunds','HomeController@getReturn')->name('returns-refunds');
+
+Route::get('/nhs-entitlement','HomeController@getentitlement')->name('nhs-entitlement');
+
+
+
+
 Route::get('/cart','CartController@index')->name('cart.index');
 Route::get('/contact-us','ContactController@index')->name('contact-us.index');
 Route::get('/shoping-lists/single-page','ShopController@getSingle')->name('shoping-lists.single-page');
@@ -74,5 +80,9 @@ Route::group(['namespace'=>'Backend','middleware'=>'auth'], function() {
 
     // Appointments router
     Route::resource('appointments','AppointmentController');
+
+    // settings router
+    Route::resource('settings','SettingController');
+    Route::post('/settings/change-status','SettingController@changeStatus')->name('settings.change-status');
 
 });

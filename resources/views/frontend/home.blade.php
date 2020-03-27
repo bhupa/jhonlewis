@@ -53,9 +53,9 @@
                             <div class="icon">
                                 <img style="width:80px; height: 80px;opacity:0.5" src="{{asset('storage/'.$service->image)}}" alt="{{$service->title}}">
                             </div>
-                            <h3><a href="#" style="color: #000; font-weight:500">{{$service->title}}</a></h3>
+                            <h3><a href="{{route('service.show',[$service->slug])}}" style="color: #000; font-weight:500">{{$service->title}}</a></h3>
                             <p class="mt-4 mb-0">{{str_limit($service->short_description,'100','....')}}</p>
-                            <a href="">Read More</a>
+                            <a href="{{route('service.show',[$service->slug])}}">Read More</a>
                         </div>
                     </div>
                     @endforeach
@@ -343,9 +343,24 @@
                                 </p>
                                 <span>
                                     <ul class="appointment-contact-info">
-                                        <li><i class="fa fa-envelope-o fa-2x"></i>123, New Lenox Chicago, IL 60606</li>
-                                        <li><i class="fa fa-map-marker fa-2x"></i>800-456-7890/800-456-7890</li>
-                                        <li><i class="fa fa-phone fa-2x"></i>infoglass@gmail.com</li>
+                                        @foreach($settings as $setting)
+                                            @if($setting->slug == 'email')
+                                        <li><i class="fa fa-envelope-o fa-2x"></i>{{$setting->value}}</li>
+                                            @endif
+                                                @if($setting->slug == 'address')
+                                                <li><i class="fa fa-map-marker fa-2x"></i>{{$setting->value}}</li>
+                                                @endif
+                                                    @if($setting->slug == 'phone')
+                                                <li><i class="fa fa-phone fa-2x"></i>{{$setting->value}}</li>
+                                                @endif
+
+                                                    @if($setting->slug == 'opening-hours')
+                                                    <li>Opening Hours:<br>{{$setting->value}}</li>
+                                                    @endif
+                                                @if($setting->slug == 'company-regd-no')
+                                                    <li>Company Regd. No:{{$setting->value}}</li>
+                                                @endif
+                                            @endforeach
 
 
                                     </ul>

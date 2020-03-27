@@ -47,4 +47,8 @@ class HomeController extends Controller
         $content = $this->content->where('slug','returns-refunds')->first();
         return view('frontend.warranty')->withContent($content);
     }
+    public function getentitlement(){
+        $content = $this->content->where('slug','nhs-entitlement')->first();
+        return view('frontend.entitlement')->withContent($content);
+    }
 }
