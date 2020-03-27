@@ -163,8 +163,9 @@ _________________________________________________________
                 <h4 class="mb-3">Links</h4>
 
                 <ul class="list-unstyled" id="footer-menu">
-                    <li><a href="{{route('about-us')}}">Services</a></li>
+                    <li><a href="{{route('service.index')}}">Services</a></li>
                     <li><a href="{{route('blog.index')}}">Blogs</a></li>
+                    <li><a href="{{route('nhs-entitlement')}}">NHS Entitlement</a></li>
 
 
                 </ul>
