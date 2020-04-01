@@ -61,10 +61,26 @@
                 </ul>
             </li>
             <li class="nav-item">
+                <a href="{{route('contacts.index')}}" class="nav-link">
+                    <i class="nav-icon far fa-address-card"></i>
+                    <p>
+                        Contact
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
                 <a href="{{route('contents.index')}}" class="nav-link">
                     <i class="nav-icon far fa-file"></i>
                     <p>
                         Content
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{route('discounts.index')}}" class="nav-link">
+                    <i class="nav-icon fa fa-tags"></i>
+                    <p>
+                        Discount
                     </p>
                 </a>
             </li>
@@ -86,6 +102,67 @@
 
             </li>
             <li class="nav-item has-treeview">
+                <a href="{{route('products.index')}}" class="nav-link">
+                    <i class="nav-icon fa fa-box"></i>
+                    <p>
+                        Product
+                    </p>
+                </a>
+
+            </li>
+            <li class="nav-item has-treeview">
+                <a href="javascript:void(0)" class="nav-link">
+                    <i class="nav-icon fas fa-chart-pie"></i>
+                    <p>
+                        Product Category
+                        <i class="right fas fa-angle-left"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="{{route('frames.index')}}" class="nav-link">
+                            <i class="nav-icon far fa-file"></i>
+                            <p>
+                                Frame
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{route('frame-categories.index')}}" class="nav-link">
+                            <i class="nav-icon far fa-file"></i>
+                            <p>
+                                Frame-Category
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{route('glasses.index')}}" class="nav-link">
+                            <i class="nav-icon far fa-file"></i>
+                            <p>
+                                Glasses
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{route('sunglasses.index')}}" class="nav-link">
+                            <i class="nav-icon far fa-file"></i>
+                            <p>
+                                SunGlasses
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{route('lenses.index')}}" class="nav-link">
+                            <i class="nav-icon far fa-file"></i>
+                            <p>
+                                Lenses
+                            </p>
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+            <li class="nav-item has-treeview">
                 <a href="{{route('services.index')}}" class="nav-link">
                     <i class="nav-icon fas fa-clinic-medical"></i>
                     <p>
@@ -103,6 +180,16 @@
                 </a>
 
             </li>
+            <li class="nav-item has-treeview">
+                <a href="{{route('testimonials.index')}}" class="nav-link">
+                    <i class="nav-icon fas fa-comment"></i>
+                    <p>
+                        Testimonial
+                    </p>
+                </a>
+
+            </li>
+
 
         </ul>
     </nav>

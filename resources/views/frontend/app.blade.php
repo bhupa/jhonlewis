@@ -89,6 +89,7 @@
                             <div class="form-group">
                                 <input id="email-modal" id="email" name="email" type="text" placeholder="email" class="form-control">
                             </div>
+                        <input type="hidden" name="url" id="url">
                             <div class="form-group">
                                 <input id="password-modal" id="password" name="password" type="password" placeholder="password" class="form-control">
                             </div>
@@ -118,7 +119,16 @@
                 @include('frontend.mobile')
 
                 <div class="navbar-buttons d-flex justify-content-end">
-                    <div id="basket-overview" class="navbar-collapse collapse d-none d-lg-block"><a href="basket.html" class="btn btn-primary navbar-btn"><i class="fa fa-shopping-cart"></i><span>3 items in cart</span></a></div>
+                    <div id="basket-overview" class="navbar-collapse collapse d-none d-lg-block">
+                        <a href="{{route('cart.index')}}" class="btn btn-primary navbar-btn">
+                            <i class="fa fa-shopping-cart"></i>
+                            @if(!empty($carts->items))
+
+                                <span >  {{count($carts->items)}}  </span>
+                            @endif
+
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -350,7 +360,7 @@ _________________________________________________________
             }
         });
 
-        $('.product-slider').owlCarousel({
+        $('.product-sliders').owlCarousel({
             items: 1,
             dots: true,
             nav: false,

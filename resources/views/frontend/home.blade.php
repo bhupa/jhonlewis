@@ -119,206 +119,54 @@
                 </div>
             </div>
             <div class="container">
-                <div class="product-slider owl-carousel owl-theme">
+                <div class="product-sliders owl-carousel owl-theme">
+                    @foreach($products as $product)
                     <div class="item">
                         <div class="product">
                             <div class="flip-container">
                                 <div class="flipper">
-                                    <div class="front"><a href="{{route('shoping-lists.single-page')}}"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product1.jpg" alt="" class="img-fluid"></a></div>
-                                    <div class="back"><a href="{{route('shoping-lists.single-page')}}"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product1_2.jpg" alt="" class="img-fluid"></a></div>
+                                    <div class="front"><a href="{{route('product.show',[$product->slug])}}"><img style="height: 250px;" src="{{asset('storage/'.$product->image)}}" alt="{{$product->title}}" class="img-fluid"></a></div>
+                                    <div class="back"><a href="{{route('product.show',[$product->slug])}}"><img style="height: 250px;" src="{{asset('storage/'.$product->image)}}" alt="{{$product->title}}" class="img-fluid"></a></div>
                                 </div>
-                            </div><a href="{{route('shoping-lists.single-page')}}" class="invisible"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product1.jpg" alt="" class="img-fluid"></a>
+                            </div><a href="{{route('product.show',[$product->slug])}}" class="invisible"><img style="height: 250px;" src="{{asset('storage/'.$product->image)}}" alt="{{$product->title}}" class="img-fluid"></a>
                             <div class="text">
-                                <h3><a href="{{route('shoping-lists.single-page')}}">Fur coat with very but very very long name</a></h3>
+                                <h3><a href="{{route('shoping-lists.single-page')}}">{{$product->title}}</a></h3>
+                                @if(!empty($product->discount_id))
+                                    <p class="price">
+                                        <strike>£{{$product->price}}</strike><br>
+                                        @php $discount = $product->price - ($product->price * ($product->discount->percentage / 100))@endphp
+                                        £ &nbsp;{{ $discount}}
+                                    </p>
+                                    @else
                                 <p class="price">
-                                    <del></del>$143.00
+                                    <del></del>£&nbsp;{{$product->price}}
                                 </p>
+                                    @endif
+
                             </div>
                             <!-- /.text-->
-                            <div class="ribbon sale">
-                                <div class="theribbon">SALE</div>
+                            @if(!empty($product->discount_id))
+                            <div class="ribbon sale discount-tage">
+                                <div class="theribbon" style="width: 162px;">off {{$product->discount->percentage}}%</div>
                                 <div class="ribbon-background"></div>
                             </div>
-                            <!-- /.ribbon-->
+                            @endif
+{{--                            <!-- /.ribbon-->--}}
                             <div class="ribbon new">
-                                <div class="theribbon">NEW</div>
+                                <div class="theribbon" style="width: 162px; background: red; margin-top: 20px;">{{$product->brand->name}}</div>
                                 <div class="ribbon-background"></div>
                             </div>
                             <!-- /.ribbon-->
                             <div class="ribbon gift">
-                                <div class="theribbon">GIFT</div>
+                                <div class="theribbon">New</div>
                                 <div class="ribbon-background"></div>
                             </div>
                             <!-- /.ribbon-->
                         </div>
                         <!-- /.product-->
                     </div>
-                    <div class="item">
-                        <div class="product">
-                            <div class="flip-container">
-                                <div class="flipper">
-                                    <div class="front"><a href="{{route('shoping-lists.single-page')}}"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product2.jpg" alt="" class="img-fluid"></a></div>
-                                    <div class="back"><a href="{{route('shoping-lists.single-page')}}"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product2_2.jpg" alt="" class="img-fluid"></a></div>
-                                </div>
-                            </div><a href="{{route('shoping-lists.single-page')}}" class="invisible"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product2.jpg" alt="" class="img-fluid"></a>
-                            <div class="text">
-                                <h3><a href="{{route('shoping-lists.single-page')}}">White Blouse Armani</a></h3>
-                                <p class="price">
-                                    <del>$280</del>$143.00
-                                </p>
-                            </div>
-                            <!-- /.text-->
-                            <div class="ribbon sale">
-                                <div class="theribbon">SALE</div>
-                                <div class="ribbon-background"></div>
-                            </div>
-                            <!-- /.ribbon-->
-                            <div class="ribbon new">
-                                <div class="theribbon">NEW</div>
-                                <div class="ribbon-background"></div>
-                            </div>
-                            <!-- /.ribbon-->
-                            <div class="ribbon gift">
-                                <div class="theribbon">GIFT</div>
-                                <div class="ribbon-background"></div>
-                            </div>
-                            <!-- /.ribbon-->
-                        </div>
-                        <!-- /.product-->
-                    </div>
-                    <div class="item">
-                        <div class="product">
-                            <div class="flip-container">
-                                <div class="flipper">
-                                    <div class="front"><a href="{{route('shoping-lists.single-page')}}"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product3.jpg" alt="" class="img-fluid"></a></div>
-                                    <div class="back"><a href="{{route('shoping-lists.single-page')}}"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product3_2.jpg" alt="" class="img-fluid"></a></div>
-                                </div>
-                            </div><a href="{{route('shoping-lists.single-page')}}" class="invisible"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product3.jpg" alt="" class="img-fluid"></a>
-                            <div class="text">
-                                <h3><a href="{{route('shoping-lists.single-page')}}">Black Blouse Versace</a></h3>
-                                <p class="price">
-                                    <del></del>$143.00
-                                </p>
-                            </div>
-                            <!-- /.text-->
-                        </div>
-                        <!-- /.product-->
-                    </div>
-                    <div class="item">
-                        <div class="product">
-                            <div class="flip-container">
-                                <div class="flipper">
-                                    <div class="front"><a href="{{route('shoping-lists.single-page')}}"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product3.jpg" alt="" class="img-fluid"></a></div>
-                                    <div class="back"><a href="{{route('shoping-lists.single-page')}}"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product3_2.jpg" alt="" class="img-fluid"></a></div>
-                                </div>
-                            </div><a href="{{route('shoping-lists.single-page')}}" class="invisible"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product3.jpg" alt="" class="img-fluid"></a>
-                            <div class="text">
-                                <h3><a href="{{route('shoping-lists.single-page')}}">Black Blouse Versace</a></h3>
-                                <p class="price">
-                                    <del></del>$143.00
-                                </p>
-                            </div>
-                            <!-- /.text-->
-                        </div>
-                        <!-- /.product-->
-                    </div>
-                    <div class="item">
-                        <div class="product">
-                            <div class="flip-container">
-                                <div class="flipper">
-                                    <div class="front"><a href="{{route('shoping-lists.single-page')}}"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product2.jpg" alt="" class="img-fluid"></a></div>
-                                    <div class="back"><a href="{{route('shoping-lists.single-page')}}"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product2_2.jpg" alt="" class="img-fluid"></a></div>
-                                </div>
-                            </div><a href="{{route('shoping-lists.single-page')}}" class="invisible"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product2.jpg" alt="" class="img-fluid"></a>
-                            <div class="text">
-                                <h3><a href="{{route('shoping-lists.single-page')}}">White Blouse Versace</a></h3>
-                                <p class="price">
-                                    <del></del>$143.00
-                                </p>
-                            </div>
-                            <!-- /.text-->
-                            <div class="ribbon new">
-                                <div class="theribbon">NEW</div>
-                                <div class="ribbon-background"></div>
-                            </div>
-                            <!-- /.ribbon-->
-                        </div>
-                        <!-- /.product-->
-                    </div>
-                    <div class="item">
-                        <div class="product">
-                            <div class="flip-container">
-                                <div class="flipper">
-                                    <div class="front"><a href="{{route('shoping-lists.single-page')}}"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product1.jpg" alt="" class="img-fluid"></a></div>
-                                    <div class="back"><a href="{{route('shoping-lists.single-page')}}"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product1_2.jpg" alt="" class="img-fluid"></a></div>
-                                </div>
-                            </div><a href="{{route('shoping-lists.single-page')}}" class="invisible"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product1.jpg" alt="" class="img-fluid"></a>
-                            <div class="text">
-                                <h3><a href="{{route('shoping-lists.single-page')}}">Fur coat</a></h3>
-                                <p class="price">
-                                    <del></del>$143.00
-                                </p>
-                            </div>
-                            <!-- /.text-->
-                            <div class="ribbon gift">
-                                <div class="theribbon">GIFT</div>
-                                <div class="ribbon-background"></div>
-                            </div>
-                            <!-- /.ribbon-->
-                        </div>
-                        <!-- /.product-->
-                    </div>
-                    <div class="item">
-                        <div class="product">
-                            <div class="flip-container">
-                                <div class="flipper">
-                                    <div class="front"><a href="{{route('shoping-lists.single-page')}}"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product2.jpg" alt="" class="img-fluid"></a></div>
-                                    <div class="back"><a href="{{route('shoping-lists.single-page')}}"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product2_2.jpg" alt="" class="img-fluid"></a></div>
-                                </div>
-                            </div><a href="{{route('shoping-lists.single-page')}}" class="invisible"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product2.jpg" alt="" class="img-fluid"></a>
-                            <div class="text">
-                                <h3><a href="{{route('shoping-lists.single-page')}}">White Blouse Armani</a></h3>
-                                <p class="price">
-                                    <del>$280</del>$143.00
-                                </p>
-                            </div>
-                            <!-- /.text-->
-                            <div class="ribbon sale">
-                                <div class="theribbon">SALE</div>
-                                <div class="ribbon-background"></div>
-                            </div>
-                            <!-- /.ribbon-->
-                            <div class="ribbon new">
-                                <div class="theribbon">NEW</div>
-                                <div class="ribbon-background"></div>
-                            </div>
-                            <!-- /.ribbon-->
-                            <div class="ribbon gift">
-                                <div class="theribbon">GIFT</div>
-                                <div class="ribbon-background"></div>
-                            </div>
-                            <!-- /.ribbon-->
-                        </div>
-                        <!-- /.product-->
-                    </div>
-                    <div class="item">
-                        <div class="product">
-                            <div class="flip-container">
-                                <div class="flipper">
-                                    <div class="front"><a href="{{route('shoping-lists.single-page')}}"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product3.jpg" alt="" class="img-fluid"></a></div>
-                                    <div class="back"><a href="{{route('shoping-lists.single-page')}}"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product3_2.jpg" alt="" class="img-fluid"></a></div>
-                                </div>
-                            </div><a href="{{route('shoping-lists.single-page')}}" class="invisible"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product3.jpg" alt="" class="img-fluid"></a>
-                            <div class="text">
-                                <h3><a href="{{route('shoping-lists.single-page')}}">Black Blouse Versace</a></h3>
-                                <p class="price">
-                                    <del></del>$143.00
-                                </p>
-                            </div>
-                            <!-- /.text-->
-                        </div>
-                        <!-- /.product-->
-                    </div>
+                    @endforeach
+
                     <!-- /.product-slider-->
                 </div>
                 <!-- /.container-->
@@ -482,96 +330,27 @@
     <div class="testimonial-slider">
         <div class="container">
             <div id="testimonial-slider" class="owl-carousel owl-theme">
+                @foreach($testimonials as $testimonial)
                 <div class="item">
                     <div class="testimonial">
                         <div class="testimonial-wrapper">
                             <div class="testimonial-img">
-                                <img src="{{asset('frontend/img/eye.jpeg')}}" alt="">
+                                @if(file_exists('storage/'.$testimonial->author->image) && $testimonial->author->image != '')
+                                    <img  src="{{asset('storage/'.$testimonial->image)}}" alt="{{$testimonial->author->name}}">
+                                @else
+                                    <img  src="https://via.placeholder.com/300" alt="{{$testimonial->author->name}}">
+                                @endif
                             </div>
                             <div class="testimonial-content">
-                                <span>Ramesh karki</span>
+                                <span>{{$testimonial->author->name}}</span>
                                 <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet eos exercitationem facere incidunt inventore neque nihil repellat ullam voluptatum! Ab commodi, eligendi expedita explicabo illo ipsa ipsum maiores odio qui.
+                                    {{ str_limit($testimonial->description,'300','....') }}
                                 </p>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="item">
-                    <div class="testimonial">
-                        <div class="testimonial-wrapper">
-                            <div class="testimonial-img">
-                                <img src="{{asset('frontend/img/eye.jpeg')}}" alt="">
-                            </div>
-                            <div class="testimonial-content">
-                                <span>Ramesh karki</span>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet eos exercitationem facere incidunt inventore neque nihil repellat ullam voluptatum! Ab commodi, eligendi expedita explicabo illo ipsa ipsum maiores odio qui.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="testimonial">
-                        <div class="testimonial-wrapper">
-                            <div class="testimonial-img">
-                                <img src="{{asset('frontend/img/eye.jpeg')}}" alt="">
-                            </div>
-                            <div class="testimonial-content">
-                                <span>Ramesh karki</span>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet eos exercitationem facere incidunt inventore neque nihil repellat ullam voluptatum! Ab commodi, eligendi expedita explicabo illo ipsa ipsum maiores odio qui.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="testimonial">
-                        <div class="testimonial-wrapper">
-                            <div class="testimonial-img">
-                                <img src="{{asset('frontend/img/eye.jpeg')}}" alt="">
-                            </div>
-                            <div class="testimonial-content">
-                                <span>Ramesh karki</span>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet eos exercitationem facere incidunt inventore neque nihil repellat ullam voluptatum! Ab commodi, eligendi expedita explicabo illo ipsa ipsum maiores odio qui.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="testimonial">
-                        <div class="testimonial-wrapper">
-                            <div class="testimonial-img">
-                                <img src="{{asset('frontend/img/eye.jpeg')}}" alt="">
-                            </div>
-                            <div class="testimonial-content">
-                                <span>Ramesh karki</span>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet eos exercitationem facere incidunt inventore neque nihil repellat ullam voluptatum! Ab commodi, eligendi expedita explicabo illo ipsa ipsum maiores odio qui.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="testimonial">
-                        <div class="testimonial-wrapper">
-                            <div class="testimonial-img">
-                                <img src="{{asset('frontend/img/eye.jpeg')}}" alt="">
-                            </div>
-                            <div class="testimonial-content">
-                                <span>Ramesh karki</span>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet eos exercitationem facere incidunt inventore neque nihil repellat ullam voluptatum! Ab commodi, eligendi expedita explicabo illo ipsa ipsum maiores odio qui.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+               @endforeach
 
 
             </div>

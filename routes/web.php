@@ -11,6 +11,15 @@
 |
 */
 
+
+// payment for paypal
+
+// route for processing payment
+Route::post('paypal', 'PaymentController@store')->name('paypal.store');
+
+Route::get('status', 'PaymentController@getPaymentStatus');
+
+
 Route::get('/','HomeController@index')->name('home');
 Route::get('/about-us','HomeController@getAbout')->name('about-us');
 Route::get('/terms-conditions','HomeController@getTermCondition')->name('terms-conditions');
@@ -23,10 +32,26 @@ Route::get('/returns-refunds','HomeController@getReturn')->name('returns-refunds
 Route::get('/nhs-entitlement','HomeController@getentitlement')->name('nhs-entitlement');
 
 
+Route::resource('order','OrderController');
+Route::post('/delivery','OrderController@getDelivery')->name('delivery');
+Route::post('/payment','OrderController@getPayment')->name('payment');
+Route::post('/order/review','OrderController@getreview')->name('order.review');
+Route::post('/backDelivery','OrderController@getBackDelivery')->name('backDelivery');
+Route::post('/backPayment','OrderController@getBackPayment')->name('backPayment');
 
+Route::post('/back-address','OrderController@getBackAddress')->name('back-address');
+//Route::get('/order','OrderController@index')->name('order.index');
+//Route::post('/','OrderController@getAddress')->name('order.addaddress');
+//Route::post('/addaddress','OrderController@addDelivery')->name('order.addaddress');
+//Route::post('/addpayment','OrderController@addPayment')->name('order.addpayment');
 
-Route::get('/cart','CartController@index')->name('cart.index');
-Route::get('/contact-us','ContactController@index')->name('contact-us.index');
+Route::resource('cart','CartController');
+Route::post('/cart/add/','CartController@add')->name('cart.add');
+
+Route::get('/clear/','CartController@delete')->name('cart.clear');
+Route::get('cart/remove/{id}','CartController@remove')->name('cart.remove');
+
+Route::resource('contact-us','ContactController');
 Route::get('/shoping-lists/single-page','ShopController@getSingle')->name('shoping-lists.single-page');
 Route::get('/shoping-lists','ShopController@index')->name('shoping-lists.index');
 
@@ -37,6 +62,8 @@ Route::resource('/appointment','AppointmentController');
 Route::resource('/package','PackageController');
 Route::resource('/blog','BlogController');
 Route::resource('/service','ServiceController');
+Route::resource('/testimonial','TestimonialController');
+Route::resource('/product','ProductController');
 
 
 // Route for the auth user
@@ -84,5 +111,59 @@ Route::group(['namespace'=>'Backend','middleware'=>'auth'], function() {
     // settings router
     Route::resource('settings','SettingController');
     Route::post('/settings/change-status','SettingController@changeStatus')->name('settings.change-status');
+
+    //contactus router
+    Route::resource('contacts','ContactController');
+
+    // testimonials router
+    Route::resource('testimonials','TestimonialController');
+    Route::post('/testimonials/change-status','TestimonialController@changeStatus')->name('testimonials.change-status');
+
+    // glasses router
+    Route::resource('glasses','GlassesController');
+    Route::post('/glasses/change-status','GlassesController@changeStatus')->name('glasses.change-status');
+
+    // glasses router
+    Route::resource('sunglasses','SunglassesController');
+    Route::post('/sunglasses/change-status','SunglassesController@changeStatus')->name('sunglasses.change-status');
+
+    // lenses router
+    Route::resource('lenses','LensesController');
+    Route::post('/lenses/change-status','LensesController@changeStatus')->name('lenses.change-status');
+
+    // frame router
+    Route::resource('frames','FrameController');
+    Route::post('/frames/change-status','FrameController@changeStatus')->name('frames.change-status');
+    Route::post('/frames/get-category','FrameController@getCategory')->name('frames.get-category');
+
+    // frame category router
+    Route::resource('frame-categories','FrameCategoryController');
+    Route::post('/frame-categories/change-status','FrameCategoryController@changeStatus')->name('frame-categories.change-status');
+
+    // Discount router
+    Route::resource('discounts','DiscountController');
+    Route::post('/discounts/change-status','DiscountController@changeStatus')->name('discounts.change-status');
+
+
+    // product router
+    Route::resource('products','ProductController');
+    Route::post('/products/change-status','ProductController@changeStatus')->name('products.change-status');
+    Route::post('/products/change-shipping','ProductController@changeShipping')->name('products.change-shipping');
+    Route::post('/products/get-product-category','ProductController@getCategory')->name('products.get-product-category');
+
+
+    Route::prefix('stocks')->group(function(){
+        Route::get('/{product_id}','StockController@index')->name('stocks.index');
+        Route::get('/{product_id}/create', 'StockController@create')->name('stocks.create');
+        Route::post('/store', 'StockController@store')->name('stocks.store');
+        Route::get('/edit/{slug}', 'StockController@edit')->name('stocks.edit');
+        Route::put('/update/{slug}', 'StockController@update')->name('stocks.update');
+        Route::delete('/{id}', 'StockController@destroy')->name('stocks.destroy');
+        Route::post('/change-status','StockController@changeStatus')->name('stocks.change-status');
+
+    });
+
+    // color route
+    Route::resource('colors','ColorController');
 
 });

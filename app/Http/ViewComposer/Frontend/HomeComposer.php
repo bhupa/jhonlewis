@@ -7,9 +7,12 @@ use App\Repositories\BlogRepository;
 use App\Repositories\ContentRepository;
 use App\Repositories\DoctorRepository;
 use App\Repositories\PackageRepository;
+use App\Repositories\ProductRepository;
 use App\Repositories\ServiceRespository;
 use App\Repositories\SettingRepository;
+use App\Repositories\TestimonialRepository;
 use Illuminate\View\View;
+use Session;
 
 
 class HomeComposer
@@ -19,7 +22,7 @@ class HomeComposer
      *
      * @var UserRepositorya
      */
-    protected  $content,$blogs,$banner,$service,$packages,$doctor,$setting;
+    protected  $content,$blogs,$banner,$service,$packages,$doctor,$setting,$testimonial,$products;
 
     /**
      * Create a new profile Composer.
@@ -31,7 +34,8 @@ class HomeComposer
                                 ContentRepository $content, BlogRepository $blogs,
                                 BannerRepository $banner, ServiceRespository $service,
                                 PackageRepository $packages,DoctorRepository $doctor,
-                                SettingRepository $setting
+                                SettingRepository $setting, TestimonialRepository $testimonial,
+                                 ProductRepository $products
     )
     {
         $this->content = $content;
@@ -41,6 +45,8 @@ class HomeComposer
         $this->packages = $packages;
         $this->doctor = $doctor;
         $this->setting = $setting;
+        $this->testimonial = $testimonial;
+        $this->products = $products;
 
     }
 
@@ -60,12 +66,18 @@ class HomeComposer
         $doctors  = $this->doctor->where('is_active','1')->orderBy('created_at','desc')->get();
         $blogs = $this->blogs->where('is_active','1')->orderBy('created_at','desc')->take(4)->get();
         $settings = $this->setting->where('is_active','1')->get();
+        $testimonials = $this->testimonial->where('is_active','1')->orderBy('created_at','desc')->get();
+        $products = $this->products->where('is_active','1')->orderBy('created_at','desc')->take(10)->get();
+        $carts = Session::get('cart');
         $view->withBanners($banners)
              ->withContents($contents)
             ->withPackages($packages)
              ->withServices($services)
             ->withDoctors($doctors)
             ->withSettings($settings)
+            ->withTestimonials($testimonials)
+            ->withProducts($products)
+            ->withCarts($carts)
             ->withBlogs($blogs);
     }
 }
