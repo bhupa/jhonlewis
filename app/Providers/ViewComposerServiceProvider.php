@@ -30,5 +30,12 @@ class ViewComposerServiceProvider extends ServiceProvider
             ],
             'App\Http\ViewComposer\Frontend\HomeComposer'
         );
+        view()->composer(
+            [
+                'backend.product.create','backend.product.edit'
+                ,
+            ],
+            'App\Http\ViewComposer\Backend\ProductComposer'
+        );
     }
 }

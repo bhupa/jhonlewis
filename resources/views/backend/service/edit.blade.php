@@ -43,35 +43,7 @@
                                     @endif </div>
 
 
-                                <div class="form-group">
-                                    <label for="exampleInputFile">Upload Image</label>
-                                    <div class="upload-btn-wrapper">
-                                        <button type="button" class="btn">Upload a file</button>
-                                        <input type="file" class="form-control" accept="image/*" id="upload-image" name="image">
 
-                                    </div>
-                                    @if ($errors->has('image'))
-                                        <span class="text-danger">{{ $errors->first('image') }}</span>
-                                    @endif
-                                    <div class="cover edit-cover" >
-                                        <a href="#">
-                                            @if(file_exists('storage/'.$services->image) && $services->image != '')
-                                                <img id="edit-logo-output"
-                                                     src="{{asset('storage/'.$services->image)}}"
-                                                     title="{{$services->name}}"
-                                                     data-toggle="tooltip"/>
-
-                                            @endif
-
-                                            <img id="output" title="click to delete image" data-toggle="tooltip">
-
-                                        </a>
-                                        <div class="details edit-delete-img">
-                                            <a href="javascript:void(0)" id="clear-image"><i class="fa fa-trash"></i></a>
-                                        </div>
-
-                                    </div>
-                                </div>
 
                                 <div class="form-group">
                                     <label for="exampleInputFile">Short Description</label>
@@ -140,6 +112,7 @@
 
 
             })
+
 
 
         });

@@ -1,33 +1,282 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<phpunit backupGlobals="false"
-         backupStaticAttributes="false"
-         bootstrap="vendor/autoload.php"
-         colors="true"
-         convertErrorsToExceptions="true"
-         convertNoticesToExceptions="true"
-         convertWarningsToExceptions="true"
-         processIsolation="false"
-         stopOnFailure="false">
-    <testsuites>
-        <testsuite name="Unit">
-            <directory suffix="Test.php">./tests/Unit</directory>
-        </testsuite>
+<div id="all">
+    <div id="content">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!-- breadcrumb-->
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li aria-current="page" class="breadcrumb-item active">Checkout - Address</li>
+                        </ol>
+                    </nav>
+                </div>
+                <div id="checkout" class="col-lg-9">
+                    <div class="box">
+                        <h1>Checkout</h1>
+                        <div style="text-align:center;margin-top:40px;">
+                            <span class="step address"></span>
+                            {{--                                <span class="step truck"></span>--}}
+                            <span class="step card"></span>
+                            <span class="step truck"></span>
+                            <span class="step check"></span>
+                        </div>
 
-        <testsuite name="Feature">
-            <directory suffix="Test.php">./tests/Feature</directory>
-        </testsuite>
-    </testsuites>
-    <filter>
-        <whitelist processUncoveredFilesFromWhitelist="true">
-            <directory suffix=".php">./app</directory>
-        </whitelist>
-    </filter>
-    <php>
-        <env name="APP_ENV" value="testing"/>
-        <env name="BCRYPT_ROUNDS" value="4"/>
-        <env name="CACHE_DRIVER" value="array"/>
-        <env name="MAIL_DRIVER" value="array"/>
-        <env name="QUEUE_CONNECTION" value="sync"/>
-        <env name="SESSION_DRIVER" value="array"/>
-    </php>
-</phpunit>
+                        {{--                            <form id="regForm" action="/action_page.php" >--}}
+                        {{ Form::open(['route'=>'paypal.store','id'=>'regForm']) }}
+                        <!-- One "tab" for each step in the form: -->
+                        <div class="tab">
+                            <div class="content">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label for="firstname">Firstname</label>
+                                            <input type="text" name="fisrtname" class="form-control" id="firstname">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label for="lastname">Lastname</label>
+                                            <input type="text" name="lastname" class="form-control" id="lastname">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.row -->
+
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label for="company">Address</label>
+                                            <input type="text" name="address" class="form-control" id="address">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label for="street">Street</label>
+                                            <input type="text" name="street" class="form-control" id="street">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.row -->
+
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label for="phone">Telephone</label>
+                                            <input type="text" name="phone" class="form-control" id="phone">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label for="email">Email</label>
+                                            <input type="email" name="email" class="form-control" id="email">
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <!-- /.row -->
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <label for="email">Shipping Address</label>
+                                            <select name="shipping" id="shipping" class="form-control">
+                                                <option value="Uk">Uk</option>
+                                                <option value="Europe">Europe</option>
+                                                <option value="International">International</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab">
+                            <div class="col-50">
+
+                                <label for="fname">Accepted Cards</label>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label for="phone">Name on Card</label>
+                                            <input type="text" id="account-holder-name" class="form-control" name="account_holder_name">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label for="phone">Credit Card Number</label>
+                                            <input type="text" name="card_number" class="form-control" id="card-number">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label for="phone">Expire Month</label>
+                                            <input type="text" name="exp_month" class="form-control" id="exp-month">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label for="phone">Expire Year</label>
+                                            <input type="text" name="exp-year" class="form-control" id="exp-year">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label for="phone">CVV</label>
+                                            <input type="text" name="cvv" class="form-control" id="cvv">
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="tab">
+                            <ul class="shipping-address">
+                                <h3>Personal Details</h3>
+                                <li>Name:<span class="name"></span></li>
+                                <li>Address:<span class="address-shipping"></span></li>
+                                <li>Street:<span class="street"></span></li>
+                                <li>Phone:<span class="phone"></span></li>
+                                <li>Email:<span class="email"></span></li>
+                                <li>Shipping:<span class="shipping"></span></li>
+                            </ul>
+                            <ul class="shipping-bank">
+                                <h3>Bank Details</h3>
+                                <li>Name:<span class="account-holder-name"></span></li>
+                                <li>Card Number:<span class="card-number"></span></li>
+                                <li>Exp Month:<span class="exp-month"></span></li>
+                                <li>Exp Year:<span class="exp-year"></span></li>
+                                <li>CVV:<span class="cvv"></span></li>
+
+                            </ul>
+                        </div>
+                        <div class="tab">
+                            @if(!empty(Session::get('cart')))
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>No.</th>
+                                        <th colspan="2">Product</th>
+                                        <th>Color</th>
+                                        <th>Quantity</th>
+                                        {{--                                                <th>Discount Price</th>--}}
+                                        <th colspan="2">Total</th>
+                                    </tr>
+                                </thead>
+
+                                @if(!empty(Session::get('cart')))
+                                <tbody>
+                                    @php $totalAmout=0; $totalquantity=0;@endphp
+                                    @foreach($carts->items as $key=>$cart)
+                                    <tr>
+                                        <td>{{$key}}</td>
+                                        <td>
+                                            <a href="#">
+                                                <img src="{{asset('storage/'.$cart['image'])}}" alt="{{$cart['title']}}">
+                                            </a>
+                                        </td>
+
+                                        <td><a href="{{url('')}}">{{$cart['title']}}</a></td>
+                                        <td>{{$cart['color']}}</td>
+                                        <td>
+                                            <div class="cart-increment-btn">
+                                                {{$cart['piece']}}
+                                            </div>
+                                        </td>
+
+                                        {{--                                                        <td> @if(!empty($cart['discount_price']))  £{{$cart['discount_price']}} @endif</td>--}}
+                                        <td>£ {{$cart['price']}}</td>
+                                        @php $totalAmout +=  $cart['price'] @endphp
+                                        @php $totalquantity +=  $cart['piece'] @endphp
+                                        <td><a href="{{route('cart.remove',[$key])}}"><i class="fa fa-trash-o"></i></a></td>
+                                    </tr>
+
+                                </tbody>
+
+                                @endforeach
+                                <tfoot>
+
+                                    <tr>
+                                        <th colspan="5">Total Items</th>
+                                        <th colspan="2">{{$carts->totalItem}}</th>
+
+                                    </tr>
+                                    <tr>
+                                        <th colspan="5">Total Piece</th>
+                                        <th colspan="2">{{$totalquantity}}</th>
+
+                                    </tr>
+                                    <tr>
+                                        <th colspan="5">Shipping Charge</th>
+                                        <th colspan="2"><span class="shipping-charge"></span></th>
+
+                                    </tr>
+                                    <tr>
+                                        <th colspan="5">Total Price</th>
+                                        <th colspan="2">
+                                            £ {{number_format((float)$totalAmout, 2, '.', '')}}</th>
+
+                                    </tr>
+                                </tfoot>
+                                @else
+
+                                <tr>
+                                    <td>Product is not add to cart yet.</td>
+                                </tr>
+                                @endif
+
+                            </table>
+                            @endif
+                        </div>
+                        {{--                                <div style="overflow:auto;">--}}
+                        <div>
+                            <div style="float:right;">
+                                <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+                                <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+                            </div>
+                        </div>
+                        <!-- Circles which indicates the steps of the form: -->
+
+                        {{Form::close()}}
+                    </div>
+                        <!-- /.box-->
+                    </div>
+                    <!-- /.col-lg-9-->
+                    <div class="col-lg-3">
+                        <div id="order-summary" class="card">
+                            <div class="card-header">
+                                <h3 class="mt-4 mb-4">Order summary</h3>
+                            </div>
+                            <div class="card-body">
+                                <p class="text-muted">Shipping and additional costs are calculated based on the values you have entered.</p>
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <tbody>
+                                            <tr>
+                                                <td>Order subtotal</td>
+                                                <th>$446.00</th>
+                                            </tr>
+                                            <tr>
+                                                <td>Shipping and handling</td>
+                                                <th>$10.00</th>
+                                            </tr>
+                                            <tr>
+                                                <td>Tax</td>
+                                                <th>$0.00</th>
+                                            </tr>
+                                            <tr class="total">
+                                                <td>Total</td>
+                                                <th>$456.00</th>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.col-lg-3-->
+                </div>
+            </div>
+        </div>
+    </div>

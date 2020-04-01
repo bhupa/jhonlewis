@@ -1,3 +1,18 @@
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+#delivery-form .check:before {
+    display: none;
+}
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+textarea {
+    resize: none;
+}
 .banner-wrapper {
     max-height: 510px;
     position: relative;
@@ -420,6 +435,25 @@ ul#menu li ul.sub-menu li:hover ul {
     margin-right: 10px;
     font-size: 18px;
 }
+#prodcut-details-lists-frontend {
+    list-style: none;
+    padding: 0px;
+    background: #ffffff;
+    margin-top: 20px;
+}
+#prodcut-details-lists-frontend li {
+    padding: 6px 21px;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 18px;
+    font-weight: normal;
+}
+#prodcut-details-lists-frontend li span {
+    font-weight: 600;
+    margin-right: 5px;
+}
+#stepper-input{
+    padding-left: 12px;
+}
 @media (max-width: 768px) {
     .desktop-menu{
         display: none;
@@ -535,4 +569,193 @@ ul#menu li ul.sub-menu li:hover ul {
     }
 
 
+}
+.cart-increment-btn {
+    margin-bottom: 20px;
+    display: block;
+}
+
+#increment-btn {
+    font-size: 24px;
+    margin-right: 15px;
+}
+
+.cart-increment-value {
+    width: 60px;
+}
+
+#decrement-btn {
+    font-size: 24px;
+    margin-left: 11px;
+    display: inline-block;
+}
+
+.cart-increment-btn .altera, .cart-increment-btn .decrescimo {
+    background: red;
+    border: 0px;
+    color: #fff;
+    padding: 1px 7px;
+}
+#content #checkout .table tbody tr td input, #content #basket .table tbody tr td input, #content #customer-order .table tbody tr td input {
+    width: 58px;
+     text-align: initial;
+    padding-left: 12px;
+}
+.cart-increment-btn .altera .acrescimo {
+    background: red;
+    border: 0px;
+    color: #fff;
+}
+.cart-increment-btn input {
+    padding: 0px;
+}
+
+.cart-altera {
+    padding: 4px 5px 4px 5px;
+}
+.box {
+    height:fit-content;
+}
+#regForm {
+    background-color: #ffffff;
+    margin: 11px auto;
+    font-family: Raleway;
+    padding: 5px;
+    width: 86%;
+    min-width: 300px;
+    height: 500px;
+}
+
+h1 {
+    text-align: center;
+}
+
+input {
+    padding: 10px;
+    width: 100%;
+    font-size: 17px;
+    font-family: Raleway;
+    border: 1px solid #aaaaaa;
+}
+
+/* Mark input boxes that gets an error on validation: */
+input.invalid {
+    background-color: #ffdddd;
+}
+
+/* Hide all steps by default: */
+.tab {
+    display: none;
+}
+
+button {
+    background-color: #4CAF50;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 17px;
+    font-family: Raleway;
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+#prevBtn {
+    background-color: #bbbbbb;
+}
+
+/* Make circles that indicate the steps of the form: */
+.step {
+    height: 50px;
+    width: 50px;
+    margin: 0 20px;
+    background-color: #6cc0f1;
+    border: none;
+    border-radius: 50%;
+    display: inline-block;
+    opacity: 0.5;
+    position: relative;
+}
+.address,.truck,.card {
+    position: relative;
+}
+.address:before {
+    font: normal normal normal 14px/1 FontAwesome;
+    content: "\f041";
+    display: inline-block;
+    /* padding: 5px 25px; */
+    vertical-align: middle;
+    font-weight: 900;
+    margin-top: 14px;
+    font-size: 23px;
+    color: #fff;
+}
+.truck:before{
+
+    font: normal normal normal 14px/1 FontAwesome;
+    content: "\f016";
+    display: inline-block;
+    /* padding: 5px 25px; */
+    vertical-align: middle;
+    font-weight: 900;
+    margin-top: 14px;
+    font-size: 23px;
+    color: #fff;
+}
+.card:before {
+
+    font: normal normal normal 14px/1 FontAwesome;
+    content: "\f283";
+    display: inline-block;
+    /* padding: 5px 25px; */
+    vertical-align: middle;
+    font-weight: 900;
+    margin-top: 14px;
+    font-size: 23px;
+    color: #fff;
+}
+.check:before{
+
+    font: normal normal normal 14px/1 FontAwesome;
+    content: "\f05d";
+    display: inline-block;
+    /* padding: 5px 25px; */
+    vertical-align: middle;
+    font-weight: 900;
+    margin-top: 14px;
+    font-size: 23px;
+    color: #fff;
+}
+.step.active {
+    opacity: 1;
+}
+
+/* Mark the steps that are finished and valid: */
+.step.finish {
+    background-color: #4CAF50;
+}
+.shipping-address,.shipping-bank {
+    width: 100%;
+    float: left;
+    list-style: none;
+    padding: 0px;
+}
+/*.shipping-bank {*/
+/*    width: 50%;*/
+/*    float: right;*/
+/*    list-style: none;*/
+/*    padding: 0px;*/
+/*}*/
+.shipping-address li, .shipping-bank li {
+    padding: 5px 5px;
+    font-size: 20px;
+    font-weight: 600;
+    display: inline-block;
+}
+.shipping-address li span, .shipping-bank li span {
+
+    font-weight: 400;
+    margin-left: 10px;
 }

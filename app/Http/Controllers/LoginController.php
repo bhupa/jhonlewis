@@ -14,16 +14,18 @@ class LoginController extends Controller
 {
     public function login(Request $request){
 
-        if (Auth::attempt(['email' => $request->email,'password' => $request->password,])){
+        if (Auth::attempt(['email' => $request->email,'password' => $request->password,])) {
 
-            if(!empty(Auth::user()->admin))
-            {
-                return redirect()->to('/dashboard')->with('success-login','Successfully login');
+            if (!empty(Auth::user()->admin)) {
+                return redirect()->to('/dashboard')->with('success-login', 'Successfully login');
             }
-            return redirect()->to('/profile')->with('success-login','Successfully login');
+            if(!empty($request->url)){
+                return redirect()->to('/order');
+            }else{
+                return redirect()->to('/profile')->with('success-login','Successfully login');
+            }
 
         }
-
         return back()
             ->withInput()
             ->with('flash_error', 'Credentials do not match the records.');

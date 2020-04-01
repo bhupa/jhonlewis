@@ -43,34 +43,40 @@
                             <p>Please feel free to contact us, our customer service center is working for you 24/7.</p>
                             <hr>
                             <div class="row">
-                                @foreach($settings as $setting)
+
                                 <div class="col-md-4">
                                     <h3><i class="fa fa-map-marker"></i>Address</h3>
 {{--                                    <p>13/25 New Avenue<br>New Heaven<br>45Y 73J<br>England<br><strong>Great Britain</strong></p>--}}
+                                    @foreach($settings as $setting)
                                     @if($setting->slug == 'address')
                                     <p>{{$setting->value}}</p>
                                         @endif
+                                        @endforeach
                                 </div>
                                 <!-- /.col-sm-4-->
                                 <div class="col-md-4">
                                     <h3><i class="fa fa-phone"></i> Call center</h3>
                                     <p class="text-muted">This number is toll free if calling from Great Britain otherwise we advise you to use the electronic form of communication.</p>
-                                    @if($setting->slug == 'address')
+                                    @foreach($settings as $setting)
+                                    @if($setting->slug == 'phone')
                                     <p><strong>{{$setting->value}}</strong></p>
                                         @endif
+                                        @endforeach
                                 </div>
                                 <!-- /.col-sm-4-->
                                 <div class="col-md-4">
                                     <h3><i class="fa fa-envelope"></i> Electronic support</h3>
                                     <p class="text-muted">Please feel free to write an email to us or to use our electronic ticketing system.</p>
                                     <ul>
+                                        @foreach($settings as $setting)
                                         @if($setting->slug == 'email')
                                         <li><strong><a href="mailto:">{{$setting->value}}</a></strong></li>
                                         @endif
+                                        @endforeach
                                         <li><strong><a href="{{route('appointment.index')}}">Appointment</a></strong> - You Can Appointment For Chekup</li>
                                     </ul>
                                 </div>
-                                @endforeach
+
                                 <!-- /.col-sm-4-->
                             </div>
                             <!-- /.row-->
@@ -80,36 +86,59 @@
                             </div>
                             <hr>
                             <h2>Contact form</h2>
-                            <form>
+                          {!! Form::open(['route'=>'contact-us.store','method'=>'post']) !!}
+                            @if (\Session::has('success'))
+                                <div class="alert alert-success">
+
+                                    <span>{!! \Session::get('success') !!}</span>
+
+                                </div>
+
+                            @endif
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="firstname">Firstname</label>
-                                            <input id="firstname" type="text" class="form-control">
+                                            <input id="firstname" name="firstname" type="text" class="form-control">
+                                            @if ($errors->has('firstname'))
+                                                <span class="text-danger">{{ $errors->first('firstname') }}</span>
+                                            @endif
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="lastname">Lastname</label>
-                                            <input id="lastname" type="text" class="form-control">
+                                            <input id="lastname" name="lastname" type="text" class="form-control">
+                                            @if ($errors->has('lastname'))
+                                                <span class="text-danger">{{ $errors->first('lastname') }}</span>
+                                            @endif
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="email">Email</label>
-                                            <input id="email" type="text" class="form-control">
+                                            <input id="email" type="text" name="email" class="form-control">
+                                            @if ($errors->has('email'))
+                                                <span class="text-danger">{{ $errors->first('email') }}</span>
+                                            @endif
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="subject">Subject</label>
-                                            <input id="subject" type="text" class="form-control">
+                                            <input id="subject" name="subject" type="text" class="form-control">
+                                            @if ($errors->has('subject'))
+                                                <span class="text-danger">{{ $errors->first('subject') }}</span>
+                                            @endif
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="message">Message</label>
-                                            <textarea id="message" class="form-control"></textarea>
+                                            <textarea id="message" name="message" class="form-control"></textarea>
+                                            @if ($errors->has('message'))
+                                                <span class="text-danger">{{ $errors->first('message') }}</span>
+                                            @endif
                                         </div>
                                     </div>
                                     <div class="col-md-12 text-center">
@@ -117,7 +146,7 @@
                                     </div>
                                 </div>
                                 <!-- /.row-->
-                            </form>
+                            {!! Form::close() !!}
                         </div>
                     </div>
                     <!-- /.col-md-9-->
