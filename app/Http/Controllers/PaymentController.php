@@ -3,23 +3,26 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Input;
 use PayPal\Api\Amount;
 use PayPal\Api\Details;
 use PayPal\Api\Item;
 use PayPal\Api\ItemList;
 use PayPal\Api\Payer;
 use PayPal\Api\Payment;
-use PayPal\Api\PaymentExecution;
 use PayPal\Api\RedirectUrls;
 use PayPal\Api\Transaction;
-use PayPal\Auth\OAuthTokenCredential;
-use PayPal\Rest\ApiContext;
 use URL;
 use Session;
 use Redirect;
 use Auth;
+use Illuminate\Support\Facades\Input;
+use PayPal\Rest\ApiContext;
+use PayPal\Auth\OAuthTokenCredential;
+use Illuminate\Http\Request;
+use PayPal\Api\Invoice;
+use PayPal\Api\InvoiceAddress;
+use PayPal\Api\InvoiceItem;
+
 
 class PaymentController extends Controller
 {
@@ -49,56 +52,82 @@ class PaymentController extends Controller
     {
 
         $payer = new Payer();
-        $payer->setPaymentMethod('paypal');
-
-        $item_1 = new Item();
-
-        $item_1->setName('Item 1') /** item name **/
-        ->setCurrency('GBP')
+        $payer->setPaymentMethod("paypal");
+//        $items = [];
+//        $products = Session::get('cart');
+//        foreach ($products ->items as $item) {
+//            $item = new Item();
+//                $item->setName('title')
+//                ->setCurrency('USD')
+//                ->setQuantity(2)
+//                ->setPrice(100);
+//            $items[] = $item;
+//        }
+//
+//        $itemList = new ItemList();
+//$itemList->setItems( array($items));
+        $item1 = new Item();
+        $item1->setName('Ground Coffee 40 oz')
+            ->setCurrency('USD')
             ->setQuantity(1)
-            ->setPrice($request->get('amount')); /** unit price **/
+            ->setSku("123123") // Similar to `item_number` in Classic API
+            ->setPrice(7.5);
+        $item2 = new Item();
+        $item2->setName('Granola bars')
+            ->setCurrency('USD')
+            ->setQuantity(5)
+            ->setSku("321321") // Similar to `item_number` in Classic API
+            ->setPrice(2);
 
-        $item_list = new ItemList();
-        $item_list->setItems(array($item_1));
+        $itemList = new ItemList();
+        $itemList->setItems(array($item1, $item2));
 
-        $amount = new Amount();
-        $amount->setCurrency('GBP')
-            ->setTotal($request->get('amount'));
 
-        $transaction = new Transaction();
-        $transaction->setAmount($amount)
-            ->setItemList($item_list)
-            ->setDescription('Your transaction description');
+    $details = new Details();
+$details->setShipping(1.2)
+    ->setTax(1.3)
+    ->setSubtotal(17.50);
+
+    $amount = new Amount();
+$amount->setCurrency("USD")
+    ->setTotal(20)
+    ->setDetails($details);
+
+    $transaction = new Transaction();
+$transaction->setAmount($amount)
+    ->setItemList($itemList)
+    ->setDescription("Payment description")
+    ->setInvoiceNumber(uniqid());
 
         $redirect_urls = new RedirectUrls();
         $redirect_urls->setReturnUrl(URL::to('status')) /** Specify return URL **/
         ->setCancelUrl(URL::to('status'));
 
-        $payment = new Payment();
-        $payment->setIntent('Sale')
-            ->setPayer($payer)
-            ->setRedirectUrls($redirect_urls)
-            ->setTransactions(array($transaction));
-        /** dd($payment->create($this->_api_context));exit; **/
-        try {
+$payment = new Payment();
+$payment->setIntent("sale")
+    ->setPayer($payer)
+    ->setRedirectUrls( $redirect_urls)
+    ->setTransactions(array($transaction));
 
-            $payment->create($this->_api_context);
+$request = clone $payment;
 
-        } catch (\PayPal\Exception\PPConnectionException $ex) {
+    try {
+        $payment->create($this->_api_context);
 
-            if (\Config::get('app.debug')) {
+    } catch (Exception $ex) {
 
-                \Session::put('error', 'Connection timeout');
-                return Redirect::to('/');
+        if (\Config::get('app.debug')) {
 
-            } else {
+            \Session::put('error', 'Connection timeout');
+            return Redirect::to('/');
 
-                \Session::put('error', 'Some error occur, sorry for inconvenient');
-                return Redirect::to('/');
+        } else {
 
-            }
+            \Session::put('error', 'Some error occur, sorry for inconvenient');
+            return Redirect::to('/');
 
         }
+}
 
         foreach ($payment->getLinks() as $link) {
 
@@ -124,6 +153,8 @@ class PaymentController extends Controller
         \Session::put('error', 'Unknown error occurred');
         return Redirect::to('/');
     }
+
+
 
     public function getPaymentStatus()
     {

@@ -2,54 +2,53 @@
     <li class="nav-item"> <a href="{{route('home')}}" class="nav-link active">Home</a></li>
     <li class="nav-item"> <a href="{{route('appointment.index')}}" class="nav-link ">Appointment</a></li>
     <li class="nav-item"> <a href="{{route('package.index')}}" class="nav-link ">Packages</a></li>
-    <li class="nav-item"><a href="#" class="nav-link">Glasses</a>
+    <li class="nav-item"><a href="javascript:void(0)" class="nav-link">Glasses</a>
         <ul class="sub-menu">
-            <li class="nav-item"><a href="{{route('shoping-lists.index')}}" class="nav-link">Men's Glasses</a></li>
-            <li class="nav-item"><a href="{{route('shoping-lists.index')}}" class="nav-link">Women's Glasses</a></li>
-            <li class="nav-item"><a href="{{route('shoping-lists.index')}}" class="nav-link">Children's Glasses</a></li>
-            <li class="nav-item"><a href="{{route('shoping-lists.index')}}" class="nav-link">Rimless's Glasses</a></li>
+            @foreach($glasses as $glass)
+            <li class="nav-item"><a href="{{route('glass.show',[$glass->slug])}}" class="nav-link">{{$glass->name}}</a></li>
+            @endforeach
         </ul>
     </li>
-    <li class="nav-item"><a href="{{route('shoping-lists.index')}}" class="nav-link">Sunglasses</a>
+    <li class="nav-item"><a href="javascript:void(0)" class="nav-link">Sunglasses</a>
         <ul class="sub-menu">
-            <li class="nav-item"><a href="{{route('shoping-lists.index')}}" class="nav-link">Cazal</a></li>
-            <li class="nav-item"><a href="{{route('shoping-lists.index')}}" class="nav-link">Ray-ban Sunglass</a></li>
+            @foreach($brands as $brand)
+            <li class="nav-item"><a href="{{route('sunglass.show',[$brand->slug])}}" class="nav-link">{{$brand->name}}</a></li>
+            @endforeach
         </ul>
     </li>
-    <li class="nav-item"><a href="{{route('shoping-lists.index')}}" class="nav-link">Designer</a>
+    <li class="nav-item"><a href="javascript:void(0)" class="nav-link">Designer</a>
 
         <ul class="sub-menu">
 
-            <li class="nav-item">
-                <a href="#" class="nav-link">Stylish Frames
-                    <i class="fa fa-angle-right fa-2x"></i>
-                </a>
+            @foreach($frames as $frame)
+                @if($frame->category->isEmpty())
+                    <li>
+                        <a href="{{route('frame.show',[$frame->slug])}}">{{$frame->name}}</a>
 
-                <ul>
-                    <li><a href='{{route('shoping-lists.index')}}'>Addidas</a>
                     </li>
-                    <li><a href='{{route('shoping-lists.index')}}'>Cazal</a>
+                @else
+                    <li class="nav-item">
+                        <a href="javascript:void(0)" class="nav-link">{{$frame->name}}
+                            <i class="fa fa-angle-right fa-2x"></i>
+                        </a>
+
+                        <ul>
+                            @foreach($frame->category as $category)
+                                <li><a href='{{route('frame-category.show',[$category->slug])}}'>{{$category->name}}</a>
+                                </li>
+                            @endforeach
+                        </ul>
                     </li>
-                    <li><a href='{{route('shoping-lists.index')}}'>Hugo galse</a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="{{route('shoping-lists.index')}}">Designer Frames</a>
 
-            </li>
-            <li> <a href="{{route('shoping-lists.index')}}">Sunglasses</a>
-
-            </li>
-            <li> <a href="{{route('shoping-lists.index')}}">Contact lenses</a>
-
-            </li>
+                @endif
+                @endforeach
         </ul>
     </li>
-    <li class="nav-item"><a href="{{route('shoping-lists.index')}}" class="nav-link">Lenses</a>
+    <li class="nav-item"><a href="javascript:void(0)" class="nav-link">Lenses</a>
         <ul class="sub-menu">
-            <li class="nav-item"><a href="{{route('shoping-lists.index')}}" class="nav-link">Acuvue</a></li>
-            <li class="nav-item"><a href="{{route('shoping-lists.index')}}" class="nav-link">Copper Vision</a></li>
+            @foreach($lenses as $lense)
+            <li class="nav-item"><a href="{{route('lens.show',[$lense->slug])}}" class="nav-link">{{$lense->name}}</a></li>
+            @endforeach
         </ul>
     </li>
 

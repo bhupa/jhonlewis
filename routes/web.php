@@ -64,6 +64,11 @@ Route::resource('/blog','BlogController');
 Route::resource('/service','ServiceController');
 Route::resource('/testimonial','TestimonialController');
 Route::resource('/product','ProductController');
+Route::resource('/glass','GlassController');
+Route::resource('/lens','LensController');
+Route::resource('/sunglass','BrandController');
+Route::resource('/frame','FrameController');
+Route::resource('/frame-category','FrameCategoryController');
 
 
 // Route for the auth user

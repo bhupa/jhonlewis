@@ -20,7 +20,7 @@ use Illuminate\View\View;
 use Session;
 
 
-class HomeComposer
+class ProductComposer
 {
     /**
      * The user repository implementation.
@@ -28,10 +28,10 @@ class HomeComposer
      * @var UserRepositorya
      */
     protected  $content,$blogs,
-                $banner,$service,
-                $packages,$doctor,
-                $setting,$testimonial,
-                $glasses,$lens,$brand,$frames,$frameCategory, $products;
+        $banner,$service,
+        $packages,$doctor,
+        $setting,$testimonial,
+        $glasses,$lens,$brand,$frames,$frameCategory, $products;
 
     /**
      * Create a new profile Composer.
@@ -40,23 +40,17 @@ class HomeComposer
      * @return void
      */
     public function __construct(
-                                ContentRepository $content, BlogRepository $blogs,
-                                BannerRepository $banner, ServiceRespository $service,
-                                PackageRepository $packages,DoctorRepository $doctor,
-                                SettingRepository $setting, TestimonialRepository $testimonial,
-                                 ProductRepository $products, GlassesRepository $glasses,
-                                LensesRepository $lens, SunglassesRepository $brand,
-                                FrameRepository $frames, FrameCategoryRepository $frameCategory
+        ContentRepository $content, BlogRepository $blogs,
+        BannerRepository $banner, ServiceRespository $service,
+        PackageRepository $packages,DoctorRepository $doctor,
+        SettingRepository $setting, TestimonialRepository $testimonial,
+        ProductRepository $products, GlassesRepository $glasses,
+        LensesRepository $lens, SunglassesRepository $brand,
+        FrameRepository $frames, FrameCategoryRepository $frameCategory
     )
     {
         $this->content = $content;
-        $this->blogs = $blogs;
-        $this->banner = $banner;
-        $this->service = $service;
-        $this->packages = $packages;
-        $this->doctor = $doctor;
         $this->setting = $setting;
-        $this->testimonial = $testimonial;
         $this->products = $products;
         $this->glasses= $glasses;
         $this->lens = $lens;
@@ -75,30 +69,16 @@ class HomeComposer
     public function compose(View $view)
     {
 
-        $banners = $this->banner->where('is_active','1')->orderBy('created_at','desc')->take(4)->get();
         $contents = $this->content->where('is_active','1')->get();
-        $services  = $this->service->where('is_active','1')->orderBy('created_at','desc')->take(6)->get();
-        $packages  = $this->packages->where('is_active','1')->orderBy('created_at','desc')->take(6)->get();
-        $doctors  = $this->doctor->where('is_active','1')->orderBy('created_at','desc')->get();
-        $blogs = $this->blogs->where('is_active','1')->orderBy('created_at','desc')->take(4)->get();
         $settings = $this->setting->where('is_active','1')->get();
-        $testimonials = $this->testimonial->where('is_active','1')->orderBy('created_at','desc')->get();
         $products = $this->products->where('is_active','1')->orderBy('created_at','desc')->take(10)->get();
-        $carts = Session::get('cart');
         $glasses = $this->glasses->where('is_active','1')->orderBy('name')->get();
         $lenses = $this->lens->where('is_active','1')->orderBy('name')->get();
         $brands = $this->brand->where('is_active','1')->orderBy('name')->get();
         $frames = $this->frames->where('is_active','1')->orderBy('name')->get();
-        $view->withBanners($banners)
-             ->withContents($contents)
-            ->withPackages($packages)
-             ->withServices($services)
-            ->withDoctors($doctors)
+        $view
             ->withSettings($settings)
-            ->withTestimonials($testimonials)
             ->withProducts($products)
-            ->withCarts($carts)
-            ->withBlogs($blogs)
             ->withLenses($lenses)
             ->withBrands($brands)
             ->withBrands($brands)

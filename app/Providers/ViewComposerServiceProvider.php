@@ -37,5 +37,12 @@ class ViewComposerServiceProvider extends ServiceProvider
             ],
             'App\Http\ViewComposer\Backend\ProductComposer'
         );
+        view()->composer(
+            [
+                'product.lists'
+                ,
+            ],
+            'App\Http\ViewComposer\Frontend\ProductComposer'
+        );
     }
 }

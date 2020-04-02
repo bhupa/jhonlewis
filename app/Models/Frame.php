@@ -34,4 +34,8 @@ class Frame extends Model
 
 
     ];
+
+    public function category(){
+        return $this->hasMany(FrameCategory::class,'frame_id');
+    }
 }
