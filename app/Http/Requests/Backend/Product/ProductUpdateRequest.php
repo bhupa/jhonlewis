@@ -32,7 +32,7 @@ class ProductUpdateRequest extends FormRequest
             'shape'=>'required',
             'style'=>'required',
             'frame_id'=>'nullable|exists:frames,id',
-            'frame_category_id'=>'nullable|frame_category,id',
+            'frame_category_id'=>'nullable|exists:frame_category,id',
             'discount_id'=>'nullable|exists:discount,id',
             'sunglasse_id'=>'nullable|exists:sunglasses,id',
             'glass_id'=>'nullable|exists:glasses,id',
