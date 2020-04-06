@@ -13,7 +13,12 @@
     <meta name="news_keywords" content="Glasses,Lens,Opticals,Mens Glasses,Women Glasses,Children Glasses,Shop Glasses Online,Eye Treatment,Eye Care" />
     <meta property="description" content="John Lewis Opticians  where you can check eyes for each and every patient and also sells glasses" />
     <meta property="keywords" content="Glasses | Lens |Optical"/>
+    <?php
 
+    header('Last-Modified: ' . gmdate("D, d M Y H:i:s") . ' GMT');
+    header('Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0');
+    header('Pragma: no-cache');
+    header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");?>
     <!-- Bootstrap CSS-->
     <link href="{{asset('frontend/css/bootstrap.min.css')}}" rel="stylesheet">
 
@@ -35,6 +40,9 @@
     <!-- Custom stylesheet - for your changes-->
     <link rel="stylesheet" href="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/css/custom.css">
     <link rel="stylesheet" href="{{asset('frontend/css/main.css')}}">
+    <link rel="stylesheet" href="{{ asset('backend/dist/css/jquery.dataTables.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('backend/dist/css/dataTables.bootstrap4.min.css')}}">
+
 
 
     <!-- Favicon-->
@@ -97,18 +105,34 @@
                                 <button class="btn btn-primary"><i class="fa fa-sign-in"></i> Log in</button>
                             </p>
                         {{Form::close()}}
-                        <p class="text-center text-muted">Not registered yet?</p>
+                        <p class="text-center text-muted"><a href="{{route('password.reset')}}">Forget Password ?</a></p>
                         <p class="text-center text-muted"><a href="{{route('register')}}"><strong>Register now</strong></a>! It is easy and done in 1 minute and gives you access to special discounts and much more!</p>
                     </div>
                 </div>
             </div>
         </div>
         <!-- *** TOP BAR END ***-->
+        <div id="error-modal" tabindex="-1" role="dialog" aria-labelledby="Login" aria-hidden="true" class="modal fade">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Somethign Wrong Please try again</h5>
+                        <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
 
 
     </div>
     <nav class="navbar navbar-expand-lg">
-        <div class="container"><a href="index.html" class="navbar-brand home"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/logo.png" alt="Obaju logo" class="d-none d-md-inline-block"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/logo-small.png" alt="Obaju logo" class="d-inline-block d-md-none"><span class="sr-only">Obaju - go to homepage</span></a>
+        <div class="container">
+            <a href="index.html" class="navbar-brand home">
+                <img src="{{asset('frontend/img/logosm.png')}}" style="width:139px;heigh:60px" alt="John Lewis" class="d-none d-md-inline-block">
+                <img src="{{asset('frontend/img/logosm.png')}}" style="width:93px;heigh:60px"  alt="John Lewis" class="d-inline-block d-md-none">
+
+            </a>
             <div class="navbar-buttons">
                 <button type="button" data-toggle="collapse" data-target="#navigation" class="btn btn-outline-secondary navbar-toggler"><span class="sr-only">Toggle navigation</span><i class="fa fa-align-justify"></i></button>
                 <button type="button" data-toggle="collapse" data-target="#search" class="btn btn-outline-secondary navbar-toggler"><span class="sr-only">Toggle search</span><i class="fa fa-search"></i></button><a href="basket.html" class="btn btn-outline-secondary navbar-toggler"><i class="fa fa-shopping-cart"></i></a>
@@ -152,6 +176,9 @@
 *** FOOTER ***
 _________________________________________________________
 -->
+<div class="show-box">
+    <div class="spinner"></div>
+</div>
 <div id="footer">
     <div class="container">
         <div class="row">
@@ -235,6 +262,9 @@ _________________________________________________________
 <script src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/vendor/jquery/jquery.min.js"></script>
 <script src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/vendor/jquery.cookie/jquery.cookie.js"> </script>
+<script src="{{ asset('backend/dist/js/jquery.dataTables.min.js')}}"></script>
+<script src="{{ asset('backend/dist/js/dataTables.bootstrap4.min.js')}}"></script>
+<script src="{{ asset('backend/dist/js/sweetalert2.all.min.js')}}"></script>
 <script src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/vendor/owl.carousel/owl.carousel.min.js"></script>
 <script src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/vendor/owl.carousel2.thumbs/owl.carousel2.thumbs.js"></script>
 <script src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/js/front.js"></script>
@@ -242,6 +272,7 @@ _________________________________________________________
 <script type="application/javascript">
     var baseUrl = '{!! url('') !!}';
     $(document).ready(function(){
+        $('#table').DataTable();
 
 
         $('.main-menu .nav-link').on('click',function(){
@@ -419,7 +450,68 @@ _________________________________________________________
             $('#datepicker').attr('min', maxDate);
         });
     })
+    $(document).ready(function(){
 
+        // Select and loop the container element of the elements you want to equalise
+        $('.container').each(function(){
+
+            // Cache the highest
+            var highestBox = 0;
+
+            // Select and loop the elements you want to equalise
+            $('.column', this).each(function(){
+
+                // If this box is higher than the cached highest then store it
+                if($(this).height() > highestBox) {
+                    highestBox = $(this).height();
+                }
+
+            });
+
+            // Set the height of all those children to whichever was highest
+            $('.column',this).height(highestBox);
+
+        });
+        $('.container').each(function(){
+
+            // Cache the highest
+            var highestBox = 0;
+
+            // Select and loop the elements you want to equalise
+            $('.profile-box', this).each(function(){
+
+                // If this box is higher than the cached highest then store it
+                if($(this).height() > highestBox) {
+                    highestBox = $(this).height();
+                }
+
+            });
+
+            // Set the height of all those children to whichever was highest
+            $('.profile-box',this).height(highestBox);
+
+        });
+        $('.container').each(function(){
+
+            // Cache the highest
+            var width = 0;
+
+            // Select and loop the elements you want to equalise
+            $('.profile-details-lists ul li span', this).each(function(){
+
+                // If this box is higher than the cached highest then store it
+                if($(this).width() > width) {
+                    width = $(this).width();
+                }
+
+            });
+
+            // Set the height of all those children to whichever was highest
+            $('.profile-details-lists ul li span',this).width(width);
+
+        });
+
+    });
 </script>
 </body>
 </html>

@@ -10,6 +10,7 @@ class Cart extends Model
     public $items;
     public $totalItem = 0;
     public $totalPrice = 0;
+    public $totalPiece =0;
 
     public function __construct($oldcart)
     {
@@ -17,6 +18,7 @@ class Cart extends Model
             $this->items = $oldcart->items;
             $this->totalItem = $oldcart->totalItem;
             $this->totalPrice = $oldcart->totalPrice;
+            $this->totalPiece = $oldcart->totalPiece;
         }
     }
 
@@ -59,17 +61,18 @@ class Cart extends Model
         $storedItem['productId']= $product->id;
         $storedItem['total_quantity']=$stock->piece;
         $storedItem['stockId']= $stock->id;
-        $storedItem['price']= $piece * $product->price - $storedItem['discount_price'];
+        $storedItem['price']=number_format((float)$piece * $product->price - $storedItem['discount_price'], 2, '.', '') ;
         $storedItem['discount']= $discount;
-        $storedItem['unit_price']= $product->price;
-        $storedItem['discount_price']=  $discountPrice;
+        $storedItem['unit_price']=   number_format((float)$product->price, 2, '.', '');
+        $storedItem['discount_price']= number_format((float)$discountPrice, 2, '.', '');
         $storedItem['image']= $stock->image;
         $this->items[$stock->id] =$storedItem ;
         $storedItem['color']=$stock->color->name;
         $storedItem['color_id']=$stock->color_id;
 
         $this->totalItem  = count($this->items);
-//        $this->totalPrice += $storedItem['price'];
+        $this->totalPrice += $storedItem['price'];
+        $this->totalPiece +=  $storedItem['piece'];
         $this->location = 'this is test';
     }
 }

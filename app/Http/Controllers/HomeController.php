@@ -18,10 +18,7 @@ class HomeController extends Controller
         return view('frontend.home');
     }
 
-    public function getRegister(){
 
-        return view('auth.register');
-    }
     public function getAbout(){
         $content = $this->content->where('slug','about-us')->first();
         return view('frontend.about')->withContent($content);

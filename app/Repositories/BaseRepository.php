@@ -136,6 +136,7 @@ class BaseRepository
         return $this->model->orderBy($field, $type);
     }
 
+
     public function findOrFail($id)
     {
         return $this->model->findOrFail($id);
