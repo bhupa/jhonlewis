@@ -82,7 +82,14 @@
                                     @endif
 
                                     {!! Form::open(['route'=>'cart.store','method'=>'post','id'=>'add-cart']) !!}
+
                                     <div class="row">
+                                        @if (\Session::has('success'))
+                                            <div class="alert alert-success">
+                                                <span>{!! \Session::get('success') !!}</span>
+                                            </div>
+
+                                        @endif
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label for="firstname">Select Color</label>
@@ -118,6 +125,10 @@
                                         <i class="fa fa-shopping-cart">
                                         </i> Add to cart
                                     </button>
+                                        @if(Auth::check())
+                                        <a id="add-whishlist" data-type="{{$product->id}}" href="javascript:void(0)" class="btn btn-success"><i class="fa fa-heart"></i> Add to wishlist</a>
+                                        @endif
+
                                     </p>
                                     {{ Form::hidden('product_id',$product->id) }}
                                     {{Form::close()}}
@@ -306,7 +317,35 @@
                 $('#stock-piece').val(quantity);
             })
 
+            $('#add-whishlist').on('click',function(){
+                var id = $(this).attr('data-type');
+                $('.show-box').css('display','block');
 
+
+                $.ajax({
+                    type:'Post',
+                    url:'{{route('wishlist.store')}}',
+                    data:{id:id},
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    dataType: 'json',
+                    success: function (carts) {
+                        setTimeout(function(){
+                            $(".show-box").fadeOut(3000);
+                        },3000);
+                        // $('#cart-success').modal('show');
+                    },
+                    errors:function(xhr){
+
+                        setTimeout(function(){
+                            $(".show-box").fadeOut(3000);
+                            $("#error-modal").modal('show');
+
+                        },5000);
+                    }
+                });
+            })
         });
     </script>
 @endsection

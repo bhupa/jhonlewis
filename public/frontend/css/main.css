@@ -759,3 +759,193 @@ button:hover {
     font-weight: 400;
     margin-left: 10px;
 }
+div.dataTables_wrapper div.dataTables_length select {
+    width: 60% !important;
+    display: inline-block;
+}
+body  {
+    min-height:100%;
+    position: relative;
+}
+
+/* spinner css when click the js spinner is hide and show*/
+body .show-box {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20%;
+    background: #00000066;
+    display: none;
+    height: 100%;
+}
+
+.spinner {
+    margin: 0 auto;
+    height: 64px;
+    width: 64px;
+    animation: rotate 0.8s infinite linear;
+    border: 5px solid #0ae0b1;
+    border-right-color: transparent;
+    border-radius: 50%;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/*profile css */
+
+.profile {
+    position: relative;
+    display: block;
+    padding: 0px;
+    /*border: 1px solid #0c0c0c;*/
+
+}
+.profile-image {
+    width: 70%;
+    margin: 0 auto;
+    display: block;
+}
+#profile-image {
+    width: 100%;
+    margin: 0 auto;
+    height: 70%;
+    border-radius: 50%;
+}
+.profile-details-lists ul {
+    list-style: none;
+    padding: 10px;
+}
+
+.profile-details-lists ul li {
+    display: block;
+    border-bottom: 1px solid #000b16;
+    padding: 7px 0px;
+}
+.profile-details-lists ul li span {
+    font-weight: 600;
+    margin-right: 10px;
+}
+ .box-blue {
+    background: blue !important;
+}
+.box-violet {
+    background: violet !important;
+}
+.box-darkorange{
+background:darkorange !important;
+}
+.profile-box {
+    box-sizing: border-box;
+    /*height: 150px;*/
+    padding: 30px;
+    background: #5bbf54;
+    display: block;
+    color: #fff;
+    margin-top: 20px;
+    /*text-align: center;*/
+}
+.profile-box-content a {
+    display: block;
+    color: #ffffff;
+    font-size: 20px;
+}
+.profile-box-content a .fa {
+    color: #e9ecef;
+}
+.profile-box-content {
+    margin-top: 20px;
+}
+.profile-box-content p {
+    margin-top: 20px;
+    display: block;
+}
+.profile-box-content ul {
+    padding: 0px;
+    list-style: none;
+}
+.profile-box-content ul li {
+    text-align: left;
+}
+.profile-box-content ul li span {
+    margin-top: 0px;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+
+/* profile image upload css*/
+btn_upload {
+    cursor: pointer;
+    display: inline-block;
+    overflow: hidden;
+    position: relative;
+    color: #fff;
+    background-color: #2a72d4;
+    border: 1px solid #166b8a;
+    padding: 5px 10px;
+}
+
+.btn_upload:hover,
+.btn_upload:focus {
+    background-color: #7ca9e6;
+}
+
+.yes {
+    display: flex;
+    align-items: flex-start;
+    margin-top: 10px !important;
+}
+
+.btn_upload input {
+    cursor: pointer;
+    height: 100%;
+    position: absolute;
+    filter: alpha(opacity=1);
+    -moz-opacity: 0;
+    opacity: 0;
+}
+
+.it {
+    height: 100px;
+    margin-left: 10px;
+}
+
+.btn-rmv1,
+.btn-rmv2,
+.btn-rmv3,
+.btn-rmv4,
+.btn-rmv5 {
+    display: none;
+}
+
+.rmv {
+    cursor: pointer;
+    color: #fff;
+    border-radius: 30px;
+    border: 1px solid #fff;
+    display: inline-block;
+    background: rgba(255, 0, 0, 1);
+    margin: -5px -10px;
+}
+
+/*.rmv:hover {*/
+/*    background: rgba(255, 0, 0, 0.5);*/
+/*}*/
+.btn_upload {
+    padding: 10px;
+    border: 1px solid;
+    border-radius: 12%;
+}
+.btn_upload:hover{
+    background: #0ae0b1;
+    color: #ffffff;
+}

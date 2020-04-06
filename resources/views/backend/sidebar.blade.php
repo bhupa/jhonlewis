@@ -92,6 +92,14 @@
                     </p>
                 </a>
             </li>
+            <li class="nav-item">
+                <a href="{{route('orders.index')}}" class="nav-link">
+                    <i class="nav-icon fa fa-eye-dropper"></i>
+                    <p>
+                        Order
+                    </p>
+                </a>
+            </li>
             <li class="nav-item has-treeview">
                 <a href="{{route('packages.index')}}" class="nav-link">
                     <i class="nav-icon fas fa-boxes"></i>

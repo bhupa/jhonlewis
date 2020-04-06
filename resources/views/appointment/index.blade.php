@@ -97,7 +97,11 @@
                                 <!-- /.row-->
                             </div>
                             <div class="box-footer d-flex justify-content-between">
+                                @if(Auth::check())
                                 <button type="submit" class="btn btn-primary">Book Appointment</button>
+                                    @else
+                                    <button type="button" id="appointment-url" data-type="{{route('appointment.index')}}" class="btn btn-primary">Book Appointment</button>
+                                @endif
                             </div>
 {{--                        </form>--}}
                         {{Form::close()}}
@@ -148,4 +152,13 @@
 
 @endsection
 @section('js_script')
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#appointment-url').on('click', function () {
+                var url = $(this).attr('data-type');
+                $('#url').val(url)
+                $('#login-modal').modal('show');
+            })
+        });
+    </script>
 @endsection

@@ -24,7 +24,7 @@
                             </a>
                         </td>
 
-                        <td><a href="{{url('')}}">{{$cart['title']}}</a></td>
+                        <td><a href="{{route('product.show',[$cart['slug']])}}">{{$cart['title']}}</a></td>
                         <td>{{$cart['color']}}</td>
                         <td>
                             <div class="cart-increment-btn">
@@ -73,7 +73,7 @@
                     <th colspan="5">Total Price</th>
                     <th colspan="2">
                         @if($shipping =='uk')
-                            {{number_format((float)$totalAmout, 2, '.', '')}}
+
                         @elseif($shipping =='europe')
                             £ {{number_format((float)$totalAmout, 2, '.', '') + 7.50}}
                         @else
@@ -102,15 +102,18 @@
         {!! Form::open(['route'=>'paypal.store','method'=>'post']) !!}
         @if($shipping =='uk')
             <input type="hidden" name="amount"  value="{{number_format((float)$totalAmout, 2, '.', '')}}">
+            <input type="hidden" name="shipping" value="0" >
 
         @elseif($shipping =='europe')
+            <input type="hidden" name="shipping" value="7.50" >
 
             <input type="hidden" name="amount"  value="{{number_format((float)$totalAmout, 2, '.', '') + 7.50}}">
         @else
+            <input type="hidden" name="shipping" value="25" >
 
             <input type="hidden" name="amount"  value="{{number_format((float)$totalAmout, 2, '.', '') + 25}}">
             @endif
-
+        <input type="hidden" name="{{$totalquantity}}">
         <button type="submit" id="shipping-delivery-form" class="btn btn-primary">Place Order<i class="fa fa-chevron-right"></i></button>
         {!! Form::close(); !!}
     </div>

@@ -31,7 +31,7 @@
                                             </a>
                                         </div>
 
-                                        <div class="text">
+                                        <div class="text column">
                                             <h3><a href="{{route('product.show',[$product->slug])}}">{{$product->title}}</a></h3>
                                             @if(!empty($product->discount_id))
                                                 <p class="price">

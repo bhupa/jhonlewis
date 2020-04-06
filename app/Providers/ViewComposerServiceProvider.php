@@ -44,5 +44,12 @@ class ViewComposerServiceProvider extends ServiceProvider
             ],
             'App\Http\ViewComposer\Frontend\ProductComposer'
         );
+        view()->composer(
+            [
+                'profile.index'
+                ,
+            ],
+            'App\Http\ViewComposer\Frontend\AuthUserComposer'
+        );
     }
 }

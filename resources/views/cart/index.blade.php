@@ -49,17 +49,16 @@
 
                                         @if(!empty(Session::get('cart')))
                                             <tbody>
-                                            @php $totalAmout=0; $totalquantity=0;@endphp
                                             @foreach($carts->items as $key=>$cart)
                                         <tr>
 
                                             <td>
-                                                <a href="#">
+                                                <a href="{{route('product.show',[$cart['slug']])}}">
                                                     <img src="{{asset('storage/'.$cart['image'])}}" alt="{{$cart['title']}}">
                                                 </a>
                                             </td>
 
-                                            <td><a href="{{url('')}}">{{$cart['title']}}</a></td>
+                                            <td><a href="{{route('product.show',[$cart['slug']])}}">{{$cart['title']}}</a></td>
                                             <td>{{$cart['color']}}</td>
                                             <td>
                                                 <div class="cart-increment-btn">
@@ -77,8 +76,7 @@
                                             <td>{{$cart['discount']}}</td>
                                             <td> @if(!empty($cart['discount_price']))  £{{$cart['discount_price']}} @endif</td>
                                             <td>£ {{$cart['price']}}</td>
-                                            @php $totalAmout +=  $cart['price'] @endphp
-                                            @php $totalquantity +=  $cart['piece'] @endphp
+{{--                                           --}}
                                             <td><a href="{{route('cart.remove',[$key])}}"><i class="fa fa-trash-o"></i></a></td>
                                         </tr>
 
@@ -87,8 +85,10 @@
                                             @endforeach
                                             <tfoot>
                                             <tr>
-                                                <th colspan="7">Total Price</th>
-                                                <th colspan="2">£ {{number_format((float)$totalAmout, 2, '.', '')}}</th>
+                                                <th colspan="2">Total </th>
+                                                <th colspan="1">{{$carts->totalItem}}</th>
+                                                <th colspan="4">{{$carts->totalPiece}}</th>
+                                                <th colspan="2">£ {{number_format((float)$carts->totalPrice, 2, '.', '')}}</th>
 
                                             </tr>
 {{--                                            <tr>--}}
@@ -112,9 +112,11 @@
                                     <a href="{{route('cart.clear')}}" class="btn btn-outline-secondary"><i class="fa fa-refresh"></i>Clear Cart</a>
                                     <div class="right">
                                         @if(Auth::check())
+                                            @if(!empty(Session::get('cart')))
                                         <a href="{{route('order.index')}}" class="btn btn-primary">Proceed to checkout <i class="fa fa-chevron-right"></i></a>
+                                        @endif
                                         @else
-                                            <a href="javascript:void(0)" id="check-out-link" data-type="{{route('cart.index')}}" class="btn btn-primary">Proceed to checkout <i class="fa fa-chevron-right"></i></a>
+                                            <a href="javascript:void(0)" id="check-out-link" data-type="{{route('order.index')}}" class="btn btn-primary">Proceed to checkout <i class="fa fa-chevron-right"></i></a>
 
                                         @endif
                                     </div>
@@ -176,49 +178,22 @@
                         </div>
                     </div>
                     <!-- /.col-lg-9-->
-                    <div class="col-lg-2">
-                        <div id="order-summary" class="box">
-                            <div class="box-header">
-                                <h3 class="mb-0">Order summary</h3>
-                            </div>
-                            <p class="text-muted">Shipping and additional costs are calculated based on the values you have entered.</p>
-                            <div class="table-responsive">
-                                <table class="table">
-                                    <tbody>
-                                    <tr>
-                                        <td>Order subtotal</td>
-                                        <th>$446.00</th>
-                                    </tr>
-                                    <tr>
-                                        <td>Shipping and handling</td>
-                                        <th>$10.00</th>
-                                    </tr>
-                                    <tr>
-                                        <td>Tax</td>
-                                        <th>$0.00</th>
-                                    </tr>
-                                    <tr class="total">
-                                        <td>Total</td>
-                                        <th>$456.00</th>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                        <div class="box">
-                            <div class="box-header">
-                                <h4 class="mb-0">Coupon code</h4>
-                            </div>
-                            <p class="text-muted">If you have a coupon code, please enter it in the box below.</p>
-                            <form>
-                                <div class="input-group">
-                                    <input type="text" class="form-control"><span class="input-group-append">
-                      <button type="button" class="btn btn-primary"><i class="fa fa-gift"></i></button></span>
-                                </div>
-                                <!-- /input-group-->
-                            </form>
-                        </div>
-                    </div>
+{{--                    <div class="col-lg-2">--}}
+{{--                        @include('cart.sidebar')--}}
+{{--                        <div class="box">--}}
+{{--                            <div class="box-header">--}}
+{{--                                <h4 class="mb-0">Coupon code</h4>--}}
+{{--                            </div>--}}
+{{--                            <p class="text-muted">If you have a coupon code, please enter it in the box below.</p>--}}
+{{--                            <form>--}}
+{{--                                <div class="input-group">--}}
+{{--                                    <input type="text" class="form-control"><span class="input-group-append">--}}
+{{--                      <button type="button" class="btn btn-primary"><i class="fa fa-gift"></i></button></span>--}}
+{{--                                </div>--}}
+{{--                                <!-- /input-group-->--}}
+{{--                            </form>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
                     <!-- /.col-md-3-->
                 </div>
             </div>

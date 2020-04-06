@@ -129,8 +129,8 @@
                                     <div class="back"><a href="{{route('product.show',[$product->slug])}}"><img style="height: 250px;" src="{{asset('storage/'.$product->image)}}" alt="{{$product->title}}" class="img-fluid"></a></div>
                                 </div>
                             </div><a href="{{route('product.show',[$product->slug])}}" class="invisible"><img style="height: 250px;" src="{{asset('storage/'.$product->image)}}" alt="{{$product->title}}" class="img-fluid"></a>
-                            <div class="text">
-                                <h3><a href="{{route('shoping-lists.single-page')}}">{{$product->title}}</a></h3>
+                            <div class="text column">
+                                <h3><a href="{{route('product.show',[$product->slug])}}">{{$product->title}}</a></h3>
                                 @if(!empty($product->discount_id))
                                     <p class="price">
                                         <strike>£{{$product->price}}</strike><br>

@@ -26,7 +26,9 @@ class User extends Authenticatable
         'state',
         'zip_code',
         'is_active',
-        'user_type_id'
+        'user_type_id',
+        'first_name',
+    'last_name'
     ];
 
     /**

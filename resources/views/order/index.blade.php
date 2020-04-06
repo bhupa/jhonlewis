@@ -22,7 +22,7 @@
 
                                 <h1 id="checkout-title">Checkout - Address</h1>
                                 <div class="nav flex-column flex-md-row nav-pills text-center">
-                                    <a href="javascript:void(0)" class="nav-link flex-sm-fill text-sm-center active" id="address" >
+                                    <a href="javascript:void(0)" class="nav-link flex-sm-fill text-sm-center active" id="address-bar" >
                                         <i class="fa fa-map-marker"></i>Address
                                     </a>
                                     <a href="javascript:void(0)" class="nav-link flex-sm-fill text-sm-center " id="delivery" >
@@ -96,36 +96,7 @@
                     </div>
                     <!-- /.col-lg-9-->
                     <div class="col-lg-3">
-                        <div id="order-summary" class="card">
-                            <div class="card-header">
-                                <h3 class="mt-4 mb-4">Order summary</h3>
-                            </div>
-                            <div class="card-body">
-                                <p class="text-muted">Shipping and additional costs are calculated based on the values you have entered.</p>
-                                <div class="table-responsive">
-                                    <table class="table">
-                                        <tbody>
-                                        <tr>
-                                            <td>Order subtotal</td>
-                                            <th>$446.00</th>
-                                        </tr>
-                                        <tr>
-                                            <td>Shipping and handling</td>
-                                            <th>$10.00</th>
-                                        </tr>
-                                        <tr>
-                                            <td>Tax</td>
-                                            <th>$0.00</th>
-                                        </tr>
-                                        <tr class="total">
-                                            <td>Total</td>
-                                            <th>$456.00</th>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
+                        @include('cart.sidebar');
                     </div>
                     <!-- /.col-lg-3-->
                 </div>
@@ -212,7 +183,7 @@
                     success: function (delivery) {
                         $('#shipping-form').html(delivery);
                         $('#checkout .nav a').removeClass('active');
-                        $('#address').addClass('active');
+                        $('#address-bar').addClass('active');
                         $('#checkout-title').text('Checkout - Address');
                     },
                     error: function (xhr, data) {

@@ -25,14 +25,17 @@ class AppointmentController extends Controller
 
     public function store(AppointmentStoreRequest $request){
         $data = $request->except('_token');
-        if(Auth::check()){
             $data['user_id'] =Auth::user()->id;
-
-        }
         if($this->appointment->create($data)){
 
             return redirect()->to('/appointment')->with('success','Appointment booked successfully!'.'<br>'.' We will contact you soon');
         }
         return redirect()->back()->with('errors','Appointment cannot booked successfully');
+    }
+
+    public function show(){
+        $id = Auth::user()->id;
+        $appointments = $this->appointment->where('user_id',$id)->orderBy('created_at','desc')->paginate(1000);
+        return view('appointment.show')->withAppointments($appointments);
     }
 }

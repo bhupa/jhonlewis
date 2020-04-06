@@ -2,7 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\Contact\AdminContactReplyMail;
+use App\Mail\Order\OrderMail;
 use App\Models\Cart;
+use App\Repositories\OrderRepository;
+use App\Repositories\SalesResportRepository;
+use App\Repositories\SettingRepository;
+use App\Repositories\ShippingRepository;
+use App\Repositories\TransactionRepository;
+use Illuminate\Support\Facades\Mail;
 use PayPal\Api\Amount;
 use PayPal\Api\Details;
 use PayPal\Api\Item;
@@ -22,17 +30,22 @@ use Illuminate\Http\Request;
 use PayPal\Api\Invoice;
 use PayPal\Api\InvoiceAddress;
 use PayPal\Api\InvoiceItem;
+use PayPal\Api\PaymentExecution;
 
 
 class PaymentController extends Controller
 {
-    private $_api_context;
+    private $_api_context,$sales,$transaction,$shipping, $order,$setting;
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(
+                                OrderRepository $order,SalesResportRepository $sales,
+                                TransactionRepository $transaction, ShippingRepository $shipping,
+                                SettingRepository $setting
+)
     {
 
         /** PayPal api context **/
@@ -42,6 +55,11 @@ class PaymentController extends Controller
                 $paypal_conf['secret'])
         );
         $this->_api_context->setConfig($paypal_conf['settings']);
+        $this->shipping = $shipping;
+        $this->transaction = $transaction;
+        $this->sales = $sales;
+        $this->order = $order;
+        $this->setting = $setting;
 
     }
     public function index()
@@ -50,84 +68,66 @@ class PaymentController extends Controller
     }
     public function store(Request $request)
     {
+        $products = Session::get('cart');
+
+        $shippingAddress = Session::get('address');
+
 
         $payer = new Payer();
-        $payer->setPaymentMethod("paypal");
-//        $items = [];
-//        $products = Session::get('cart');
-//        foreach ($products ->items as $item) {
-//            $item = new Item();
-//                $item->setName('title')
-//                ->setCurrency('USD')
-//                ->setQuantity(2)
-//                ->setPrice(100);
-//            $items[] = $item;
-//        }
-//
-//        $itemList = new ItemList();
-//$itemList->setItems( array($items));
-        $item1 = new Item();
-        $item1->setName('Ground Coffee 40 oz')
-            ->setCurrency('USD')
+        $payer->setPaymentMethod('paypal');
+
+        $item_1 = new Item();
+
+        $item_1->setName('Item 1') /** item name **/
+        ->setCurrency('GBP')
             ->setQuantity(1)
-            ->setSku("123123") // Similar to `item_number` in Classic API
-            ->setPrice(7.5);
-        $item2 = new Item();
-        $item2->setName('Granola bars')
-            ->setCurrency('USD')
-            ->setQuantity(5)
-            ->setSku("321321") // Similar to `item_number` in Classic API
-            ->setPrice(2);
-
-        $itemList = new ItemList();
-        $itemList->setItems(array($item1, $item2));
+            ->setPrice($request->get('amount')); /** unit price **/
 
 
-    $details = new Details();
-$details->setShipping(1.2)
-    ->setTax(1.3)
-    ->setSubtotal(17.50);
 
-    $amount = new Amount();
-$amount->setCurrency("USD")
-    ->setTotal(20)
-    ->setDetails($details);
+        $item_list = new ItemList();
+        $item_list->setItems(array($item_1));
 
-    $transaction = new Transaction();
-$transaction->setAmount($amount)
-    ->setItemList($itemList)
-    ->setDescription("Payment description")
-    ->setInvoiceNumber(uniqid());
+        $request->session()->put('shipping_amount',$request->shipping);
+        $request->session()->put('amount',$request->amount);
+        $amount = new Amount();
+        $amount->setCurrency('GBP')
+            ->setTotal($request->get('amount'));
+
+        $transaction = new Transaction();
+        $transaction->setAmount($amount)
+            ->setItemList($item_list)
+            ->setDescription('Your transaction description');
 
         $redirect_urls = new RedirectUrls();
         $redirect_urls->setReturnUrl(URL::to('status')) /** Specify return URL **/
         ->setCancelUrl(URL::to('status'));
 
-$payment = new Payment();
-$payment->setIntent("sale")
-    ->setPayer($payer)
-    ->setRedirectUrls( $redirect_urls)
-    ->setTransactions(array($transaction));
+        $payment = new Payment();
+        $payment->setIntent('Sale')
+            ->setPayer($payer)
+            ->setRedirectUrls($redirect_urls)
+            ->setTransactions(array($transaction));
+        /** dd($payment->create($this->_api_context));exit; **/
+        try {
 
-$request = clone $payment;
+            $payment->create($this->_api_context);
 
-    try {
-        $payment->create($this->_api_context);
+        } catch (\PayPal\Exception\PPConnectionException $ex) {
 
-    } catch (Exception $ex) {
+            if (\Config::get('app.debug')) {
 
-        if (\Config::get('app.debug')) {
+                \Session::put('error', 'Connection timeout');
+                return Redirect::to('/');
 
-            \Session::put('error', 'Connection timeout');
-            return Redirect::to('/');
+            } else {
 
-        } else {
+                \Session::put('error', 'Some error occur, sorry for inconvenient');
+                return Redirect::to('/');
 
-            \Session::put('error', 'Some error occur, sorry for inconvenient');
-            return Redirect::to('/');
+            }
 
         }
-}
 
         foreach ($payment->getLinks() as $link) {
 
@@ -139,9 +139,14 @@ $request = clone $payment;
             }
 
         }
-
         /** add payment ID to session **/
         Session::put('paypal_payment_id', $payment->getId());
+// sales report transaction of the product with shipping addres is insert from herer
+
+
+
+
+
 
         if (isset($redirect_url)) {
 
@@ -160,8 +165,84 @@ $request = clone $payment;
     {
         /** Get the payment ID before session clear **/
         $payment_id = Session::get('paypal_payment_id');
+        $products = Session::get('cart');
+
+        $shippingAddress = Session::get('address');
+        $shippingAmount = Session::get('shipping_amount');
+        $amount = Session::get('amount');
+
+
+        $orderItem = $this->order->latestFirst();
+        $transaction['paypal_id']=$payment_id;
+        $transaction['order_id']= $orderItem->id;
+        $this->transaction->create($transaction);
+
+//        insert in the our data base
+
+        $order['buyer_id'] = Auth::user()->id;
+        $order['shipping_amount'] =$shippingAmount;
+        $order['total_amount'] = $amount;
+        $order['total_item'] = $products->totalItem;
+        $order['serial_number'] = $this->batch();
+        $order['received'] =(isset($request['received'])) ? 1 : 0;
+        $order['return'] =(isset($request['return'])) ? 1 : 0;
+
+        $this->order->create($order);
+        $orderlatest = $this->order->latestFirst();
+        $salesResport = [];
+        foreach ($products->items as $product) {
+            $salesResport [ ] =[
+                'order_id'=> $orderlatest->id,
+                'product_id'=>$product['productId'],
+                'stock_id'=>$product['stockId'],
+                'unit_price'=>$product['unit_price'],
+                'discount'=>$product['discount'],
+                'discount_amount'=>$product['discount_price'],
+                'price'=>$product['price'],
+                'piece'=>$product['piece'],
+                'created_at'=>date('Y-m-d H:i:s'),
+                'dispatch' =>(isset($request['received'])) ? 1 : 0,
+                'return' =>(isset($request['return'])) ? 1 : 0,
+
+
+
+
+            ];
+        }
+
+        $this->sales->insert($salesResport);
+
+        $shipping['first_name'] =$shippingAddress['firstname'];
+        $shipping['last_name'] =$shippingAddress['lastname'];
+        $shipping['address'] =$shippingAddress['address'];
+        $shipping['street'] =$shippingAddress['street'];
+        $shipping['email'] =$shippingAddress['email'];
+        $shipping['phone'] =$shippingAddress['phone'];
+        $shipping['order_id']= $orderlatest->id;
+        $shipping['serial_numbr']=0;
+
+        $this->shipping->create($shipping);
+
+        $shipping_address = $this->shipping->latestFirst();
+        $email = $shipping_address->email;
+        $adminEmail = $this->setting->where('slug','for-admin')->first();
+        $companyName = $this->setting->where('slug','compant-name')->first();
+        $fromEmail = $this->setting->where('slug','reply-email')->first();
+        $company = [
+            'name'=>$companyName['value'],
+            'email'=> $fromEmail['value'],
+            'compnay_email'=> $adminEmail['value']
+        ];
+
+        Mail::to($email)->send(new OrderMail($orderlatest,$company,$shipping_address));
+
 
         /** clear the session payment ID **/
+        Session::forget('cart');
+        Session::forget('address');
+        Session::forget('shipping');
+        Session::forget('shipping_amount');
+        Session::forget('amount');
         Session::forget('paypal_payment_id');
         if (empty(Input::get('PayerID')) || empty(Input::get('token'))) {
 
@@ -188,6 +269,14 @@ $request = clone $payment;
         return Redirect::to('/');
 
     }
+    public function batch(){
+        $batch = $this->order->latestFirst();
+        if(empty($batch->serial_number)) {
+            return  '#ORDER01';
+        } else {
 
+            return  ++$batch->serial_number;
+        }
+    }
 
 }
