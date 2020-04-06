@@ -61,7 +61,7 @@ class ProductController extends Controller
 
         }
         $data['is_active'] =(isset($request['is_active'])) ? 1 : 0;
-        $data['shipping'] =(isset($request['is_active'])) ? 1 : 0;
+        $data['shipping'] =(isset($request['shipping'])) ? 1 : 0;
         $data['created_by'] = Auth::user()->id;
         $data['product_number'] = $this->batch();
         if($this->products->create($data)){
