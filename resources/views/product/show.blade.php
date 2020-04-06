@@ -31,11 +31,21 @@
                                        </div>
                                        <div class="product-wrapper-content">
                                            <ul id="prodcut-details-lists-frontend">
+                                               @if(!empty($product->glass_id))
                                                <li><span>Types:</span>{{$product->glasses->name}}</li>
+                                               @endif
+                                                   @if(!empty($product->brand_id))
                                                <li><span>Brand:</span>{{$product->brand->name}}</li>
+                                                   @endif
+                                                   @if(!empty($product->frame_id))
                                                <li><span>Frame:</span>{{$product->frame->name}}</li>
+                                                   @endif
+                                                   @if(!empty($product->frame_category_id))
                                                <li><span>Frame Category:</span>{{$product->category->name}}</li>
+                                                   @endif
+                                                   @if(!empty($product->lens_id))
                                                <li><span>Lense:</span>{{$product->lenses->name}}</li>
+                                                   @endif
                                                <li><span>Size:</span>{{$product->size}}</li>
                                                <li><span>Shape:</span>{{$product->shape}}</li>
                                                <li><span>Style:</span>{{$product->style}}</li>
