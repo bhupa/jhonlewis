@@ -153,7 +153,11 @@
                             @endif
 {{--                            <!-- /.ribbon-->--}}
                             <div class="ribbon new">
-                                <div class="theribbon" style="width: 162px; background: red; margin-top: 20px;">{{$product->brand->name}}</div>
+                                <div class="theribbon" style="width: 162px; background: red; margin-top: 20px;">
+                                    @if(!empty($product->sunglass_id))
+                                    {{$product->brand->name}}
+                                        @endif
+                                </div>
                                 <div class="ribbon-background"></div>
                             </div>
                             <!-- /.ribbon-->

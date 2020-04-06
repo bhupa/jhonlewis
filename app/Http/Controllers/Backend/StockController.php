@@ -151,6 +151,7 @@ class StockController extends Controller
     }
     public function changeStatus(Request $request)
     {
+
         $stock = $this->stock->find($request->get('id'));
         if ($stock->is_active == 0) {
             $status = '1';

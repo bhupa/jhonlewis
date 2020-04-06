@@ -171,7 +171,7 @@ Route::group(['namespace'=>'Backend','middleware'=>'auth'], function() {
     Route::post('/products/change-shipping','ProductController@changeShipping')->name('products.change-shipping');
     Route::post('/products/get-product-category','ProductController@getCategory')->name('products.get-product-category');
 
-
+    Route::post('/stocks/change-status','StockController@changeStatus')->name('stocks.change-status');
     Route::prefix('stocks')->group(function(){
         Route::get('/{product_id}','StockController@index')->name('stocks.index');
         Route::get('/{product_id}/create', 'StockController@create')->name('stocks.create');
@@ -179,7 +179,8 @@ Route::group(['namespace'=>'Backend','middleware'=>'auth'], function() {
         Route::get('/edit/{slug}', 'StockController@edit')->name('stocks.edit');
         Route::put('/update/{slug}', 'StockController@update')->name('stocks.update');
         Route::delete('/{id}', 'StockController@destroy')->name('stocks.destroy');
-        Route::post('/change-status','StockController@changeStatus')->name('stocks.change-status');
+
+
 
     });
 
