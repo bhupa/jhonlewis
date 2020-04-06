@@ -24,7 +24,7 @@ use Session;
 use Redirect;
 use Auth;
 use Illuminate\Support\Facades\Input;
-use PayPal\Rest\ApiContext;
+use PayPal\Rest\ApiContex;
 use PayPal\Auth\OAuthTokenCredential;
 use Illuminate\Http\Request;
 use PayPal\Api\Invoice;
@@ -173,9 +173,7 @@ class PaymentController extends Controller
 
 
         $orderItem = $this->order->latestFirst();
-        $transaction['paypal_id']=$payment_id;
-        $transaction['order_id']= $orderItem->id;
-        $this->transaction->create($transaction);
+
 
 //        insert in the our data base
 
@@ -236,7 +234,9 @@ class PaymentController extends Controller
 
         Mail::to($email)->send(new OrderMail($orderlatest,$company,$shipping_address));
 
-
+        $transaction['paypal_id']=$payment_id;
+        $transaction['order_id']= $orderItem->id;
+        $this->transaction->create($transaction);
         /** clear the session payment ID **/
         Session::forget('cart');
         Session::forget('address');
