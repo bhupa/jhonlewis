@@ -809,16 +809,14 @@ body .show-box {
     /*border: 1px solid #0c0c0c;*/
 
 }
-.profile-image {
-    width: 70%;
-    margin: 0 auto;
-    display: block;
-}
+
 #profile-image {
-    width: 100%;
+    width: 183px;
     margin: 0 auto;
-    height: 70%;
-    border-radius: 50%;
+    height: 160px;
+    border-radius: 60%;
+    margin: 0 auto;
+    display: block
 }
 .profile-details-lists ul {
     list-style: none;

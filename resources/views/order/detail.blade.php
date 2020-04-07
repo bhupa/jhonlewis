@@ -14,10 +14,10 @@
 
             @if(!empty(Session::get('cart')))
                 <tbody>
-                @php $totalAmout=0; $totalquantity=0;@endphp
+                @php $i=1; $totalAmout=0; $totalquantity=0;@endphp
                 @foreach($carts->items as $key=>$cart)
                     <tr>
-                        <td>{{$key}}</td>
+                        <td>{{$i++}}</td>
                         <td>
                             <a href="#">
                                 <img src="{{asset('storage/'.$cart['image'])}}" alt="{{$cart['title']}}">

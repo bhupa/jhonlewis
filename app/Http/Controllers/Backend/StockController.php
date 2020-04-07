@@ -6,6 +6,7 @@ use App\Http\Requests\Backend\Stock\StockStoreRequest;
 use App\Http\Requests\Backend\Stock\StockUpdateRequest;
 use App\Http\Requests\Backend\Sunglasses\SunglassesStoreRepository;
 use App\Repositories\ColorRepository;
+use App\Repositories\OrderRepository;
 use App\Repositories\ProductRepository;
 use App\Repositories\StockRepository;
 use Illuminate\Http\Request;
@@ -14,12 +15,13 @@ use Illuminate\Support\Facades\Storage;
 
 class StockController extends Controller
 {
-    public  $stock,$product,$colors;
+    public  $stock,$product,$colors,$order;
 
-    public  function __construct(StockRepository $stock,ProductRepository $product,ColorRepository $colors)
+    public  function __construct(StockRepository $stock,ProductRepository $product,ColorRepository $colors,OrderRepository $order)
     {
         $this->stock=$stock;
         $this->product = $product;
+
         $this->colors = $colors;
         $this->upload_path = DIRECTORY_SEPARATOR.'stock'.DIRECTORY_SEPARATOR;
         $this->storage = Storage::disk('public');

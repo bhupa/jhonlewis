@@ -340,7 +340,7 @@
                         <div class="testimonial-wrapper">
                             <div class="testimonial-img">
                                 @if(file_exists('storage/'.$testimonial->author->image) && $testimonial->author->image != '')
-                                    <img  src="{{asset('storage/'.$testimonial->image)}}" alt="{{$testimonial->author->name}}">
+                                    <img  src="{{asset('storage/'.$testimonial->author->image)}}" alt="{{$testimonial->author->name}}">
                                 @else
                                     <img  src="https://via.placeholder.com/300" alt="{{$testimonial->author->name}}">
                                 @endif

@@ -54,7 +54,7 @@
                                     <td>{{$item->service->title}}</td>
                                     <td>
                                         @if(file_exists('storage/'.$item->author->image) && $item->author->image != '')
-                                            <img style="width:100px;height:100px;" src="{{asset('storage/'.$item->image)}}" alt="{{$item->author->name}}">
+                                            <img style="width:100px;height:100px;" src="{{asset('storage/'.$item->author->image)}}" alt="{{$item->author->name}}">
                                         @else
                                             <img style="width:100px;height:100px;" src="{{asset('backend/dist/img/placeholder.png')}}" alt="{{$item->author->name}}">
                                         @endif

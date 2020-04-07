@@ -18,7 +18,7 @@
                         </nav>
                     </div>
                     <div class="col-lg-3">
-                        @include('shop.sidebar')
+                        @include('product.lists')
                     </div>
                     <div class="col-lg-9">
                         <div id="contact" class="box">
