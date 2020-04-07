@@ -37,6 +37,7 @@
                                     <table class="table">
                                         <thead>
                                         <tr>
+                                            <th>No.</th>
                                             <th colspan="2">Product</th>
                                             <th>Color</th>
                                             <th>Quantity</th>
@@ -49,9 +50,10 @@
 
                                         @if(!empty(Session::get('cart')))
                                             <tbody>
+                                            @php $i=1; @endphp
                                             @foreach($carts->items as $key=>$cart)
                                         <tr>
-
+                                            <td>{{$i++}}</td>
                                             <td>
                                                 <a href="{{route('product.show',[$cart['slug']])}}">
                                                     <img src="{{asset('storage/'.$cart['image'])}}" alt="{{$cart['title']}}">

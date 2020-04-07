@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use App\Mail\Contact\ContactReplyMail;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
@@ -16,9 +17,12 @@ class AppointmentMail extends Mailable
      *
      * @return void
      */
-    public function __construct()
+    protected $data,$company;
+    public function __construct($data,$company)
     {
-        //
+        $this->data=$data;
+        $this->company= $company;
+
     }
 
     /**
@@ -28,6 +32,7 @@ class AppointmentMail extends Mailable
      */
     public function build()
     {
-        return $this->view('view.name');
+        return $this->from($this->company['email'],$this->company['name'])->subject('Appointment  reply')->view('backend.email.appointmentReply')->withData($this->data)->withCompany($this->company);
+
     }
 }

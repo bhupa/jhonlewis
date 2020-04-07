@@ -178,17 +178,13 @@
 <table class="body-wrap" bgcolor="#f6f6f6">
     <tr><td colspan="3">
             <a href="{!! route('home') !!}">
-                <img alt="logo" src="{{asset('frontend/img/logosm.png')}}" width="93px"; height="60px">
+                <img alt="logo" src="{{asset('frontend/img/nav-logo.png')}}">
             </a>
         </td></tr>
 
 
     <!-- content -->
-    <tr class="container" bgcolor="#FFFFFF"><br><strong>Dear Admin, <br></strong>Subject:{{$data['cc']}}.</tr>
-
-    <tr class="container" bgcolor="#FFFFFF"><td>Sender Name:{{$data['firstname']}}  {{$data['lastname']}} </td></tr>
-    <tr class="container" bgcolor="#FFFFFF"><td>Email : {{$data['email']}}</td></tr>
-    <tr class="container" bgcolor="#FFFFFF"><td>Subjet : {{$data['subject']}}</td></tr>
+    <tr class="container" bgcolor="#FFFFFF"><br><strong>Dear {{$data['firstname']}} {{$data['lastname']}}, </strong></tr>
     <tr class="container" bgcolor="#FFFFFF"><td>Message:<br>{!! $data['description'] !!}</td></tr>
 
     <!-- footer -->

@@ -3,19 +3,27 @@
 namespace App\Http\Controllers\Backend;
 
 
+use App\Http\Requests\Backend\Appointment\AppointmentReplyMailRequest;
+use App\Http\Requests\Frontend\Appointment\AppointmentStoreRequest;
+use App\Mail\AppointmentMail;
+use App\Mail\Contact\AdminContactReplyMail;
+use App\Mail\Contact\ContactReplyMail;
 use App\Repositories\AppointmentRepository;
+use App\Repositories\SettingRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 
 class AppointmentController extends Controller
 {
-    protected $appointments, $category;
+    protected $appointments, $category,$setting;
 
-    public function __construct(AppointmentRepository $appointments)
+    public function __construct(AppointmentRepository $appointments,SettingRepository $setting)
     {
         $this->appointments = $appointments;
+        $this->setting = $setting;
 
     }
     public function index()
@@ -40,7 +48,14 @@ class AppointmentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-
+    public function edit($id){
+        $appointments = $this->appointments->find($id);
+        return view('backend.appointment.edit')->withAppointments($appointments);
+    }
+    public function show($id){
+        $appointment = $this->appointments->find($id);
+        return view('backend.appointment.show')->withAppointment($appointment);
+    }
 
     /**
      * Display the specified resource.
@@ -48,10 +63,7 @@ class AppointmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
-    }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -87,5 +99,39 @@ class AppointmentController extends Controller
         }
         return response()->json(['status'=>'ok','message'=>'appointments cannot be delete'],422);
     }
+    public function store(AppointmentReplyMailRequest $request){
+        $data= $request->except('_token','description');
+        $data = $this->appointments->find($request->id);
+        $data['description']= $request->description;
+        $data['cc'] ='CC of contact message reply';
+        $adminEmail = $this->setting->where('slug','for-admin')->first();
+        $companyName = $this->setting->where('slug','compant-name')->first();
+        $fromEmail = $this->setting->where('slug','reply-email')->first();
+        $company = [
+            'name'=>$companyName['value'],
+            'email'=> $fromEmail['value'],
+            'compnay_email'=> $adminEmail['value']
+        ];
+
+        Mail::to($data->email)->send(new AppointmentMail($data,$company));
+
+        if (Mail::failures()){
+            return redirect()->back()->with('errors','Email cannot send succeefully');
+        }
+        else{
+            return redirect()->to('/appointments')->with('success','Email has sent successfully');
+
+        }
+    }
+    public function update(AppointmentStoreRequest $request){
+        $data = $request->except('_token');
+        $data['user_id'] =Auth::user()->id;
+        if($this->appointments->create($data)){
+
+            return redirect()->to('/appointments')->with('success','Appointment Updated successfully!'.'<br>'.' We will contact you soon');
+        }
+        return redirect()->back()->with('errors','Appointment cannot booked successfully');
+    }
+
 
 }

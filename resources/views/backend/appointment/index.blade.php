@@ -58,8 +58,15 @@
                                     <td>{{$item->address}}</td>
                                     <td>{{date('d-M-Y', strtotime($item->date)) }}</td>
                                     <td>
+                                        <a href="{{route('appointments.edit', $item->id)}}" class="edit-modal btn btn-info btn-circle btn-sm"
+                                           data-info="">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
                                         {{-- @if(auth()->user()->can('edit-banner')) --}}
-
+                                        <a href="javascript:void(0)" id="reply-appointment-email" class="edit-modal btn btn-success btn-circle btn-sm"
+                                           data-type="{{$item->id}}">
+                                            <i class="fas fa-envelope"></i>
+                                        </a>
                                         {{-- @endif --}}
                                         {{-- @if(auth()->user()->can('delete-banner')) --}}
                                         <a href="javascript:void(0)" class="delete-appointments btn btn-danger btn-circle btn-sm"
@@ -77,7 +84,9 @@
                 </div>
 
                 <!-- /.row -->
+                <div class="appointment-details">
 
+                </div>
             </div>
             <!-- /.container-fluid -->
         </div>
@@ -133,7 +142,38 @@
                     }
                 })
             })
+            $('#table').on('click','#reply-appointment-email',function(event){
+                event.preventDefault();
+                $object = $(this);
+                var id  = $(this).attr('data-type');
+                var url = baseUrl+"/appointments/"+id;
 
+
+                $.ajax({
+                    type: "get",
+                    url: url,
+                    data: {
+                        id: id,
+
+                    },
+                    dataType:'html',
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function (appointment) {
+                        $('.appointment-details').html(appointment);
+                        $('#appointment-emails').modal('show');
+                    },
+                    error: function (e) {
+                        if (e.responseJSON.message) {
+                            swal('Error', e.responseJSON.message, 'error');
+                        } else {
+                            swal('Error', 'Something went wrong while processing your request.', 'error')
+                        }
+                    }
+                });
+
+            })
 
             {{--$("#table").on("click", "#change-status", function () {--}}
             {{--    $object = $(this);--}}
