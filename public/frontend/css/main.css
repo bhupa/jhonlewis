@@ -947,3 +947,31 @@ btn_upload {
     background: #0ae0b1;
     color: #ffffff;
 }
+
+.fc-content-skeleton .fc-event-container .event-date {
+    display: block;
+    height: 105px;
+    /* width: 100%; */
+    background: #000b16;
+    /* padding: 27px; */
+    /* overflow: hidden; */
+    margin-top: -17px;
+    cursor: pointer;
+}
+.fc-content-skeleton .fc-event-container .event-date .fc-content {
+    white-space: unset;
+    overflow: unset;
+}
+.fc-content-skeleton .fc-event-container .event-date .fc-title {
+
+    font-variant: all-petite-caps;
+    padding-top: 30px;
+    color: #ffffff;
+    display: block;
+    font-size: 15px;
+    text-align: center;
+}
+.fc-prev-button,.fc-next-button {
+    background-color: #102ade;
+    border-color: #bf4f4f00;
+}

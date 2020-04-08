@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Backend\BlogCategories;
+namespace App\Http\Requests\Backend\User;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class BlogCategoriesStoreRequest extends FormRequest
+class UserStoreRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,10 @@ class BlogCategoriesStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'=>'required|unique:blog_categories,name',
+            'name'=>'required',
+            'email'=>'required|unique:users,email',
+            'password'=>"required",
+            'confirm'=>'required|same:password',
         ];
     }
 }

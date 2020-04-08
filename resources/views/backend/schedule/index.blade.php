@@ -1,5 +1,5 @@
 @extends('backend.app')
-@section('title','Appointment-Lists')
+@section('title','Schedule-Lists')
 @section('content')
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -19,7 +19,7 @@
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-{{--                            <li class="breadcrumb-item"><a href="{{route('appointments.create')}}"> Add appointment</a></li>--}}
+                                                        <li class="breadcrumb-item"><a href="{{route('schedules.create')}}"> Add schedule</a></li>
                             <li class="breadcrumb-item active">Dashboard </li>
                         </ol>
                     </div><!-- /.col -->
@@ -37,39 +37,40 @@
                             <thead class="text-uppercase bg-primary">
                             <tr class="text-white">
                                 <th scope="col">ID</th>
-                                <th scope="col">First-Name</th>
-                                <th scope="col">Last-Name</th>
-                                <th scope="col">Email</th>
-                                <th scope="col">Phone</th>
-                                <th scope="col" >Address</th>
-                                <th scope="col" >Date</th>
+                                <th scope="col">Title</th>
+                                <th scope="col">Date</th>
+                                <th scope="col">Created By</th>
+                                <th scope="col">Status</th>
                                 <th scope="col">action</th>
                             </tr>
                             </thead>
                             <tbody id="sortable">
 
-                            @foreach($appointments as $key=>$item)
+                            @foreach($schedules as $key=>$item)
                                 <tr id="item-{{$item->id}}">
                                     <td>{{$key+1}}</td>
-                                    <td>{{$item->firstname}}</td>
-                                    <td>{{$item->lastname}}</td>
-                                    <td>{{$item->email}}</td>
-                                    <td>{{$item->phone}}</td>
-                                    <td>{{$item->address}}</td>
+                                    <td>{{$item->title}}</td>
                                     <td>{{date('d-M-Y', strtotime($item->date)) }}</td>
+                                    <td>{{$item->author->name}}</td>
                                     <td>
-                                        <a href="{{route('appointments.edit', $item->id)}}" class="edit-modal btn btn-info btn-circle btn-sm"
+                                        @if($item->is_active == '1')
+                                            <a href="javascript:void(0)"  data-type="{{$item->id}}" id="change-status" class="edit-modal btn btn-sm btn-circle btn-success published"  title="change-status"
+                                               data-toggle="tooltip"> <i class="fas fa-check" aria-hidden="true"></i></a>
+                                        @else
+                                            <a href="javascript:void(0)"  data-type="{{$item->id}}" id="change-status" class="edit-modal btn btn-sm btn-circle btn-success unpublished"   title="change-status"
+                                               data-toggle="tooltip"> <i class="fas fa-minus" aria-hidden="true"></i></a>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        <a href="{{route('schedules.edit', $item->id)}}" class="edit-modal btn btn-info btn-circle btn-sm"
                                            data-info="">
                                             <i class="fas fa-edit"></i>
                                         </a>
                                         {{-- @if(auth()->user()->can('edit-banner')) --}}
-                                        <a href="javascript:void(0)" id="reply-appointment-email" class="edit-modal btn btn-success btn-circle btn-sm"
-                                           data-type="{{$item->id}}">
-                                            <i class="fas fa-envelope"></i>
-                                        </a>
+
                                         {{-- @endif --}}
                                         {{-- @if(auth()->user()->can('delete-banner')) --}}
-                                        <a href="javascript:void(0)" class="delete-appointments btn btn-danger btn-circle btn-sm"
+                                        <a href="javascript:void(0)" class="delete-schedules btn btn-danger btn-circle btn-sm"
                                            data-type="{{$item->id}}">
                                             <i class="fas fa-trash"></i>
                                         </a>
@@ -84,7 +85,7 @@
                 </div>
 
                 <!-- /.row -->
-                <div class="appointment-details">
+                <div class="schedule-details">
 
                 </div>
             </div>
@@ -98,11 +99,11 @@
     <script>
         $(document).ready( function () {
 
-            $('#table').on('click','.delete-appointments',function(event){
+            $('#table').on('click','.delete-schedules',function(event){
                 event.preventDefault();
                 $object = $(this);
                 var id  = $(this).attr('data-type');
-                var url = baseUrl+"/appointments/"+id;
+                var url = baseUrl+"/schedules/"+id;
                 swal({
                     title: 'Are you sure?',
                     text: 'You will not be able to recover this !',
@@ -142,38 +143,51 @@
                     }
                 })
             })
-            $('#table').on('click','#reply-appointment-email',function(event){
-                event.preventDefault();
+            $("#table").on("click", "#change-status", function () {
                 $object = $(this);
-                var id  = $(this).attr('data-type');
-                var url = baseUrl+"/appointments/"+id;
+                var id = $(this).attr('data-type');
+                swal({
+                    title: 'Are you sure?',
+                    text: 'Do you want to change the status',
+                    type: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Yes, change it!',
+                    cancelButtonText: 'No, keep it'
+                }).then((result) => {
+                    if (result.value) {
+                        $.ajax({
+                            type: "POST",
+                            url: "{{ route('schedules.change-status') }}",
+                            data: {
+                                'id': id,
+                            },
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+                            dataType: 'json',
+                            success: function (response) {
+                                swal("Thank You!", response.message, "success");
+                                if (response.schedules.is_active == 1) {
+                                    $($object).children().removeClass('fa fa-minus');
+                                    $($object).children().addClass('fa fa-check');
+                                } else {
+                                    $($object).find('.unpublished').html('<i class="fa fa-minus" aria-hidden="true"></i>');
+                                    $($object).children().removeClass('fa fa-check');
+                                    $($object).children().addClass('fa fa-minus');
+                                }
+                            },
+                            error: function (e) {
+                                if (e.responseJSON.message) {
+                                    swal('Error', e.responseJSON.message, 'error');
+                                } else {
+                                    swal('Error', 'Something went wrong while processing your request.', 'error')
+                                }
+                            }
+                        });
 
-
-                $.ajax({
-                    type: "get",
-                    url: url,
-                    data: {
-                        id: id,
-
-                    },
-                    dataType:'html',
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    success: function (appointment) {
-                        $('.appointment-details').html(appointment);
-                        $('#appointment-emails').modal('show');
-                    },
-                    error: function (e) {
-                        if (e.responseJSON.message) {
-                            swal('Error', e.responseJSON.message, 'error');
-                        } else {
-                            swal('Error', 'Something went wrong while processing your request.', 'error')
-                        }
                     }
-                });
-
-            })
+                })
+            });
 
             {{--$("#table").on("click", "#change-status", function () {--}}
             {{--    $object = $(this);--}}
@@ -189,7 +203,7 @@
             {{--        if (result.value) {--}}
             {{--            $.ajax({--}}
             {{--                type: "POST",--}}
-            {{--                url: "{{ route('appointments.change-status') }}",--}}
+            {{--                url: "{{ route('schedules.change-status') }}",--}}
             {{--                data: {--}}
             {{--                    'id': id,--}}
             {{--                },--}}
@@ -199,7 +213,7 @@
             {{--                dataType: 'json',--}}
             {{--                success: function (response) {--}}
             {{--                    swal("Thank You!", response.message, "success");--}}
-            {{--                    if (response.appointment.is_active == 1) {--}}
+            {{--                    if (response.schedule.is_active == 1) {--}}
             {{--                        $($object).children().removeClass('fa fa-minus');--}}
             {{--                        $($object).children().addClass('fa fa-check');--}}
             {{--                    } else {--}}
@@ -221,17 +235,10 @@
             {{--    })--}}
             {{--});--}}
 
-            $('#calendar').on('click','.event-date',function(event){
-                event.preventDefault();
-                //do whatever
-                alert('hello');
-            });
 
-            $('.event-date').click(function(element) {
-                element.preventDefault();
-                alert('You clicked the link.');
-                return false;
-            });
+
+
+
 
 
         });

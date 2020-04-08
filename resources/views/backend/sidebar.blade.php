@@ -23,6 +23,15 @@
 
             </li>
             <li class="nav-item has-treeview">
+                <a href="{{route('schedules.index')}}" class="nav-link">
+                    <i class="nav-icon fa fa-calendar-check"></i>
+                    <p>
+                       Appointment Schedule
+                    </p>
+                </a>
+
+            </li>
+            <li class="nav-item has-treeview">
                 <a href="{{route('banners.index')}}" class="nav-link">
                     <i class="nav-icon fas fa-images"></i>
                     <p>
@@ -191,6 +200,15 @@
                     <i class="nav-icon fas fa-comment"></i>
                     <p>
                         Testimonial
+                    </p>
+                </a>
+
+            </li>
+            <li class="nav-item has-treeview">
+                <a href="{{route('users.index')}}" class="nav-link">
+                    <i class="nav-icon fas fa-users"></i>
+                    <p>
+                        Users
                     </p>
                 </a>
 
