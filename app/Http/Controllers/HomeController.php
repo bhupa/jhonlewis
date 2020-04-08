@@ -2,16 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AppointmentSchedule;
+use App\Repositories\AppointmentScheduleRepository;
 use App\Repositories\ContentRepository;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    protected $content;
+    protected $content,$schedule;
 
-    public function __construct(ContentRepository $content)
+    public function __construct(ContentRepository $content,AppointmentScheduleRepository $schedule)
     {
         $this->content = $content;
+        $this->schedule = $schedule;
     }
 
     public function index(){
@@ -47,5 +50,17 @@ class HomeController extends Controller
     public function getentitlement(){
         $content = $this->content->where('slug','nhs-entitlement')->first();
         return view('frontend.entitlement')->withContent($content);
+    }
+
+    public function getSchedule(){
+
+
+        $start = (!empty($_GET["start"])) ? ($_GET["start"]) : ('');
+        $end = (!empty($_GET["end"])) ? ($_GET["end"]) : ('');
+        $data = AppointmentSchedule::whereDate('start', '>=', $start)->whereDate('end',   '<=', $end)->get(['id','title','start', 'end']);
+        return Response::json($data);
+
+
+
     }
 }

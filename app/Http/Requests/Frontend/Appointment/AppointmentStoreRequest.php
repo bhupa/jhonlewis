@@ -23,13 +23,16 @@ class AppointmentStoreRequest extends FormRequest
      */
     public function rules()
     {
+
+
         return [
             'firstname'=>'required',
             'lastname'=>'required',
             'email'=>'required|email',
             'address'=>'required',
             'phone'=>'required',
-            'date'=>'date_format:Y-m-d',
+//            'date'=>'required|exists:appointment_schedule,date',
+            'schedule_id'=>'required|exists:appointment_schedule,id'
         ];
     }
 }

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Backend\BlogCategories;
+namespace App\Http\Requests\Backend\Schedule;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class BlogCategoriesStoreRequest extends FormRequest
+class ScheduleUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,10 @@ class BlogCategoriesStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'=>'required|unique:blog_categories,name',
+            'title'=>'required',
+            'date'=>'required|date|unique:appointment_schedule,date,'.$this->id,
+            'end'=>'required|date|after_or_equal:date',
+
         ];
     }
 }

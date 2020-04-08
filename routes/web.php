@@ -24,6 +24,10 @@ Route::get('/','HomeController@index')->name('home');
 Route::get('/about-us','HomeController@getAbout')->name('about-us');
 Route::get('/terms-conditions','HomeController@getTermCondition')->name('terms-conditions');
 Route::get('/shipping','HomeController@getshipping')->name('shipping');
+
+
+Route::get('/getSchedule','HomeController@getSchedule')->name('getSchedule');
+
 Route::get('/register','RegisterController@index')->name('register');
 Route::post('/register','RegisterController@store')->name('register.store');
 Route::get('/how-to-get-prescription','HomeController@getPrescription')->name('how-to-get-prescription');
@@ -60,7 +64,9 @@ Route::post('/login','LoginController@login')->name('login');
 Route::get('/logout','LoginController@logout')->name('logout');
 Route::get('/login','LoginController@showForm')->name('login');
 
-Route::resource('/appointment','AppointmentController');
+//Route::resource('/appointment','AppointmentController');
+Route::get('/appintment','AppointmentController@index')->name('appointment.index');
+Route::get('book-appointment/{id}','AppointmentController@getBook')->name('book-appointment');
 
 Route::resource('/package','PackageController');
 Route::resource('/blog','BlogController');
@@ -88,7 +94,9 @@ Route::group(['middleware'=>'auth'], function() {
     Route::get('/profile/view','ProfileController@getProfile')->name('getprofile');
    Route::resource('order-lists','PurchaseOrderListsController');
    Route::resource('wishlist','WishListController');
-    Route::post('/appointment/lists','AppointmentController@show')->name('appointment.lists');
+    Route::post('/appointment/store','AppointmentController@store')->name('appointment.store');
+    Route::get('/appointment/lists','AppointmentController@show')->name('appointment.lists');
+
     Route::post('/login/store','LoginController@store')->name('login.store');
 });
 
@@ -193,6 +201,14 @@ Route::group(['namespace'=>'Backend','middleware'=>'auth'], function() {
     Route::resource('sales','SalesController');
     Route::post('/realeased','SalesController@changeStatus')->name('sales.realeased');
     Route::post('/return','SalesController@getReturn')->name('sales.return');
+
+    // color route
+    Route::resource('schedules','ScheduleController');
+    Route::post('/schedules/change-status','ScheduleController@changeStatus')->name('schedules.change-status');
+
+    Route::resource('users','UserController');
+    Route::post('/users/change-status','UserController@changeStatus')->name('users.change-status');
+
 
 
 });
