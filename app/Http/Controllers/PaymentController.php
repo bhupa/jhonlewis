@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\Frontend\Notification\NotificationEvent;
+use App\Events\Order\NewOrder;
 use App\Mail\Contact\AdminContactReplyMail;
 use App\Mail\Order\OrderMail;
 use App\Models\Cart;
+use App\Repositories\NotificationRepository;
 use App\Repositories\OrderRepository;
 use App\Repositories\SalesResportRepository;
 use App\Repositories\SettingRepository;
@@ -23,6 +26,7 @@ use URL;
 use Session;
 use Redirect;
 use Auth;
+use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Input;
 use PayPal\Rest\ApiContex;
 use PayPal\Auth\OAuthTokenCredential;
@@ -35,7 +39,7 @@ use PayPal\Api\PaymentExecution;
 
 class PaymentController extends Controller
 {
-    private $_api_context,$sales,$transaction,$shipping, $order,$setting;
+    private $_api_context,$sales,$transaction,$shipping, $order,$setting,$notification;
     /**
      * Create a new controller instance.
      *
@@ -44,7 +48,7 @@ class PaymentController extends Controller
     public function __construct(
                                 OrderRepository $order,SalesResportRepository $sales,
                                 TransactionRepository $transaction, ShippingRepository $shipping,
-                                SettingRepository $setting
+                                SettingRepository $setting, NotificationRepository $notification
 )
     {
 
@@ -60,6 +64,7 @@ class PaymentController extends Controller
         $this->sales = $sales;
         $this->order = $order;
         $this->setting = $setting;
+        $this->notification = $notification;
 
     }
     public function index()
@@ -235,6 +240,20 @@ class PaymentController extends Controller
 
         Mail::to($email)->send(new OrderMail($orderlatest,$company,$shipping_address));
 
+
+        event(new NotificationEvent($orderlatest));
+        $latestNotification = $this->notification->latestFirst();
+
+        Redis::publish('LARAVEL_APP', json_encode([
+                'event' => 'test-event',
+                'email' => auth()->user()->email,
+                'paylod' => $latestNotification
+            ]));
+//        $notifications = $this->notification->where('view','0')->orderBy('created_at','desc')->take(5)->get();
+//        event(new NewOrder($notifications));
+//        $notificationlists = $this->renderNotification($notifications);
+
+
         $transaction['paypal_id']=$payment_id;
         $transaction['order_id']= $orderItem->id;
         $this->transaction->create($transaction);
@@ -278,6 +297,31 @@ class PaymentController extends Controller
 
             return  ++$batch->serial_number;
         }
+    }
+
+    public function renderNotification($notification){
+
+          $options = '';
+          foreach($notification as $value){
+              $options = '<a href="#" class="dropdown-item">
+                        <!-- Message Start -->
+                        <div class="media">
+                            <img src="'.asset('backend/dist/img/user1-128x128.jpg').'" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+                            <div class="media-body">
+                                <h3 class="dropdown-item-title">
+              Brad Diesel
+              <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
+                                </h3>
+                                <p class="text-sm">Call me whenever you can...</p>
+                                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+                            </div>
+                        </div>
+                        <!-- Message End -->
+                    </a>
+                    <div class="dropdown-divider"></div>';
+          }
+
+
     }
 
 }

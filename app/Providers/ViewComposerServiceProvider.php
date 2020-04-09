@@ -51,5 +51,12 @@ class ViewComposerServiceProvider extends ServiceProvider
             ],
             'App\Http\ViewComposer\Frontend\AuthUserComposer'
         );
+        view()->composer(
+            [
+                'backend.notification'
+                ,
+            ],
+            'App\Http\ViewComposer\Backend\NotificationComposer'
+        );
     }
 }

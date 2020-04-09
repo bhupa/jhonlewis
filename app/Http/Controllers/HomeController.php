@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\Order\NewOrder;
 use App\Models\AppointmentSchedule;
 use App\Repositories\AppointmentScheduleRepository;
 use App\Repositories\ContentRepository;
@@ -18,6 +19,8 @@ class HomeController extends Controller
     }
 
     public function index(){
+//        $message = 'hello world';
+//        event(new NewOrder($message));
         return view('frontend.home');
     }
 
