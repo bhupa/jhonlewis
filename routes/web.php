@@ -65,7 +65,7 @@ Route::get('/logout','LoginController@logout')->name('logout');
 Route::get('/login','LoginController@showForm')->name('login');
 
 //Route::resource('/appointment','AppointmentController');
-Route::get('/appintment','AppointmentController@index')->name('appointment.index');
+Route::get('/appointment','AppointmentController@index')->name('appointment.index');
 Route::get('book-appointment/{id}','AppointmentController@getBook')->name('book-appointment');
 
 Route::resource('/package','PackageController');
@@ -210,5 +210,5 @@ Route::group(['namespace'=>'Backend','middleware'=>'auth'], function() {
     Route::post('/users/change-status','UserController@changeStatus')->name('users.change-status');
 
 
-
+    Route::resource('notifications','NotificationController');
 });

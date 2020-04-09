@@ -275,6 +275,7 @@ _________________________________________________________
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js" integrity="sha256-4iQZ6BVL4qNKlQ27TExEhBN1HFPvAvAMbFavKKosSWQ=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.js"></script>
+{{--<script src="{{asset('js/app.js')}}"></script>--}}
 
 @yield('js_script')
 <script type="application/javascript">
@@ -518,7 +519,7 @@ _________________________________________________________
             $('.profile-details-lists ul li span',this).width(width);
 
         });
-        testimonial
+
         $('.container').each(function(){
 
             // Cache the highest
@@ -540,6 +541,11 @@ _________________________________________________________
         });
 
     });
+
+
+
+
+
 </script>
 </body>
 </html>
