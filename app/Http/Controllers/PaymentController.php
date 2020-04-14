@@ -180,8 +180,7 @@ class PaymentController extends Controller
         $orderItem = $this->order->latestFirst();
 
 
-//        insert in the our data base
-
+//        insert in the our data
         $order['buyer_id'] = Auth::user()->id;
         $order['shipping_amount'] =$shippingAmount;
         $order['total_amount'] = $amount;
@@ -247,7 +246,7 @@ class PaymentController extends Controller
         Redis::publish('LARAVEL_APP', json_encode([
                 'event' => 'test-event',
                 'email' => auth()->user()->email,
-                'paylod' => $latestNotification
+                'payload' => $latestNotification
             ]));
 //        $notifications = $this->notification->where('view','0')->orderBy('created_at','desc')->take(5)->get();
 //        event(new NewOrder($notifications));
