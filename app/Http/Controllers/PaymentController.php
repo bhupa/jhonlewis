@@ -230,6 +230,7 @@ class PaymentController extends Controller
         $adminEmail = $this->setting->where('slug','for-admin')->first();
         $companyName = $this->setting->where('slug','compant-name')->first();
         $fromEmail = $this->setting->where('slug','reply-email')->first();
+
         $company = [
             'name'=>$companyName['value'],
             'email'=> $fromEmail['value'],

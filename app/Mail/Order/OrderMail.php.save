@@ -23,7 +23,7 @@ class OrderMail extends Mailable
         $this->order = $order;
         $this->company= $company;
         $this->shipping =$shipping;
-		
+
     }
 
     /**
@@ -33,7 +33,7 @@ class OrderMail extends Mailable
      */
     public function build()
     {
-        return $this->from($this->company['email'],$this->company['name'])->subject('Product Order Lists')->view('backend.email.order')->withShipping($this->shipping)->withOrder($this->order);
+        return $this->from($this->company->email,$this->company->name)->subject('Product Order Lists')->view('backend.email.order')->withShipping($this->shipping)->withOrder($this->order);
 
     }
 }
