@@ -6,13 +6,14 @@ var io = require('socket.io').listen(server);
 var redis = require('redis');
 var sub = redis.createClient();
 sub.subscribe('LARAVEL_APP');
-server.listen(8890);
+console.log()
+
 sub.on('message', async function (channel, message) {
     message = JSON.parse(message)
-    console.log(message)
-    if (message['event'] == 'test-event') {
 
-        io.in().emit('notification-load', message.payload)
+    if (message['event'] == 'test-event') {
+        console.log(message);
+        io.emit('notification-load', message.payload)
     }
 
     // if (message['event'] == 'test-event') {
@@ -34,3 +35,4 @@ io.on('connection', function (socket) {
         socket.emit(channel, data);
     });
 });
+server.listen(3000);

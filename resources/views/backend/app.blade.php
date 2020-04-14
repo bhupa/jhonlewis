@@ -145,22 +145,31 @@ to get the desired effect
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.4/socket.io.js" integrity="sha256-lDaoGuONbVHFEV6ZW3GowBu4ECOTjDE14hleNVBvDW8=" crossorigin="anonymous"></script>
 
+
 {{--<script src="//{{ Request::getHost() }}:{{env('LARAVEL_ECHO_PORT')}}/socket.io/socket.io.js"></script>--}}
 
 {{--<script src="{{ asset('/backend/js/echo.js') }}" type="text/javascript"></script>--}}
 @yield('js_script');
 <script type="application/javascript">
+    var baseUrl = '{!! url('') !!}';
+
+
     // var socket = io.connect('http://127.0.0.1:8890');
     // socket.on('my-channel:App\\Events\\Order\\NewOrder', function(data){
     //    alert(data);
-    // });
+    {{--// });--}}
     $(function() {
         //you define socket - you can use IP
-        var socket = io('http://127.0.0.1:8890');
+        var socket = io.connect('http://127.0.0.1:3000');
+        socket.on('connect', function(){
+            alert('hell')
+        });
 
         socket.emit('login',{'email': "{{auth()->user()->email}}" })
+
         //you capture message data
-        socket.on('notification-load', function(data){
+
+        socket.on('notification-load', function(message){
             $.ajax({
                 type: "get",
                 url: "{{ route('notifications.index') }}",
@@ -182,7 +191,7 @@ to get the desired effect
         });
     });
 
-    var baseUrl = '{!! url('') !!}';
+
 
     var editor_config = {
         path_absolute : baseUrl,
