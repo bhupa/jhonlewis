@@ -8,8 +8,8 @@ var sub = redis.createClient();
 sub.subscribe('LARAVEL_APP');
 
 //server.listen(8890);
-const hostname = '192.168.43.31';
-const port = 8888;
+// const hostname = '192.168.43.31';
+const port = 3000;
 sub.on('message', async function (channel, message) {
     message = JSON.parse(message)
 
