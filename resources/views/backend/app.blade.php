@@ -156,7 +156,7 @@ to get the desired effect
     // });
     $(function() {
         //you define socket - you can use IP
-        var socket = io('http://127.0.0.1:8890');
+        var socket = io('http://68.183.35.136:8890');
 
         socket.emit('login',{'email': "{{auth()->user()->email}}" })
         //you capture message data
