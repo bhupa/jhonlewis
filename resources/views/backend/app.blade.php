@@ -160,12 +160,8 @@ to get the desired effect
     {{--// });--}}
     $(function() {
         //you define socket - you can use IP
-        var socket = io.connect('http://68.183.35.136:8888');
-      
-        socket.on('connect', function(){
-            alert('hell')
-        });
-//>>>>>>> 61b26a8c95265de642a43df2a33f24848edb7722
+        var socket = io.connect('http://127.0.0.1:3000');
+
 
         socket.emit('login',{'email': "{{auth()->user()->email}}" })
 
