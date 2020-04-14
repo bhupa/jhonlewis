@@ -1,0 +1,123 @@
+{ event: 'test-event',
+  email: 'test@gmail.com',
+  payload:
+   { id: 10,
+     sender_id: 4,
+     receiver_id: null,
+     order_id: 32,
+     link: 'http://68.183.35.136/notifications/32',
+     message: 'New Order has been places',
+     view: 0,
+     created_at: '2020-04-14 09:28:51',
+     updated_at: '2020-04-14 09:28:51' } }
+client connected
+Logged In nijbhup27@gmail.com
+{ event: 'test-event',
+  email: 'test@gmail.com',
+  payload:
+   { id: 11,
+     sender_id: 4,
+     receiver_id: null,
+     order_id: 33,
+     link: 'http://68.183.35.136/notifications/33',
+     message: 'New Order has been places',
+     view: 0,
+     created_at: '2020-04-14 09:31:27',
+     updated_at: '2020-04-14 09:31:27' } }
+client connected
+Logged In nijbhup27@gmail.com
+client connected
+Logged In nijbhup27@gmail.com
+client connected
+Logged In nijbhup27@gmail.com
+client connected
+client connected
+client connected
+client connected
+client connected
+client connected
+client connected
+client connected
+client connected
+client connected
+client connected
+client connected
+client connected
+client connected
+client connected
+client connected
+client connected
+client connected
+client connected
+client connected
+client connected
+client connected
+client connected
+client connected
+client connected
+client connected
+client connected
+client connected
+client connected
+client connected
+client connected
+client connected
+client connected
+client connected
+client connected
+client connected
+client connected
+client connected
+client connected
+client connected
+client connected
+client connected
+client connected
+client connected
+client connected
+client connected
+client connected
+client connected
+client connected
+client connected
+client connected
+client connected
+client connected
+client connected
+client connected
+client connected
+client connected
+client connected
+client connected
+client connected
+client connected
+client connected
+client connected
+client connected
+client connected
+client connected
+client connected
+client connected
+client connected
+client connected
+client connected
+client connected
+client connected
+client connected
+client connected
+client connected
+client connected
+client connected
+client connected
+client connected
+client connected
+client connected
+client connected
+client connected
+client connected
+client connected
+client connected
+client connected
+client connected
+client connected
+client connected
