@@ -24,14 +24,11 @@
                 <div class="row">
                     <div class="col-12 col-sm-6 col-md-3">
                         <div class="info-box">
-                            <span class="info-box-icon bg-info elevation-1"><i class="fas fa-cog"></i></span>
+                            <span class="info-box-icon bg-info elevation-1"><i class="fa fa-box-open"></i></span>
 
                             <div class="info-box-content">
-                                <span class="info-box-text">CPU Traffic</span>
-                                <span class="info-box-number">
-                  10
-                  <small>%</small>
-                </span>
+                                <span class="info-box-text">Total Product</span>
+                                <span class="info-box-number">{{$totalproducts }}</span>
                             </div>
                             <!-- /.info-box-content -->
                         </div>
@@ -43,8 +40,8 @@
                             <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-thumbs-up"></i></span>
 
                             <div class="info-box-content">
-                                <span class="info-box-text">Likes</span>
-                                <span class="info-box-number">41,410</span>
+                                <span class="info-box-text">Total Services</span>
+                                <span class="info-box-number">{{$totalservices}}</span>
                             </div>
                             <!-- /.info-box-content -->
                         </div>
@@ -61,7 +58,7 @@
 
                             <div class="info-box-content">
                                 <span class="info-box-text">Sales</span>
-                                <span class="info-box-number">760</span>
+                                <span class="info-box-number">{{$totalsells }}</span>
                             </div>
                             <!-- /.info-box-content -->
                         </div>
@@ -73,8 +70,8 @@
                             <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span>
 
                             <div class="info-box-content">
-                                <span class="info-box-text">New Members</span>
-                                <span class="info-box-number">2,000</span>
+                                <span class="info-box-text">Weekly Sells</span>
+                                <span class="info-box-number">{{$weeklysells}}</span>
                             </div>
                             <!-- /.info-box-content -->
                         </div>
@@ -87,14 +84,14 @@
                         <!-- small box -->
                         <div class="small-box bg-info">
                             <div class="inner">
-                                <h3>150</h3>
+                                <h3>{{$neworders}}</h3>
 
                                 <p>New Orders</p>
                             </div>
                             <div class="icon">
                                 <i class="ion ion-bag"></i>
                             </div>
-                            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                            <a href="javascript:void(0)" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                     <!-- ./col -->
@@ -102,14 +99,29 @@
                         <!-- small box -->
                         <div class="small-box bg-success">
                             <div class="inner">
-                                <h3>53<sup style="font-size: 20px">%</sup></h3>
+                                @php $precision = 1 @endphp
+                                @if ($totalordersamount < 900) {
 
-                                <p>Bounce Rate</p>
+                                @php $n_format = number_format($totalordersamount, $precision); $suffix = ''; @endphp
+                                <h3>{{$n_format}} H</h3>
+                                 @elseif ($totalordersamount < 900000)
+                                @php $n_format = number_format($totalordersamount / 1000, $precision); $suffix = 'K'; @endphp
+                                <h3>{{$n_format}} K</h3>
+                                 @elseif ($totalordersamount < 900000000)
+                                @php $n_format = number_format($totalordersamount / 1000000, $precision); $suffix = 'M'; @endphp
+                                <h3>{{$n_format}}M</h3>
+                                 @elseif ($totalordersamount < 900000000000)
+                                @php $n_format = number_format($totalordersamount / 1000000000, $precision); $suffix = 'B'; @endphp
+                                <h3>{{$n_format}}B</h3>
+                                @endif
+
+
+                                <p>Total amount of order</p>
                             </div>
                             <div class="icon">
                                 <i class="ion ion-stats-bars"></i>
                             </div>
-                            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                            <a href="javascript:void(0)" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                     <!-- ./col -->
@@ -117,14 +129,14 @@
                         <!-- small box -->
                         <div class="small-box bg-warning">
                             <div class="inner">
-                                <h3>44</h3>
+                                <h3>{{$totalusers}}</h3>
 
-                                <p>User Registrations</p>
+                                <p>Total Coustemer</p>
                             </div>
                             <div class="icon">
                                 <i class="ion ion-person-add"></i>
                             </div>
-                            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                            <a href="javascript:void(0)" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                     <!-- ./col -->
@@ -132,14 +144,14 @@
                         <!-- small box -->
                         <div class="small-box bg-danger">
                             <div class="inner">
-                                <h3>65</h3>
+                                <h3>{{ $totalreturns}}</h3>
 
-                                <p>Unique Visitors</p>
+                                <p>Total Return orders</p>
                             </div>
                             <div class="icon">
                                 <i class="ion ion-pie-graph"></i>
                             </div>
-                            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                            <a href="javascript:void(0)" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                     <!-- ./col -->

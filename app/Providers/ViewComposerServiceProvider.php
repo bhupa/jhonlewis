@@ -58,5 +58,12 @@ class ViewComposerServiceProvider extends ServiceProvider
             ],
             'App\Http\ViewComposer\Backend\NotificationComposer'
         );
+        view()->composer(
+            [
+                'backend.dashboard'
+                ,
+            ],
+            'App\Http\ViewComposer\Backend\DashboardComposer'
+        );
     }
 }
