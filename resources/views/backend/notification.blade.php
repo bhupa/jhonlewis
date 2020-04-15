@@ -1,10 +1,10 @@
 
-<li class="nav-item dropdown show">
+<li class="nav-item dropdown ">
     <a class="nav-link" data-toggle="dropdown" href="#" aria-expanded="true">
         <i class="far fa-bell"></i>
         <span class="badge badge-warning navbar-badge">{{$totals}}</span>
     </a>
-    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right show">
+    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right ">
         <span class="dropdown-item dropdown-header">{{$totals}} Notifications</span>
         <div class="dropdown-divider"></div>
         @foreach($notifications as $notification)
