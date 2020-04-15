@@ -100,10 +100,10 @@
                         <div class="small-box bg-success">
                             <div class="inner">
                                 @php $precision = 1 @endphp
-                                @if ($totalordersamount < 900) {
+                                @if ($totalordersamount < 900)
 
                                 @php $n_format = number_format($totalordersamount, $precision); $suffix = ''; @endphp
-                                <h3>{{$n_format}} H</h3>
+                                <h3>{{$n_format}} </h3>
                                  @elseif ($totalordersamount < 900000)
                                 @php $n_format = number_format($totalordersamount / 1000, $precision); $suffix = 'K'; @endphp
                                 <h3>{{$n_format}} K</h3>
