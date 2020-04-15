@@ -127,3 +127,27 @@ client connected
 Logged In nijbhup27@gmail.com
 client connected
 Logged In nijbhup27@gmail.com
+{ event: 'test-event',
+  email: 'test@gmail.com',
+  payload:
+   { id: 12,
+     sender_id: 4,
+     receiver_id: null,
+     order_id: 34,
+     link: 'http://68.183.35.136/notifications/34',
+     message: 'New Order has been places',
+     view: 0,
+     created_at: '2020-04-14 11:13:55',
+     updated_at: '2020-04-14 11:13:55' } }
+{ event: 'test-event',
+  email: 'test@gmail.com',
+  payload:
+   { id: 13,
+     sender_id: 4,
+     receiver_id: null,
+     order_id: 35,
+     link: 'http://68.183.35.136/notifications/35',
+     message: 'New Order has been places',
+     view: 0,
+     created_at: '2020-04-14 11:24:56',
+     updated_at: '2020-04-14 11:24:56' } }
