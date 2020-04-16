@@ -286,7 +286,7 @@
                 }).then((result) => {
                     if (result.value) {
                         $.ajax({
-                            type: "get",
+                            type: "POST",
                             url: "{{ route('stocks.change-status') }}",
                             data: {
                                 'id': id,
