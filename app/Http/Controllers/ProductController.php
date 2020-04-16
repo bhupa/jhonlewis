@@ -16,7 +16,10 @@ class ProductController extends Controller
     }
 
     public function show($slug){
+        $category = url()->previous();
+        $uri_segments = explode('/', $category);
+        $type = $uri_segments[3] ;
         $product = $this->product->where('slug',$slug)->first();
-        return view('product.show')->withProduct($product);
+        return view('product.show')->withProduct($product)->withType($type );
     }
 }

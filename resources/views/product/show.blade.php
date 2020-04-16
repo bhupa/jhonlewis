@@ -13,7 +13,9 @@
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="#">Home</a></li>
                                 <li class="breadcrumb-item"><a href="#">Product</a></li>
-                                <li aria-current="page" class="breadcrumb-item active">{{$product->glasses->name}}</li>
+                                <li aria-current="page" class="breadcrumb-item active">
+                                    {{$type }}
+                                </li>
                             </ol>
                         </nav>
                     </div>
