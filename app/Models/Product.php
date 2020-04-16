@@ -56,7 +56,7 @@ class Product extends Model
         return $this->belongsTo(FrameCategory::class,'frame_category_id');
     }
     public function stocks(){
-        return $this->hasMany(Stock::class,'product_id')->where('is_active');
+        return $this->hasMany(Stock::class,'product_id')->where('is_active','1');
     }
     public function discount(){
         return $this->belongsTo(Discount::class,'discount_id');
