@@ -34,13 +34,6 @@
                             {!! Form::model($frames,['route'=>['frame-categories.update',$frames->id],'class'=>'needs-validation','method'=>'PUT','enctype'=>   "multipart/form-data"])!!}
 
                             <div class="card-body">
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">Name</label>
-                                    <input type="value" class="form-control" name="name" placeholder="Enter Title" value="{{$frames->name}}">
-
-                                    @if ($errors->has('name'))
-                                        <span class="text-danger">{{ $errors->first('name') }}</span>
-                                    @endif </div>
                                 <div class="form-row">
                                     <div class="col-md-12 mb-3">
                                         <label for="validationCustom01">Category</label>
@@ -56,6 +49,14 @@
                                     </div>
 
                                 </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Name</label>
+                                    <input type="value" class="form-control" name="name" placeholder="Enter Title" value="{{$frames->name}}">
+
+                                    @if ($errors->has('name'))
+                                        <span class="text-danger">{{ $errors->first('name') }}</span>
+                                    @endif </div>
+
 
                             </div>
                             <!-- /.card-body -->
