@@ -22,6 +22,11 @@
                     </div>
                     <div class="col-lg-9">
                         <div class="row ">
+                            @if($products->isEmpty())
+                                <blackquote>
+                                    No products were found matching your selection.
+                                </blackquote>
+                            @endif
                             @foreach($products as $product)
                                 <div class="col-md-4 col-sm-6">
                                     <div class="product">
