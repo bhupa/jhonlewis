@@ -226,6 +226,8 @@
     <div class="new-subscribe">
         <div class="container">
             <div class="subscribe-form">
+
+                <h3>Subscribe</h3>
                 <form action="">
                     <div class="form-group">
                         <div class="row">
