@@ -1097,3 +1097,54 @@ btn_upload {
     text-transform: uppercase;
     margin: 50px;
 }
+
+.service-lists,.service-lists-content {
+    background: #ffffff;
+    padding: 30px;
+    margin-bottom: 50px;
+}
+.service-lists h2,.service-lists-content h2 {
+    text-align: center;
+    font-size: 25px;
+    text-transform: capitalize;
+    background: #1218e4;
+    color: #fff;
+    padding: 5px;
+}
+.service-lists ul {
+    padding: 0px;
+    list-style: none;
+}
+
+.service-lists ul  li {
+    padding: 5px;
+}
+.service-lists ul  li a {
+    color: #0c0c0c;
+    font-size: 20px;
+    text-transform: capitalize;
+    text-decoration: none;
+    width: 100%;
+    display: block;
+    padding-left: 10px;
+    transition: all 0.3s;
+}
+.service-lists ul  li a.active,.service-lists ul  li a:hover {
+    background: blue;
+    color: #ffffff;
+    width: 100%;
+
+}
+.service-lists-content img {
+    width:250px;
+    height: 250px;
+    float: left;
+    margin-right: 20px;
+}
+.service-lists-content p {
+    padding: 0px 10px;
+    text-align: justify;
+    font-size: 18px;
+    line-height: 29px;
+    font-weight: 300;
+}

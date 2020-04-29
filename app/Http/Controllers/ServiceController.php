@@ -20,6 +20,6 @@ class ServiceController extends Controller
     }
     public function show($slug){
         $service = $this->service->where('slug',$slug)->first();
-        return view('services.show')->withService($service);
+        return view('services.lists')->withService($service);
     }
 }
