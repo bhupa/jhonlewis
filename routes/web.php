@@ -211,4 +211,7 @@ Route::group(['namespace'=>'Backend','middleware'=>'auth'], function() {
 
 
     Route::resource('notifications','NotificationController');
+    Route::resource('brand','BrandController');
+    Route::post('/brand/change-status','BrandController@changeStatus')->name('brand.change-status');
+
 });

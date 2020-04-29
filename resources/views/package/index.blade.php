@@ -24,26 +24,27 @@
             <div class="container">
                 <div class="packages-slider-details ">
                     <div class="row">
-                    @foreach($packages as $package)
+                        @foreach($packages as $package)
 
-                        <div class="col-lg-4">
-                            <div class = "media mb-3">
-                                <a class ="pull-left" href = "{{route('package.show',[$package->slug])}}">
-                                    <img style="width:100px;height:100px" class="media-object" src ="{{asset('storage/'.$package->image)}}" alt = "{{$package->title}}">
-                                </a>
+                            <div class="col-lg-4">
+                                <div class="media mb-3">
+                                    <a class="pull-left" href="{{route('package.show',[$package->slug])}}">
+                                        <img style="width:100px;height:100px" class="media-object"
+                                             src="{{asset('storage/'.$package->image)}}" alt="{{$package->title}}">
+                                    </a>
 
-                                <div class="media-body" style="padding:0px 15px;">
-                                    <h4 class = "media-heading">{{str_limit($package->title,'20','....')}}</h4>
-                                    <p class="mb-0" style="font-weight: 300;text-align:left;">
-                                        {{str_limit($package->short_description,'100','.....')}}
-                                    </p>
-                                    <a href="{{route('package.show',[$package->slug])}}">Read More</a>
+                                    <div class="media-body" style="padding:0px 15px;">
+                                        <h4 class="media-heading">{{str_limit($package->title,'20','....')}}</h4>
+                                        <p class="mb-0" style="font-weight: 300;text-align:left;">
+                                            {{str_limit($package->short_description,'100','.....')}}
+                                        </p>
+                                        <a href="{{route('package.show',[$package->slug])}}">Read More</a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
 
-                    @endforeach
+                        @endforeach
                     </div>
 
                     <div class="pages">

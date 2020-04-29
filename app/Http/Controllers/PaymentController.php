@@ -171,7 +171,6 @@ class PaymentController extends Controller
         /** Get the payment ID before session clear **/
         $payment_id = Session::get('paypal_payment_id');
         $products = Session::get('cart');
-
         $shippingAddress = Session::get('address');
         $shippingAmount = Session::get('shipping_amount');
         $amount = Session::get('amount');

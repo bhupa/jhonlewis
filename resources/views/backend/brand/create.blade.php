@@ -1,5 +1,5 @@
 @extends('backend.app')
-@section('title','Add-Blog')
+@section('title','Add-Brand')
 @section('content')
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -11,7 +11,7 @@
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="{{route('blogs.index')}}"> View blog</a></li>
+                            <li class="breadcrumb-item"><a href="{{route('brand.index')}}"> View Brand</a></li>
                             <li class="breadcrumb-item active">Dashboard </li>
                         </ol>
                     </div><!-- /.col -->
@@ -27,35 +27,20 @@
                     <div class="col-8 ">
                         <div class="card card-primary">
                             <div class="card-header">
-                                <h3 class="card-title">Add Blog</h3>
+                                <h3 class="card-title">Add Brand</h3>
                             </div>
                             <!-- /.card-header -->
                             <!-- form start -->
-                            {!! Form::open(['route'=>'blogs.store','class'=>'needs-validation"','enctype'=>   "multipart/form-data"])!!}
+                            {!! Form::open(['route'=>'brand.store','class'=>'needs-validation"','enctype'=>   "multipart/form-data"])!!}
 
                             <div class="card-body">
                                     <div class="form-group">
-                                        <label for="exampleInputEmail1">Title</label>
-                                        <input type="text" class="form-control" name="title" placeholder="Enter Title" value="{{old('title')}}">
+                                        <label for="exampleInputEmail1">Name</label>
+                                        <input type="text" class="form-control" name="name" placeholder="Enter Name" value="{{old('name')}}">
 
-                                        @if ($errors->has('title'))
-                                            <span class="text-danger">{{ $errors->first('title') }}</span>
+                                        @if ($errors->has('name'))
+                                            <span class="text-danger">{{ $errors->first('name') }}</span>
                                         @endif </div>
-                                <div class="form-group">
-                                    <div class="col-md-12 mb-3">
-                                        <label for="validationCustom01">Category</label>
-                                        <select name="category_id" class="form-control">
-                                            <option value="0">Select Country</option>
-                                            @foreach($categories as $category)
-                                                <option value="{{$category->id}}">{{$category->name}}</option>
-                                            @endforeach
-                                        </select>
-                                        @if ($errors->has('category_id'))
-                                            <span class="text-danger">{{ $errors->first('category_id') }}</span>
-                                        @endif
-                                    </div>
-
-                                </div>
 
                                 <div class="form-group">
                                         <label for="exampleInputFile">Upload Image</label>
