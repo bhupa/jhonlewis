@@ -96,7 +96,7 @@
                 event.preventDefault();
                 $object = $(this);
                 var id  = $(this).attr('data-type');
-                var url = baseUrl+"/contacts/"+id;
+                var url = baseUrl+"/admin/contacts/"+id;
                 swal({
                     title: 'Are you sure?',
                     text: 'You will not be able to recover this !',
@@ -142,7 +142,7 @@
                 event.preventDefault();
                 $object = $(this);
                 var id  = $(this).attr('data-type');
-                var url = baseUrl+"/contacts/"+id;
+                var url = baseUrl+"/admin/contacts/"+id;
 
 
                         $.ajax({

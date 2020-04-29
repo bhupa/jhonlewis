@@ -58,7 +58,7 @@
 </head>
 <body>
 <!-- navbar-->
-<header class="header mb-5">
+<header class="header">
     <!--
     *** TOPBAR ***
     _________________________________________________________
@@ -83,7 +83,7 @@
                         <li class="list-inline-item"><a href="#" data-toggle="modal" data-target="#login-modal">Login</a></li>
                         <li class="list-inline-item"><a href="{{route('register')}}">Register</a></li>
                         @endif
-                        <li class="list-inline-item"><a href="{{route('contact-us.index')}}">Contact</a></li>
+                        <li class="list-inline-item"><a href="{{route('appointment.index')}}">Appointment</a></li>
                     </ul>
                 </div>
             </div>
