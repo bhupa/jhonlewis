@@ -226,6 +226,8 @@
     <div class="new-subscribe">
         <div class="container">
             <div class="subscribe-form">
+
+                <h3>Subscribe</h3>
                 <form action="">
                     <div class="form-group">
                         <div class="row">
@@ -255,7 +257,13 @@
         </div>
     </div>
     <div id="map">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d2423689.3111280794!2d-4.2326794027687615!3d53.61337019363916!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sjohn%20lewis%20opticians%20google%20map!5e0!3m2!1sen!2snp!4v1585282550402!5m2!1sen!2snp" width="100%" height="400" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+        <div class="google-map" style="background-image: url('{{asset('frontend/img/google.png')}}')">
+            <div class="container">
+                <div class="googl-map-inner" >
+
+                </div>
+            </div>
+        </div>
     </div>
         {{--<div id="hot">--}}
             {{--<div class="box py-4">--}}
