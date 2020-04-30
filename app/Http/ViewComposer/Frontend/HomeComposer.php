@@ -4,6 +4,7 @@ namespace App\Http\ViewComposer\Frontend;
 
 use App\Repositories\BannerRepository;
 use App\Repositories\BlogRepository;
+use App\Repositories\BrandRepository;
 use App\Repositories\ContentRepository;
 use App\Repositories\DoctorRepository;
 use App\Repositories\FrameCategoryRepository;
@@ -45,7 +46,7 @@ class HomeComposer
                                 PackageRepository $packages,DoctorRepository $doctor,
                                 SettingRepository $setting, TestimonialRepository $testimonial,
                                  ProductRepository $products, GlassesRepository $glasses,
-                                LensesRepository $lens, SunglassesRepository $brand,
+                                LensesRepository $lens, BrandRepository $brand,
                                 FrameRepository $frames, FrameCategoryRepository $frameCategory
     )
     {
@@ -76,7 +77,12 @@ class HomeComposer
     {
 
         $banners = $this->banner->where('is_active','1')->orderBy('created_at','desc')->take(4)->get();
-        $contents = $this->content->where('is_active','1')->get();
+        $about = $this->content->where('is_active','1')->where('slug','about-us')->first();
+        $eyecare = $this->content->where('is_active','1')->where('slug','eye-care')->first();
+        $contactlens = $this->content->where('is_active','1')->where('slug','contact-lens')->first();
+
+        $frame = $this->content->where('is_active','1')->where('slug','frame-brand')->first();
+
         $services  = $this->service->where('is_active','1')->orderBy('created_at','desc')->take(6)->get();
         $packages  = $this->packages->where('is_active','1')->orderBy('created_at','desc')->take(6)->get();
         $doctors  = $this->doctor->where('is_active','1')->orderBy('created_at','desc')->get();
@@ -90,7 +96,10 @@ class HomeComposer
         $brands = $this->brand->where('is_active','1')->orderBy('name')->get();
         $frames = $this->frames->where('is_active','1')->orderBy('name')->get();
         $view->withBanners($banners)
-             ->withContents($contents)
+            ->withEyecare($eyecare)
+            ->withContactlens($contactlens )
+            ->withFrame($frame)
+        ->withAbout($about)
             ->withPackages($packages)
              ->withServices($services)
             ->withDoctors($doctors)

@@ -76,6 +76,8 @@ class ProductComposer
         $lenses = $this->lens->where('is_active','1')->orderBy('name')->get();
         $brands = $this->brand->where('is_active','1')->orderBy('name')->get();
         $frames = $this->frames->where('is_active','1')->orderBy('name')->get();
+        $productlists = $this->products->where('is_active','1')->orderBy('created_at','desc')->take(6)->get();
+
         $view
             ->withSettings($settings)
             ->withProducts($products)
@@ -83,6 +85,7 @@ class ProductComposer
             ->withBrands($brands)
             ->withBrands($brands)
             ->withFrames($frames)
-            ->withGlasses($glasses);
+            ->withGlasses($glasses)
+        ->withProductlists($productlists);
     }
 }

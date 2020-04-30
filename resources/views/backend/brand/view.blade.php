@@ -10,9 +10,8 @@
                         <h1 class="m-0 text-dark">Dashboard</h1>
                         @if (\Session::has('success'))
                             <div class="alert alert-success">
-                                <ul>
-                                    <li>{!! \Session::get('success') !!}</li>
-                                </ul>
+
+                                    {!! \Session::get('success') !!}
                             </div>
 
                         @endif
@@ -49,7 +48,7 @@ s
                             @foreach($brands as $key=>$item)
                                 <tr id="item-{{$item->id}}">
                                     <td>{{$key+1}}</td>
-                                    <td>{{$item->title}}</td>
+                                    <td>{{$item->name}}</td>
                                     <td>
                                         <img style="width:100px;height:100px;" src="{{asset('storage/'.$item->image)}}" alt="{{$item->name}}">
                                     </td>
