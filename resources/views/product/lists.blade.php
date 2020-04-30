@@ -21,7 +21,7 @@
                                             </span>
 
                 </div>
-                <p>&nbsp;</p>
+                <p></p>
             </a>
         </div>
     @endforeach
