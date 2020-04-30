@@ -44,9 +44,9 @@
                             <div class="home-wrapper">
                                 <div class="home-image">
 
-                                    @if(!empty($about->slug))
-                                        @if(file_exists('storage/'.$about->image) && $about->image != '')
-                                            <img src="{{asset('storage/'.$about->image)}}" alt="{{$about->title}}">
+                                    @if(!empty($home->slug))
+                                        @if(file_exists('storage/'.$home->image) && $home->image != '')
+                                            <img src="{{asset('storage/'.$home->image)}}" alt="{{$home->title}}">
                                         @endif
                                     @endif
                                     
@@ -61,19 +61,18 @@
                                     </div>
 
                                     <div class="home-paragraph">
-                                        {!! $about->short_description !!}
+                                        {!! $home->short_description !!}
                                         </p>
                                     </div>
 
-                                    <a href="{{route('content.show',[$about->slug])}}" class="btn btn-about-us">
-                                        About Us
-                                    </a>
+
                                 </div>
                             </div>
                         </div>
                         
                     </div>
                 </div>
+
             </div>
         {{--<div id="advantages">--}}
             {{--<div class="box py-4">--}}
@@ -123,73 +122,134 @@
                 {{--</div>--}}
             {{--</div>--}}
             <div class="container">
-                <div class="contact-lens pt-5">
-                    @if(!empty($eyecare->slug))
-                    <div class="contact-lens-image-wrapper">
-                        @if(file_exists('storage/'.$eyecare->image) && $eyecare->image != '')
-                        <img src="{{asset('storage/'.$eyecare->image)}}" alt="{{$eyecare->title}}">
-                        @endif
-                        <h2 class="heading-title">{{$eyecare->title}}</h2>
-                    </div>
-                    <div class="contact-lens-content">
-                        <div class="contact-lens-content-wrapper">
-                            {!! $eyecare->short_description !!}
-                        </div>
+                <div class="contact-lens pb-5 pt-5">
+                    <div class="row">
+                        @if(!empty($about->slug))
 
-                    </div>
+                        <div class="col-lg-6">
+                            <div class="contact-lens-content">
+                                <h2 class="heading-title">{{$about->title}}</h2>
+                                <div class="contact-lens-content-wrapper">
+                                    {!! $about->short_description !!}
+                                </div>
 
-                    <div class="contact-lens-btn">
-                        <a href="{{route('content.show',[$eyecare->slug])}}" class="btn btn-about-us">
-                          More Info
-                        </a>
-                    </div>
-                        @endif
-                </div>
-
-                <hr>
-                <div class="contact-lens pt-5">
-                    @if(!empty($contactlens->slug))
-                        <div class="contact-lens-image-wrapper">
-                            @if(file_exists('storage/'.$contactlens->image) && $contactlens->image != '')
-                                <img src="{{asset('storage/'.$contactlens->image)}}" alt="{{$contactlens->title}}">
-                            @endif
-                            <h2 class="heading-title">{{$contactlens->title}}</h2>
-                        </div>
-                        <div class="contact-lens-content">
-                            <div class="contact-lens-content-wrapper">
-                                {!! $contactlens->short_description !!}
                             </div>
 
+                            <div class="contact-lens-btn">
+                                <a href="{{route('content.show',['about-us'])}}" class="btn btn-about-us">
+                                    More Info
+                                </a>
+                            </div>
                         </div>
+                            <div class="col-lg-6">
+                                <div class="contact-lens-image-wrapper">
+                                    @if(file_exists('storage/'.$about->image) && $about->image != '')
+                                        <img src="{{asset('storage/'.$about->image)}}" alt="{{$about->title}}">
+                                    @endif
 
-                        <div class="contact-lens-btn">
-                            <a href="{{route('about-us')}}" class="btn btn-about-us">
-                                More Info
-                            </a>
-                        </div>
+                                </div>
+                            </div>
+                    </div>
+
                     @endif
                 </div>
                 <hr>
-                <div class="contact-lens pt-5">
-                    @if(!empty($frame->slug))
-                        <div class="contact-lens-image-wrapper">
-                            @if(file_exists('storage/'.$frame->image) && $frame->image != '')
-                                <img src="{{asset('storage/'.$frame->image)}}" alt="{{$frame->title}}">
-                            @endif
-                            <h2 class="heading-title">{{$frame->title}}</h2>
-                        </div>
-                        <div class="contact-lens-content">
-                            <div class="contact-lens-content-wrapper">
-                                {!! $frame->short_description !!}
+                <div class="contact-lens pb-5 pt-5">
+                    <div class="row">
+                        @if(!empty($eyecare->slug))
+
+                            <div class="col-lg-6">
+                                <div class="contact-lens-image-wrapper">
+                                    @if(file_exists('storage/'.$eyecare->image) && $eyecare->image != '')
+                                        <img src="{{asset('storage/'.$eyecare->image)}}" alt="{{$eyecare->title}}">
+                                    @endif
+
+                                </div>
                             </div>
+                            <div class="col-lg-6">
+                                <div class="contact-lens-content">
+                                    <h2 class="heading-title">{{$eyecare->title}}</h2>
+                                    <div class="contact-lens-content-wrapper">
+                                        {!! $eyecare->short_description !!}
+                                    </div>
 
-                        </div>
+                                </div>
 
-                        <div class="contact-lens-btn">
-                            <a href="{{route('content.show',[$frame->slug])}}" class="btn btn-about-us">
-                                More Info
-                            </a>
-                        </div>
+                                <div class="contact-lens-btn">
+                                    <a href="{{route('content.show',['eye-care'])}}" class="btn btn-about-us">
+                                        More Info
+                                    </a>
+                                </div>
+                            </div>
+                    </div>
+
+                    @endif
+                </div>
+
+                    <hr>
+                <div class="contact-lens pb-5 pt-5">
+                    <div class="row">
+                        @if(!empty($contactlens->slug))
+
+
+                            <div class="col-lg-6">
+                                <div class="contact-lens-content">
+                                    <h2 class="heading-title">{{$contactlens->title}}</h2>
+                                    <div class="contact-lens-content-wrapper">
+                                        {!! $contactlens->short_description !!}
+                                    </div>
+
+                                </div>
+
+                                <div class="contact-lens-btn">
+                                    <a href="{{route('content.show',['contact-lens'])}}" class="btn btn-about-us">
+                                        More Info
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="contact-lens-image-wrapper">
+                                    @if(file_exists('storage/'.$contactlens->image) && $contactlens->image != '')
+                                        <img src="{{asset('storage/'.$contactlens->image)}}" alt="{{$contactlens->title}}">
+                                    @endif
+
+                                </div>
+                            </div>
+                    </div>
+
+                    @endif
+                </div>
+                <hr>
+                <div class="contact-lens pb-5 pt-5">
+                    <div class="row">
+                        @if(!empty($frame->slug))
+
+
+                            <div class="col-lg-6">
+                                <div class="contact-lens-image-wrapper">
+                                    @if(file_exists('storage/'.$frame->image) && $frame->image != '')
+                                        <img src="{{asset('storage/'.$frame->image)}}" alt="{{$frame->title}}">
+                                    @endif
+
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="contact-lens-content">
+                                    <h2 class="heading-title">{{$frame->title}}</h2>
+                                    <div class="contact-lens-content-wrapper">
+                                        {!! $frame->short_description !!}
+                                    </div>
+
+                                </div>
+
+                                <div class="contact-lens-btn">
+                                    <a href="{{route('content.show',['frame-brand'])}}" class="btn btn-about-us">
+                                        More Info
+                                    </a>
+                                </div>
+                            </div>
+                    </div>
+
                     @endif
                 </div>
 
@@ -390,9 +450,7 @@
         {{--<!----}}
         {{--*** BLOG HOMEPAGE ***--}}
         {{--_________________________________________________________--}}
-        {{---->--}}
-
-        {{--<div class="box text-center">--}}
+        {{-frame{{--<div class="box text-center">--}}
             {{--<div class="container">--}}
                 {{--<div class="col-md-12">--}}
                     {{--<h3 class="text-uppercase">Meet Our Doctors</h3>--}}

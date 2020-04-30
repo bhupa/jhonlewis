@@ -82,6 +82,7 @@ class HomeComposer
         $contactlens = $this->content->where('is_active','1')->where('slug','contact-lens')->first();
 
         $frame = $this->content->where('is_active','1')->where('slug','frame-brand')->first();
+        $home = $this->content->where('is_active','1')->where('slug','home')->first();
 
         $services  = $this->service->where('is_active','1')->orderBy('created_at','desc')->take(6)->get();
         $packages  = $this->packages->where('is_active','1')->orderBy('created_at','desc')->take(6)->get();
@@ -97,6 +98,7 @@ class HomeComposer
         $frames = $this->frames->where('is_active','1')->orderBy('name')->get();
         $view->withBanners($banners)
             ->withEyecare($eyecare)
+            ->withHome($home )
             ->withContactlens($contactlens )
             ->withFrame($frame)
         ->withAbout($about)

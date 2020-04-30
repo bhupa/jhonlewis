@@ -1,29 +1,39 @@
-$table->increments('id');
-    $table->integer('buyer_id')->unsigned();
-    $table->integer('product_id')->unsigned();
-    $table->integer('stock_id')->unsigned();
-    $table->string('piece');
-    $table->string('unit_price');
-    $table->string('price');
-    $table->string('discount')->nullable();
-    $table->string('discount_amount')->nullable();
-    $table->string('serial_numbr');
-    $table->boolean('dispatch')->nullable()->default(0);
-    $table->boolean('return')->nullable()->default(0);
-    $table->timestamps();
+<div id="home-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
 
-    $table->increments('id');
-    $table->string('serial_numbr');
-    $table->string('first_name');
-    $table->string('last_name');
-    $table->string('email');
-    $table->string('address');
-    $table->string('street');
-    $table->string('phone');
-    $table->boolean('received')->nullable()->default(0);
-    $table->timestamps();
+                <div class="home-wrapper">
+                    <div class="home-image">
 
-    $table->increments('id');
-    $table->string('serial_numbr');
-    $table->string('paypal_id');
-    $table->timestamps();
+                        @if(!empty($about->slug))
+                        @if(file_exists('storage/'.$about->image) && $about->image != '')
+                        <img src="{{asset('storage/'.$about->image)}}" alt="{{$about->title}}">
+                        @endif
+                        @endif
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="home-wrapper">
+                    <div class="home-wrapper-content">
+                        <div class="title">
+                            <h1>John Lewis Opticians</h1>
+                        </div>
+
+                        <div class="home-paragraph">
+                            {!! $about->short_description !!}
+                        </p>
+                    </div>
+
+                    <a href="{{route('content.show',[$about->slug])}}" class="btn btn-about-us">
+                        About Us
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+        </div>
