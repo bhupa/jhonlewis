@@ -15,7 +15,7 @@ class ServiceController extends Controller
     }
 
     public  function index(){
-        $services = $this->service->where('is_active','1')->orderBy('created_at','desc')->paginate(6);
+        $services = $this->service->where('is_active','1')->orderBy('title')->get();
         return view('services.index')->withServices($services);
     }
     public function show($slug){

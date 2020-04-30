@@ -43,7 +43,12 @@
                             
                             <div class="home-wrapper">
                                 <div class="home-image">
-                                    <img src="{{asset('frontend/img/home.jpeg')}}" alt="">
+
+                                    @if(!empty($about->slug))
+                                        @if(file_exists('storage/'.$about->image) && $about->image != '')
+                                            <img src="{{asset('storage/'.$about->image)}}" alt="{{$about->title}}">
+                                        @endif
+                                    @endif
                                     
                                 </div>
                             </div>
@@ -56,17 +61,11 @@
                                     </div>
 
                                     <div class="home-paragraph">
-                                        <p>
-                                            Established in 1986,  Welcome to John Lewis Opticians Woolwich, an Independent Opticians, Contact Lens Specialists and Dispensing Opticians at Woolwich, London SE18 7BZ
-
-                                        </p>
-                                        <p>
-                                            John Lewis Opticians Woolwich  has built a strong reputation for providing the highest standard of optical care and services, including sight tests, contact lens fittings, spectacles, sunglasses and prescription sunglasses.
-
+                                        {!! $about->short_description !!}
                                         </p>
                                     </div>
 
-                                    <a href="" class="btn btn-about-us">
+                                    <a href="{{route('content.show',[$about->slug])}}" class="btn btn-about-us">
                                         About Us
                                     </a>
                                 </div>
@@ -125,76 +124,73 @@
             {{--</div>--}}
             <div class="container">
                 <div class="contact-lens pt-5">
+                    @if(!empty($eyecare->slug))
                     <div class="contact-lens-image-wrapper">
-                        <img src="{{asset('frontend/img/contact-lens.png')}}" alt="eye-care">
-                        <h2 class="heading-title">Eye care</h2>
+                        @if(file_exists('storage/'.$eyecare->image) && $eyecare->image != '')
+                        <img src="{{asset('storage/'.$eyecare->image)}}" alt="{{$eyecare->title}}">
+                        @endif
+                        <h2 class="heading-title">{{$eyecare->title}}</h2>
                     </div>
                     <div class="contact-lens-content">
                         <div class="contact-lens-content-wrapper">
-                            <p>
-                                Whether you are looking for a more practical solution when playing sports, going out, travelling or are simply after a new look, contact lenses are a great choice for many people
-
-                                Being one of the largest contact lens suppliers in London, we have access to all the major brands and are able to offer trial fittings of the latest designs as soon as they are available. We can deliver your contact lenses directly to you same day or deliver it to you via post if you can not come into practice
-
-                            </p>
+                            {!! $eyecare->short_description !!}
                         </div>
 
                     </div>
 
                     <div class="contact-lens-btn">
-                        <a href="" class="btn btn-about-us">
+                        <a href="{{route('content.show',[$eyecare->slug])}}" class="btn btn-about-us">
                           More Info
                         </a>
                     </div>
+                        @endif
                 </div>
-                    <hr>
+
+                <hr>
                 <div class="contact-lens pt-5">
-                    <div class="contact-lens-image-wrapper">
-                        <img src="{{asset('frontend/img/contact-lens.png')}}" alt="eye-care">
-                        <h2 class="heading-title">contact lens
-                        </h2>
-                    </div>
-                    <div class="contact-lens-content">
-                        <div class="contact-lens-content-wrapper">
-                            <p>
-                                Whether you are looking for a more practical solution when playing sports, going out, travelling or are simply after a new look, contact lenses are a great choice for many people
+                    @if(!empty($contactlens->slug))
+                        <div class="contact-lens-image-wrapper">
+                            @if(file_exists('storage/'.$contactlens->image) && $contactlens->image != '')
+                                <img src="{{asset('storage/'.$contactlens->image)}}" alt="{{$contactlens->title}}">
+                            @endif
+                            <h2 class="heading-title">{{$contactlens->title}}</h2>
+                        </div>
+                        <div class="contact-lens-content">
+                            <div class="contact-lens-content-wrapper">
+                                {!! $contactlens->short_description !!}
+                            </div>
 
-                                Being one of the largest contact lens suppliers in London, we have access to all the major brands and are able to offer trial fittings of the latest designs as soon as they are available. We can deliver your contact lenses directly to you same day or deliver it to you via post if you can not come into practice
-
-                            </p>
                         </div>
 
-                    </div>
-
-                    <div class="contact-lens-btn">
-                        <a href="" class="btn btn-about-us">
-                            More Info
-                        </a>
-                    </div>
+                        <div class="contact-lens-btn">
+                            <a href="{{route('about-us')}}" class="btn btn-about-us">
+                                More Info
+                            </a>
+                        </div>
+                    @endif
                 </div>
+                <hr>
                 <div class="contact-lens pt-5">
-                    <div class="contact-lens-image-wrapper">
-                        <img src="{{asset('frontend/img/brand.png')}}" alt="eye-care">
-                        <h2 class="heading-title">Frame & Brand
-                        </h2>
-                    </div>
-                    <div class="contact-lens-content">
-                        <div class="contact-lens-content-wrapper">
-                            <p>
-                                Whether you are looking for a more practical solution when playing sports, going out, travelling or are simply after a new look, contact lenses are a great choice for many people
+                    @if(!empty($frame->slug))
+                        <div class="contact-lens-image-wrapper">
+                            @if(file_exists('storage/'.$frame->image) && $frame->image != '')
+                                <img src="{{asset('storage/'.$frame->image)}}" alt="{{$frame->title}}">
+                            @endif
+                            <h2 class="heading-title">{{$frame->title}}</h2>
+                        </div>
+                        <div class="contact-lens-content">
+                            <div class="contact-lens-content-wrapper">
+                                {!! $frame->short_description !!}
+                            </div>
 
-                                Being one of the largest contact lens suppliers in London, we have access to all the major brands and are able to offer trial fittings of the latest designs as soon as they are available. We can deliver your contact lenses directly to you same day or deliver it to you via post if you can not come into practice
-
-                            </p>
                         </div>
 
-                    </div>
-
-                    <div class="contact-lens-btn">
-                        <a href="" class="btn btn-about-us">
-                            More Info
-                        </a>
-                    </div>
+                        <div class="contact-lens-btn">
+                            <a href="{{route('content.show',[$frame->slug])}}" class="btn btn-about-us">
+                                More Info
+                            </a>
+                        </div>
+                    @endif
                 </div>
 
 

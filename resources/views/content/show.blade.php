@@ -1,5 +1,5 @@
 @extends('frontend.app')
-@section('title','Frame && Brand')
+@section('title', $content->title)
 @section('css_script')
 @endsection
 @section('content')
@@ -12,21 +12,19 @@
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
-                                <li aria-current="page" class="breadcrumb-item active">Brand</li>
-                                <li aria-current="page" class="breadcrumb-item active">{{$brand->name}}</li>
+                                <li aria-current="page" class="breadcrumb-item active">{{$content->title}}</li>
                             </ol>
                         </nav>
                     </div>
                     <div class="col-lg-4">
-                        @include('product.lists')
-
+                            @include('product.lists')
                     </div>
                     <div class="col-lg-8">
                         <div class="service-lists-content">
-                            <h4>{{$brand->name}}</h4>
+                            <h4>{{$content->title}}</h4>
                             <hr>
-                            <img src="{{asset('storage/'.$brand->image)}}" alt="{{$brand->name}}">
-                            {!! $brand->description !!}
+                            <img src="{{asset('storage/'.$content->image)}}" alt="{{$content->title}}">
+                            {!! $content->description !!}
 
                         </div>
                     </div>
