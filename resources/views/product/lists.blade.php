@@ -15,7 +15,9 @@
                                             <span class="product-content-span">
                                                 <p>Price: <span class="product-overlay-item">£ {{$product->price}}</span></p>
                                                 <p>Size: <span class="product-overlay-item">{{$product->size}}</span></p>
+                                                @if(!empty($product->brand_id))
                                                 <p>Brand: <span class="product-overlay-item">{{$product->brand->name}}</span></p>
+                                                @endif
                                             </span>
 
                 </div>
