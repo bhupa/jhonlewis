@@ -10,9 +10,7 @@
                         <h1 class="m-0 text-dark">Dashboard</h1>
                         @if (\Session::has('success'))
                             <div class="alert alert-success">
-                                <ul>
-                                    <li>{!! \Session::get('success') !!}</li>
-                                </ul>
+                                   {!! \Session::get('success') !!}
                             </div>
 
                         @endif
