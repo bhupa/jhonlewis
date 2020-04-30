@@ -68,8 +68,23 @@
             <div class="row">
                 <div class="col-lg-6 offer mb-3 mb-lg-0">
                     <ul class="top-header-address">
-                        <li><i class="fa fa-envelope-o fa-2x"></i>123, New Lenox Chicago, IL 60606</li>
-                        <li><i class="fa fa-phone fa-2x"></i>infoglass@gmail.com</li>
+
+                        <li>
+                            @foreach($settings as $setting)
+                            @if($setting->slug == 'email')
+                            <i class="fa fa-envelope-o fa-2x"></i>{{$setting->value}}
+                            @endif
+                            @endforeach
+                        </li>
+
+                        <li>
+                            @foreach($settings as $setting)
+                            @if($setting->slug == 'phone')
+                            <i class="fa fa-phone fa-2x"></i>{{$setting->value}}
+                            @endif
+                                @endforeach
+                        </li>
+
 
 
                     </ul>
