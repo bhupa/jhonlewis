@@ -61,7 +61,7 @@
                                     </div>
 
                                     <div class="home-paragraph">
-                                        {!! $home->short_description !!}
+                                      <p>  {!! $home->short_description !!}
                                         </p>
                                     </div>
 
