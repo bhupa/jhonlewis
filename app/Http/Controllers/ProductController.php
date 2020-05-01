@@ -15,7 +15,7 @@ class ProductController extends Controller
     {
         $this->product = $product;
         $this->productlists = $productlists;
-    5
+    }
 
 
     public function index(){
