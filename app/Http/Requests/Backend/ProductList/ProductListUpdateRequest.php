@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Backend\Brand;
+namespace App\Http\Requests\Backend\ProductList;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-
-class BrandUpdateRequest extends FormRequest
+class ProductListUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,11 +24,12 @@ class BrandUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'=>'required|unique:brand,name,'.$this->id,
-            'description'=>'required',
-            'short_description'=>'required',
+            'name'=>'required',
+            'model'=>'required',
+            'brand_id'=>'required|exists:brand,id',
             'image'=>'nullable|mimes:jpeg,png,jpg,svg',
-            'type'=>"in:eye-care,sunglass,kid-wear"
+            'short_description'=>'required|max:200',
+
 
         ];
     }

@@ -27,7 +27,8 @@ class BrandStoreRequest extends FormRequest
             'name'=>'required|unique:brand,name',
             'description'=>'required',
             'short_description'=>'required',
-            'image'=>'required|mimes:jpeg,png,jpg,svg'
+            'image'=>'required|mimes:jpeg,png,jpg,svg',
+            'type'=>"in:eye-care,sunglass,kid-wear"
         ];
     }
 }

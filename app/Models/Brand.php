@@ -28,7 +28,8 @@ class Brand extends Model
         'is_active',
         'image',
         'short_description',
-        'description'
+        'description',
+        'type'
     ];
 
     public function author(){

@@ -194,6 +194,7 @@ ul#menu li a, ul#menu li ul.sub-menu li a {
 /*Make the parent of sub-menu relative*/
 ul#menu li,.sub-menu li a {
     position: relative;
+    border-bottom:0px;
 }
 .sub-menu .nav-item .fa {
     position: absolute;
@@ -205,7 +206,7 @@ ul#menu li,.sub-menu li a {
 ul#menu li ul.sub-menu {
     display: none;
     position: absolute;
-    top: 81px;
+    top: 64px;
     left: 0;
     z-index: 111;
     background: #ffffff;
@@ -1234,5 +1235,87 @@ btn_upload {
     font-size: 20px;
     line-height: 33px;
     font-weight: 100;
+}
+.footer-address {
+    font-size: 20px;
+    font-weight: 300;
+    color: #ffffff;
+}
+.footer-address .fa {
+    font-size: 25px;
+    margin-right: 5px;
+}
+.navbar .navbar-nav>.nav-item>.nav-link {
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 700;
+    padding: 15px 7px !important;
+    color: #555;
+}
+.product-type-lists {
+    padding: 0px;
+    list-style: none;
+}
+.product-type-lists li {
+    padding: 5px 10px;
+    border-bottom: 1px solid;
+    position: relative;
+}
+.product-type-lists li a {
+    font-size: 22px;
+    font-weight: 400;
+    color: #0c0c0c;
+    position: relative;
+    display: block;
+    text-decoration: none;
+}
+.product-type-lists li a span:before{
+    font-family: FontAwesome;
+    content: "\f063";
+    display: inline-block;
+    padding-right: 3px;
+    vertical-align: middle;
+    font-weight: 900;
+}
+.product-type-lists li a span {
+    position: absolute;
+    right: 10px;
+
+}
+.product-type-lists .product-lists {
+    display: inline-block !important;
+    position: relative !important;
+    overflow: hidden;
+}
+.product-lists a  img{
+    width: 100%;
+    height: 200px;
+}
+.product-lists-overlay {
+    display: none;
+}
+.product-type-lists .product-lists a:hover .product-lists-overlay{
+    display: inline;
+    /*text-align: center;*/
+    position: absolute;
+    transition: background 0.2s ease, padding 0.8s linear;
+    background-color: rgba(31, 24, 24, 0.69);
+    color: #fff;
+    left: 14px;
+    height: 220px;
+    width: 292px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, .6);
+    top: 10px;
+}
+.product-lists-overlay  {
+    font-size: 18px;
+    font-weight: 200;
+   line-height: 21px;
+    text-align: justify;
+    padding: 11px;
+
+
+}
+
 }
 

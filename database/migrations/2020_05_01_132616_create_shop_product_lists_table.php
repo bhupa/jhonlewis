@@ -21,6 +21,7 @@ class CreateShopProductListsTable extends Migration
             $table->string('image');
             $table->boolean('is_active')->nullable()->default(0);
             $table->integer('created_by')->unsigned();
+            $table->string('short_description')->nullable()->default(null);
             $table->integer('brand_id')->unsigned();
             $table->softDeletes();
             $table->timestamps();

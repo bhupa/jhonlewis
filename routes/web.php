@@ -125,7 +125,7 @@ Route::group(['namespace'=>'Backend','middleware'=>'auth'], function() {
     // service router
     Route::resource('services','ServiceController');
     Route::post('/services/change-status','ServiceController@changeStatus')->name('services.change-status');
-
+    Route::post('services/sort', 'ServiceControllerController@sort')->name('services.sort');
 
     // content router
     Route::resource('contents','ContentController');
@@ -193,6 +193,9 @@ Route::group(['namespace'=>'Backend','middleware'=>'auth'], function() {
 
 
     });
+
+    Route::resource('product-lists','ProductListsController');
+    Route::post('/product-lists/change-status','ProductListsController@changeStatus')->name('product-lists.change-status');
 
     // color route
     Route::resource('colors','ColorController');

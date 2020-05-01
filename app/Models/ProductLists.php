@@ -2,7 +2,10 @@
 
 namespace App\Models;
 
+use App\Repositories\BrandRepository;
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class ProductLists extends Model
 {
@@ -27,18 +30,24 @@ class ProductLists extends Model
     protected $fillable =[
         'name',
         'created_by',
-        'tour_id',
+        'brand_id',
         'slug',
         'is_active',
         'image',
-        'model'
+        'model',
+        'short_description',
+        'type'
     ];
 
     public function author(){
-        return $this->belongsTo(User::class,'create_by');
+        return $this->belongsTo(User::class,'created_by');
     }
 
     public function category(){
         return $this->belongsTo(BlogCategorie::class,'category_id');
     }
+    public function brands(){
+        return $this->BelongsTo(Brand::class,'brand_id');
+    }
 }
+

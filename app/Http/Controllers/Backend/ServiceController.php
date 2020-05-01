@@ -22,6 +22,7 @@ class ServiceController extends Controller
     }
     public function index()
     {
+//        dd($this->services->latestFirst());
         $services = $this->services->orderBy('created_at','desc')->paginate('10000');
         return view('backend.service.view')->withservices($services);
     }
@@ -151,5 +152,12 @@ class ServiceController extends Controller
         $this->services->update($services->id, array('is_active' => $status));
         $updated = $this->services->find($request->get('id'));
         return response()->json(['status' => 'ok', 'message' => $message, 'service' => $updated], 200);
+    }
+    public function sort(Request $request){
+        $exploded = explode('&', str_replace('item[]=', '', $request->order));
+        for ($i=0; $i < count($exploded) ; $i++) {
+            $this->services->update($exploded[$i], ['display_order' => $i]);
+        }
+        return json_encode(['status' => 'success', 'value' => 'Successfully reordered.'], 200);
     }
 }
