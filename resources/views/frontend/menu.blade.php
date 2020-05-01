@@ -1,6 +1,5 @@
 <ul class="navbar-nav mr-auto desktop-menu" id="menu">
     <li class="nav-item"> <a href="{{route('home')}}" class="nav-link active">Home</a></li>
-    {{--<li class="nav-item"> <a href="{{route('home')}}" class="nav-link ">About Us</a></li>--}}
     <li class="nav-item"> <a href="{{route('service.index')}}" class="nav-link ">Services</a></li>
     <li class="nav-item"> <a href="{{route('content.show',['eye-care'])}}" class="nav-link ">Eye Care</a></li>
     <li class="nav-item"> <a href="javascript:void(0)" class="nav-link ">Frame and Brand</a>
@@ -14,7 +13,14 @@
     {{--<li class="nav-item"> <a href="{{route('home')}}" class="nav-link active">Frames</a></li>--}}
     <li class="nav-item"> <a href="{{route('shop.index')}}" class="nav-link ">Shop</a></li>
     <li class="nav-item"> <a href="{{route('content.show',['contact-lens'])}}" class="nav-link ">Contact Lens</a></li>
-    <li class="nav-item"> <a href="{{route('contact-us.index')}}" class="nav-link ">Contact Us</a></li>
+    <li class="nav-item"> <a href="javascript:void(0)" class="nav-link ">More</a>
+        <ul class="sub-menu">
+            <li class="nav-item"> <a href="{{route('content.show',['about-us'])}}" class="nav-link ">About Us</a></li>
+            <li class="nav-item"> <a href="{{route('contact-us.index')}}" class="nav-link ">Contact Us</a></li>
+
+        </ul>
+
+    </li>
     {{--<li class="nav-item"> <a href="{{route('package.index')}}" class="nav-link ">Packages</a></li>--}}
     {{--<li class="nav-item"><a href="javascript:void(0)" class="nav-link">Glasses</a>--}}
         {{--<ul class="sub-menu">--}}
