@@ -25,6 +25,19 @@
                 <div class="service-lists-content">
                     <h4>Product-Lists</h4>
                     <hr>
+                    <div class="row" id="frames-brand">
+                        <div class="col-lg-6">
+                            <div class="frame-wrapper-title">
+                                <h1>{{$frames->title}}</h1>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="frame-wrapper">
+                                {!! $frames->description !!}
+                            </div>
+                        </div>
+                    </div>
+
                    <ul class="product-type-lists">
                        <li>
                            <div class="top-level">

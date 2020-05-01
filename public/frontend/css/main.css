@@ -1317,5 +1317,11 @@ btn_upload {
 
 }
 
+#frames-brand  .frame-wrapper p {
+    font-size: 13px;
+}
+#frames-brand .frame-wrapper-title h1 {
+    margin-top: 100px;
+    font-size: 72px;
 }
 

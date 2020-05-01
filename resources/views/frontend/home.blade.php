@@ -243,7 +243,7 @@
                                 </div>
 
                                 <div class="contact-lens-btn">
-                                    <a href="{{route('content.show',['frame-brand'])}}" class="btn btn-about-us">
+                                    <a href="{{route('frame-brands')}}" class="btn btn-about-us">
                                         More Info
                                     </a>
                                 </div>
