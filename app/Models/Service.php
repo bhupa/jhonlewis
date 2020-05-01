@@ -30,6 +30,7 @@ class Service extends Model
         'description',
         'image',
         'short_description',
+        'display_order'
     ];
 
     public function author(){

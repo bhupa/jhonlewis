@@ -11,6 +11,7 @@
         </ul>
     </li>
     {{--<li class="nav-item"> <a href="{{route('home')}}" class="nav-link active">Frames</a></li>--}}
+    <li class="nav-item"> <a href="{{route('product.index')}}" class="nav-link ">Products</a></li>
     <li class="nav-item"> <a href="{{route('shop.index')}}" class="nav-link ">Shop</a></li>
     <li class="nav-item"> <a href="{{route('content.show',['contact-lens'])}}" class="nav-link ">Contact Lens</a></li>
     <li class="nav-item"> <a href="javascript:void(0)" class="nav-link ">More</a>

@@ -1,5 +1,5 @@
 @extends('backend.app')
-@section('title','Edit-Brand')
+@section('title','Add-Product-Lists')
 @section('content')
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -11,7 +11,7 @@
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="{{route('brand.create')}}"> Add Brand</a></li>
+                            <li class="breadcrumb-item"><a href="{{route('product-lists.index')}}"> View Product-List Lists</a></li>
                             <li class="breadcrumb-item active">Dashboard </li>
                         </ol>
                     </div><!-- /.col -->
@@ -27,20 +27,59 @@
                     <div class="col-8 ">
                         <div class="card card-primary">
                             <div class="card-header">
-                                <h3 class="card-title">Edit Brand</h3>
+                                <h3 class="card-title">Add Product-List Lists</h3>
                             </div>
                             <!-- /.card-header -->
                             <!-- form start -->
-                            {!! Form::model($brand,['route'=>['brand.update',$brand->id],'class'=>'needs-validation','method'=>'PUT','enctype'=>   "multipart/form-data"])!!}
+                            {!! Form::open(['route'=>'product-lists.store','class'=>'needs-validation"','enctype'=>   "multipart/form-data"])!!}
 
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Name</label>
-                                    <input type="text" class="form-control" name="name" placeholder="Enter Name" value="{{$brand->name}}">
+                                    <input type="text" class="form-control" name="name" placeholder="Enter Name" value="{{old('name')}}">
 
                                     @if ($errors->has('name'))
                                         <span class="text-danger">{{ $errors->first('name') }}</span>
                                     @endif
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Model</label>
+                                    <input type="text" class="form-control" name="model" placeholder="Enter Model" value="{{old('model')}}">
+
+                                    @if ($errors->has('model'))
+                                        <span class="text-danger">{{ $errors->first('model') }}</span>
+                                    @endif
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-12 mb-3">
+                                        <label for="validationCustom01">Brand</label>
+                                        <select name="brand_id" class="form-control">
+                                            <option value="0">Select Country</option>
+                                            @foreach($brands as $brand)
+                                                <option value="{{$brand->id}}"{{(old('brand_id')== $brand->id) ? 'selected':''}}>{{$brand->name}}</option>
+                                            @endforeach
+                                        </select>
+                                        @if ($errors->has('brand_id'))
+                                            <span class="text-danger">{{ $errors->first('brand_id') }}</span>
+                                        @endif
+                                    </div>
+
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-12 mb-3">
+                                        <label for="validationCustom01">Type</label>
+                                        <select name="type" class="form-control">
+                                            <option value="0">Select Type</option>
+                                            <option value="eye-care" {{(old('type')== 'eye-care')? 'selected':''}}>Eye Care</option>
+                                            <option value="kid-wear" {{(old('type')== 'kid-wear')? 'selected':''}}>kid-wear</option>
+                                            <option value="sunglass" {{(old('type')== 'sunglass')? 'selected':''}}>sunglass</option>
+
+                                        </select>
+                                        @if ($errors->has('type'))
+                                            <span class="text-danger">{{ $errors->first('type') }}</span>
+                                        @endif
+                                    </div>
+
                                 </div>
 
                                 <div class="form-group">
@@ -53,49 +92,40 @@
                                     @if ($errors->has('image'))
                                         <span class="text-danger">{{ $errors->first('image') }}</span>
                                     @endif
-                                    <div class="cover edit-cover" >
+                                    <div class="cover">
                                         <a href="#">
-                                            @if(file_exists('storage/'.$brand->image) && $brand->image != '')
-                                                <img id="edit-logo-output"
-                                                     src="{{asset('storage/'.$brand->image)}}"
-                                                     title="{{$brand->name}}"
-                                                     data-toggle="tooltip"/>
-
-                                            @endif
 
                                             <img id="output" title="click to delete image" data-toggle="tooltip">
 
                                         </a>
-                                        <div class="details edit-delete-img">
+                                        <div class="details">
                                             <a href="javascript:void(0)" id="clear-image"><i class="fa fa-trash"></i></a>
                                         </div>
 
                                     </div>
                                 </div>
-
                                 <div class="form-group">
                                     <label for="exampleInputFile">Short Description</label>
-                                    {{Form::textarea('short_description',$brand->short_description,['class'=>'form-control','id'=>'short_description'])}}
-                                    {{--                                        <textarea class="form-control" rows="3" placeholder="Enter ..." style="margin-top: 0px; margin-bottom: 0px; height: 115px;"></textarea>--}}
+                                    {{Form::textarea('short_description',null,['class'=>'form-control','id'=>'short_description'])}}
+                                                                            {{--<textarea class="form-control" rows="3" placeholder="Enter ..." style="margin-top: 0px; margin-bottom: 0px; height: 115px;"></textarea>--}}
                                     @if ($errors->has('short_description'))
                                         <span class="text-danger">{{ $errors->first('short_description') }}</span>
                                     @endif
                                 </div>
-                                <div class="form-group">
-                                    <label for="exampleInputFile">Description</label>
-                                    {{Form::textarea('description',$brand->description,['class'=>'form-control editor','id'=>'description'])}}
+                                {{--<div class="form-group">--}}
+                                    {{--<label for="exampleInputFile">Description</label>--}}
+                                    {{--{{Form::textarea('description',null,['class'=>'form-control editor','id'=>'description'])}}--}}
                                     {{--                                        <textarea class="form-control" rows="3" placeholder="Enter ..." style="margin-top: 0px; margin-bottom: 0px; height: 115px;"></textarea>--}}
-                                    @if ($errors->has('description'))
-                                        <span class="text-danger">{{ $errors->first('description') }}</span>
-                                    @endif
-                                </div>
+                                    {{--@if ($errors->has('short_description'))--}}
+                                        {{--<span class="text-danger">{{ $errors->first('short_description') }}</span>--}}
+                                    {{--@endif--}}
+                                {{--</div>--}}
                             </div>
                             <!-- /.card-body -->
 
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </div>
-                            {{Form::hidden('id',$brand->id)}}
                             {!! Form::close() !!}
                         </div>
                     </div>
@@ -119,8 +149,6 @@
 
                 readImgUrlAndPreview(this);
                 function readImgUrlAndPreview(input){
-                    $('#edit-logo-output').css('display','none');
-                    $('.edit-delete-img').css('display','block');
                     $('#output').css('display','block');
                     $('.cover').css('display','block');
                     if (input.files && input.files[0]) {
@@ -134,11 +162,19 @@
             })
 
             $('#clear-image').on('click',function(){
-                $('#edit-logo-output').css('display','block');;
-                $('.edit-delete-img').css('display','none');
+                var logo = $('#upload-image-details').attr('data-logo');
+
+                if(logo == 1){
+                    $('#upload-image-details').attr('data-image','0');
+                    $( '#upload-image-details').css('margin-bottom','200px');
+                }
+                else{
+                    $('#upload-image-details').attr('data-image','0');
+                    $( '#upload-image-details').css('margin-bottom','0px');
+                }
                 $('#output').css('display','none');
-
-
+                $('.cover').css('display','none');
+                $('#output').attr('src', '');
             })
 
 

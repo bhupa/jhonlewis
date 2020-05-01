@@ -193,6 +193,31 @@
                     });
 
 
+                    $('#sortable').sortable({
+                        axis: 'y',
+                        update: function(event, ui){
+                            var data = $(this).sortable('serialize');
+                            var url = "{{ url('services/sort') }}";
+                            $.ajax({
+                                type: "POST",
+                                url: url,
+                                datatype: "json",
+                                data: {order: data, _token: '{!! csrf_token() !!}'},
+                                success: function(data){
+                                    console.log(data);
+                                    var obj = jQuery.parseJSON(data);
+                                    swal({
+                                        title: "Success!",
+                                        text: "Event has been sorted.",
+                                        imageUrl: "{{ asset('backend') }}/thumbs-up.png",
+                                        timer: 2000,
+                                        showConfirmButton: false
+                                    });
+                                }
+                            });
+                        }
+                    });
+
 
 
 

@@ -135,6 +135,15 @@
 
             </li>
             <li class="nav-item has-treeview">
+                <a href="{{route('product-lists.index')}}" class="nav-link">
+                    <i class="nav-icon fa fa-box"></i>
+                    <p>
+                        Product Lists
+                    </p>
+                </a>
+
+            </li>
+            <li class="nav-item has-treeview">
                 <a href="javascript:void(0)" class="nav-link">
                     <i class="nav-icon fas fa-chart-pie"></i>
                     <p>

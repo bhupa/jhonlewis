@@ -450,7 +450,7 @@
         {{--<!----}}
         {{--*** BLOG HOMEPAGE ***--}}
         {{--_________________________________________________________--}}
-        {{-frame{{--<div class="box text-center">--}}
+        {{--{{-frame--}}{{--<div class="box text-center">--}}
             {{--<div class="container">--}}
                 {{--<div class="col-md-12">--}}
                     {{--<h3 class="text-uppercase">Meet Our Doctors</h3>--}}
