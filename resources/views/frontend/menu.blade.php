@@ -2,16 +2,16 @@
     <li class="nav-item"> <a href="{{route('home')}}" class="nav-link active">Home</a></li>
     <li class="nav-item"> <a href="{{route('service.index')}}" class="nav-link ">Services</a></li>
     <li class="nav-item"> <a href="{{route('content.show',['eye-care'])}}" class="nav-link ">Eye Care</a></li>
-    <li class="nav-item"> <a href="javascript:void(0)" class="nav-link ">Frame and Brand</a>
-        <ul class="sub-menu">
-            @foreach($brands as $brand)
-                <li><a href="{{route('brands.show',[$brand->slug])}}">{{$brand->name}}</a></li>
+    {{--<li class="nav-item"> <a href="javascript:void(0)" class="nav-link ">Frame and Brand</a>--}}
+        {{--<ul class="sub-menu">--}}
+            {{--@foreach($brands as $brand)--}}
+                {{--<li><a href="{{route('brands.show',[$brand->slug])}}">{{$brand->name}}</a></li>--}}
 
-            @endforeach
-        </ul>
-    </li>
+            {{--@endforeach--}}
+        {{--</ul>--}}
+    {{--</li>--}}
     {{--<li class="nav-item"> <a href="{{route('home')}}" class="nav-link active">Frames</a></li>--}}
-    <li class="nav-item"> <a href="{{route('product.index')}}" class="nav-link ">Products</a></li>
+    <li class="nav-item"> <a href="{{route('frame-brands')}}" class="nav-link ">Frame and Brand</a></li>
     <li class="nav-item"> <a href="{{route('shop.index')}}" class="nav-link ">Shop</a></li>
     <li class="nav-item"> <a href="{{route('content.show',['contact-lens'])}}" class="nav-link ">Contact Lens</a></li>
     <li class="nav-item"> <a href="javascript:void(0)" class="nav-link ">More</a>

@@ -72,7 +72,9 @@ Route::resource('/package','PackageController');
 Route::resource('/blog','BlogController');
 Route::resource('/service','ServiceController');
 Route::resource('/testimonial','TestimonialController');
+Route::get('frame-brands','ProductController@index')->name('frame-brands');
 Route::resource('/product','ProductController');
+
 Route::resource('/glass','GlassController');
 Route::resource('/lens','LensController');
 Route::resource('/brands','BrandController');
