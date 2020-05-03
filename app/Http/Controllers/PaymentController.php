@@ -253,7 +253,7 @@ class PaymentController extends Controller
 
 
         $transaction['paypal_id']=$payment_id;
-        $transaction['order_id']= $orderItem->id;
+        $transaction['order_id']= $orderlatest ->id;
         $this->transaction->create($transaction);
         /** clear the session payment ID **/
         Session::forget('cart');
