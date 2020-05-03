@@ -19,9 +19,8 @@ class ShopController extends Controller
 
     public  function index() {
         $products = $this->product->where('is_active','1')->orderBy('created_at','desc')->paginate(20);
-        $frames = $this->content->where('is_active','1')->where('slug','frame-brand')->first();
 
-        return view('shop.index')->withProducts($products)->withFrames($frames);
+        return view('shop.index')->withProducts($products);
     }
     public function getSingle(){
         return view('shop.show');

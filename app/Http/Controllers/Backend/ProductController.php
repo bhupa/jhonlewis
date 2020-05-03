@@ -6,22 +6,26 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Requests\Backend\Package\PackageStoreRequest;
 use App\Http\Requests\Backend\Product\ProductStoreRequest;
 use App\Http\Requests\Backend\Product\ProductUpdateRequest;
+use App\Repositories\BrandRepository;
 use App\Repositories\FrameCategoryRepository;
 use App\Repositories\FrameRepository;
 use App\Repositories\ProductRepository;
+use App\Repositories\StockRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use Auth;
 class ProductController extends Controller
 {
-    protected $products, $category,$frame;
+    protected $products, $category,$frame,$brand,$stock;
 
-    public function __construct(ProductRepository $products,FrameRepository $frame,FrameCategoryRepository $category)
+    public function __construct(StockRepository $stock,ProductRepository $products,FrameRepository $frame,FrameCategoryRepository $category,BrandRepository $brand)
     {
         $this->products = $products;
         $this->frame = $frame;
         $this->category = $category;
+        $this->brand = $brand;
+        $this->stock = $stock;
         $this->upload_path = DIRECTORY_SEPARATOR.'products'.DIRECTORY_SEPARATOR;
         $this->storage = Storage::disk('public');
 
@@ -39,7 +43,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('backend.product.create');
+        $brands = $this->brand->where('is_active','1')->orderBy('name')->get();
+        return view('backend.product.create')->withBrands($brands);
     }
 
     /**
@@ -63,6 +68,7 @@ class ProductController extends Controller
         $data['is_active'] =(isset($request['is_active'])) ? 1 : 0;
         $data['shipping'] =(isset($request['shipping'])) ? 1 : 0;
         $data['created_by'] = Auth::user()->id;
+        $data['description'] = 'this is nulll';
         $data['product_number'] = $this->batch();
         if($this->products->create($data)){
 
@@ -97,8 +103,9 @@ class ProductController extends Controller
 
 
         $products = $this->products->where('slug',$slug)->first();
+        $brands = $this->brand->where('is_active','1')->orderBy('name')->get();
 
-        return view('backend.product.edit')->withproducts($products );
+        return view('backend.product.edit')->withproducts($products )->withBrands($brands);
     }
 
     /**
@@ -139,6 +146,8 @@ class ProductController extends Controller
     public function destroy($id)
     {
         $products = $this->products->find($id);
+
+        $this->stock->where('product_id',$products->id)->delete();
 
         if($this->products->destroy($products->id)){
 

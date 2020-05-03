@@ -42,6 +42,8 @@ class Product extends Model
         'size',
         'style',
         'shipping',
+        'brand_id',
+
 
 
     ];
@@ -65,9 +67,10 @@ class Product extends Model
         return $this->belongsTo(Glasses::class,'glass_id');
     }
     public function brand(){
-        return $this->belongsTo(Sunglasses::class,'sunglass_id');
+        return $this->belongsTo(Brand::class,'brand_id');
     }
     public function lenses(){
         return $this->belongsTo(Lenses::class,'lens_id');
     }
+
 }

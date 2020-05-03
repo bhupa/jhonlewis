@@ -1,9 +1,45 @@
 <ul class="navbar-nav mr-auto desktop-menu" id="menu">
-    <li class="nav-item"> <a href="{{route('home')}}" class="nav-link active">Home</a></li>
-    <li class="nav-item"> <a href="{{route('content.show',['about-us'])}}" class="nav-link ">About Us</a></li>
 
-    <li class="nav-item"> <a href="{{route('service.index')}}" class="nav-link ">Services</a></li>
-    <li class="nav-item"> <a href="{{route('content.show',['eye-care'])}}" class="nav-link ">Eye Care</a></li>
+    <li class="nav-item"> <a href="{{route('home')}}" class="nav-link active">Home</a></li>
+    @foreach($header as $content)
+        @if($content->child->isEmpty() && $content->parent_id == '' )
+
+
+
+            <li class="nav-item">
+                <a href="{{route('content.show',[$content->slug])}}" class="nav-link">{{$content->title}}</a>
+            </li>
+
+        @else
+            @if($content->child->isNotEmpty() && $content->parent_id == '' )
+                <?php $sub_menus = $content->child()->pluck('slug')->toArray();?>
+
+                <li class="nav-item">
+                    <a class="nav-link">{{$content->title}}
+                        {{--<i class="fas fa-chevron-down "></i>--}}
+                    </a>
+                    <ul class="sub-menu">
+                        {{--<li><a href="#">Trekking</a></li>--}}
+                        @foreach($content->child as $firstchild)
+
+
+                            <li class="nav-item"><a href="{{route('content.show',[$firstchild->slug])}}">{{$firstchild->title}}</a></li>
+
+
+                        @endforeach
+                        @if($content->slug =='company')
+                            <li><a href="{{route('contact-us.index')}}">Contact Us</a></li>
+                        @endif
+                    </ul>
+                </li>
+            @endif
+        @endif
+    @endforeach
+
+    {{--<li class="nav-item"> <a href="{{route('content.show',['about-us'])}}" class="nav-link ">About Us</a></li>--}}
+
+    {{--<li class="nav-item"> <a href="{{route('service.index')}}" class="nav-link ">Services</a></li>--}}
+    {{--<li class="nav-item"> <a href="{{route('content.show',['eye-care'])}}" class="nav-link ">Eye Care</a></li>--}}
     {{--<li class="nav-item"> <a href="javascript:void(0)" class="nav-link ">Frame and Brand</a>--}}
         {{--<ul class="sub-menu">--}}
             {{--@foreach($brands as $brand)--}}
@@ -13,9 +49,9 @@
         {{--</ul>--}}
     {{--</li>--}}
     {{--<li class="nav-item"> <a href="{{route('home')}}" class="nav-link active">Frames</a></li>--}}
-    <li class="nav-item"> <a href="{{route('frame-brands')}}" class="nav-link ">Frame and Brand</a></li>
+    {{--<li class="nav-item"> <a href="{{route('frame-brands')}}" class="nav-link ">Frame and Brand</a></li>--}}
     <li class="nav-item"> <a href="{{route('shop.index')}}" class="nav-link ">Shop</a></li>
-    <li class="nav-item"> <a href="{{route('content.show',['contact-lens'])}}" class="nav-link ">Contact Lens</a></li>
+   {{--l <li class="nav-item"> <a href="{{route('content.show',['contact-lens'])}}" class="nav-link ">Contact Lens</a></li>--}}
     <li class="nav-item"> <a href="{{route('contact-us.index')}}" class="nav-link ">Contact Us</a></li>
 
     {{--<li class="nav-item"> <a href="javascript:void(0)" class="nav-link ">More</a>--}}

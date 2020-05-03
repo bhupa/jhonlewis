@@ -42,99 +42,122 @@
                                         <span class="text-danger">{{ $errors->first('title') }}</span>
                                     @endif </div>
 
-                                <div class="form-group">
-                                    <div class="row">
-                                        <div class="col-md-6 mb-3">
-                                            <label for="validationCustom01">Frame </label>
-                                            <select name="frame_id" class="form-control" id="frame_id" data-type="{{$products->id}}">
-                                                <option value="">Select Frame </option>
+                                {{--<div class="form-group">--}}
+                                    {{--<div class="row">--}}
+                                        {{--<div class="col-md-6 mb-3">--}}
+                                            {{--<label for="validationCustom01">Frame </label>--}}
+                                            {{--<select name="frame_id" class="form-control" id="frame_id" data-type="{{$products->id}}">--}}
+                                                {{--<option value="">Select Frame </option>--}}
 
-                                                @foreach($frames as $category)
-                                                    <option value="{{$category->id}}" @if($products->frame_id == $category->id) selected="selected" @endif>{{$category->name}}</option>
-                                                @endforeach
-                                            </select>
-                                            @if ($errors->has('frame_id'))
-                                                <span class="text-danger">{{ $errors->first('frame_id') }}</span>
-                                            @endif
-                                        </div>
+                                                {{--@foreach($frames as $category)--}}
+                                                    {{--<option value="{{$category->id}}" @if($products->frame_id == $category->id) selected="selected" @endif>{{$category->name}}</option>--}}
+                                                {{--@endforeach--}}
+                                            {{--</select>--}}
+                                            {{--@if ($errors->has('frame_id'))--}}
+                                                {{--<span class="text-danger">{{ $errors->first('frame_id') }}</span>--}}
+                                            {{--@endif--}}
+                                        {{--</div>--}}
 
-                                        <div class="col-md-6 mb-3">
-                                            <label for="validationCustom01">Frame Category</label>
-                                            <select name="frame_category_id"  class="form-control"id="frame_category_id">
-                                            </select>
-                                            @if ($errors->has('frame_category_id'))
-                                                <span class="text-danger">{{ $errors->first('frame_category_id') }}</span>
-                                            @endif
-                                        </div>
+                                        {{--<div class="col-md-6 mb-3">--}}
+                                            {{--<label for="validationCustom01">Frame Category</label>--}}
+                                            {{--<select name="frame_category_id"  class="form-control"id="frame_category_id">--}}
+                                            {{--</select>--}}
+                                            {{--@if ($errors->has('frame_category_id'))--}}
+                                                {{--<span class="text-danger">{{ $errors->first('frame_category_id') }}</span>--}}
+                                            {{--@endif--}}
+                                        {{--</div>--}}
+                                    {{--</div>--}}
+
+
+                                {{--</div>--}}
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="validationCustom01">Brand </label>
+                                        <select name="brand_id" class="form-control" id="frame_id">
+                                            <option value="">Select Brand </option>
+
+                                            @foreach($brands as $category)
+                                                <option value="{{$category->id}}" @if($products->brand_id == $category->id) selected="selected" @endif>{{$category->name}}</option>
+                                            @endforeach
+                                        </select>
+                                        @if ($errors->has('brand_id'))
+                                            <span class="text-danger">{{ $errors->first('brand_id') }}</span>
+                                        @endif
                                     </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="exampleInputEmail1">Model</label>
+                                        <input type="text" class="form-control" name="shape" placeholder="Enter Model" value="{{$products->shape}}">
 
-
-                                </div>
-                                <div class="form-group">
-                                    <div class="row">
-                                        <div class="col-md-6 mb-3">
-                                            <label for="validationCustom01">Glasses</label>
-                                            <select name="glass_id" class="form-control">
-                                                <option value="">Select Glass</option>
-
-                                                @foreach($glasses as $category)
-                                                    <option value="{{$category->id}}" @if($products->glass_id == $category->id) selected="selected" @endif>{{$category->name}}</option>
-                                                @endforeach
-                                            </select>
-                                            @if ($errors->has('glass_id'))
-                                                <span class="text-danger">{{ $errors->first('cglassid') }}</span>
-                                            @endif
-                                        </div>
-
-                                        <div class="col-md-6 mb-3">
-                                            <label for="validationCustom01">Sunglasses</label>
-                                            <select name="sunglass_id" class="form-control">
-                                                <option value="">Select Sunglass</option>
-
-                                                @foreach($sunglasses as $category)
-                                                    <option value="{{$category->id}}"@if($products->sunglass_id == $category->id) selected="selected" @endif>{{$category->name}}</option>
-                                                @endforeach
-                                            </select>
-                                            @if ($errors->has('sunglass_id'))
-                                                <span class="text-danger">{{ $errors->first('sunglass_id') }}</span>
-                                            @endif
-                                        </div>
-
+                                        @if ($errors->has('shape'))
+                                            <span class="text-danger">{{ $errors->first('shape') }}</span>
+                                        @endif
                                     </div>
-
                                 </div>
-                                <div class="form-group">
-                                    <div class="row">
-                                        <div class="col-md-6 mb-3">
-                                            <label for="validationCustom01">Lense</label>
-                                            <select name="lens_id" class="form-control">
-                                                <option value="">Select Lense</option>
+                                {{--<div class="form-group">--}}
+                                    {{--<div class="row">--}}
+                                        {{--<div class="col-md-6 mb-3">--}}
+                                            {{--<label for="validationCustom01">Glasses</label>--}}
+                                            {{--<select name="glass_id" class="form-control">--}}
+                                                {{--<option value="">Select Glass</option>--}}
 
-                                                @foreach($lenses as $category)
-                                                    <option value="{{$category->id}}" @if($products->lens_id == $category->id) selected="selected" @endif>{{$category->name}}</option>
-                                                @endforeach
-                                            </select>
-                                            @if ($errors->has('lens_id'))
-                                                <span class="text-danger">{{ $errors->first('lens_id') }}</span>
-                                            @endif
-                                        </div>
+                                                {{--@foreach($glasses as $category)--}}
+                                                    {{--<option value="{{$category->id}}" @if($products->glass_id == $category->id) selected="selected" @endif>{{$category->name}}</option>--}}
+                                                {{--@endforeach--}}
+                                            {{--</select>--}}
+                                            {{--@if ($errors->has('glass_id'))--}}
+                                                {{--<span class="text-danger">{{ $errors->first('cglassid') }}</span>--}}
+                                            {{--@endif--}}
+                                        {{--</div>--}}
 
-                                        <div class="col-md-6 mb-3">
-                                            <label for="validationCustom01">Discount</label>
-                                            <select name="discount_id" class="form-control">
-                                                <option value="">Select Discount</option>
+                                        {{--<div class="col-md-6 mb-3">--}}
+                                            {{--<label for="validationCustom01">Sunglasses</label>--}}
+                                            {{--<select name="sunglass_id" class="form-control">--}}
+                                                {{--<option value="">Select Sunglass</option>--}}
 
-                                                @foreach($discounts as $category)
-                                                    <option value="{{$category->id}}" @if($products->discount_id == $category->id) selected="selected" @endif>{{$category->title}}</option>
-                                                @endforeach
-                                            </select>
-                                            @if ($errors->has('discount_id'))
-                                                <span class="text-danger">{{ $errors->first('discount_id') }}</span>
-                                            @endif
-                                        </div>
-                                    </div>
+                                                {{--@foreach($sunglasses as $category)--}}
+                                                    {{--<option value="{{$category->id}}"@if($products->sunglass_id == $category->id) selected="selected" @endif>{{$category->name}}</option>--}}
+                                                {{--@endforeach--}}
+                                            {{--</select>--}}
+                                            {{--@if ($errors->has('sunglass_id'))--}}
+                                                {{--<span class="text-danger">{{ $errors->first('sunglass_id') }}</span>--}}
+                                            {{--@endif--}}
+                                        {{--</div>--}}
 
-                                </div>
+                                    {{--</div>--}}
+
+                                {{--</div>--}}
+                                {{--<div class="form-group">--}}
+                                    {{--<div class="row">--}}
+                                        {{--<div class="col-md-6 mb-3">--}}
+                                            {{--<label for="validationCustom01">Lense</label>--}}
+                                            {{--<select name="lens_id" class="form-control">--}}
+                                                {{--<option value="">Select Lense</option>--}}
+
+                                                {{--@foreach($lenses as $category)--}}
+                                                    {{--<option value="{{$category->id}}" @if($products->lens_id == $category->id) selected="selected" @endif>{{$category->name}}</option>--}}
+                                                {{--@endforeach--}}
+                                            {{--</select>--}}
+                                            {{--@if ($errors->has('lens_id'))--}}
+                                                {{--<span class="text-danger">{{ $errors->first('lens_id') }}</span>--}}
+                                            {{--@endif--}}
+                                        {{--</div>--}}
+
+                                        {{--<div class="col-md-6 mb-3">--}}
+                                            {{--<label for="validationCustom01">Discount</label>--}}
+                                            {{--<select name="discount_id" class="form-control">--}}
+                                                {{--<option value="">Select Discount</option>--}}
+
+                                                {{--@foreach($discounts as $category)--}}
+                                                    {{--<option value="{{$category->id}}" @if($products->discount_id == $category->id) selected="selected" @endif>{{$category->title}}</option>--}}
+                                                {{--@endforeach--}}
+                                            {{--</select>--}}
+                                            {{--@if ($errors->has('discount_id'))--}}
+                                                {{--<span class="text-danger">{{ $errors->first('discount_id') }}</span>--}}
+                                            {{--@endif--}}
+                                        {{--</div>--}}
+                                    {{--</div>--}}
+
+                                {{--</div>--}}
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-md-6 mb-3">
@@ -158,13 +181,13 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="row">
-                                        <div class="col-md-6 mb-3">
-                                            <label for="validationCustom01">Shape</label>
-                                            <input type="text" class="form-control" name="shape" placeholder="Shape" value="{{ $products->shape}}">
-                                            @if ($errors->has('shape'))
-                                                <span class="text-danger">{{ $errors->first('shape') }}</span>
-                                            @endif
-                                        </div>
+                                        {{--<div class="col-md-6 mb-3">--}}
+                                            {{--<label for="validationCustom01">Shape</label>--}}
+                                            {{--<input type="text" class="form-control" name="shape" placeholder="Shape" value="{{ $products->shape}}">--}}
+                                            {{--@if ($errors->has('shape'))--}}
+                                                {{--<span class="text-danger">{{ $errors->first('shape') }}</span>--}}
+                                            {{--@endif--}}
+                                        {{--</div>--}}
 
                                         <div class="col-md-6 mb-3">
                                             <label for="validationCustom01">Size</label>
@@ -174,31 +197,45 @@
                                                 <span class="text-danger">{{ $errors->first('size') }}</span>
                                             @endif
                                         </div>
+                                        <div class="col-md-6 mb-3">
+                                        <label for="validationCustom01">Discount</label>
+                                        <select name="discount_id" class="form-control">
+                                        <option value="">Select Discount</option>
+
+                                        @foreach($discounts as $category)
+                                        <option value="{{$category->id}}" @if($products->discount_id == $category->id) selected="selected" @endif>{{$category->title}}</option>
+                                        @endforeach
+                                        </select>
+                                        @if ($errors->has('discount_id'))
+                                        <span class="text-danger">{{ $errors->first('discount_id') }}</span>
+                                        @endif
+                                        </div>
+                                        {{--</div>--}}
                                     </div>
 
                                 </div>
-                                <div class="form-group">
-                                    <div class="row">
-                                        <div class="col-md-6 mb-3">
-                                            <label for="validationCustom01">Style</label>
-                                            <input type="text" class="form-control" name="style" placeholder="Style" value="{{ $products->style}}">
-                                            @if ($errors->has('style'))
-                                                <span class="text-danger">{{ $errors->first('style') }}</span>
-                                            @endif
-                                        </div>
+                                {{--<div class="form-group">--}}
+                                    {{--<div class="row">--}}
+                                        {{--<div class="col-md-6 mb-3">--}}
+                                            {{--<label for="validationCustom01">Style</label>--}}
+                                            {{--<input type="text" class="form-control" name="style" placeholder="Style" value="{{ $products->style}}">--}}
+                                            {{--@if ($errors->has('style'))--}}
+                                                {{--<span class="text-danger">{{ $errors->first('style') }}</span>--}}
+                                            {{--@endif--}}
+                                        {{--</div>--}}
 
-                                        <div class="col-md-6 mb-3">
-                                            <div class="custom-control form-control-lg custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" name="shipping" id="customCheck1">
-                                                <label class="custom-control-label" for="customCheck1">Shipping</label>
-                                            </div>
-                                            @if ($errors->has('size'))
-                                                <br><span class="text-danger">{{ $errors->first('size') }}</span>
-                                            @endif
-                                        </div>
-                                    </div>
+                                        {{--<div class="col-md-6 mb-3">--}}
+                                            {{--<div class="custom-control form-control-lg custom-checkbox">--}}
+                                                {{--<input type="checkbox" class="custom-control-input" name="shipping" id="customCheck1">--}}
+                                                {{--<label class="custom-control-label" for="customCheck1">Shipping</label>--}}
+                                            {{--</div>--}}
+                                            {{--@if ($errors->has('size'))--}}
+                                                {{--<br><span class="text-danger">{{ $errors->first('size') }}</span>--}}
+                                            {{--@endif--}}
+                                        {{--</div>--}}
+                                    {{--</div>--}}
 
-                                </div>
+                                {{--</div>--}}
 
                                 <div class="form-group">
                                     <label for="exampleInputFile">Upload Image</label>
@@ -228,15 +265,19 @@
                                         </div>
 
                                     </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="exampleInputFile">Description</label>
-                                    {{Form::textarea('description',$products->description,['class'=>'form-control editor','id'=>'description'])}}
-                                    {{--                                        <textarea class="form-control" rows="3" placeholder="Enter ..." style="margin-top: 0px; margin-bottom: 0px; height: 115px;"></textarea>--}}
-                                    @if ($errors->has('description'))
-                                        <span class="text-danger">{{ $errors->first('description') }}</span>
+                                    <div class="custom-control form-control-lg custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" @if($products->shipping =='1')  checked @endif="shipping" id="customCheck1">
+                                        <label class="custom-control-label" for="customCheck1">Shipping</label>
+                                    </div>
+                                    @if ($errors->has('size'))
+                                        <br><span class="text-danger">{{ $errors->first('size') }}</span>
                                     @endif
+                                    {{--<label for="exampleInputFile">Description</label>--}}
+                                    {{--{{Form::textarea('description',$products->description,['class'=>'form-control editor','id'=>'description'])}}--}}
+                                    {{--                                        <textarea class="form-control" rows="3" placeholder="Enter ..." style="margin-top: 0px; margin-bottom: 0px; height: 115px;"></textarea>--}}
+                                    {{--@if ($errors->has('description'))--}}
+                                        {{--<span class="text-danger">{{ $errors->first('description') }}</span>--}}
+                                    {{--@endif--}}
                                 </div>
                             </div>
                             <!-- /.card-body -->

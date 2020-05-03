@@ -33,56 +33,65 @@
                     <div class="table-responsive">
                         <table class="table text-center" id="table">
                             <thead class="text-uppercase bg-primary">
-                            <tr class="text-white">
-                                <th scope="col">ID</th>
-                                <th scope="col">Name</th>
-                                <th scope="col">Image</th>
-                                <th scope="col" >created_by</th>
-                                <th scope="col">Status</th>
-                                <th scope="col">action</th>
+                            <tr>
+                                <th>S. No.</th>
+                                <th>Parent</th>
+                                <th>Name</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                                <th></th>
                             </tr>
                             </thead>
-                            <tbody id="sortable">
+                            <tbody>
+                            @foreach($contents as $index=>$content)
+                                <tr>
+                                    <td>{{ $index+$contents->firstItem() }}</td>
+                                    <td>{{ $content->getParentTitle() }}</td>
+                                    <td>{{ $content->title }}</td>
 
-                            @foreach($contents as $key=>$item)
-                                <tr id="item-{{$item->id}}">
-                                    <td>{{$key+1}}</td>
-                                    <td>{{$item->title}}</td>
                                     <td>
-                                        @if(file_exists('storage/'.$item->image) && $item->image != '')
-                                            <img style="width:100px;height:100px;" src="{{asset('storage/'.$item->image)}}" alt="{{$item->name}}">
-                                        @else
-                                            <img style="width:100px;height:100px;" src="{{asset('backend/dist/img/placeholder.png')}}" alt="{{$item->name}}">
-                                        @endif
-                                    </td>
-                                    <td>{{$item->author->name}}</td>
-                                    <td>
-                                        @if($item->is_active == '1')
-                                            <a href="javascript:void(0)"  data-type="{{$item->id}}" id="change-status" class="edit-modal btn btn-sm btn-circle btn-success published"  title="change-status"
+                                        @if($content->is_active == '1')
+                                            <a href="javascript:void(0)"  data-type="{{$content->id}}" id="change-status" class="edit-modal btn btn-sm btn-circle btn-success published"  title="change-status"
                                                data-toggle="tooltip"> <i class="fas fa-check" aria-hidden="true"></i></a>
                                         @else
-                                            <a href="javascript:void(0)"  data-type="{{$item->id}}" id="change-status" class="edit-modal btn btn-sm btn-circle btn-success unpublished"   title="change-status"
+                                            <a href="javascript:void(0)"  data-type="{{$content->id}}" id="change-status" class="edit-modal btn btn-sm btn-circle btn-success unpublished"   title="change-status"
                                                data-toggle="tooltip"> <i class="fas fa-minus" aria-hidden="true"></i></a>
                                         @endif
                                     </td>
+
                                     <td>
                                         {{-- @if(auth()->user()->can('edit-banner')) --}}
-                                        <a href="{{route('contents.edit', $item->slug)}}" class="edit-modal btn btn-info btn-circle btn-sm"
+                                        <a href="{{route('contents.edit', $content->slug)}}" class="edit-modal btn btn-info btn-circle btn-sm"
                                            data-info="">
                                             <i class="fas fa-edit"></i>
                                         </a>
                                         {{-- @endif --}}
                                         {{-- @if(auth()->user()->can('delete-banner')) --}}
-                                        <a href="javascript:void(0)" class="delete-content btn btn-danger btn-circle btn-sm"
-                                           data-type="{{$item->id}}">
-                                            <i class="fas fa-trash"></i>
-                                        </a>
-                                        {{-- @endif --}}
+
+                                        @if($content->child->isEmpty()  )
+                                            <a href="javascript:void(0)" class="delete-content btn btn-danger btn-circle btn-sm"
+                                               data-type="{{$content->id}}">
+                                                <i class="fas fa-trash"></i>
+                                            </a>
+                                        @endif
                                     </td>
+                                    <td></td>
+
                                 </tr>
                             @endforeach
 
+
                             </tbody>
+                            <tfoot>
+                            <tr>
+                                <th>S.No.</th>
+                                <th>Parent</th>
+                                <th>Name</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                                <th></th>
+                            </tr>
+                            </tfoot>
                         </table>
                     </div>
                 </div>

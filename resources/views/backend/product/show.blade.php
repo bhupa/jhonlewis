@@ -11,8 +11,8 @@
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Prdouct</li>
+                            <li class="breadcrumb-item"><a href="{{route('products.index')}}">View Product Lists</a></li>
+                            {{--<li class="breadcrumb-item active">Prdouct</li>--}}
 
                         </ol>
                     </div>
@@ -96,14 +96,14 @@
                             </div>
 
                             <ul id="prodcut-details-lists">
-                                <li><span>Types:</span>{{$product->glasses->name}}</li>
+                                {{--<li><span>Types:</span>{{$product->glasses->name}}</li>--}}
                                 <li><span>Brand:</span>{{$product->brand->name}}</li>
-                                <li><span>Frame:</span>{{$product->frame->name}}</li>
-                                <li><span>Frame Category:</span>{{$product->category->name}}</li>
-                                <li><span>Lense:</span>{{$product->lenses->name}}</li>
+                                {{--<li><span>Frame:</span>{{$product->frame->name}}</li>--}}
+                                {{--<li><span>Frame Category:</span>{{$product->category->name}}</li>--}}
+                                {{--<li><span>Lense:</span>{{$product->lenses->name}}</li>--}}
                                 <li><span>Size:</span>{{$product->size}}</li>
-                                <li><span>Shape:</span>{{$product->shape}}</li>
-                                <li><span>Style:</span>{{$product->style}}</li>
+                                <li><span>Model:</span>{{$product->shape}}</li>
+                                {{--<li><span>Style:</span>{{$product->model}}</li>--}}
                                 <li><span>Warranty:</span>
                                     @if(!empty($product->warranty))
                                     {{$product->warranty}}

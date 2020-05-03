@@ -68,20 +68,20 @@ Route::get('/login','LoginController@showForm')->name('login');
 Route::get('/appointment','AppointmentController@index')->name('appointment.index');
 Route::get('book-appointment/{id}','AppointmentController@getBook')->name('book-appointment');
 
-Route::resource('/package','PackageController');
-Route::resource('/blog','BlogController');
-Route::resource('/service','ServiceController');
-Route::resource('/testimonial','TestimonialController');
+Route::resource('package','PackageController');
+Route::resource('blog','BlogController');
+Route::resource('service','ServiceController');
+Route::resource('testimonial','TestimonialController');
 Route::get('frame-brands','ProductController@index')->name('frame-brands');
-Route::resource('/product','ProductController');
+Route::resource('product','ProductController');
 
 Route::resource('/glass','GlassController');
 Route::resource('/lens','LensController');
 Route::resource('/brands','BrandController');
-Route::resource('/frame','FrameController');
-Route::resource('/frame-category','FrameCategoryController');
+//Route::resource('/frame','FrameController');
+//Route::resource('/frame-category','FrameCategoryController');
 Route::resource('/shop','ShopController');
-Route::resource('/content','ContentController');
+Route::resource('content','ContentController');
 
 Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.reset');
 Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');

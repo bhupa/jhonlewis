@@ -40,7 +40,10 @@ class ContentController extends Controller
      */
     public function create()
     {
-        return view('backend.content.create');
+        $parents = $this->content->whereNull('parent_id')->orderBy('title')->get();
+        return view('backend.content.create')
+            ->withParents($parents);
+
     }
 
     /**
@@ -91,8 +94,13 @@ class ContentController extends Controller
     public function edit($slug)
     {
         $content = $this->content->where('slug',$slug)->first();
+//
+        $patenr= $this->content->where('id', '!=', $content->id)->with('allchild')->whereNull('parent_id')->get();
+        $parents =  $patenr->where('parent_id', '!=', $content->id)->all();
 
-        return view('backend.content.edit')->withContent($content);
+        return view('backend.content.edit')
+            ->withContent($content)
+            ->withParents($parents);
     }
 
     /**

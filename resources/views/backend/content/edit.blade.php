@@ -11,7 +11,7 @@
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="{{route('contents.create')}}"> Add Contnent </a></li>
+                            <li class="breadcrumb-item"><a href="{{route('contents.index')}}"> View Contents </a></li>
                             <li class="breadcrumb-item active">Dashboard </li>
                         </ol>
                     </div><!-- /.col -->
@@ -40,7 +40,32 @@
 
                                     @if ($errors->has('title'))
                                         <span class="text-danger">{{ $errors->first('title') }}</span>
+                                    @endif
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-lg-2">Parent<span class="text-danger">*</span></label>
+
+
+                                    <select name="parent_id" class="form-control">
+                                        <option value="" {{ ($content->parent_id == NULL) ? "selected" : "" }}>Parent Itself</option>
+                                        @include('backend.content.recursive_options', ['parents' => $parents, 'selected_id' => $content->parent_id])
+                                    </select>
+
+
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Type</label>
+                                    <select name="menu" id="" class="form-control">
+                                        <option value="0">Select the type </option>
+                                        <option value="header"  @if($content->menu == 'header') selected @endif>header</option>
+                                        <option value="footer"    @if($content->menu == 'footer') selected @endif>Footer</option>
+
+                                        <option value="content"    @if($content->menu == 'content') selected @endif>Content</option>
+                                    </select>
+                                    @if ($errors->has('menu'))
+                                        <span class="text-danger">{{ $errors->first('menu') }}</span>
                                     @endif </div>
+
                                 <div class="form-group">
                                     <label for="exampleInputFile">Upload Image</label>
                                     <div class="upload-btn-wrapper">

@@ -204,14 +204,13 @@ _________________________________________________________
             <div class="col-lg-4 col-md-6">
                 <h4 class="mb-3">Pages</h4>
                 <ul class="list-unstyled" id="footer-menu">
-                    <li><a href="{{route('about-us')}}">About us</a></li>
-                    <li><a href="{{route('contact-us.index')}}">Contact us</a></li>
-                    <li><a href="{{route('shipping')}}">Shipping</a></li>
-                    <li><a href="{{route('returns-refunds')}}">Returns & Refunds</a></li>
-                    <li><a href="{{route('guarantee-warranty')}}">Guarantee & Warranty</a></li>
-                    <li><a href="{{route('how-to-get-prescription')}}">How to get prescription</a></li>
-                    <li><a href="{{route('terms-conditions')}}">Terms & Conditions</a></li>
+                    @foreach($footer  as $menu)
+                    @if($menu->child->isEmpty() && $menu->parent_id == '' )
 
+                    <li><a href="{{route('content.show',[$menu->slug])}}">{{$menu->title}}</a></li>
+
+                   @endif
+                    @endforeach
                 </ul>
             </div>
             <!-- /.col-lg-3-->
@@ -219,9 +218,8 @@ _________________________________________________________
                 <h4 class="mb-3">Links</h4>
 
                 <ul class="list-unstyled" id="footer-menu">
-                    <li><a href="{{route('service.index')}}">Services</a></li>
+                    <li><a href="{{route('shop.index')}}">Shop Online</a></li>
                     <li><a href="{{route('blog.index')}}">Blogs</a></li>
-                    <li><a href="{{route('nhs-entitlement')}}">NHS Entitlement</a></li>
 
 
                 </ul>

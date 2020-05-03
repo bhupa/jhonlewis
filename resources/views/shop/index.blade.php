@@ -31,19 +31,19 @@
                                 </div>
                             </div>
                         </div>
-
-
                         <div class="row products">
 
                             @foreach($products as $product)
                             <div class="col-lg-3 col-md-4">
+                                <div class="product-single-item">
+                                    <a href="{{route('product.show',[$product->slug ])}}" class="shop-lists">
+                                        <img src="{{asset('storage/'.$product->image)}}" alt="{{$product->title}}">
 
-                                <a href="" class="shop-lists">
-                                    <img src="{{asset('storage/'.$product->image)}}" alt="{{$product->title}}">
-                                    @if(!empty($product->brand_id))
-                                    <p>Model-{{$product->brands->name}}</p>
-                                        @endif
-                                </a>
+                                        <p> <span class="model text-left">{{$product->shape}}</span> <span class="brand">{{$product->brand->name}}</span></p>
+
+                                    </a>
+                                </div>
+
                                 <!-- /.product            -->
                             </div>
                             @endforeach

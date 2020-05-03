@@ -40,7 +40,35 @@
 
                                         @if ($errors->has('title'))
                                             <span class="text-danger">{{ $errors->first('title') }}</span>
-                                        @endif </div>
+                                        @endif
+                                    </div>
+                                <div class="form-group">
+                                    <label class="control-label col-lg-2">Parent</label>
+                                    <div class="col-lg-12">
+
+                                        <select name="parent_id" class="form-control">
+                                            <option value="">Parent Itself</option>
+                                            @include('backend.content.recursive_options', ['parents' => $parents, 'selected_id' => ""])
+                                        </select>
+
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-lg-2">Type<span class="text-danger">*</span></label>
+                                    <div class="col-lg-12">
+
+                                        <select name="menu" class="form-control">
+                                            <option value="0">Select Type</option>
+                                            <option value="header" {{(old('menu')== 'header')? 'selected':''}}>Menu</option>
+                                            <option value="content" {{(old('menu')== 'content')? 'selected':''}}>Content</option>
+                                            <option value="content" {{(old('menu')== 'footer')? 'selected':''}}>Footer</option>
+
+                                        </select>
+                                        @if($errors->has('menu'))
+                                            <span class="text-danger">{{ $errors->first('menu') }}</span>
+                                        @endif
+                                    </div>
+                                </div>
                                     <div class="form-group">
                                         <label for="exampleInputFile">Upload Image</label>
                                         <div class="upload-btn-wrapper">
