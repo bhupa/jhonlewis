@@ -141,10 +141,10 @@
 
                         </div>
                     @else
-                        <div class="col-lg-4">
-                                @include('product.lists')
-                        </div>
-                        <div class="col-lg-8">
+                        {{--<div class="col-lg-4">--}}
+                                {{--@include('product.lists')--}}
+                        {{--</div>--}}
+                        <div class="col-lg-12">
 
                             <div class="service-lists-content">
                                 <h4>{{$content->title}}</h4>
