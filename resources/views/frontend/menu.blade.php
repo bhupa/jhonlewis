@@ -7,9 +7,10 @@
 
     <li class="nav-item"> <a href="{{route('service.index')}}" class="nav-link ">Services</a></li>
     <li class="nav-item"> <a href="{{route('content.show',['eye-care'])}}" class="nav-link ">Eye Care</a></li>
+    <li class="nav-item"> <a href="{{route('content.show',['frame-brand'])}}" class="nav-link ">Frames and Brands</a>
      <li class="nav-item"> <a href="{{route('content.show',['contact-lens'])}}" class="nav-link ">Contact Lens</a></li>
 
-    <li class="nav-item"> <a href="{{route('content.show',['frame-brand'])}}" class="nav-link ">Frames and Brands</a>
+
         {{--<ul class="sub-menu">--}}
             {{--@foreach($brands as $brand)--}}
                 {{--<li><a href="{{route('brands.show',[$brand->slug])}}">{{$brand->name}}</a></li>--}}
