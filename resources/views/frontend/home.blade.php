@@ -279,6 +279,7 @@
             <!-- /#hot-->
             <!-- *** HOT END ***-->
         </div>
+
     <div class="new-subscribe">
         <div class="container">
             <div class="subscribe-form">
@@ -309,6 +310,38 @@
                         </div>
                     </div>
                 </form>
+            </div>
+        </div>
+    </div>
+    <div class="sales-now">
+        <div class="container">
+            <div class="sales-lists">
+
+                <h3>Sales</h3>
+
+                <div class="row products">
+
+                    @foreach($products as $product)
+                        <div class="col-lg-3 col-md-4">
+                            <div class="product-single-item">
+                                <a href="{{route('product.show',[$product->slug ])}}" class="shop-lists">
+                                    <img src="{{asset('storage/'.$product->image)}}" alt="{{$product->title}}">
+
+                                    <p><span class="model text-left">Mod: {{$product->shape}}</span>
+                                    </p>
+                                    <p>
+                                        <span class="brand">Brand:{{$product->brand->name}}</span></p>
+
+                                </a>
+                            </div>
+
+                            <!-- /.product            -->
+                        </div>
+                @endforeach
+
+                <!-- /.products-->
+                </div>
+            </div>
             </div>
         </div>
     </div>
