@@ -147,7 +147,7 @@
     </div>
     <nav class="navbar navbar-expand-lg">
         <div class="container">
-            <a href="index.html" class="navbar-brand home">
+            <a href="{{route('home')}}" class="navbar-brand home">
                 <img src="{{asset('frontend/img/logosm.png')}}" style="width:139px;heigh:60px" alt="John Lewis" class="d-none d-md-inline-block">
                 <img src="{{asset('frontend/img/logosm.png')}}" style="width:93px;heigh:60px"  alt="John Lewis" class="d-inline-block d-md-none">
 
