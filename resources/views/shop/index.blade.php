@@ -39,7 +39,7 @@
                                     <a href="{{route('product.show',[$product->slug ])}}" class="shop-lists">
                                         <img src="{{asset('storage/'.$product->image)}}" alt="{{$product->title}}">
 
-                                        <p> <span class="model text-left">{{$product->shape}}</span> <span class="brand">{{$product->brand->name}}</span></p>
+                                        <p>Mod: <span class="model text-left">{{$product->shape}}</span> <span class="brand">Brand:{{$product->brand->name}}</span></p>
 
                                     </a>
                                 </div>
