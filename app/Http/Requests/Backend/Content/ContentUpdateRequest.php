@@ -27,7 +27,8 @@ class ContentUpdateRequest extends FormRequest
             'title'=>'required',
             'image'=>'nullable|mimes:jpeg,png,jpg,svg',
             'short_description'=>'required',
-            'description'=>'required'
+            'description'=>'required',
+            'type'=>'in:header,content'
         ];
     }
 }

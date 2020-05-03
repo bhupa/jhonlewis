@@ -75,6 +75,9 @@ class HomeComposer
      */
     public function compose(View $view)
     {
+        $header = $this->content->where('is_active','1')->where('menu','header')->orderBy('title')->get();
+        $footer = $this->content->where('is_active','1')->where('menu','footer')->orderBy('title')->get();
+
 
         $banners = $this->banner->where('is_active','1')->orderBy('created_at','desc')->take(4)->get();
         $about = $this->content->where('is_active','1')->where('slug','about-us')->first();
@@ -114,6 +117,8 @@ class HomeComposer
             ->withBrands($brands)
             ->withBrands($brands)
             ->withFrames($frames)
-            ->withGlasses($glasses);
+            ->withGlasses($glasses)
+        ->withHeader($header)
+        ->withFooter($footer);
     }
 }

@@ -10,9 +10,9 @@
                         <h1 class="m-0 text-dark">Dashboard</h1>
                         @if (\Session::has('success'))
                             <div class="alert alert-success">
-                                <ul>
-                                    <li>{!! \Session::get('success') !!}</li>
-                                </ul>
+
+                                {!! \Session::get('success') !!}
+
                             </div>
 
                         @endif
@@ -39,9 +39,9 @@
                                 <th scope="col">ID</th>
                                 <th scope="col">Serial No</th>
                                 <th scope="col">Name</th>
-                                <th scope="col">Shape</th>
+                                <th scope="col">Brand</th>
                                 <th scope="col">Warranty</th>
-                                <th scope="col">Style</th>
+                                <th scope="col">Model</th>
                                 <th scope="col">Price</th>
                                 <th scope="col">Shipping</th>
                                 <th scope="col">Status</th>
@@ -55,9 +55,9 @@
                                     <td>{{$key+1}}</td>
                                     <td>{{$item->product_number}}</td>
                                     <td>{{$item->title}}</td>
-                                    <td>{{$item->shape}}</td>
+                                    <td>{{$item->brand->name}}</td>
                                     <td>{{$item->warranty}}</td>
-                                    <td>{{$item->style}}</td>
+                                    <td>{{$item->shape}}</td>
                                     <td>{{$item->price}}</td>
                                     <td>
                                         @if($item->shipping == '1')

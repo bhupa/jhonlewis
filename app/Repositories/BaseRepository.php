@@ -197,6 +197,36 @@ class BaseRepository
     public function latestFirst(){
         return $this->model->latest()->first();
     }
+    public function orWhere($column, $operator, $value)
+    {
+        return $this->model->orWhere($column, $operator, $value);
+    }
+
+    public function orWhereBetween($column, $range)
+    {
+        return $this->model->orWhereBetween($column, $range);
+    }
+
+    public function whereBetween($column, $range)
+    {
+        return $this->model->whereBetween($column, $range);
+    }
+
+    public function where_array($array)
+    {
+        return $this->model->where($array);
+    }
+
+    public function whereIn($column, $array)
+    {
+        return $this->model->whereIn($column, $array);
+    }
+
+    public function whereNull($column)
+    {
+        return $this->model->whereNull($column);
+    }
+
 
 
 }

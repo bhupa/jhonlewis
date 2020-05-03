@@ -7,27 +7,157 @@
         <div id="content">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-12">
-                        <!-- breadcrumb-->
-                        <nav aria-label="breadcrumb">
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
-                                <li aria-current="page" class="breadcrumb-item active">{{$content->title}}</li>
-                            </ol>
-                        </nav>
-                    </div>
-                    <div class="col-lg-4">
-                            @include('product.lists')
-                    </div>
-                    <div class="col-lg-8">
+                    {{--<div class="col-lg-12">--}}
+                        {{--<!-- breadcrumb-->--}}
+                        {{--<nav aria-label="breadcrumb">--}}
+                            {{--<ol class="breadcrumb">--}}
+                                {{--<li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>--}}
+                                {{--<li aria-current="page" class="breadcrumb-item active">{{$content->title}}</li>--}}
+                            {{--</ol>--}}
+                        {{--</nav>--}}
+                    {{--</div>--}}
+
+                    @if($content->slug =='frame-brand')
                         <div class="service-lists-content">
-                            <h4>{{$content->title}}</h4>
+                            <h4>Product-Lists</h4>
                             <hr>
-                            <img src="{{asset('storage/'.$content->image)}}" alt="{{$content->title}}">
-                            {!! $content->description !!}
+                            <div class="row" id="frames-brand">
+                                <div class="col-lg-6">
+                                    <div class="frame-wrapper-title">
+                                        <h1>{{$content->title}}</h1>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="frame-wrapper">
+                                        {!! $content->description !!}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <ul class="product-type-lists">
+                                <li>
+                                    <div class="top-level">
+                                        <a href="javascript:void(0)" data-toggle="collapse" data-target="#eye-care">Eye Care
+                                            <span class="close"></span>
+                                        </a>
+
+
+                                    </div>
+
+                                    <div id="eye-care" class="collapse show">
+                                        <div class="row">
+                                            @foreach($eyecares as $care)
+                                                <div class="col-lg-4">
+                                                    <div class="product-lists">
+                                                        <a href="">
+                                                            <div class="new"></div>
+                                                            <img src="{{asset('storage/'.$care->image)}}" alt="{{$care->title}}">
+
+                                                            {{--@if(file_exists('storage/'.$product->image) && $product->image != '')--}}
+                                                            {{--<img src="{{asset('storage/'.$product->image)}}" alt="{{$product->title}}">--}}
+                                                            {{--@endif--}}
+                                                            <div class="product-lists-overlay">
+                                                                {!! $care->short_description !!}
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            @endforeach
+
+                                        </div>
+
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="top-level">
+                                        <a href="javascript:void(0)" data-toggle="collapse" data-target="#kid-care">Kid Wear
+                                            <span class="close"></span>
+                                        </a>
+
+
+                                    </div>
+
+                                    <div id="kid-care" class="collapse">
+                                        <div class="row">
+                                            @foreach($kidwears as $ware)
+                                                <div class="col-lg-4">
+                                                    <div class="product-lists">
+                                                        <a href="">
+                                                            <div class="new"></div>
+                                                            <img src="{{asset('storage/'.$ware->image)}}" alt="{{$ware->title}}">
+
+                                                            {{--@if(file_exists('storage/'.$product->image) && $product->image != '')--}}
+                                                            {{--<img src="{{asset('storage/'.$product->image)}}" alt="{{$product->title}}">--}}
+                                                            {{--@endif--}}
+                                                            <div class="product-lists-overlay">
+                                                                {!! $ware->short_description !!}
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            @endforeach
+
+                                        </div>
+
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="top-level">
+                                        <a href="javascript:void(0)" data-toggle="collapse" data-target="#sunglass">Sunglass
+                                            <span class="close"></span>
+                                        </a>
+
+
+                                    </div>
+
+                                    <div id="sunglass" class="collapse">
+                                        <div class="row">
+                                            @foreach($sunglasses as $glass)
+                                                <div class="col-lg-4">
+                                                    <div class="product-lists">
+                                                        <a href="">
+                                                            <div class="new"></div>
+                                                            <img src="{{asset('storage/'.$glass->image)}}" alt="{{$glass->title}}">
+
+                                                            {{--@if(file_exists('storage/'.$product->image) && $product->image != '')--}}
+                                                            {{--<img src="{{asset('storage/'.$product->image)}}" alt="{{$product->title}}">--}}
+                                                            {{--@endif--}}
+                                                            <div class="product-lists-overlay">
+                                                                {!! $glass->short_description !!}
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            @endforeach
+
+                                        </div>
+
+                                    </div>
+                                </li>
+
+                            </ul>
+
+
 
                         </div>
+                    @else
+                        <div class="col-lg-4">
+                                @include('product.lists')
+                        </div>
+                        <div class="col-lg-8">
+
+                            <div class="service-lists-content">
+                                <h4>{{$content->title}}</h4>
+                                <hr>
+                                @if(file_exists('storage/'.$content->image) && $content->image != '')
+                                <img src="{{asset('storage/'.$content->image)}}" alt="{{$content->title}}">
+                                @endif
+                                    {!! $content->description !!}
+
+                            </div>
+
                     </div>
+                    @endif
                 </div>
                 <!-- /.col-md-9-->
 

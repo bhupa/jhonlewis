@@ -7,23 +7,23 @@
         <div id="content">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-12">
-                        <!-- breadcrumb-->
-                        <nav aria-label="breadcrumb">
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item"><a href="#">Product</a></li>
-                                <li aria-current="page" class="breadcrumb-item active">
-                                    {{$type }}
-                                </li>
-                            </ol>
-                        </nav>
-                    </div>
-                    <div class="col-lg-3 order-2 order-lg-1">
+                    {{--<div class="col-lg-12">--}}
+                        {{--<!-- breadcrumb-->--}}
+                        {{--<nav aria-label="breadcrumb">--}}
+                            {{--<ol class="breadcrumb">--}}
+                                {{--<li class="breadcrumb-item"><a href="#">Home</a></li>--}}
+                                {{--<li class="breadcrumb-item"><a href="#">Product</a></li>--}}
+                                {{--<li aria-current="page" class="breadcrumb-item active">--}}
+                                    {{--{{$type }}--}}
+                                {{--</li>--}}
+                            {{--</ol>--}}
+                        {{--</nav>--}}
+                    {{--</div>--}}
+                    <div class="col-lg-4 order-2 order-lg-1">
                         @include('product.lists')
                     </div>
-                    <div class="col-lg-9 order-1 order-lg-2">
-                        <div id="productMain" class="row">
+                    <div class="col-lg-8 order-1 order-lg-2">
+                        <div id="productMain" class="row" style="margin-top: 50px">
                             <div class="col-md-6">
                                 <div data-slider-id="1" class="product-details-wrapper">
 
@@ -33,24 +33,13 @@
                                        </div>
                                        <div class="product-wrapper-content">
                                            <ul id="prodcut-details-lists-frontend">
-                                               @if(!empty($product->glass_id))
-                                               <li><span>Types:</span>{{$product->glasses->name}}</li>
-                                               @endif
-                                                   @if(!empty($product->brand_id))
+
                                                <li><span>Brand:</span>{{$product->brand->name}}</li>
-                                                   @endif
-                                                   @if(!empty($product->frame_id))
-                                               <li><span>Frame:</span>{{$product->frame->name}}</li>
-                                                   @endif
-                                                   @if(!empty($product->frame_category_id))
-                                               <li><span>Frame Category:</span>{{$product->category->name}}</li>
-                                                   @endif
-                                                   @if(!empty($product->lens_id))
-                                               <li><span>Lense:</span>{{$product->lenses->name}}</li>
-                                                   @endif
                                                <li><span>Size:</span>{{$product->size}}</li>
-                                               <li><span>Shape:</span>{{$product->shape}}</li>
-                                               <li><span>Style:</span>{{$product->style}}</li>
+                                               <li><span>Model:</span>{{$product->shape}}</li>
+                                                       @if(!empty($product->disocunt_id))
+                                               <li><span>Style:</span>{{$product->discount->percentage}}</li>
+                                                       @endif
                                                <li><span>Warranty:</span>
                                                    @if(!empty($product->warranty))
                                                        {{$product->warranty}}
@@ -92,7 +81,7 @@
                                             <del></del>£&nbsp;{{$product->price}}
                                         </p>
                                     @endif
-
+                                    @if($product->stocks->isNotEmpty())
                                     {!! Form::open(['route'=>'cart.store','method'=>'post','id'=>'add-cart']) !!}
 
                                     <div class="row">
@@ -102,6 +91,7 @@
                                             </div>
 
                                         @endif
+
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label for="firstname">Select Color</label>
@@ -131,6 +121,7 @@
                                                 </div>
                                             </div>
                                         </div>
+
                                     </div>
                                     <p class="text-center buttons">
                                     <button type="submit" class="btn btn-primary">
@@ -144,6 +135,9 @@
                                     </p>
                                     {{ Form::hidden('product_id',$product->id) }}
                                     {{Form::close()}}
+                                       @else
+                                        <span>Not in Stock</span>
+                                        @endif
                                 </div>
 {{--                                <div data-slider-id="1" class="owl-thumbs">--}}
 {{--                                    <ul class="product-lists">--}}
@@ -156,121 +150,121 @@
 {{--                                </div>--}}
                             </div>
                         </div>
-                        <div id="details" class="box">
-                            <p></p>
-                            <h4>Product details</h4>
-                           <p>
-                               {!! $product->description !!}
-                           </p>
-                            <div class="social">
-                                <h4>Show it to your friends</h4>
-                                <p><a href="#" class="external facebook"><i class="fa fa-facebook"></i></a><a href="#" class="external gplus"><i class="fa fa-google-plus"></i></a><a href="#" class="external twitter"><i class="fa fa-twitter"></i></a><a href="#" class="email"><i class="fa fa-envelope"></i></a></p>
-                            </div>
-                        </div>
-                        <div class="row same-height-row">
-                            <div class="col-md-3 col-sm-6">
-                                <div class="box same-height">
-                                    <h3>You may also like these products</h3>
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-6">
-                                <div class="product same-height">
-                                    <div class="flip-container">
-                                        <div class="flipper">
-                                            <div class="front"><a href="detail.html"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product2.jpg" alt="" class="img-fluid"></a></div>
-                                            <div class="back"><a href="detail.html"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product2_2.jpg" alt="" class="img-fluid"></a></div>
-                                        </div>
-                                    </div><a href="detail.html" class="invisible"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product2.jpg" alt="" class="img-fluid"></a>
-                                    <div class="text">
-                                        <h3>Fur coat</h3>
-                                        <p class="price">$143</p>
-                                    </div>
-                                </div>
-                                <!-- /.product-->
-                            </div>
-                            <div class="col-md-3 col-sm-6">
-                                <div class="product same-height">
-                                    <div class="flip-container">
-                                        <div class="flipper">
-                                            <div class="front"><a href="detail.html"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product1.jpg" alt="" class="img-fluid"></a></div>
-                                            <div class="back"><a href="detail.html"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product1_2.jpg" alt="" class="img-fluid"></a></div>
-                                        </div>
-                                    </div><a href="detail.html" class="invisible"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product1.jpg" alt="" class="img-fluid"></a>
-                                    <div class="text">
-                                        <h3>Fur coat</h3>
-                                        <p class="price">$143</p>
-                                    </div>
-                                </div>
-                                <!-- /.product-->
-                            </div>
-                            <div class="col-md-3 col-sm-6">
-                                <div class="product same-height">
-                                    <div class="flip-container">
-                                        <div class="flipper">
-                                            <div class="front"><a href="detail.html"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product3.jpg" alt="" class="img-fluid"></a></div>
-                                            <div class="back"><a href="detail.html"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product3_2.jpg" alt="" class="img-fluid"></a></div>
-                                        </div>
-                                    </div><a href="detail.html" class="invisible"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product3.jpg" alt="" class="img-fluid"></a>
-                                    <div class="text">
-                                        <h3>Fur coat</h3>
-                                        <p class="price">$143</p>
-                                    </div>
-                                </div>
-                                <!-- /.product-->
-                            </div>
-                        </div>
-                        <div class="row same-height-row">
-                            <div class="col-md-3 col-sm-6">
-                                <div class="box same-height">
-                                    <h3>Products viewed recently</h3>
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-6">
-                                <div class="product same-height">
-                                    <div class="flip-container">
-                                        <div class="flipper">
-                                            <div class="front"><a href="detail.html"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product2.jpg" alt="" class="img-fluid"></a></div>
-                                            <div class="back"><a href="detail.html"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product2_2.jpg" alt="" class="img-fluid"></a></div>
-                                        </div>
-                                    </div><a href="detail.html" class="invisible"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product2.jpg" alt="" class="img-fluid"></a>
-                                    <div class="text">
-                                        <h3>Fur coat</h3>
-                                        <p class="price">$143</p>
-                                    </div>
-                                </div>
-                                <!-- /.product-->
-                            </div>
-                            <div class="col-md-3 col-sm-6">
-                                <div class="product same-height">
-                                    <div class="flip-container">
-                                        <div class="flipper">
-                                            <div class="front"><a href="detail.html"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product1.jpg" alt="" class="img-fluid"></a></div>
-                                            <div class="back"><a href="detail.html"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product1_2.jpg" alt="" class="img-fluid"></a></div>
-                                        </div>
-                                    </div><a href="detail.html" class="invisible"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product1.jpg" alt="" class="img-fluid"></a>
-                                    <div class="text">
-                                        <h3>Fur coat</h3>
-                                        <p class="price">$143</p>
-                                    </div>
-                                </div>
-                                <!-- /.product-->
-                            </div>
-                            <div class="col-md-3 col-sm-6">
-                                <div class="product same-height">
-                                    <div class="flip-container">
-                                        <div class="flipper">
-                                            <div class="front"><a href="detail.html"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product3.jpg" alt="" class="img-fluid"></a></div>
-                                            <div class="back"><a href="detail.html"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product3_2.jpg" alt="" class="img-fluid"></a></div>
-                                        </div>
-                                    </div><a href="detail.html" class="invisible"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product3.jpg" alt="" class="img-fluid"></a>
-                                    <div class="text">
-                                        <h3>Fur coat</h3>
-                                        <p class="price">$143</p>
-                                    </div>
-                                </div>
-                                <!-- /.product-->
-                            </div>
-                        </div>
+                        {{--<div id="details" class="box">--}}
+                            {{--<p></p>--}}
+                            {{--<h4>Product details</h4>--}}
+                           {{--<p>--}}
+                               {{--{!! $product->description !!}--}}
+                           {{--</p>--}}
+                            {{--<div class="social">--}}
+                                {{--<h4>Show it to your friends</h4>--}}
+                                {{--<p><a href="#" class="external facebook"><i class="fa fa-facebook"></i></a><a href="#" class="external gplus"><i class="fa fa-google-plus"></i></a><a href="#" class="external twitter"><i class="fa fa-twitter"></i></a><a href="#" class="email"><i class="fa fa-envelope"></i></a></p>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                        {{--<div class="row same-height-row">--}}
+                            {{--<div class="col-md-3 col-sm-6">--}}
+                                {{--<div class="box same-height">--}}
+                                    {{--<h3>You may also like these products</h3>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+                            {{--<div class="col-md-3 col-sm-6">--}}
+                                {{--<div class="product same-height">--}}
+                                    {{--<div class="flip-container">--}}
+                                        {{--<div class="flipper">--}}
+                                            {{--<div class="front"><a href="detail.html"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product2.jpg" alt="" class="img-fluid"></a></div>--}}
+                                            {{--<div class="back"><a href="detail.html"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product2_2.jpg" alt="" class="img-fluid"></a></div>--}}
+                                        {{--</div>--}}
+                                    {{--</div><a href="detail.html" class="invisible"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product2.jpg" alt="" class="img-fluid"></a>--}}
+                                    {{--<div class="text">--}}
+                                        {{--<h3>Fur coat</h3>--}}
+                                        {{--<p class="price">$143</p>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                                {{--<!-- /.product-->--}}
+                            {{--</div>--}}
+                            {{--<div class="col-md-3 col-sm-6">--}}
+                                {{--<div class="product same-height">--}}
+                                    {{--<div class="flip-container">--}}
+                                        {{--<div class="flipper">--}}
+                                            {{--<div class="front"><a href="detail.html"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product1.jpg" alt="" class="img-fluid"></a></div>--}}
+                                            {{--<div class="back"><a href="detail.html"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product1_2.jpg" alt="" class="img-fluid"></a></div>--}}
+                                        {{--</div>--}}
+                                    {{--</div><a href="detail.html" class="invisible"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product1.jpg" alt="" class="img-fluid"></a>--}}
+                                    {{--<div class="text">--}}
+                                        {{--<h3>Fur coat</h3>--}}
+                                        {{--<p class="price">$143</p>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                                {{--<!-- /.product-->--}}
+                            {{--</div>--}}
+                            {{--<div class="col-md-3 col-sm-6">--}}
+                                {{--<div class="product same-height">--}}
+                                    {{--<div class="flip-container">--}}
+                                        {{--<div class="flipper">--}}
+                                            {{--<div class="front"><a href="detail.html"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product3.jpg" alt="" class="img-fluid"></a></div>--}}
+                                            {{--<div class="back"><a href="detail.html"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product3_2.jpg" alt="" class="img-fluid"></a></div>--}}
+                                        {{--</div>--}}
+                                    {{--</div><a href="detail.html" class="invisible"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product3.jpg" alt="" class="img-fluid"></a>--}}
+                                    {{--<div class="text">--}}
+                                        {{--<h3>Fur coat</h3>--}}
+                                        {{--<p class="price">$143</p>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                                {{--<!-- /.product-->--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                        {{--<div class="row same-height-row">--}}
+                            {{--<div class="col-md-3 col-sm-6">--}}
+                                {{--<div class="box same-height">--}}
+                                    {{--<h3>Products viewed recently</h3>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+                            {{--<div class="col-md-3 col-sm-6">--}}
+                                {{--<div class="product same-height">--}}
+                                    {{--<div class="flip-container">--}}
+                                        {{--<div class="flipper">--}}
+                                            {{--<div class="front"><a href="detail.html"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product2.jpg" alt="" class="img-fluid"></a></div>--}}
+                                            {{--<div class="back"><a href="detail.html"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product2_2.jpg" alt="" class="img-fluid"></a></div>--}}
+                                        {{--</div>--}}
+                                    {{--</div><a href="detail.html" class="invisible"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product2.jpg" alt="" class="img-fluid"></a>--}}
+                                    {{--<div class="text">--}}
+                                        {{--<h3>Fur coat</h3>--}}
+                                        {{--<p class="price">$143</p>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                                {{--<!-- /.product-->--}}
+                            {{--</div>--}}
+                            {{--<div class="col-md-3 col-sm-6">--}}
+                                {{--<div class="product same-height">--}}
+                                    {{--<div class="flip-container">--}}
+                                        {{--<div class="flipper">--}}
+                                            {{--<div class="front"><a href="detail.html"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product1.jpg" alt="" class="img-fluid"></a></div>--}}
+                                            {{--<div class="back"><a href="detail.html"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product1_2.jpg" alt="" class="img-fluid"></a></div>--}}
+                                        {{--</div>--}}
+                                    {{--</div><a href="detail.html" class="invisible"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product1.jpg" alt="" class="img-fluid"></a>--}}
+                                    {{--<div class="text">--}}
+                                        {{--<h3>Fur coat</h3>--}}
+                                        {{--<p class="price">$143</p>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                                {{--<!-- /.product-->--}}
+                            {{--</div>--}}
+                            {{--<div class="col-md-3 col-sm-6">--}}
+                                {{--<div class="product same-height">--}}
+                                    {{--<div class="flip-container">--}}
+                                        {{--<div class="flipper">--}}
+                                            {{--<div class="front"><a href="detail.html"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product3.jpg" alt="" class="img-fluid"></a></div>--}}
+                                            {{--<div class="back"><a href="detail.html"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product3_2.jpg" alt="" class="img-fluid"></a></div>--}}
+                                        {{--</div>--}}
+                                    {{--</div><a href="detail.html" class="invisible"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product3.jpg" alt="" class="img-fluid"></a>--}}
+                                    {{--<div class="text">--}}
+                                        {{--<h3>Fur coat</h3>--}}
+                                        {{--<p class="price">$143</p>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                                {{--<!-- /.product-->--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
                     </div>
                     <!-- /.col-md-9-->
                 </div>
