@@ -10,24 +10,22 @@
                     <div class="col-lg-12">
                         <!-- breadcrumb-->
 
-                        <div class="box">
-                            <h1>Shop Now</h1>
-                            <p class="text-center">All the product listed below are avaliable in our store  either you can visit to our store or you can buy it online.</p>
-                        </div>
                         <div class="box info-bar">
+
                             <div class="row">
-                                <div class="col-md-12 col-lg-4 products-showing">Showing <strong>12</strong> of <strong>25</strong> products</div>
-                                <div class="col-md-12 col-lg-7 products-number-sort">
-                                    <form class="form-inline d-block d-lg-flex justify-content-between flex-column flex-md-row">
-                                        <div class="products-number"><strong>Show</strong><a href="#" class="btn btn-sm btn-primary">12</a><a href="#" class="btn btn-outline-secondary btn-sm">24</a><a href="#" class="btn btn-outline-secondary btn-sm">All</a><span>products</span></div>
-                                        <div class="products-sort-by mt-2 mt-lg-0"><strong>Sort by</strong>
-                                            <select name="sort-by" class="form-control">
-                                                <option>Price</option>
-                                                <option>Name</option>
-                                                <option>Sales first</option>
-                                            </select>
-                                        </div>
-                                    </form>
+                                <div class="col-md-4 col-lg-6 products-showing">
+                                    <div class="products-sort-by mt-2 mt-lg-0"><strong>Search By Model</strong>
+                                        <input type="text" name="model" placeholder="Product Model No">
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-lg-6 products-number-sort">
+                                    <div class="products-sort-by mt-2 mt-lg-0"><strong>Search By Model</strong>
+                                        <input type="text" name="model" placeholder="Product Model No">
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-lg-6 products-number-sort">
+                                    <button type="submit" value="Search"></button>
+                                </div>
                                 </div>
                             </div>
                         </div>

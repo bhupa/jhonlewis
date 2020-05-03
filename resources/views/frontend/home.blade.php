@@ -285,6 +285,7 @@
             <div class="subscribe-form">
 
                 <h3>Subscribe</h3>
+                <p>Sign up to get on sales,new release and more.</p>
                 <form action="">
                     <div class="form-group">
                         <div class="row">
@@ -305,7 +306,7 @@
                                 <input type="Email" class="form-control" placeholder="Enter your email address" id="email">
                             </div>
                             <div class="col-lg-4">
-                                <button class="btn btn-submit">SING UP</button>
+                                <button class="btn btn-submit">SIGN UP</button>
                             </div>
                         </div>
                     </div>
@@ -313,37 +314,37 @@
             </div>
         </div>
     </div>
-    <div class="sales-now">
-        <div class="container">
-            <div class="sales-lists">
+    {{--<div class="sales-now">--}}
+        {{--<div class="container">--}}
+            {{--<div class="sales-lists">--}}
 
-                <h3>Sales</h3>
+                {{--<h3>Sales</h3>--}}
 
-                <div class="row products">
+                {{--<div class="row products">--}}
 
-                    @foreach($products as $product)
-                        <div class="col-lg-3 col-md-4">
-                            <div class="product-single-item">
-                                <a href="{{route('product.show',[$product->slug ])}}" class="shop-lists">
-                                    <img src="{{asset('storage/'.$product->image)}}" alt="{{$product->title}}">
+                    {{--@foreach($products as $product)--}}
+                        {{--<div class="col-lg-3 col-md-4">--}}
+                            {{--<div class="product-single-item">--}}
+                                {{--<a href="{{route('product.show',[$product->slug ])}}" class="shop-lists">--}}
+                                    {{--<img src="{{asset('storage/'.$product->image)}}" alt="{{$product->title}}">--}}
 
-                                    <p><span class="model text-left">Mod: {{$product->shape}}</span>
-                                    </p>
-                                    <p>
-                                        <span class="brand">Brand:{{$product->brand->name}}</span></p>
+                                    {{--<p><span class="model text-left">Mod: {{$product->shape}}</span>--}}
+                                    {{--</p>--}}
+                                    {{--<p>--}}
+                                        {{--<span class="brand">Brand:{{$product->brand->name}}</span></p>--}}
 
-                                </a>
-                            </div>
+                                {{--</a>--}}
+                            {{--</div>--}}
 
-                            <!-- /.product            -->
-                        </div>
-                @endforeach
+                            {{--<!-- /.product            -->--}}
+                        {{--</div>--}}
+                {{--@endforeach--}}
 
-                <!-- /.products-->
-                </div>
-            </div>
-            </div>
-        </div>
+                {{--<!-- /.products-->--}}
+                {{--</div>--}}
+            {{--</div>--}}
+            {{--</div>--}}
+        {{--</div>--}}
     </div>
     <div id="map">
         <div class="google-map" style="background-image: url('{{asset('frontend/img/google.png')}}')">
