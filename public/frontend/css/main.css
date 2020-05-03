@@ -1346,4 +1346,63 @@ btn_upload {
 .shop-lists p .brand{
     float: right;
 }
+.appointment-form {
+    margin-top: 50px;
+    width: 100%;
+    background: #fff;
+    padding: 30px;
+    margin-bottom: 50px;
+}
+.appointment-title h2 {
+    text-align: center;
+    font-family: Poppins, sans-serif;
+    font-weight: 500;
+    line-height: 1.4;
+    position: relative;
+}
+.appointment-title h2:after {
+    content: '';
+    width: 18%;
+    border-bottom: solid 1px #2d2929;
+    position: absolute;
+    left: 40%;
+    top: 0;
+    bottom: -26%;
+    z-index: 1;
+}
+.fl-module-content {
+    margin: 0px;
+}
+.pp-infolist {
+    text-align: center;
+}
+.pp-infolist ul {
+    margin: 0;
+    padding: 0;
+}
+.fl-node-5b3e31afee1c4 .pp-infolist-wrap .layout-3 .pp-list-item {
+     width: 33.333333333333%;
+ }
+.pp-infolist-wrap .pp-list-item {
+    overflow: visible;
+    position: relative;
+    z-index: 10;
+}
+.pp-infolist-wrap .pp-list-item {
+    display: table;
+    list-style: none;
+    margin-bottom: 25px;
+}
+.pp-infolist-wrap .pp-list-item {
+    margin-bottom: 10px;
+}
+.pp-infolist-wrap .layout-3 .pp-list-item {
+    display: inline-block;
+    float: left;
+    padding: 0 20px;
+    vertical-align: top;
+}
+.fl-node-5b3e31afee1c4 .pp-infolist-wrap .pp-list-item {
+    padding-bottom: 10px;
+}
 
