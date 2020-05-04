@@ -27,7 +27,10 @@ class AppointmentSchedule extends Model
         'is_active',
         'slug',
         'user_id','end',
-        'schedule_id'
+        'schedule_id',
+        'gender',
+        'time',
+        'details'
     ];
     public function author(){
         return $this->belongsTo(User::class,'user_id');

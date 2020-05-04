@@ -84,20 +84,33 @@ class AppointmentController extends Controller
 //                'color' => '#ffffff',
 //                    'background'=>'black'
 //            ]);
+        $date =today()->format('Y-m-d');
+        $schedules = $this->schedule->where('date','>=',$date)->orderBy('created_at','desc')->get();
+
+        $scheduls=[];
+        foreach( $schedules as $item){
+            $scheduls[] = date('d/m/Y', strtotime($item->date));
+        }
+        $schedules = $this->schedule->where('date','>=',$date)->orderBy('created_at','desc')->get();
+
+        $scheduls=[];
+        foreach( $schedules as $item){
+            $scheduls[] = date('d/m/Y', strtotime($item->date));
+        }
+
         $blogs = $this->blog->where('is_active','1')->orderBy('created_at','desc')->take(3)->get();
-        return view('appointment.index')->withBlogs($blogs)->withCalendar($calendar);
+        return view('appointment.index')->withBlogs($blogs)->withCalendar($calendar)->withScheduls( $scheduls);
     }
 
     public function store(AppointmentStoreRequest $request){
-
-       $schedule =$this->schedule->find($request->schedule_id);
+//       $schedule =$this->schedule->find($request->schedule_id);
         $data = $request->except('_token');
             $data['user_id'] =Auth::user()->id;
-            $data['date']= date('d-m-Y', strtotime($schedule->date));
+            $data['date']= date('d-m-Y', strtotime($request->date));
 
         if($this->appointment->create($data)){
 
-            return redirect()->to('/book-appointment/'.$schedule->date)->with('success','Appointment booked successfully!'.'<br>'.' We will contact you soon');
+            return redirect()->to('/appointment')->with('success','Appointment booked successfully!'.'<br>'.' We will contact you soon');
         }
         return redirect()->back()->with('errors','Appointment cannot booked successfully');
     }
@@ -111,7 +124,7 @@ class AppointmentController extends Controller
         $schedule = $this->schedule->where('date',$date)->first();
         $blogs = $this->blog->where('is_active','1')->orderBy('created_at','desc')->take(3)->get();
 
-        return view('appointment.form')->withBlogs($blogs)->withSchedule( $schedule);
+        return view('appointment.form')->withBlogs($blogs)->withSchedule( $schedule)->withScheduls($scheduls);
 
     }
 
