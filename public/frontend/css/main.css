@@ -1136,13 +1136,14 @@ btn_upload {
 }
 .service-lists ul  li a {
     color: #0c0c0c;
-    font-size: 20px;
+    font-size: 16px;
     text-transform: capitalize;
     text-decoration: none;
     width: 100%;
     display: block;
     padding-left: 10px;
     transition: all 0.3s;
+    padding: 2px;
 }
 .service-lists ul  li a.active,.service-lists ul  li a:hover {
     background: blue;
