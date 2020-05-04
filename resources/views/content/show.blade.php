@@ -19,7 +19,7 @@
 
                     @if($content->slug =='frame-brand')
                         <div class="service-lists-content">
-                            <h4>Product-Lists</h4>
+                            <h4>{{$content->title}}</h4>
                             <hr>
                             <div class="row" id="frames-brand">
                                 <div class="col-lg-6">
@@ -37,7 +37,7 @@
                             <ul class="product-type-lists">
                                 <li>
                                     <div class="top-level">
-                                        <a href="javascript:void(0)" data-toggle="collapse" data-target="#eye-care">Eye Care
+                                        <a href="javascript:void(0)" data-toggle="collapse" data-target="#eye-care">Eye Wear
                                             <span class="close"></span>
                                         </a>
 

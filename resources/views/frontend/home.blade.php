@@ -346,6 +346,14 @@
             {{--</div>--}}
         {{--</div>--}}
     </div>
+<div class="appointment-section">
+    <div class="container">
+        <div class="appointment-section-wrapper">
+            <a href="{{route('appointment.index')}}">Book Appointment</a>
+        </div>
+    </div>
+</div>
+
     <div id="map">
         <div class="google-map" style="background-image: url('{{asset('frontend/img/google.png')}}')">
             <div class="container">
@@ -355,6 +363,7 @@
             </div>
         </div>
     </div>
+
         {{--<div id="hot">--}}
             {{--<div class="box py-4">--}}
                 {{--<div class="container">--}}
