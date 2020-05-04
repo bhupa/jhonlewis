@@ -24,7 +24,7 @@
                             <div class="row" id="frames-brand">
                                 <div class="col-lg-6">
                                     <div class="frame-wrapper-title">
-                                        <h1>{{$content->title}}</h1>
+                                        <img src="{{asset('frontend/img/brand-frame.png')}}" alt="frame-brand" style="width: 100%;height:300px">
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
