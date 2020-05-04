@@ -17,7 +17,7 @@
                         <div class="fl-module-content fl-node-content">
                             <div class="pp-infolist-wrap">
                                 <div class="pp-infolist layout-3">
-                                    <ul class="layout-3-wrapper"> 					<li class="pp-list-item pp-list-item-0">
+                                    <ul class="layout-3-wrapper"> 					<li class="pp-list-item pp-list-item">
                                             <div class="pp-icon-wrapper animated none">
                                                 <div class="pp-infolist-icon">
                                                     <div class="pp-infolist-icon-inner">
@@ -26,12 +26,12 @@
                                                 </div>
                                             </div>
                                             <div class="pp-infolist-title">
-                                                <h3 class="pp-infolist-title-text">1</h3>
+                                                <h3 class="pp-infolist-title-text child-line">1</h3>
                                             </div>
                                             <div class="pp-infolist-description">
                                             </div>
-                                            <div class="pp-list-connector" style="top: 28px; left: 193.5px;"></div>
-                                        </li> 					<li class="pp-list-item pp-list-item-1">
+                                            <div class="pp-list-connector" ></div>
+                                        </li> 					<li class="pp-list-item pp-list-item">
                                             <div class="pp-icon-wrapper animated none">
                                                 <div class="pp-infolist-icon">
                                                     <div class="pp-infolist-icon-inner">
@@ -40,12 +40,12 @@
                                                 </div>
                                             </div>
                                             <div class="pp-infolist-title">
-                                                <h3 class="pp-infolist-title-text">2</h3>
+                                                <h3 class="pp-infolist-title-text child-line">2</h3>
                                             </div>
                                             <div class="pp-infolist-description">
                                             </div>
-                                            <div class="pp-list-connector" style="top: 28px; left: 193.5px;"></div>
-                                        </li> 					<li class="pp-list-item pp-list-item-2">
+                                            <div class="pp-list-connector" ></div>
+                                        </li> 					<li class="pp-list-item pp-list-item">
                                             <div class="pp-icon-wrapper animated none">
                                                 <div class="pp-infolist-icon">
                                                     <div class="pp-infolist-icon-inner">
@@ -58,20 +58,81 @@
                                             </div>
                                             <div class="pp-infolist-description">
                                             </div>
-                                            <div class="pp-list-connector" style="top: 28px; left: 193.5px;"></div>
+                                            <div class="pp-list-connector" ></div>
                                         </li> 		</ul>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4">
+                        <div class="appointment-form">
+                            <div class="row">
+                                <div class="col-lg-4 contact-details1">
+                                    <h4><span>Contact Details</span></h4>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-lg-4">
+                                                <select name="gender" class="form-control" aria-required="true" aria-invalid="false">
+                                                    <option value="">Title*</option>
+                                                    <option value="Mr.">Mr.</option>
+                                                    <option value="Mrs.">Mrs.</option>
+                                                    <option value="Miss">Miss</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-lg-8">
+                                                <input type="text" class="form-control" name="name" placeholder="First name*" >
 
-                        </div>
-                        <div class="col-lg-4">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="name" placeholder="Surname*" >
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="number" class="form-control" name="name" placeholder="Phone number*" >
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="email" class="form-control" name="name" placeholder="Email*" >
+                                    </div>
 
-                        </div>
-                        <div class="col-lg-4">
+                                </div>
+                                <div class="col-lg-4 contact-details1">
+                                    <h4><span>Preferred Appointment</span></h4>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <input type="date">
+                                            </div>
+                                            <div class="col-lg-6">
+                                                
+                                                <select name="starttime" class="form-control" aria-required="true" aria-invalid="false">
+                                                    <option value="">Select Time*</option>
+                                                    <option value="Early Morning">Early Morning</option>
+                                                    <option value="Late Morning">Late Morning</option>
+                                                    <option value="Early Afternoon">Early Afternoon</option>
+                                                    <option value="Late Afternoon">Late Afternoon</option>
+                                                </select>
 
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="name" placeholder="Surname*" >
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="number" class="form-control" name="name" placeholder="Phone number*" >
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="email" class="form-control" name="name" placeholder="Email*" >
+                                    </div>
+
+                                </div>
+                                <div class="col-lg-4 contact-details1">
+                                    <h4><span>Preferred Appointment</span></h4>
+
+                                    <p>Request your appointment and a member of the team will call you back.</p>
+                                </div>
+                            </div>
                         </div>
+
                     </div>
 
                 {{--<div id="checkout" class="col-lg-8">--}}
