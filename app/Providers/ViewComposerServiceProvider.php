@@ -46,6 +46,13 @@ class ViewComposerServiceProvider extends ServiceProvider
         );
         view()->composer(
             [
+                'appointment.index'
+                ,
+            ],
+            'App\Http\ViewComposer\Frontend\ScheduleComposer'
+        );
+        view()->composer(
+            [
                 'profile.index'
                 ,
             ],

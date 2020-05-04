@@ -24,15 +24,17 @@ class AppointmentStoreRequest extends FormRequest
     public function rules()
     {
 
-
         return [
+            'gender'=>'required',
             'firstname'=>'required',
             'lastname'=>'required',
             'email'=>'required|email',
-            'address'=>'required',
+//            'address'=>'required',
             'phone'=>'required',
-//            'date'=>'required|exists:appointment_schedule,date',
-            'schedule_id'=>'required|exists:appointment_schedule,id'
+            'date'=>'date_format:d-m-Y|required|',
+            'time'=>'in:Early Morning,Late Morning,Early Afternoon,Late Afternoon',
+            'details'=>'required'
+//            'schedule_id'=>'required|exists:appointment_schedule,id'
         ];
     }
 }

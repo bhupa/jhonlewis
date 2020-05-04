@@ -21,7 +21,7 @@
 //    header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");?>
     <!-- Bootstrap CSS-->
     <link href="{{asset('frontend/css/bootstrap.min.css')}}" rel="stylesheet">
-    <link rel="stylesheet" href="{{asset('frontend/css/fullcalendar.min.css')}}"/>
+    {{--<link rel="stylesheet" href="{{asset('frontend/css/fullcalendar.min.css')}}"/>--}}
 
 {{--    <link href="{{asset('frontend/css/owl.carousel.css')}}" rel="stylesheet">--}}
 {{--    <link href="{{asset('frontend/css/owl.theme.default.css')}}" rel="stylesheet">--}}
@@ -43,7 +43,7 @@
     <link rel="stylesheet" href="{{asset('frontend/css/main.css')}}">
     <link rel="stylesheet" href="{{ asset('backend/dist/css/jquery.dataTables.min.css')}}">
     <link rel="stylesheet" href="{{ asset('backend/dist/css/dataTables.bootstrap4.min.css')}}">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.min.css" />
 
 {{--    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">--}}
 
@@ -297,13 +297,19 @@ _________________________________________________________
 <script src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/js/front.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js" integrity="sha256-4iQZ6BVL4qNKlQ27TExEhBN1HFPvAvAMbFavKKosSWQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"></script>
+
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.js"></script>
 {{--<script src="{{asset('js/app.js')}}"></script>--}}
+
 
 @yield('js_script')
 <script type="application/javascript">
     var baseUrl = '{!! url('') !!}';
+
     $(document).ready(function(){
+    $('.datepicker').datepicker();
         $('#table').DataTable();
 
 
@@ -482,6 +488,7 @@ _________________________________________________________
             $('#datepicker').attr('min', maxDate);
         });
     })
+
     $(document).ready(function(){
 
         // Select and loop the container element of the elements you want to equalise

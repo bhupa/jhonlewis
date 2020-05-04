@@ -48,13 +48,13 @@
                                         <span class="text-danger">{{ $errors->first('date') }}</span>
                                     @endif
                                 </div>
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">End Date</label>
-                                    <input class="form-control enchilada" type="date"  name="end" data-placeholder="Date" placeholder="2018-03-05" id="datepicker" value="{{ old('end') }}">
-                                    @if ($errors->has('end'))
-                                        <span class="text-danger">{{ $errors->first('end') }}</span>
-                                    @endif
-                                </div>
+                                {{--<div class="form-group">--}}
+                                    {{--<label for="exampleInputEmail1">End Date</label>--}}
+                                    {{--<input class="form-control enchilada" type="date"  name="end" data-placeholder="Date" placeholder="2018-03-05" id="datepicker" value="{{ old('end') }}">--}}
+                                    {{--@if ($errors->has('end'))--}}
+                                        {{--<span class="text-danger">{{ $errors->first('end') }}</span>--}}
+                                    {{--@endif--}}
+                                {{--</div>--}}
 
 
 

@@ -26,7 +26,7 @@ class ScheduleStoreRequest extends FormRequest
         return [
             'title'=>'required',
             'date'=>'required|date|unique:appointment_schedule,date',
-            'end'=>'required|date|after_or_equal:date',
+//            'end'=>'required|date|after_or_equal:date',
 
         ];
     }
