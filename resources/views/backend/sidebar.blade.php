@@ -41,6 +41,15 @@
 
             </li>
             <li class="nav-item has-treeview">
+                <a href="{{route('brand-banners.index')}}" class="nav-link">
+                    <i class="nav-icon fas fa-images"></i>
+                    <p>
+                        Brand Banner
+                    </p>
+                </a>
+
+            </li>
+            <li class="nav-item has-treeview">
                 <a href="{{route('brand.index')}}" class="nav-link">
                     <i class="nav-icon fas fa-glasses"></i>
                     <p>
