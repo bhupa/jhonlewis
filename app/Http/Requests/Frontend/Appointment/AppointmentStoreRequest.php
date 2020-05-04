@@ -31,7 +31,7 @@ class AppointmentStoreRequest extends FormRequest
             'email'=>'required|email',
 //            'address'=>'required',
             'phone'=>'required',
-            'date'=>'date_format:d/m/Y|required|',
+            'date'=>'date_format:d-m-Y|required|',
             'time'=>'in:Early Morning,Late Morning,Early Afternoon,Late Afternoon',
             'details'=>'required'
 //            'schedule_id'=>'required|exists:appointment_schedule,id'

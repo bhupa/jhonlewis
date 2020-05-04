@@ -81,10 +81,10 @@
                                             <div class="col-lg-4">
                                                 <select name="gender" class="form-control" aria-required="true" aria-invalid="false">
                                                     <option value="">Title*</option>
-                                                    <option value="Mr." {{(old('title')== 'Mr.')? 'selected':''}}>Mr.</option>
-                                                    <option value="Mrs." {{(old('title')== 'Mrs.')? 'selected':''}}>Mrs.</option>
-                                                    <option value="Miss" {{(old('title')== 'Miss')? 'selected':''}}>Miss</option>
-                                                    <option value="Others" {{(old('title')== 'Others')? 'selected':''}}>Others</option>
+                                                    <option value="Mr." {{(old('gender')== 'Mr.')? 'selected':''}}>Mr.</option>
+                                                    <option value="Mrs." {{(old('gender')== 'Mrs.')? 'selected':''}}>Mrs.</option>
+                                                    <option value="Miss" {{(old('gender')== 'Miss')? 'selected':''}}>Miss</option>
+                                                    <option value="Others" {{(old('gender')== 'Others')? 'selected':''}}>Others</option>
                                                 </select>
                                                 @if ($errors->has('gender'))
                                                     <span class="text-danger">{{ $errors->first('gender') }}</span>
@@ -267,14 +267,14 @@
             var active_dates = '{{json_encode($scheduls)}}';
             var vardata = JSON.parse(active_dates.replace(/&quot;/g,'"'));
             $('.datepicker').datepicker({
-                format: "dd/mm/yyyy",
+                format: "dd-mm-yyyy",
                 todayHighlight: true,
                 beforeShowDay: function(date){
                     var d = date;
                     var curr_date = d.getDate();
                     var curr_month = ("0" + (d.getMonth() + 1)).slice(-2);
                     var curr_year = d.getFullYear();
-                    var formattedDate = curr_date + "/" + curr_month + "/" + curr_year
+                    var formattedDate = curr_date + "-" + curr_month + "-" + curr_year
 
                     if ($.inArray(formattedDate, vardata) != -1){
                         return {

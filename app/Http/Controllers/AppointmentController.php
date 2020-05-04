@@ -95,7 +95,7 @@ class AppointmentController extends Controller
 
         $scheduls=[];
         foreach( $schedules as $item){
-            $scheduls[] = date('d/m/Y', strtotime($item->date));
+            $scheduls[] = date('d-m-Y', strtotime($item->date));
         }
 
         $blogs = $this->blog->where('is_active','1')->orderBy('created_at','desc')->take(3)->get();
@@ -104,9 +104,12 @@ class AppointmentController extends Controller
 
     public function store(AppointmentStoreRequest $request){
 //       $schedule =$this->schedule->find($request->schedule_id);
+
         $data = $request->except('_token');
             $data['user_id'] =Auth::user()->id;
-            $data['date']= date('d-m-Y', strtotime($request->date));
+        $LogintDate = strtotime($request->date);
+
+            $data['date']= date('d-m-Y', $LogintDate);
 
         if($this->appointment->create($data)){
 
