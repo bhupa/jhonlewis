@@ -1394,6 +1394,7 @@ btn_upload {
 }
 .fl-module-content {
     margin: 0px;
+    margin-bottom: 103px;
 }
 .pp-infolist {
     text-align: center;
@@ -1401,6 +1402,7 @@ btn_upload {
 .pp-infolist ul {
     margin: 0;
     padding: 0;
+    margin-top: 50px;
 }
 .pp-infolist-wrap .layout-3 .pp-list-item {
      width: 33.333333333333%;
@@ -1423,6 +1425,82 @@ btn_upload {
     float: left;
     padding: 0 20px;
     vertical-align: top;
+}
+.pp-icon-wrapper {
+    margin-bottom: 0px;
+    width: 50px;
+    height: 50px;
+    margin: 0 auto;
+}
+.pp-infolist-title h3.pp-infolist-title-text {
+    font-family: Catamaran, sans-serif;
+    font-weight: 600;
+    font-size: 24px;
+}
+.pp-infolist-title h3.pp-infolist-title-text {
+    color: #2b384e;
+    margin-top: -38px;
+    margin-bottom: 0px;
+
+}
+.contact-details1 h4 {
+    text-align: center;
+    padding-bottom: 33px;
+}
+.contact-details1 h4 span {
+    border-bottom: 1px solid #000;
+    padding-bottom: 5px;
+}
+{
+    background-color: #ffffff;
+    border-radius: 2px;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -ms-border-radius: 2px;
+    -o-border-radius: 2px;
+    border-width: 0px;
+    border-width: 1px;
+    height: 34px;
+    width: %;
+    padding: 10px;
+    margin-top: 0px;
+    margin-bottom: 12px;
+}
+ /*.pp-infolist-wrap .layout-3 .pp-list-connector {*/
+    /*!* border-top-color: #d4ba69; *!*/
+    /*border-top-style: solid;*/
+    /*border-top-width: 1px;*/
+/*}*/
+
+.pp-infolist-icon {
+    box-shadow: 0 0 0 10px #d4ba69;
+    border-radius: 100px;
+    border-color: #2b384e;
+    border-style: solid;
+    border-width: 1px;
+}
+.pp-infolist-title-text,.child-line {
+    position: relative;
+    display: block;
+}
+ .child-line:after{
+    content: '';
+    width: 91%;
+    border-bottom: solid 1px #2d2929;
+    position: absolute;
+    left: 61%;
+    top: 15px;
+    /* bottom: -26%; */
+    z-index: 1;
+}
+
+.pp-infolist-icon-inner {
+    width: 49px;
+    height: 49px;
+}
+ .pp-list-item-0 .pp-infolist-icon-inner .pp-icon {
+    background-color: #ffffff;
+    border-radius: 100px;
 }
  .pp-infolist-wrap .pp-list-item {
     padding-bottom: 10px;
@@ -1490,7 +1568,7 @@ btn_upload {
     padding: 59px;
     position: absolute;
     transition: background 0.2s ease, padding 0.8s linear;
-    background-color: rgba(31, 24, 24, 0.32);
+    background-color: rgba(31, 24, 24, 0.61);
     color: #fff;
     left: 2px;
 
@@ -1507,6 +1585,10 @@ btn_upload {
 }
 .product-single-item p span {
     font-weight: 400;
+}
+.contact-details1 h4 {
+    text-align: center;
+    padding-bottom: 33px;
 }
 
 
