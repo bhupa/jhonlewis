@@ -1,34 +1,12 @@
 @extends('frontend.app')
-@section('title','Frame && Brand')
+@section('title',$brand->title)
 @section('css_script')
 @endsection
 @section('content')
     <div id="all">
         <div id="content">
             <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <!-- breadcrumb-->
 
-                        <div class="box info-bar">
-
-                            <div class="row">
-                                <div class="col-md-4 col-lg-6 products-showing">
-                                    <div class="products-sort-by mt-2 mt-lg-0"><strong>Search By Model</strong>
-                                        <input type="text" name="model" placeholder="Product Model No">
-                                    </div>
-                                </div>
-                                <div class="col-md-4 col-lg-6 products-number-sort">
-                                    <div class="products-sort-by mt-2 mt-lg-0"><strong>Search By Model</strong>
-                                        <input type="text" name="model" placeholder="Product Model No">
-                                    </div>
-                                </div>
-                                <div class="col-md-4 col-lg-6 products-number-sort">
-                                    <button type="submit" value="Search"></button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     <div class="row products">
 
                         @foreach($products as $product)
@@ -38,6 +16,10 @@
                                         <img src="{{asset('storage/'.$product->image)}}" alt="{{$product->title}}">
 
                                     </a>
+                                    <p><span class="model text-left">Mod: 760</span>
+                                    </p>
+                                    <p>
+                                        <span class="brand">Brand:Cazal</span></p>
                                 </div>
 
                                 <!-- /.product            -->
@@ -56,10 +38,10 @@
                 </div>
                 <!-- /.col-lg-9-->
             </div>
-                <!-- /.col-md-9-->
+            <!-- /.col-md-9-->
 
-            </div>
         </div>
+    </div>
     </div>
     </div>
 @endsection

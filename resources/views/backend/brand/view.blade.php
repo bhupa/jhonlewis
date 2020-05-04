@@ -39,6 +39,7 @@
                                 <th scope="col">Name</th>
                                 <th scope="col">Image</th>
                                 <th scope="col" >created_by</th>
+                                <th scope="col">For Sale</th>
                                 <th scope="col">Status</th>
                                 <th scope="col">action</th>
                             </tr>
@@ -53,6 +54,15 @@ s
                                         <img style="width:100px;height:100px;" src="{{asset('storage/'.$item->image)}}" alt="{{$item->name}}">
                                     </td>
                                     <td>{{$item->author->name}}</td>
+                                    <td>
+                                        @if($item->selling == '1')
+                                            <a href="javascript:void(0)"  data-type="{{$item->id}}" id="selling" class="edit-modal btn btn-sm btn-circle btn-success published"  title="change-status"
+                                               data-toggle="tooltip"> <i class="fas fa-check" aria-hidden="true"></i></a>
+                                        @else
+                                            <a href="javascript:void(0)"  data-type="{{$item->id}}" id="selling" class="edit-modal btn btn-sm btn-circle btn-success unpublished"   title="change-status"
+                                               data-toggle="tooltip"> <i class="fas fa-minus" aria-hidden="true"></i></a>
+                                        @endif
+                                    </td>
                                     <td>
                                         @if($item->is_active == '1')
                                             <a href="javascript:void(0)"  data-type="{{$item->id}}" id="change-status" class="edit-modal btn btn-sm btn-circle btn-success published"  title="change-status"
@@ -146,6 +156,7 @@ s
                     $("#table").on("click", "#change-status", function () {
                         $object = $(this);
                         var id = $(this).attr('data-type');
+
                         swal({
                             title: 'Are you sure?',
                             text: 'Do you want to change the status',
@@ -158,6 +169,51 @@ s
                                 $.ajax({
                                     type: "POST",
                                     url: "{{ route('brand.change-status') }}",
+                                    data: {
+                                        'id': id,
+                                    },
+                                    headers: {
+                                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                    },
+                                    dataType: 'json',
+                                    success: function (response) {
+                                        swal("Thank You!", response.message, "success");
+                                        if (response.brand.is_active == 1) {
+                                            $($object).children().removeClass('fa fa-minus');
+                                            $($object).children().addClass('fa fa-check');
+                                        } else {
+                                            $($object).find('.unpublished').html('<i class="fa fa-minus" aria-hidden="true"></i>');
+                                            $($object).children().removeClass('fa fa-check');
+                                            $($object).children().addClass('fa fa-minus');
+                                        }
+                                    },
+                                    error: function (e) {
+                                        if (e.responseJSON.message) {
+                                            swal('Error', e.responseJSON.message, 'error');
+                                        } else {
+                                            swal('Error', 'Something went wrong while processing your request.', 'error')
+                                        }
+                                    }
+                                });
+
+                            }
+                        })
+                    });
+                    $("#table").on("click", "#selling", function () {
+                        $object = $(this);
+                        var id = $(this).attr('data-type');
+                        swal({
+                            title: 'Are you sure?',
+                            text: 'Do you want to add or remove this brand for sale ',
+                            type: 'warning',
+                            showCancelButton: true,
+                            confirmButtonText: 'Yes, change it!',
+                            cancelButtonText: 'No, keep it'
+                        }).then((result) => {
+                            if (result.value) {
+                                $.ajax({
+                                    type: "POST",
+                                    url: "{{ route('brand.add-to-sale') }}",
                                     data: {
                                         'id': id,
                                     },

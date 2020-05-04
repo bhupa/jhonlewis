@@ -43,7 +43,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $brands = $this->brand->where('is_active','1')->orderBy('name')->get();
+        $brands = $this->brand->where('is_active','1')->where('selling','1')->orderBy('name')->get();
         return view('backend.product.create')->withBrands($brands);
     }
 
@@ -103,7 +103,7 @@ class ProductController extends Controller
 
 
         $products = $this->products->where('slug',$slug)->first();
-        $brands = $this->brand->where('is_active','1')->orderBy('name')->get();
+        $brands = $this->brand->where('is_active','1')->where('selling','1')->orderBy('name')->get();
 
         return view('backend.product.edit')->withproducts($products )->withBrands($brands);
     }
