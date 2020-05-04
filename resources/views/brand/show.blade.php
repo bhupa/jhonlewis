@@ -6,36 +6,53 @@
     <div id="all">
         <div id="content">
             <div class="container">
-
-                    <div class="row products">
-
-                        @foreach($products as $product)
-                            <div class="col-lg-3 col-md-4">
-                                <div class="product-single-item">
-                                    <a href="{{route('product.show',[$product->slug ])}}" class="shop-lists">
-                                        <img src="{{asset('storage/'.$product->image)}}" alt="{{$product->title}}">
-
-                                    </a>
-                                    <p><span class="model text-left">Mod: 760</span>
-                                    </p>
-                                    <p>
-                                        <span class="brand">Brand:Cazal</span></p>
-                                </div>
-
-                                <!-- /.product            -->
+                <div class="service-lists-content">
+                    <h4>{{$brand->name}}</h4>
+                    <hr>
+                    <div class="row" id="frames-brand">
+                        <div class="col-lg-6">
+                            <div class="frame-wrapper-title">
+                                <h1>{{$brand->name}}</h1>
                             </div>
-                    @endforeach
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="frame-wrapper">
+                                {!! $brand->description !!}
+                            </div>
+                        </div>
+                    </div>
 
-                    <!-- /.products-->
-                    </div>
-                    <div class="pages" style="margin-bottom: 100px;">
-                        <nav aria-label="Page navigation example" class="d-flex justify-content-center">
+
+                        <div class="row products">
+
+                            @foreach($products as $product)
+                                <div class="col-lg-3 col-md-4">
+                                    <div class="product-single-item">
+                                        <a href="{{route('product.show',[$product->slug ])}}" class="shop-lists">
+                                            <img src="{{asset('storage/'.$product->image)}}" alt="{{$product->title}}">
+
+                                        </a>
+                                        <p><span class="model text-left">Mod: 760</span>
+                                        </p>
+                                        <p>
+                                            <span class="brand">Brand:Cazal</span></p>
+                                    </div>
+
+                                    <!-- /.product            -->
+                                </div>
+                        @endforeach
+
+                        <!-- /.products-->
+                        </div>
+                        <div class="pages" style="margin-bottom: 100px;">
                             <nav aria-label="Page navigation example" class="d-flex justify-content-center">
-                                {{ $products->links('vendor.pagination.default') }}
+                                <nav aria-label="Page navigation example" class="d-flex justify-content-center">
+                                    {{ $products->links('vendor.pagination.default') }}
+                                </nav>
                             </nav>
-                        </nav>
+                        </div>
                     </div>
-                </div>
+
                 <!-- /.col-lg-9-->
             </div>
             <!-- /.col-md-9-->
