@@ -77,7 +77,7 @@ Route::resource('product','ProductController');
 
 Route::resource('/glass','GlassController');
 Route::resource('/lens','LensController');
-Route::resource('/brands','BrandController');
+Route::resource('brands','BrandController');
 //Route::resource('/frame','FrameController');
 //Route::resource('/frame-category','FrameCategoryController');
 Route::resource('/shop','ShopController');
@@ -220,5 +220,6 @@ Route::group(['namespace'=>'Backend','middleware'=>'auth'], function() {
     Route::resource('notifications','NotificationController');
     Route::resource('brand','BrandController');
     Route::post('/brand/change-status','BrandController@changeStatus')->name('brand.change-status');
+    Route::post('/brand/add-to-sale','BrandController@addToSell')->name('brand.add-to-sale');
 
 });

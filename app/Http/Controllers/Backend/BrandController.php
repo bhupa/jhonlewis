@@ -141,14 +141,29 @@ class BrandController extends Controller
         $brand = $this->brand->find($request->get('id'));
         if ($brand->is_active == 0) {
             $status = '1';
-            $message = 'Brand with title "' . $brand->name . '" is published.';
+            $message = 'Brand with name "' . $brand->name . '" is published.';
         } else {
             $status = '0';
-            $message = 'Brand with title "' . $brand->name . '" is unpublished.';
+            $message = 'Brand with name "' . $brand->name . '" is unpublished.';
         }
 
         $this->brand->changeStatus($brand->id, $status);
         $this->brand->update($brand->id, array('is_active' => $status));
+        $updated = $this->brand->find($request->get('id'));
+        return response()->json(['status' => 'ok', 'message' => $message, 'brand' => $updated], 200);
+    }
+    public function addToSell(Request $request){
+        $brand = $this->brand->find($request->get('id'));
+        if ($brand->selling == 0) {
+            $status = '1';
+            $message = 'Brand with name "' . $brand->name . '" add to selling lists.';
+        } else {
+            $status = '0';
+            $message = 'Brand with name "' . $brand->name . '" remove from selling lists.';
+        }
+
+        $this->brand->changeStatus($brand->id, $status);
+        $this->brand->update($brand->id, array('selling' => $status));
         $updated = $this->brand->find($request->get('id'));
         return response()->json(['status' => 'ok', 'message' => $message, 'brand' => $updated], 200);
     }
