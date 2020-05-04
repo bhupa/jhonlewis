@@ -222,4 +222,8 @@ Route::group(['namespace'=>'Backend','middleware'=>'auth'], function() {
     Route::post('/brand/change-status','BrandController@changeStatus')->name('brand.change-status');
     Route::post('/brand/add-to-sale','BrandController@addToSell')->name('brand.add-to-sale');
 
+
+    Route::resource('brand-banners','BrandBannerController');
+    Route::post('/brand-banners/change-status','BrandBannerController@changeStatus')->name('brand-banners.change-status');
+
 });

@@ -5,6 +5,30 @@
 @section('content')
     <div id="all">
         <div id="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="main-slider" class="owl-carousel owl-theme">
+                        @foreach( $banners as $banner)
+                            <div class="item">
+                                <div class="banner-wrapper">
+                                    <img src="{{asset('storage/'.$banner->image)}}" alt="{{$banner->title}}" class="img-fluid">
+                                    <div class="banner-content">
+                                        {{--<div class="banner-content-wrapper">--}}
+                                        {{--<h2>{{$banner->title}}</h2>--}}
+                                        {{--<p>--}}
+                                        {{--{{str_limit($banner->short_description,'200','....')}}--}}
+                                        {{--</p>--}}
+                                        {{--</div>--}}
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                    <!-- /#main-slider-->
+                </div>
+            </div>
             <div class="container">
                 <div class="brand-listing">
                     <div class="row">
