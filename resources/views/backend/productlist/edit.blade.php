@@ -71,9 +71,9 @@
                                         <label for="validationCustom01">Type</label>
                                         <select name="type" class="form-control">
                                             <option value="0">Select Type</option>
-                                            <option value="eye-care" {{$productlists->type== 'eye-care' ? 'selected':''}}>Eye Care</option>
-                                            <option value="kid-wear" {{$productlists->type== 'kid-wear' ? 'selected':''}}>kid-wear</option>
-                                            <option value="sunglass" {{$productlists->type== 'sunglass' ? 'selected':''}}>sunglass</option>
+                                            <option value="eye-care" {{$productlists->type== 'eye-care' ? 'selected':''}}>Eye Wear</option>
+                                            <option value="kid-wear" {{$productlists->type== 'kid-wear' ? 'selected':''}}>Kid Wear</option>
+                                            <option value="sunglass" {{$productlists->type== 'sunglass' ? 'selected':''}}>Sunglass</option>
 
                                         </select>
                                         @if ($errors->has('type'))

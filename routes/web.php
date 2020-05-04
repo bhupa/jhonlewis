@@ -127,7 +127,7 @@ Route::group(['namespace'=>'Backend','middleware'=>'auth'], function() {
     // service router
     Route::resource('services','ServiceController');
     Route::post('/services/change-status','ServiceController@changeStatus')->name('services.change-status');
-    Route::post('services/sort', 'ServiceControllerController@sort')->name('services.sort');
+    Route::post('services/sort', 'ServiceController@sort')->name('services.sort');
 
     // content router
     Route::resource('contents','ContentController');
