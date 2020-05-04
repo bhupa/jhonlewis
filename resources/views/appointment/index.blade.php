@@ -115,20 +115,60 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" class="form-control" name="name" placeholder="Surname*" >
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <input type="date">
+                                            </div>
+                                            <div class="col-lg-6">
+
+                                                <select name="starttime" class="form-control" aria-required="true" aria-invalid="false">
+                                                    <option value="">Select Time*</option>
+                                                    <option value="Early Morning">Early Morning</option>
+                                                    <option value="Late Morning">Late Morning</option>
+                                                    <option value="Early Afternoon">Early Afternoon</option>
+                                                    <option value="Late Afternoon">Late Afternoon</option>
+                                                </select>
+
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="form-group">
-                                        <input type="number" class="form-control" name="name" placeholder="Phone number*" >
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="email" class="form-control" name="name" placeholder="Email*" >
-                                    </div>
+                                    <h4 class="appo-details">Appointment Details</h4>
+
+                                    <span class="list-item first">
+                                        <input type="radio" name="request"  value="Eye Examination"><span class="list-item-label">Eye Examination
+                                        </span>
+                                    </span>
+                                    <span class="list-item ">
+                                        <input type="radio" name="request"  value="Contact Lens Aftercare"><span class="list-item-label">Contact Lens Aftercare
+                                        </span>
+                                    </span>
+                                    <span class="list-item ">
+                                        <input type="radio" name="request"  value="Contact Lens Fitting"><span class="list-item-label">Contact Lens Fitting
+                                        </span>
+                                    </span>
+                                    <span class="list-item ">
+                                        <input type="radio" name="request"  value="Frame Consultation"><span class="list-item-label">Frame Consultation
+                                        </span>
+                                    </span>
+                                    <span class="list-item ">
+                                        <input type="radio" name="request"  value="Others"><span class="list-item-label">Others
+                                        </span>
+                                    </span>
 
                                 </div>
                                 <div class="col-lg-4 contact-details1">
-                                    <h4><span>Preferred Appointment</span></h4>
+                                    <h4>
+                                        <span></span></h4>
 
                                     <p>Request your appointment and a member of the team will call you back.</p>
+
+                                    <div class="submit-btn">
+                                        <button type="submit" value="REQUEST AN APPOINTMENT">REQUEST AN APPOINTMENT</button>
+                                    </div>
+
+                                    <p>If you need any help please call us</p><br>
+
+                                    <span class="phone-number text-center">02083161121</span>
                                 </div>
                             </div>
                         </div>
