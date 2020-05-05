@@ -77,6 +77,7 @@ class HomeComposer
     {
         $header = $this->content->where('is_active','1')->where('menu','header')->orderBy('title')->get();
         $footer = $this->content->where('is_active','1')->where('menu','footer')->orderBy('title')->get();
+        $contents = $this->content->where('is_active','1')->where('menu','content')->get();
 
 
         $banners = $this->banner->where('is_active','1')->orderBy('created_at','desc')->take(4)->get();
@@ -119,6 +120,7 @@ class HomeComposer
             ->withFrames($frames)
             ->withGlasses($glasses)
         ->withHeader($header)
-        ->withFooter($footer);
+        ->withFooter($footer)
+        ->withContents($contents);
     }
 }

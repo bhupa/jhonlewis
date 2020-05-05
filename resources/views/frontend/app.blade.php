@@ -90,7 +90,13 @@
                     </ul>
                 </div>
                 <div class="col-lg-6 text-center text-lg-right">
+
+                    <a href="#" data-toggle="modal" data-target="#appointment" class="appointment-logo">
+                        {{--<i class="fa fa-clock-o"></i>--}}
+                    </a>
                     <ul class="menu list-inline mb-0">
+
+
                         @if(Auth::check())
                             <li class="list-inline-item"><a href="{{route('profile')}}">Profile</a></li>
                             <li class="list-inline-item"><a href="{{route('logout')}}">Logout</a></li>
@@ -139,6 +145,29 @@
                         <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
                     </div>
 
+                </div>
+            </div>
+        </div>
+        <div id="appointment" tabindex="-1" role="dialog" aria-labelledby="Login" aria-hidden="true" class="modal fade">
+            <div class="modal-dialog ">
+                <div class="modal-content">
+                    <div class="modal-header">
+
+                        <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
+                    </div>
+                    <div class="modal-body">
+
+                        @foreach($contents as $content)
+                            @if($content->slug == 'opening-hours')
+                                {!! $content->description !!}
+                                @endif
+                        @endforeach
+                        {{--<div class="appointment-model-header">--}}
+                            {{--<h3>Opening Times</h3>--}}
+                            {{--<span class="time">Monday - Friday: 09:30 - 18:00</span>--}}
+                            {{--<span class="time-text">We are closed Saturday & Sunday</span>--}}
+                        {{--</div>--}}
+                    </div>
                 </div>
             </div>
         </div>
@@ -202,7 +231,7 @@ _________________________________________________________
     <div class="container">
         <div class="row">
             <div class="col-lg-4 col-md-6">
-                <h4 class="mb-3">Pages</h4>
+                <h4 class="mb-3 footer-header">Pages</h4>
                 <ul class="list-unstyled" id="footer-menu">
                     @foreach($footer  as $menu)
                     @if($menu->child->isEmpty() && $menu->parent_id == '' )
@@ -215,7 +244,7 @@ _________________________________________________________
             </div>
             <!-- /.col-lg-3-->
             <div class="col-lg-4 col-md-6">
-                <h4 class="mb-3">Links</h4>
+                <h4 class="mb-3 footer-header">Links</h4>
 
                 <ul class="list-unstyled" id="footer-menu">
                     <li><a href="{{route('shop.index')}}">Shop Online</a></li>
@@ -227,7 +256,7 @@ _________________________________________________________
             </div>
             <!-- /.col-lg-3-->
             <div class="col-lg-4 col-md-7">
-                <h4 class="mb-3">Where to find us</h4>
+                <h4 class="mb-3 footer-header">Where to find us</h4>
                 @foreach($settings as $setting)
                     @if($setting->slug == 'address')
                 <p class="footer-address"><i class="fa fa-map-marker"></i>{{$setting->value}}</p>

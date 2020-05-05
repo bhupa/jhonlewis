@@ -82,7 +82,7 @@ Route::resource('brands','BrandController');
 //Route::resource('/frame-category','FrameCategoryController');
 Route::resource('/shop','ShopController');
 Route::resource('content','ContentController');
-
+Route::resource('email-subscribe','EmailSubscribeController');
 Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.reset');
 Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
 Route::get('password/resettoken/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.resettoken');
