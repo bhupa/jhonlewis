@@ -1,5 +1,5 @@
 @extends('frontend.app')
-@section('title','Shoping Lists')
+@section('title','Shopping Lists')
 @section('css_script')
 @endsection
 @section('content')

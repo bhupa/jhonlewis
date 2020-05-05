@@ -11,8 +11,8 @@
                     <hr>
                     <div class="row" id="frames-brand">
                         <div class="col-lg-6">
-                            <div class="frame-wrapper-title">
-                                <h1>{{$brand->name}}</h1>
+                            <div class="frame-wrapper-title brand-product-lists">
+                                <img src="{{asset('storage/'.$brand->image)}}" alt="{{$brand->name}}">
                             </div>
                         </div>
                         <div class="col-lg-6">

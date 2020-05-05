@@ -429,7 +429,7 @@ ul#menu li ul.sub-menu li:hover ul {
 .top-header-address {
     list-style: none;
     padding: 0;
-    margin-top: 5px;
+    margin-top: 12px;
 }
 .top-header-address li {
     display: inline-block;
@@ -710,7 +710,8 @@ button:hover {
     font-size: 23px;
     color: #fff;
     position: absolute;
-    left: 300px;
+    left: 241px;
+    top: 10px;
 }
 .truck:before{
 
@@ -1178,6 +1179,14 @@ btn_upload {
     width: 100%;
 
 }
+.frame-wrapper-title {
+    text-align: center;
+}
+
+.brand-product-lists img {
+    width: 100% !important;
+
+}
 .service-lists-content img {
     width:250px;
     height: 250px;
@@ -1555,7 +1564,7 @@ btn_upload {
 /*}*/
 
 .pp-infolist-icon {
-    box-shadow: 0 0 0 10px #d4ba69;
+    box-shadow: 0 0 0 10px #2a478b;
     border-radius: 100px;
     border-color: #2b384e;
     border-style: solid;
@@ -1575,6 +1584,8 @@ btn_upload {
     /* bottom: -26%; */
     z-index: 1;
 }
+
+
 
 .pp-infolist-icon-inner {
     width: 49px;
@@ -1807,6 +1818,32 @@ btn_upload {
     text-align: center;
     font-size: 18px;
     display: block;
+}
+#top ul.menu>li:last-child {
+    margin-right: 0;
+    background: #469b50;
+    padding: 5px 5px;
+    margin-left: 10px;
+}
+#top ul.menu>li:last-child::before {
+    content: '';
+    display: none;
+
+}
+#top ul.menu>li:last-child a {
+    text-decoration: none;
+    padding: 10px;
+    font-size: 18px;
+}
+#footer .appointment-model-header {
+    padding: 10px;
+    box-sizing: content-box;
+     border: none;
+    color: #ffffff;
+    text-align: left;
+}
+#footer .appointment-model-header span,#footer .appointment-model-header h3 {
+   text-align: left !important;
 }
 
 
