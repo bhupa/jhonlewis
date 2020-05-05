@@ -253,6 +253,14 @@ _________________________________________________________
 
                 </ul>
 
+                @foreach($contents as $content)
+                    @if($content->slug == 'opening-hours')
+                        {!! $content->description !!}
+                    @endif
+
+                @endforeach
+
+
             </div>
             <!-- /.col-lg-3-->
             <div class="col-lg-4 col-md-7">

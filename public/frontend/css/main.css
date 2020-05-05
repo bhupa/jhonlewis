@@ -1179,6 +1179,14 @@ btn_upload {
     width: 100%;
 
 }
+.frame-wrapper-title {
+    text-align: center;
+}
+
+.brand-product-lists img {
+    width: 100% !important;
+
+}
 .service-lists-content img {
     width:250px;
     height: 250px;
@@ -1826,6 +1834,16 @@ btn_upload {
     text-decoration: none;
     padding: 10px;
     font-size: 18px;
+}
+#footer .appointment-model-header {
+    padding: 10px;
+    box-sizing: content-box;
+     border: none;
+    color: #ffffff;
+    text-align: left;
+}
+#footer .appointment-model-header span,#footer .appointment-model-header h3 {
+   text-align: left !important;
 }
 
 

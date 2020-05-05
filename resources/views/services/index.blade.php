@@ -8,15 +8,15 @@
         <div id="content">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-12">
-                        <!-- breadcrumb-->
-                        <nav aria-label="breadcrumb">
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li aria-current="page" class="breadcrumb-item active">Service</li>
-                            </ol>
-                        </nav>
-                    </div>
+                    {{--<div class="col-lg-12">--}}
+                        {{--<!-- breadcrumb-->--}}
+                        {{--<nav aria-label="breadcrumb">--}}
+                            {{--<ol class="breadcrumb">--}}
+                                {{--<li class="breadcrumb-item"><a href="#">Home</a></li>--}}
+                                {{--<li aria-current="page" class="breadcrumb-item active">Service</li>--}}
+                            {{--</ol>--}}
+                        {{--</nav>--}}
+                    {{--</div>--}}
                     {{--<div id="advantages">--}}
                         {{--<div class="container">--}}
                             {{--<div class="row mb-4">--}}
@@ -43,7 +43,7 @@
                     <div class="col-lg-4">
 
                         <div class="service-lists">
-                            <h2>Services Lists</h2>
+                            <h2>{{$content->title}}</h2>
 
                             <hr>
                             <ul>
@@ -52,6 +52,8 @@
                                 @endforeach
 
                             </ul>
+
+                            <a href="{{route('service.index')}}">Back to Service</a>
                         </div>
 
                     </div>
@@ -59,10 +61,8 @@
                         <div class="service-lists-content">
                             <h4>Services</h4>
                             <hr>
-                            <img src="{{asset('frontend/img/brand.png')}}" alt="content title">
-                            <p>Services  It is the OPTIX premium service that truly sets us apart; we are passionate about eyecare, highly qualified, experienced, independent and dedicated to ensuring our customers get the best possible care and attention. From the moment you walk into our store, we will consider you first and foremost, do everything we can to ensure you get eyewear suitable for your prescription, stylish, comfortable, something that compliments and enhances your image. We listen to what you want and offer choices you may never have seen. In short, perfect eyewear!
-                                We have lots of ideas to save you time and money. Price Match Promise is our guarantee to match the lowest prices for identical products at other UK outlets, and up to 10 months Interest Free Credit helps spread the cost of payments (all offers are subject to terms and conditions – please ask one of our team for details).</p>
-
+                            <img src="{{asset('storage/'.$content->image)}}" alt="{{$content->title}}">
+                            {!! $content->description !!}
                         </div>
                     </div>
                     <!-- /.col-lg-9-->

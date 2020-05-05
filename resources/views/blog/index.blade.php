@@ -8,18 +8,18 @@
         <div id="content">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-12">
-                        <!-- breadcrumb-->
-                        <nav aria-label="breadcrumb">
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li aria-current="page" class="breadcrumb-item active">Blog</li>
-                            </ol>
-                        </nav>
-                    </div>
+                    {{--<div class="col-lg-12">--}}
+                        {{--<!-- breadcrumb-->--}}
+                        {{--<nav aria-label="breadcrumb">--}}
+                            {{--<ol class="breadcrumb">--}}
+                                {{--<li class="breadcrumb-item"><a href="#">Home</a></li>--}}
+                                {{--<li aria-current="page" class="breadcrumb-item active">Blog</li>--}}
+                            {{--</ol>--}}
+                        {{--</nav>--}}
+                    {{--</div>--}}
                     <div id="checkout" class="col-lg-12">
 
-                        <div id="blog-homepage" class="row">
+                        <div id="blog-homepage" class="row" style="margin-top: 50px;">
                             @foreach($blogs as $blog)
                                 <div class="col-sm-6">
                                     <div class="post">
