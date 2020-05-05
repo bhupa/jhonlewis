@@ -7,7 +7,7 @@
 
     <li class="nav-item"> <a href="{{route('service.index')}}" class="nav-link {{ (request()->segment(1) == 'service') ? 'active' : '' }}">Services</a></li>
     <li class="nav-item"> <a href="{{route('content.show',['eye-care'])}}" class="nav-link {{ (request()->segment(2) == 'eye-care') ? 'active' : '' }}">Eye Care</a></li>
-    <li class="nav-item"> <a href="{{route('content.show',['frame-brand'])}}" class="nav-link {{ (request()->segment(2) == 'frame-brand') ? 'active' : '' }}">Frames and Brands</a>
+    <li class="nav-item"> <a href="{{route('content.show',['frame-brand'])}}" class="nav-link {{ (request()->segment(2) == 'frame-brand') ? 'active' : '' }}">Frames & Brands</a>
     <li class="nav-item"> <a href="{{route('content.show',['contact-lens'])}}" class="nav-link {{ (request()->segment(2) == 'contact-lens') ? 'active' : '' }}">Contact Lens</a></li>
 
 
@@ -20,7 +20,7 @@
     {{--</li>--}}
     {{--<li class="nav-item"> <a href="{{route('home')}}" class="nav-link active">Frames</a></li>--}}
     {{--<li class="nav-item"> <a href="{{route('frame-brands')}}" class="nav-link ">Frame and Brand</a></li>--}}
-    <li class="nav-item"> <a href="{{route('shop.index')}}" class="nav-link {{ (request()->segment(1) == 'shop') ? 'active' : '' }}">Shop</a></li>
+    <li class="nav-item"> <a href="{{route('shop.index')}}" class="nav-link {{ (request()->segment(1) == 'shop') ? 'active' : '' }}">Shop Online</a></li>
    {{--l <li class="nav-item"> <a href="{{route('content.show',['contact-lens'])}}" class="nav-link ">Contact Lens</a></li>--}}
     <li class="nav-item"> <a href="{{route('contact-us.index')}}" class="nav-link {{ (request()->segment(1) == 'contact-us') ? 'active' : '' }}">Contact Us</a></li>
 
