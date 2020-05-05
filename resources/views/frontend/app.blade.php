@@ -104,7 +104,7 @@
                         <li class="list-inline-item"><a href="#" data-toggle="modal" data-target="#login-modal">Login</a></li>
                         <li class="list-inline-item"><a href="{{route('register')}}">Register</a></li>
                         @endif
-                        <li class="list-inline-item"><a href="{{route('appointment.index')}}">Appointment</a></li>
+                        <li class="list-inline-item"><a href="{{route('appointment.index')}}">Book An Appointment</a></li>
                     </ul>
                 </div>
             </div>

@@ -352,7 +352,7 @@
 <div class="appointment-section">
     <div class="container">
         <div class="appointment-section-wrapper">
-            <a href="{{route('appointment.index')}}">Book Appointment</a>
+            <a href="{{route('appointment.index')}}">Book An Appointment</a>
         </div>
     </div>
 </div>
