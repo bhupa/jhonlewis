@@ -286,16 +286,19 @@
 
                 <h3>Subscribe</h3>
                 <p>Sign up to get on sales,new release and more.</p>
-                <form action="">
+                <div  id="message-success">
+                    <span></span>
+                </div>
+                    {!! Form::open(['route'=>'email-subscribe.store','method'=>'post','id'=>'email-subscribe']) !!}
                     <div class="form-group">
                         <div class="row">
                             <div class="col-lg-6">
                                 <lable>First Name</lable>
-                                <input type="text" class="form-control" placeholder="Full Name" id="fullname">
+                                <input type="text" name="firstname" class="form-control" placeholder="Full Name" id="firstname">
                             </div>
                             <div class="col-lg-6">
                                 <lable>Last Name</lable>
-                                <input type="text" class="form-control" placeholder="Last Name" id="lastname">
+                                <input type="text" name="lastname" class="form-control" placeholder="Last Name" id="lastname">
                             </div>
                         </div>
                     </div>
@@ -303,14 +306,14 @@
                         <div class="row">
                             <div class="col-lg-8">
                                 <lable>Email</lable>
-                                <input type="Email" class="form-control" placeholder="Enter your email address" id="email">
+                                <input type="Email" name="email" class="form-control" placeholder="Enter your email address" id="email">
                             </div>
                             <div class="col-lg-4">
                                 <button class="btn btn-submit">SIGN UP</button>
                             </div>
                         </div>
                     </div>
-                </form>
+                {!! Form::close() !!}
             </div>
         </div>
     </div>
@@ -620,4 +623,42 @@
 </div>
 @endsection
 @section('js_script')
+    <script type="text/javascript" >
+        jQuery(document).ready(function(){
+            $('#email-subscribe').on('submit',function(){
+                event.preventDefault();
+
+                var url = '{{route('email-subscribe.store')}}'
+                var data = $( this ).serialize();
+                $.ajax({
+                    type:'POST',
+                    url:url,headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+
+                    data:data,
+                    dataType: 'json',
+                    success:function(data){
+                        console.log(data.message)
+                        $('#email-subscribe')[0].reset();
+                        setTimeout(function(){
+                            $('#message-success').addClass('alert alert-success');
+                            $('#message-success span').text(data.message);
+
+                        }, 5000);
+
+                    },
+                    error: function (xhr,data) {
+                        console.log(xhr);
+                        $.each(xhr.responseJSON.errors, function (key, value) {
+                            $('#' + key).css('border','1px solid rgb(243, 78, 15)');
+                            $('#' + key).attr("placeholder", value);
+
+                        });
+                    }
+                })
+
+            })
+        });
+    </script>
 @endsection

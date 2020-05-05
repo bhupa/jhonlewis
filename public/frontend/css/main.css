@@ -36,15 +36,18 @@ textarea {
     text-align: justify;
 }
 #footer-menu li {
-    border-bottom: 1px solid #ffffff;
-    padding: 10px 10px;
+    /*border-bottom: 1px solid #ffffff;*/
+    padding: 7px 10px;
 }
 #footer-menu li a {
     color: #ffffff;
+    font-size: 16px;
+    text-transform: uppercase;
+    text-decoration: none;
 }
 #footer {
-    background: #54bfa8;
-    padding: 100px 0;
+    background: #1e5bec;
+    padding: 80px 0;
 }
 #advantages h2 {
     text-transform: uppercase;
@@ -679,7 +682,7 @@ button:hover {
     opacity: 0.5;
     position: relative;
 }
-.address,.truck,.card {
+.address,.truck,.card,.appointment-logo {
     position: relative;
 }
 .address:before {
@@ -692,6 +695,22 @@ button:hover {
     margin-top: 14px;
     font-size: 23px;
     color: #fff;
+}
+.appointment-logo {
+    float: left;
+}
+.appointment-logo:after{
+    font: normal normal normal 14px/1 FontAwesome;
+    content: "\f017";
+    display: inline-block;
+    /* padding: 5px 25px; */
+    vertical-align: middle;
+    font-weight: 900;
+    margin-top: 3px;
+    font-size: 23px;
+    color: #fff;
+    position: absolute;
+    left: 300px;
 }
 .truck:before{
 
@@ -1063,8 +1082,8 @@ btn_upload {
 .new-subscribe .subscribe-form lable {
     color: #fff;
     font-weight: 400;
-    font-size: 18px;
-    font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+    font-size: 19px;
+    letter-spacing: 1px;
 }
 .new-subscribe .subscribe-form input {
     height: 40px;
@@ -1078,6 +1097,11 @@ btn_upload {
     height: 40px;
     color: #fff;
     margin-top: 36px;
+    letter-spacing: 1px;
+}
+.new-subscribe .subscribe-form input::placeholder{
+    font-size: 18px;
+    letter-spacing: 1px;
 }
 
 .google-map{
@@ -1090,6 +1114,7 @@ btn_upload {
     /* display: flex; */
     background-position: center center;
     background-size: cover;
+
     /*background-attachment: fixed;*/
     /*background-repeat: no-repeat;*/
     /*background: url(../img/bannerimage.png) no-repeat scroll center bottom / cover;*/
@@ -1100,16 +1125,18 @@ btn_upload {
     text-align: center;
     font-size: 28px;
     color: #ffffff;
-    font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    /*font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;*/
     font-weight: bold;
     text-transform: uppercase;
+    letter-spacing: 2px;
     margin: 30px;
 }
 .subscribe-form p {
     text-align: center;
-    font-size: 16px;
+    font-size: 20px;
     color: #ffffff;
     font-weight: 300;
+    letter-spacing: 1px;
 }
 
 .service-lists,.service-lists-content {
@@ -1159,10 +1186,15 @@ btn_upload {
 }
 .service-lists-content p {
     padding: 0px 10px;
-    text-align: justify;
+    /*text-align: justify;*/
+    /*font-size: 18px;*/
+    /*line-height: 29px;*/
+    /*font-weight: 300;*/
     font-size: 18px;
-    line-height: 29px;
-    font-weight: 300;
+    line-height: 34px;
+    font-weight: 200;
+    text-align: justify;
+    color: #6b6e71;
 }
 .service-lists .product-content {
     display: inline-block !important;
@@ -1584,12 +1616,13 @@ btn_upload {
 .appointment-section-wrapper a {
     text-decoration: none;
     display: inline-block;
-    padding: 8px 25px;
+    padding: 14px 25px;
     background: #177535;
     color: #fff;
     transition: 0.3s;
     font-size: 19px;
     margin-top: 20px;
+    letter-spacing: 2px;
 }
 .appointment-section-wrapper a:hover {
     background: #0f52ef;
@@ -1742,6 +1775,38 @@ btn_upload {
 }
 .activeClass{
     background: #F00;
+}
+.footer-header {
+    font-size: 21px;
+    color: #fff;
+    font-weight: 500
+}
+#appointment .modal-header {
+    border: 0px;
+    padding: 0px;
+}
+#appointment .modal-header .close {
+    /* padding: 1rem 1rem; */
+    padding: 20px;
+    margin: -1rem -1rem -1rem auto;
+}
+.appointment-model-header {
+    padding: 10px;
+    box-sizing: content-box;
+    border: 1px solid #cce3f6;
+}
+.appointment-model-header h3 {
+    font-weight: 400;
+    font-size: 25px;
+    line-height: 1.4;
+    letter-spacing: 1px;
+    text-align: center;
+    padding: 15px
+}
+.appointment-model-header span {
+    text-align: center;
+    font-size: 18px;
+    display: block;
 }
 
 
