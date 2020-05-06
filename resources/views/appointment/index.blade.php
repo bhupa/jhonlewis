@@ -276,7 +276,7 @@
                     var curr_year = d.getFullYear();
                     var formattedDate = curr_date + "-" + curr_month + "-" + curr_year
 
-                    if ($.inArray(formattedDate, vardata) != -1){
+                    if (date.getDay() == 4){
                         return {
                             classes: 'activeClass'
                         };
