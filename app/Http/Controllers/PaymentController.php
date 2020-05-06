@@ -217,6 +217,8 @@ class PaymentController extends Controller
         $shipping['last_name'] =$shippingAddress['lastname'];
         $shipping['address'] =$shippingAddress['address'];
         $shipping['street'] =$shippingAddress['street'];
+        $shipping['zip_code'] =$shippingAddress['zip_code'];
+        $shipping['postal_code'] =$shippingAddress['postal_code'];
         $shipping['email'] =$shippingAddress['email'];
         $shipping['phone'] =$shippingAddress['phone'];
         $shipping['order_id']= $orderlatest->id;

@@ -23,8 +23,9 @@ class CartController extends Controller
     public function index() {
         $oldcart = Session::get('cart');
         $carts = new Cart($oldcart);
+        $products= $this->product->where('is_active','1')->orderBy('created_at','desc')->take('8')->get();
 
-        return view('cart.index')->withCarts($carts);
+        return view('cart.index')->withCarts($carts)->withProducts($products);
     }
 
     public function store(CartStoreRequest $request){

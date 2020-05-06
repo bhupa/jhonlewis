@@ -64,6 +64,20 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="company">Zip-Code</label>
+                                                <input type="text" name="zip_code" class="form-control" id="zip_code" value="{{$address['zip_code']}}">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="street">Postal-Code</label>
+                                                <input type="text" name="postal_code" class="form-control" id="postal_code" value="{{$address['postal_code']}}">
+                                            </div>
+                                        </div>
+                                    </div>
                                     <!-- /.row-->
                                     <div class="row">
                                         <div class="col-sm-6">

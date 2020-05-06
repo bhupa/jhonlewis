@@ -118,6 +118,14 @@
                 </a>
             </li>
             <li class="nav-item">
+                <a href="{{route('email-subscribes.index')}}" class="nav-link">
+                    <i class="nav-icon fa fa-envelope"></i>
+                    <p>
+                        Email Subscribe
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
                 <a href="{{route('orders.index')}}" class="nav-link">
                     <i class="nav-icon fa fa-eye-dropper"></i>
                     <p>

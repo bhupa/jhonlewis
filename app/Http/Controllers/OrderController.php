@@ -25,9 +25,14 @@ class OrderController extends Controller
 
        $data = $request->except('_token');
         $address = $request->session()->put('address',
-            ['firstname'=>$request->firstname,'lastname'=>$request->lastname,
-                'address'=>$request->address,'street'=>$request->street,
-                'phone'=>$request->phone,'email'=>$request->email
+            ['firstname'=>$request->firstname,
+                'lastname'=>$request->lastname,
+                'address'=>$request->address,
+                'street'=>$request->street,
+                'phone'=>$request->phone,
+                'email'=>$request->email,
+                'zip_code'=>$request->zip_code,
+                'postal_code'=>$request->postal_code
             ]);
         $shipping = Session::get('shipping');
 

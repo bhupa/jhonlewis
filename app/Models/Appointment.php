@@ -21,7 +21,10 @@ class Appointment extends Model
         'address',
         'phone',
         'date',
-        'schedule_id'
+        'schedule_id',
+        'gender',
+        'time',
+        'details'
     ];
 
     public function user(){
