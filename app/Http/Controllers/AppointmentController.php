@@ -3,13 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Frontend\Appointment\AppointmentStoreRequest;
+use App\Mail\AppointmentConfirmationMail;
 use App\Models\EventModel;
 use App\Repositories\AppointmentRepository;
 use App\Repositories\AppointmentScheduleRepository;
 use App\Repositories\BlogRepository;
+use App\Repositories\SettingRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
+use Mail;
 
 use Calendar;
 
@@ -17,13 +20,14 @@ use App\Event;
 
 class AppointmentController extends Controller
 {
-    protected  $blog, $appointment,$schedule;
+    protected  $blog, $appointment,$schedule,$setting;
 
-    public  function __construct(AppointmentScheduleRepository $schedule,BlogRepository $blog,AppointmentRepository $appointment)
+    public  function __construct(SettingRepository $setting,AppointmentScheduleRepository $schedule,BlogRepository $blog,AppointmentRepository $appointment)
     {
         $this->blog =$blog;
         $this->appointment = $appointment;
         $this->schedule = $schedule;
+        $this->setting = $setting;
     }
 
     public function index(){
@@ -112,6 +116,18 @@ class AppointmentController extends Controller
             $data['date']= date('d-m-Y', $LogintDate);
 
         if($this->appointment->create($data)){
+
+            $appointment = $this->appointment->latestFirst();
+            $adminEmail = $this->setting->where('slug','for-admin')->first();
+            $companyName = $this->setting->where('slug','compant-name')->first();
+            $fromEmail = $this->setting->where('slug','reply-email')->first();
+            $company = [
+                'name'=>$companyName['value'],
+                'email'=> $fromEmail['value'],
+                'compnay_email'=> $adminEmail['value']
+            ];
+
+            Mail::to($appointment->email)->send(new AppointmentConfirmationMail($data,$appointment));
 
             return redirect()->to('/appointment')->with('success','Appointment booked successfully!'.'<br>'.' We will contact you soon');
         }
