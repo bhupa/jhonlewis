@@ -28,48 +28,85 @@
                             <hr>
                          {!! Form::open(['router'=>'register.store','method'=>'post']) !!}
                                 <div class="form-group">
-                                    <label for="name">User Name</label>
-                                    <input id="name" name="name" type="text" class="form-control" value="{{old('name')}}">
-                                    @if ($errors->has('name'))
-                                        <span class="text-danger">{{ $errors->first('name') }}</span>
-                                    @endif
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <label for="name">User Name</label>
+                                            <input id="name" name="name" type="text" class="form-control" value="{{old('name')}}">
+                                            @if ($errors->has('name'))
+                                                <span class="text-danger">{{ $errors->first('name') }}</span>
+                                            @endif
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <label for="email">Email</label>
+                                            <input id="email" name="email" type="email" class="form-control"  value="{{old('email')}}">
+                                            @if ($errors->has('email'))
+                                                <span class="text-danger">{{ $errors->first('email') }}</span>
+                                            @endif
+                                        </div>
+                                    </div>
+
                                 </div>
+
                                 <div class="form-group">
-                                    <label for="email">Email</label>
-                                    <input id="email" name="email" type="email" class="form-control"  value="{{old('email')}}">
-                                    @if ($errors->has('email'))
-                                        <span class="text-danger">{{ $errors->first('email') }}</span>
-                                    @endif
-                                </div>
-                                <div class="form-group">
-                                    <label for="address">Address</label>
-                                    <input id="text" name="address" type="text" class="form-control"  value="{{old('address')}}">
-                                    @if ($errors->has('address'))
-                                        <span class="text-danger">{{ $errors->first('address') }}</span>
-                                    @endif
-                                </div>
-                                <div class="form-group">
-                                    <label for="contact">Contact</label>
-                                    <input id="text" name="contact" type="text" class="form-control"  value="{{old('contact')}}">
-                                    @if ($errors->has('contact'))
-                                        <span class="text-danger">{{ $errors->first('contact') }}</span>
-                                    @endif
-                                </div>
-                                <div class="form-group">
-                                    <label for="password">Password</label>
-                                    <input id="password" name="password" type="password" class="form-control"  value="{{old('password')}}">
-                                    @if ($errors->has('password'))
-                                        <span class="text-danger">{{ $errors->first('password') }}</span>
-                                    @endif
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <label for="address">Address</label>
+                                            <input id="text" name="address" type="text" class="form-control"  value="{{old('address')}}">
+                                            @if ($errors->has('address'))
+                                                <span class="text-danger">{{ $errors->first('address') }}</span>
+                                            @endif
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <label for="contact">Contact</label>
+                                            <input id="text" name="contact" type="text" class="form-control"  value="{{old('contact')}}">
+                                            @if ($errors->has('contact'))
+                                                <span class="text-danger">{{ $errors->first('contact') }}</span>
+                                            @endif
+                                        </div>
+                                    </div>
+
                                 </div>
                             <div class="form-group">
-                                <label for="password">Confirm-Password</label>
-                                <input id="confirm" name="confirm" type="password" class="form-control"  value="{{old('confirm')}}">
-                                @if ($errors->has('confirm'))
-                                    <span class="text-danger">{{ $errors->first('confirm') }}</span>
-                                @endif
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <label for="address">Postal Code</label>
+                                        <input id="text" name="postal_code" type="text" class="form-control"  value="{{old('postal_code')}}">
+                                        @if ($errors->has('postal_code'))
+                                            <span class="text-danger">{{ $errors->first('postal_code') }}</span>
+                                        @endif
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <label for="contact">Zip Code</label>
+                                        <input id="text" name="zip_code" type="text" class="form-control"  value="{{old('zip_code')}}">
+                                        @if ($errors->has('zip_code'))
+                                            <span class="text-danger">{{ $errors->first('zip_code') }}</span>
+                                        @endif
+                                    </div>
+                                </div>
+
                             </div>
-                                <div class="text-center">
+
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <label for="password">Password</label>
+                                            <input id="password" name="password" type="password" class="form-control"  value="{{old('password')}}">
+                                            @if ($errors->has('password'))
+                                                <span class="text-danger">{{ $errors->first('password') }}</span>
+                                            @endif
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <label for="password">Confirm-Password</label>
+                                            <input id="confirm" name="confirm" type="password" class="form-control"  value="{{old('confirm')}}">
+                                            @if ($errors->has('confirm'))
+                                                <span class="text-danger">{{ $errors->first('confirm') }}</span>
+                                            @endif
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="text-left">
                                     <button type="submit" class="btn btn-primary"><i class="fa fa-user-md"></i> Register</button>
                                 </div>
                            {!! Form::close() !!}

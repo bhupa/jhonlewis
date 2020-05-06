@@ -301,7 +301,13 @@
 
         </div>
 
+        @if (\Session::has('success'))
+            <div class="alert alert-success">
 
+                   {!! \Session::get('success') !!}
+            </div>
+
+        @endif
 
         {{Form::open(['route'=>'login','method'=>'post','id'=>'login'])}}
                   <input type="hidden" name="url" id="url">
