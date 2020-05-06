@@ -44,7 +44,7 @@
 
                                     </div>
 
-                                    <div id="eye-care" class="collapse show">
+                                    <div id="eye-care" class="collapse show frame-brand-lists">
                                         <div class="row">
                                             @foreach($eyecares as $care)
                                                 <div class="col-md-6 col-lg-4">
@@ -56,9 +56,9 @@
                                                             {{--@if(file_exists('storage/'.$product->image) && $product->image != '')--}}
                                                             {{--<img src="{{asset('storage/'.$product->image)}}" alt="{{$product->title}}">--}}
                                                             {{--@endif--}}
-                                                            <div class="product-lists-overlay">
-                                                                {!! $care->short_description !!}
-                                                            </div>
+                                                            {{--<div class="product-lists-overlay">--}}
+                                                                {{--{!! $care->short_description !!}--}}
+                                                            {{--</div>--}}
                                                         </a>
                                                     </div>
                                                 </div>
@@ -77,7 +77,7 @@
 
                                     </div>
 
-                                    <div id="kid-care" class="collapse">
+                                    <div id="kid-care" class="collapse frame-brand-lists">
                                         <div class="row">
                                             @foreach($kidwears as $ware)
                                                 <div class="col-lg-4">
@@ -89,9 +89,9 @@
                                                             {{--@if(file_exists('storage/'.$product->image) && $product->image != '')--}}
                                                             {{--<img src="{{asset('storage/'.$product->image)}}" alt="{{$product->title}}">--}}
                                                             {{--@endif--}}
-                                                            <div class="product-lists-overlay">
-                                                                {!! $ware->short_description !!}
-                                                            </div>
+                                                            {{--<div class="product-lists-overlay">--}}
+                                                                {{--{!! $ware->short_description !!}--}}
+                                                            {{--</div>--}}
                                                         </a>
                                                     </div>
                                                 </div>
@@ -110,7 +110,7 @@
 
                                     </div>
 
-                                    <div id="sunglass" class="collapse">
+                                    <div id="sunglass" class="collapse frame-brand-lists">
                                         <div class="row">
                                             @foreach($sunglasses as $glass)
                                                 <div class="col-lg-4">
@@ -122,9 +122,9 @@
                                                             {{--@if(file_exists('storage/'.$product->image) && $product->image != '')--}}
                                                             {{--<img src="{{asset('storage/'.$product->image)}}" alt="{{$product->title}}">--}}
                                                             {{--@endif--}}
-                                                            <div class="product-lists-overlay">
-                                                                {!! $glass->short_description !!}
-                                                            </div>
+                                                            {{--<div class="product-lists-overlay">--}}
+                                                                {{--{!! $glass->short_description !!}--}}
+                                                            {{--</div>--}}
                                                         </a>
                                                     </div>
                                                 </div>

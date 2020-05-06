@@ -1228,6 +1228,8 @@ btn_upload {
     display: inline-block !important;
     position: relative !important;
     overflow: hidden;
+    border: 3px solid #469b50;
+    margin-bottom: 30px;
 }
 .product-lists a  img{
     width: 100%;
@@ -1736,6 +1738,9 @@ btn_upload {
     margin-right: -45px;
     border-radius: 0px;
     background: #1054f5;
+}
+.frame-brand-lists {
+    margin-top: 30px;
 }
 
 
