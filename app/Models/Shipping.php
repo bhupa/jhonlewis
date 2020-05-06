@@ -18,6 +18,8 @@ class Shipping extends Model
         'phone',
         'address',
         'street',
+        'postal_code',
+        'zip_code'
 
     ];
 

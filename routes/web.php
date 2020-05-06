@@ -226,4 +226,7 @@ Route::group(['namespace'=>'Backend','middleware'=>'auth'], function() {
     Route::resource('brand-banners','BrandBannerController');
     Route::post('/brand-banners/change-status','BrandBannerController@changeStatus')->name('brand-banners.change-status');
 
+
+    Route::resource('email-subscribes','EmailSubscribeController');
+
 });

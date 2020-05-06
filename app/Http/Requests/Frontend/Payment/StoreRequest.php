@@ -30,7 +30,9 @@ class StoreRequest extends FormRequest
             'email'=>'required|email',
             'address'=>'required',
             'phone'=>'required',
-            'street'=>'required'
+            'street'=>'required',
+            'zip_code'=>'required',
+            'postal_code'=>'required'
 
         ];
     }

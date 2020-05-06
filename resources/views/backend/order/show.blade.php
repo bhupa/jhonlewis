@@ -73,7 +73,9 @@
                                     <address>
                                         <strong>{{$order->shipping->first_name}} &nbsp;{{$order->shipping->last_name}}</strong><br>
                                         {{$order->shipping->street}}<br>
-                                        {{$order->shipping->address}}<br>
+                                        {{$order->shipping->address}}
+                                        <br>{{$order->shipping->zip_code}}
+                                        <br>{{$order->shipping->postal_code}}<br>
                                         Phone: {{$order->shipping->phone}}<br>
                                         Email: {{$order->shipping->email}}
                                     </address>

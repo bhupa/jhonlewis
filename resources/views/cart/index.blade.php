@@ -126,57 +126,26 @@
                             </form>
                         </div>
                         <!-- /.box-->
-                        <div class="row same-height-row">
-                            <div class="col-lg-3 col-md-6">
-                                <div class="box same-height">
-                                    <h3>You may also like these products</h3>
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-6">
-                                <div class="product same-height">
-                                    <div class="flip-container">
-                                        <div class="flipper">
-                                            <div class="front"><a href="detail.html"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product2.jpg" alt="" class="img-fluid"></a></div>
-                                            <div class="back"><a href="detail.html"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product2_2.jpg" alt="" class="img-fluid"></a></div>
+                        <div class="row  products">
+
+                                @foreach($products as $product)
+                                    <div class="col-lg-3 col-md-4">
+                                        <div class="product-single-item">
+                                            <a href="{{route('product.show',[$product->slug ])}}" class="shop-lists">
+                                                <img src="{{asset('storage/'.$product->image)}}" alt="{{$product->title}}">
+
+                                            </a>
+                                            <p style="padding: 5px;"><span class="model text-left">Mod: 760</span>
+                                            </p>
+                                            <p style="padding: 5px;">
+                                                <span class="brand">Brand:Cazal</span></p>
                                         </div>
-                                    </div><a href="detail.html" class="invisible"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product2.jpg" alt="" class="img-fluid"></a>
-                                    <div class="text">
-                                        <h3>Fur coat</h3>
-                                        <p class="price">$143</p>
+
+                                        <!-- /.product            -->
                                     </div>
-                                </div>
-                                <!-- /.product-->
-                            </div>
-                            <div class="col-md-3 col-sm-6">
-                                <div class="product same-height">
-                                    <div class="flip-container">
-                                        <div class="flipper">
-                                            <div class="front"><a href="detail.html"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product1.jpg" alt="" class="img-fluid"></a></div>
-                                            <div class="back"><a href="detail.html"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product1_2.jpg" alt="" class="img-fluid"></a></div>
-                                        </div>
-                                    </div><a href="detail.html" class="invisible"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product1.jpg" alt="" class="img-fluid"></a>
-                                    <div class="text">
-                                        <h3>Fur coat</h3>
-                                        <p class="price">$143</p>
-                                    </div>
-                                </div>
-                                <!-- /.product-->
-                            </div>
-                            <div class="col-md-3 col-sm-6">
-                                <div class="product same-height">
-                                    <div class="flip-container">
-                                        <div class="flipper">
-                                            <div class="front"><a href="detail.html"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product3.jpg" alt="" class="img-fluid"></a></div>
-                                            <div class="back"><a href="detail.html"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product3_2.jpg" alt="" class="img-fluid"></a></div>
-                                        </div>
-                                    </div><a href="detail.html" class="invisible"><img src="https://d19m59y37dris4.cloudfront.net/obaju/2-1-1/img/product3.jpg" alt="" class="img-fluid"></a>
-                                    <div class="text">
-                                        <h3>Fur coat</h3>
-                                        <p class="price">$143</p>
-                                    </div>
-                                </div>
-                                <!-- /.product-->
-                            </div>
+                            @endforeach
+
+                            <!-- /.products-->
                         </div>
                     </div>
                     <!-- /.col-lg-9-->

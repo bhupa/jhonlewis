@@ -198,6 +198,7 @@ ul#menu li a, ul#menu li ul.sub-menu li a {
 ul#menu li,.sub-menu li a {
     position: relative;
     border-bottom:0px;
+    margin-left: 4px
 }
 .sub-menu .nav-item .fa {
     position: absolute;
@@ -1844,6 +1845,12 @@ btn_upload {
 }
 #footer .appointment-model-header span,#footer .appointment-model-header h3 {
    text-align: left !important;
+}
+.navbar .navbar-btn {
+    color: #fff;
+    margin-right: -45px;
+    border-radius: 0px;
+    background: #1054f5;
 }
 
 
