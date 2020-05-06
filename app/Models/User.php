@@ -28,7 +28,8 @@ class User extends Authenticatable
         'is_active',
         'user_type_id',
         'first_name',
-    'last_name'
+        'last_name',
+        'postal_code'
     ];
 
     /**

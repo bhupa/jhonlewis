@@ -50,6 +50,8 @@
                                                     <li><span>Street:</span>{{Auth::user()->street}}</li>
                                                     <li><span>Country:</span>{{Auth::user()->country}}</li>
                                                     <li><span>State:</span>{{Auth::user()->state}}</li>
+                                                    <li><span>Zip-Code:</span>{{Auth::user()->zip_code}}</li>
+                                                    <li><span>Postal-Code:</span>{{Auth::user()->postal_code}}</li>
                                                     <li><span>Account:</span>@if(empty(Auth::user()->admin)) Customer Account @endif</li>
                                                 </ul>
                                             </div>

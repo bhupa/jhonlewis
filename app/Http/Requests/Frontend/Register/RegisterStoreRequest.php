@@ -27,10 +27,11 @@ class RegisterStoreRequest extends FormRequest
             'name'=>'required',
             'address'=>'required',
             'contact'=>'required|numeric',
-            'email'=>'required|email',
-            'address'=>'required',
+            'email'=>'required|email|unique:users,email',
             'password'=>'required',
             'confirm'=>'required|same:password',
+            'postal_code'=>'required',
+            'zip_code'=>'required',
 
         ];
     }

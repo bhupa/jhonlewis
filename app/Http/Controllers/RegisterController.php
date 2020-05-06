@@ -24,7 +24,7 @@ class RegisterController extends Controller
         $data['password']= Hash::make($request->password);
         if($this->user->create($data)){
 
-            return redirect()->to('/login');
+            return redirect()->to('/login')->with('success','User Register Successfully');
 
         }
         return redirect()->back()

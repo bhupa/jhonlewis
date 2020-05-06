@@ -124,14 +124,28 @@
                                     </div>
                                     <div class="col-sm-6 col-md-3">
                                         <div class="form-group">
-                                            <label for="zip">ZIP</label>
+                                            <label for="zip">ZIP-Code</label>
                                             <input type="text" name="zip_code" class="form-control" id="zip" value="{{$user->zip_code}}">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-md-3">
+                                        <div class="form-group">
+                                            <label for="zip">Postal-Code</label>
+                                            <input type="text" name="postal_code" class="form-control" id="zip" value="{{$user->postal_code}}">
                                         </div>
                                     </div>
                                     <div class="col-sm-6 col-md-3">
                                         <div class="form-group">
                                             <label for="state">Contact</label>
                                             <input type="text" name="contact" class="form-control" id="contact" value="{{$user->contact}}">
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-sm-6 col-md-3">
+                                        <div class="form-group">
+                                            <label for="email">Email</label>
+                                            <input type="text" class="form-control" id="email" value="{{$user->email}}">
                                         </div>
                                     </div>
 
@@ -147,16 +161,10 @@
                                                     <img id="ImgPreview4" src="{{asset('storage/'.$user->image)}}" class="preview4 it" alt="{{$user->name}}"/>
                                                     <a href="" class="btn-rmv4" id="removeImage4">x</a>
                                                 @else
-                                                <img id="ImgPreview4" src="{{asset('backend/dist/img/placeholder.png')}}" class="preview4 it" />
-{{--                                                <a href="" class="btn-rmv4" id="removeImage4">x</a>--}}
+                                                    <img id="ImgPreview4" src="{{asset('backend/dist/img/placeholder.png')}}" class="preview4 it" />
+                                                    {{--                                                <a href="" class="btn-rmv4" id="removeImage4">x</a>--}}
                                                 @endif
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label for="email">Email</label>
-                                            <input type="text" class="form-control" id="email" value="{{$user->email}}">
                                         </div>
                                     </div>
                                     <div class="col-sm-12 text-center">
