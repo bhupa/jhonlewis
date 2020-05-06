@@ -33,7 +33,7 @@
                 <div class="brand-listing">
                     <div class="row">
                         @foreach($brands as $brand)
-                        <div class="col-lg-4">
+                        <div class="col-md-6 col-lg-4">
                             <div class="brand-wrapper">
                                 <a href="{{route('brands.show',[$brand->slug])}}">
                                     <img src="{{asset('storage/'.$brand->image)}}" alt="{{$brand->name}}">

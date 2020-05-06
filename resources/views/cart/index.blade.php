@@ -135,10 +135,10 @@
                                                 <img src="{{asset('storage/'.$product->image)}}" alt="{{$product->title}}">
 
                                             </a>
-                                            <p style="padding: 5px;"><span class="model text-left">Mod: 760</span>
+                                            <p><span class="model text-left">Mod: {{$product->shape}}</span>
                                             </p>
-                                            <p style="padding: 5px;">
-                                                <span class="brand">Brand:Cazal</span></p>
+                                            <p>
+                                                <span class="brand">Brand:{{$product->brand->name}}</span></p>
                                         </div>
 
                                         <!-- /.product            -->

@@ -459,122 +459,7 @@ ul#menu li ul.sub-menu li:hover ul {
 #stepper-input{
     padding-left: 12px;
 }
-@media (max-width: 768px) {
-    .desktop-menu{
-        display: none;
-    }
-    .mobile-menu {
-        display: block;
-    }
-    ul#menu li a:hover, ul#menu li a.active {
-        width: 100%;
-    }
-    ul#menu li, ul#menu ul.sub-menu li {
 
-        display:block;
-
-    }
-    ul#menu li:hover ul.sub-menu {
-        display: none;
-        /*width: 100%;*/
-        width: 30%;
-        /*background: #54bfa8;*/
-        position: relative;
-        top: 0;
-        left: 23px;
-    }
-    ul#menu li a, ul#menu li ul.sub-menu li a {
-        color: #555555;
-        width: 100%;
-    }
-    .sub-menu .nav-item .fa {
-        position: absolute;
-        top: 3px;
-        /* font-size: 18px; */
-        right: 35px;
-    }
-    .main-menu .sub-menu {
-        display: none;
-        position: relative;
-    }
-    .main-menu {
-        position: relative;
-    }
-    .main-menu .fa {
-        position: absolute;
-        top: 3px;
-        right: 20px;
-    }
-    .main-menu .sub-menu {
-        list-style: none;
-        z-index: 11111;
-        position: absolute;
-        background: #ffffff;
-        width: 100%;
-        min-height: 200px;
-    }
-    .main-menu .sub-menu .sub-menu-btn a {
-        display: inline-block;
-        margin-bottom: 12px;
-        width: 15%;
-        margin-top: 7px;
-        margin-left: 27px;
-        color: #000;
-    }
-    .main-menu .sub-menu .sub-menu-btn .sub-menu-back .fa {
-        position: absolute;
-        top: 3px;
-        left: 41px;
-    }
-    .sub-menu-next {
-        float: right;
-    }
-    .main-menu .sub-menu li  {
-        border-bottom: 1px solid #f0f0f0;
-    }
-    .main-menu .sub-menu li a {
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        font-weight: 700;
-        padding: 10px 15px !important;
-        color: #555;
-    }
-    .main-menu .sub-menu li:hover {
-        background: #4fbfa8;
-        color: #ffffff;
-
-    }
-    .third-level-menu {
-        display: none;
-        list-style: none;
-        background: #ffffff;
-    }
-    .appointment {
-        height: 664px;
-    }
-    .banner-wrapper {
-        max-height: 510px;
-    }
-    .banner-wrapper img {
-        height: 100%;
-    }
-    .banner-wrapper .banner-content {
-        position: absolute;
-        top: 18%;
-        background: #ffffffe0;
-        left: 8%;
-        width: 84%;
-
-    }
-    .banner-content-wrapper {
-        padding: 21px 17px;
-    }
-    .banner-content-wrapper h2 {
-        font-size: 17px;
-    }
-
-
-}
 .cart-increment-btn {
     margin-bottom: 20px;
     display: block;
@@ -1853,4 +1738,168 @@ btn_upload {
     background: #1054f5;
 }
 
+
+
+@media (max-width: 768px) {
+    .desktop-menu{
+        display: none;
+    }
+    .mobile-menu {
+        display: block;
+    }
+    ul#menu li a:hover, ul#menu li a.active {
+        width: 100%;
+    }
+    ul#menu li, ul#menu ul.sub-menu li {
+
+        display:block;
+
+    }
+    ul#menu li:hover ul.sub-menu {
+        display: none;
+        /*width: 100%;*/
+        width: 30%;
+        /*background: #54bfa8;*/
+        position: relative;
+        top: 0;
+        left: 23px;
+    }
+    ul#menu li a, ul#menu li ul.sub-menu li a {
+        color: #555555;
+        width: 100%;
+    }
+    .sub-menu .nav-item .fa {
+        position: absolute;
+        top: 3px;
+        /* font-size: 18px; */
+        right: 35px;
+    }
+    .main-menu .sub-menu {
+        display: none;
+        position: relative;
+    }
+    .main-menu {
+        position: relative;
+    }
+    .main-menu .fa {
+        position: absolute;
+        top: 3px;
+        right: 20px;
+    }
+    .main-menu .sub-menu {
+        list-style: none;
+        z-index: 11111;
+        position: absolute;
+        background: #ffffff;
+        width: 100%;
+        min-height: 200px;
+    }
+    .main-menu .sub-menu .sub-menu-btn a {
+        display: inline-block;
+        margin-bottom: 12px;
+        width: 15%;
+        margin-top: 7px;
+        margin-left: 27px;
+        color: #000;
+    }
+    .main-menu .sub-menu .sub-menu-btn .sub-menu-back .fa {
+        position: absolute;
+        top: 3px;
+        left: 41px;
+    }
+    .sub-menu-next {
+        float: right;
+    }
+    .main-menu .sub-menu li  {
+        border-bottom: 1px solid #f0f0f0;
+    }
+    .main-menu .sub-menu li a {
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        font-weight: 700;
+        padding: 10px 15px !important;
+        color: #555;
+    }
+    .main-menu .sub-menu li:hover {
+        background: #4fbfa8;
+        color: #ffffff;
+
+    }
+    .third-level-menu {
+        display: none;
+        list-style: none;
+        background: #ffffff;
+    }
+    .appointment {
+        height: 664px;
+    }
+    .banner-wrapper {
+        max-height: 510px;
+    }
+    .banner-wrapper img {
+        height: 100%;
+    }
+    .banner-wrapper .banner-content {
+        position: absolute;
+        top: 18%;
+        background: #ffffffe0;
+        left: 8%;
+        width: 84%;
+
+    }
+    .banner-content-wrapper {
+        padding: 21px 17px;
+    }
+    .banner-content-wrapper h2 {
+        font-size: 17px;
+    }
+
+
+}
+@media (max-width: 1024px)
+{
+ul#menu li, .sub-menu li a {
+
+    margin-left: -17px;
+}
+    .appointment-logo:after {
+
+        left: 105px;
+    }
+}
+@media (max-width: 500px) {
+    .appointment-logo:after {
+
+        left: 0px;
+        display: none;
+    }
+    .contact-lens-image-wrapper img {
+        width: 100%;
+        margin-top: 30px;
+    }
+
+    #hot h2 {
+
+        padding-top: 20px;
+    }
+    #footer .appointment-model-header h3 {
+        margin-top: -10px;
+    }
+    .appointment-model-header {
+        margin-bottom: 30px;
+    }
+    .service-lists-content img {
+        width: 100%;
+        height: 250px;
+        margin-bottom: 30px;
+    }
+    .navbar .navbar-nav>.nav-item>.nav-link {
+       margin-bottom: 5px;
+    }
+    #home-content .home-wrapper {
+        width: 100%;
+       padding: 0px;
+        margin-top: 32px;
+    }
+}
 

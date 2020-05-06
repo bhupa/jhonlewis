@@ -183,7 +183,14 @@
             </a>
             <div class="navbar-buttons">
                 <button type="button" data-toggle="collapse" data-target="#navigation" class="btn btn-outline-secondary navbar-toggler"><span class="sr-only">Toggle navigation</span><i class="fa fa-align-justify"></i></button>
-                <button type="button" data-toggle="collapse" data-target="#search" class="btn btn-outline-secondary navbar-toggler"><span class="sr-only">Toggle search</span><i class="fa fa-search"></i></button><a href="basket.html" class="btn btn-outline-secondary navbar-toggler"><i class="fa fa-shopping-cart"></i></a>
+                {{--<button type="button" data-toggle="collapse" data-target="#search" class="btn btn-outline-secondary navbar-toggler"><span class="sr-only">Toggle search</span><i class="fa fa-search"></i></button>--}}
+                <a href="{{route('cart.index')}}" class="btn btn-outline-secondary navbar-toggler">
+                    <i class="fa fa-shopping-cart"></i>
+                    @if(!empty($carts->items))
+
+                        <span >  {{count($carts->items)}}  </span>
+                    @endif
+                </a>
             </div>
             <div id="navigation" class="collapse navbar-collapse">
 
@@ -205,18 +212,18 @@
             </div>
         </div>
     </nav>
-    <div id="search" class="collapse">
-        <div class="container">
-            <form role="search" class="ml-auto">
-                <div class="input-group">
-                    <input type="text" placeholder="Search" class="form-control">
-                    <div class="input-group-append">
-                        <button type="button" class="btn btn-primary"><i class="fa fa-search"></i></button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
+    {{--<div id="search" class="collapse">--}}
+        {{--<div class="container">--}}
+            {{--<form role="search" class="ml-auto">--}}
+                {{--<div class="input-group">--}}
+                    {{--<input type="text" placeholder="Search" class="form-control">--}}
+                    {{--<div class="input-group-append">--}}
+                        {{--<button type="button" class="btn btn-primary"><i class="fa fa-search"></i></button>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+            {{--</form>--}}
+        {{--</div>--}}
+    {{--</div>--}}
 </header>
 
 @yield('content')
