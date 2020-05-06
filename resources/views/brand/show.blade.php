@@ -26,16 +26,16 @@
                         <div class="row products">
 
                             @foreach($products as $product)
-                                <div class="col-lg-3 col-md-4">
+                                <div class="col-lg-3 col-md-6">
                                     <div class="product-single-item">
                                         <a href="{{route('product.show',[$product->slug ])}}" class="shop-lists">
                                             <img src="{{asset('storage/'.$product->image)}}" alt="{{$product->title}}">
 
                                         </a>
-                                        <p><span class="model text-left">Mod: 760</span>
+                                        <p><span class="model text-left">Mod: {{$product->shape}}</span>
                                         </p>
                                         <p>
-                                            <span class="brand">Brand:Cazal</span></p>
+                                            <span class="brand">Brand:{{$product->brand->name}}</span></p>
                                     </div>
 
                                     <!-- /.product            -->

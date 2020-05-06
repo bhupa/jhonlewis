@@ -43,6 +43,7 @@ class Product extends Model
         'style',
         'shipping',
         'brand_id',
+        'model'
 
 
 

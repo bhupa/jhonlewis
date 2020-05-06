@@ -22,12 +22,12 @@
                             <h4>{{$content->title}}</h4>
                             <hr>
                             <div class="row" id="frames-brand">
-                                <div class="col-lg-6">
+                                <div class="col-md-6 col-lg-6">
                                     <div class="frame-wrapper-title">
                                         <img src="{{asset('frontend/img/brand-frame.png')}}" alt="frame-brand" style="width: 100%;height:300px">
                                     </div>
                                 </div>
-                                <div class="col-lg-6">
+                                <div class="col-md-6 col-lg-6">
                                     <div class="frame-wrapper">
                                         {!! $content->description !!}
                                     </div>
@@ -47,7 +47,7 @@
                                     <div id="eye-care" class="collapse show">
                                         <div class="row">
                                             @foreach($eyecares as $care)
-                                                <div class="col-lg-4">
+                                                <div class="col-md-6 col-lg-4">
                                                     <div class="product-lists">
                                                         <a href="">
                                                             <div class="new"></div>
