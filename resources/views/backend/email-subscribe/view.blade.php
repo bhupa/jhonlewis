@@ -88,7 +88,7 @@
                 event.preventDefault();
                 $object = $(this);
                 var id  = $(this).attr('data-type');
-                var url = baseUrl+"/admin/email-subscribes/"+id;
+                var url = baseUrl+"/email-subscribes/"+id;
                 swal({
                     title: 'Are you sure?',
                     text: 'You will not be able to recover this !',
