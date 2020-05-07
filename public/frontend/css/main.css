@@ -1743,6 +1743,10 @@ btn_upload {
 .frame-brand-lists {
     margin-top: 30px;
 }
+.ribbon.new {
+    top: 50px;
+    display: none;
+}
 
 
 
@@ -1908,4 +1912,5 @@ ul#menu li, .sub-menu li a {
         margin-top: 32px;
     }
 }
+
 
