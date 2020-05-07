@@ -5,7 +5,7 @@
 
     @foreach($productlists as $product)
         <div class="product-conten">
-            <a href="">
+            <a href="{{route('product.show',[$product->slug])}}">
                 <div class="new"></div>
 
                 @if(file_exists('storage/'.$product->image) && $product->image != '')
