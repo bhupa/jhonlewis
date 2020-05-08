@@ -14,7 +14,7 @@ class AddTypeToProduct extends Migration
     public function up()
     {
         Schema::table('product', function (Blueprint $table) {
-            $table->enum('type', ['eye-wear', 'sunglass','kid-wear',]);
+            $table->enum('type', ['eye-wear', 'sunglass','kid-wear']);
         });
     }
 
