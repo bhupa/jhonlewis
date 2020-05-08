@@ -34,14 +34,35 @@
                     <div class="row">
                         @foreach($brands as $brand)
                         <div class="col-md-6 col-lg-4">
-                            <div class="brand-wrapper">
-                                <a href="{{route('brands.show',[$brand->slug])}}">
-                                    <img src="{{asset('storage/'.$brand->image)}}" alt="{{$brand->name}}">
-                               <div class="brand-overlay">
-                                   {!! $brand->short_description !!}
-                               </div>
-                                </a>
+                            <div class="card">
+                                <div class="card-img-actions m-1">
+                                    <img class="card-img img-fluid" src="{{asset('storage/'.$brand->image)}}" alt="{{$brand->name}}" style="width: 300px; height:150px;">
+
+                                    <div class="card-img-actions-overlay card-img">
+                                        <a href="{{url('brands/'.$brand->slug.'/'.$brand->type)}}" data-toggle="lightbox" data-tour-image="tour-image" class="brand-type-eye btn btn-outline    border-2 btn-icon rounded-round">
+
+                                        Eye Wear
+                                        </a>
+
+                                        <a href="{{url('brands/'.$brand->slug.'/'.$brand->type)}}" data-type="1" data-tour-image="1" class="brand-type-sunglass btn btn-outline   border-2 btn-icon rounded-round ml-2 delete-galleries-image">
+                                           Sunglass
+
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
+
+
+                            {{--<div class="brand-wrapper">--}}
+                                {{--<a href="{{route('brands.show',[$brand->slug])}}" class="overlay">--}}
+                                    {{--<img src="{{asset('storage/'.$brand->image)}}" alt="{{$brand->name}}">--}}
+                                   {{--<div class="brand-overlay">--}}
+                                       {{--{!! $brand->short_description !!}--}}
+                                       {{----}}
+                                   {{--</div>--}}
+
+                                {{--</a>--}}
+                            {{--</div>--}}
 
                         </div>
                             @endforeach

@@ -23,4 +23,12 @@ class BrandController extends Controller
         $products = $this->products->where('is_active','1')->where('brand_id',$brand->id)->orderBy('created_at','desc')->paginate(20);
         return  view('brand.show')->withBrand($brand )->withProducts($products);
     }
+
+    public function getType($request,$slug){
+        $brand = $this->brand->where('slug',$request)->first();
+//        $products = $this->products->where('is_active','1')->orderBy('created_at','desc')->pagination('20');
+
+        $products = $this->products->where('is_active','1')->where('brand_id',$brand->id)->where('type',$slug)->orderBy('created_at','desc')->paginate(20);
+        return  view('brand.show')->withBrand($brand )->withProducts($products);
+    }
 }
