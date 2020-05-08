@@ -41,6 +41,22 @@
                                     @if ($errors->has('title'))
                                         <span class="text-danger">{{ $errors->first('title') }}</span>
                                     @endif </div>
+                                <div class="form-group">
+                                    <div class="col-md-12 mb-3">
+                                        <label for="validationCustom01">Type</label>
+                                        <select name="type" class="form-control">
+                                            <option value="0">Select Type</option>
+                                            <option value="eye-care" {{$products->type== 'eye-care' ? 'selected':''}}>Eye Wear</option>
+                                            <option value="kid-wear" {{$products->type== 'kid-wear' ? 'selected':''}}>Kid Wear</option>
+                                            <option value="sunglass" {{$products->type== 'sunglass' ? 'selected':''}}>Sunglass</option>
+
+                                        </select>
+                                        @if ($errors->has('type'))
+                                            <span class="text-danger">{{ $errors->first('type') }}</span>
+                                        @endif
+                                    </div>
+
+                                </div>
 
                                 {{--<div class="form-group">--}}
                                     {{--<div class="row">--}}

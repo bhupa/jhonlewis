@@ -78,6 +78,7 @@ Route::resource('product','ProductController');
 Route::resource('/glass','GlassController');
 Route::resource('/lens','LensController');
 Route::resource('brands','BrandController');
+Route::get('brands/{category}/{slug}','BrandController@getType');
 //Route::resource('/frame','FrameController');
 //Route::resource('/frame-category','FrameCategoryController');
 Route::resource('/shop','ShopController');
