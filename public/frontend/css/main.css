@@ -1785,7 +1785,8 @@ btn_upload {
     color: white;
 }
 .brand-listing .card-img-actions {
-    margin-top: -27px;
+    margin-top: -36px;
+    padding: 10px;
 }
 
 .card-img-actions:hover .card-img-actions-overlay {
