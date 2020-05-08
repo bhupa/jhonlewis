@@ -35,7 +35,7 @@
                         @foreach($brands as $brand)
                         <div class="col-md-6 col-lg-4">
                             <div class="card">
-                                <div class="card-img-actions m-1">
+                                <div class="card-img-actions ">
                                     <img class="card-img img-fluid" src="{{asset('storage/'.$brand->image)}}" alt="{{$brand->name}}" style=" height:200px;">
 
                                     <div class="card-img-actions-overlay card-img">
