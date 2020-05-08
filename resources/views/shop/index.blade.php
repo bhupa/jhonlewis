@@ -36,7 +36,7 @@
                         <div class="col-md-6 col-lg-4">
                             <div class="card">
                                 <div class="card-img-actions m-1">
-                                    <img class="card-img img-fluid" src="{{asset('storage/'.$brand->image)}}" alt="{{$brand->name}}" style="width: 300px; height:150px;">
+                                    <img class="card-img img-fluid" src="{{asset('storage/'.$brand->image)}}" alt="{{$brand->name}}" style=" height:200px;">
 
                                     <div class="card-img-actions-overlay card-img">
                                         <a href="{{url('brands/'.$brand->slug.'/'.$brand->type)}}" data-toggle="lightbox" data-tour-image="tour-image" class="brand-type-eye btn btn-outline    border-2 btn-icon rounded-round">
