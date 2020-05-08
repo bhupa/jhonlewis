@@ -39,12 +39,12 @@
                                     <img class="card-img img-fluid" src="{{asset('storage/'.$brand->image)}}" alt="{{$brand->name}}" style=" height:200px;">
 
                                     <div class="card-img-actions-overlay card-img">
-                                        <a href="{{url('brands/'.$brand->slug.'/'.$brand->type)}}" data-toggle="lightbox" data-tour-image="tour-image" class="brand-type-eye btn btn-outline    border-2 btn-icon rounded-round">
+                                        <a href="{{url('brands/'.$brand->slug.'/eye-wear')}}" data-toggle="lightbox" data-tour-image="tour-image" class="brand-type-eye btn btn-outline    border-2 btn-icon rounded-round">
 
-                                        Eye Wear
+                                        Eye Wear {{$brand->type}}
                                         </a>
 
-                                        <a href="{{url('brands/'.$brand->slug.'/'.$brand->type)}}" data-type="1" data-tour-image="1" class="brand-type-sunglass btn btn-outline   border-2 btn-icon rounded-round ml-2 delete-galleries-image">
+                                        <a href="{{url('brands/'.$brand->slug.'/sunglass')}}" data-type="1" data-tour-image="1" class="brand-type-sunglass btn btn-outline   border-2 btn-icon rounded-round ml-2 delete-galleries-image">
                                            Sunglass
 
                                         </a>
