@@ -79,6 +79,12 @@ Route::resource('/glass','GlassController');
 Route::resource('/lens','LensController');
 Route::resource('brands','BrandController');
 Route::get('brands/{category}/{slug}','BrandController@getType');
+
+Route::get('/new-arrival/{slug}','NewArrivalController@show')->name('new-arrival.show');
+Route::get('/eye-wear/{slug}/{category}','EyewearController@show');
+Route::get('present-collection/{$brand}','NewArrivalController@show');
+
+//Route::get('{category}/prescription/{slug}','PrescriptionController');
 //Route::resource('/frame','FrameController');
 //Route::resource('/frame-category','FrameCategoryController');
 Route::resource('/shop','ShopController');

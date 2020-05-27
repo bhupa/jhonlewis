@@ -42,19 +42,35 @@
                                         <span class="text-danger">{{ $errors->first('title') }}</span>
                                     @endif </div>
                                 <div class="form-group">
-                                    <div class="col-md-12 mb-3">
-                                        <label for="validationCustom01">Type</label>
-                                        <select name="type" class="form-control">
-                                            <option value="0">Select Type</option>
-                                            <option value="eye-wear" {{$products->type== 'eye-wear' ? 'selected':''}}>Eye Wear</option>
-                                            {{--<option value="kid-wear" {{$products->type== 'kid-wear' ? 'selected':''}}>Kid Wear</option>--}}
-                                            <option value="sunglass" {{$products->type== 'sunglass' ? 'selected':''}}>Sunglass</option>
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <label for="validationCustom01">Type</label>
+                                            <select name="type" class="form-control">
+                                                <option value="0">Select Type</option>
+                                                <option value="eye-wear" {{$products->type== 'eye-wear' ? 'selected':''}}>Eye Wear</option>
+                                                {{--<option value="kid-wear" {{$products->type== 'kid-wear' ? 'selected':''}}>Kid Wear</option>--}}
+                                                <option value="sunglass" {{$products->type== 'sunglass' ? 'selected':''}}>Sunglass</option>
 
-                                        </select>
-                                        @if ($errors->has('type'))
-                                            <span class="text-danger">{{ $errors->first('type') }}</span>
-                                        @endif
+                                            </select>
+                                            @if ($errors->has('type'))
+                                                <span class="text-danger">{{ $errors->first('type') }}</span>
+                                            @endif
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label for="validationCustom01">Gender</label>
+                                            <select name="gender" class="form-control">
+                                                <option value="0">Select gender</option>
+                                                <option value="men" {{$products->gender == 'men'? 'selected':''}}>Men</option>
+                                                {{--<option value="kid-wear" {{(old('type')== 'kid-wear')? 'selected':''}}>Kid Wear</option>--}}
+                                                <option value="women" {{$products->gender== 'women'? 'selected':''}}>Women</option>
+
+                                            </select>
+                                            @if ($errors->has('gender'))
+                                                <span class="text-danger">{{ $errors->first('gender') }}</span>
+                                            @endif
+                                        </div>
                                     </div>
+
 
                                 </div>
 

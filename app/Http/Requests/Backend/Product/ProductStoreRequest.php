@@ -23,6 +23,7 @@ class ProductStoreRequest extends FormRequest
      */
     public function rules()
     {
+        dd($this->all());
         return [
             'title'=>'required',
             'price'=>'required',

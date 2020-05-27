@@ -43,19 +43,35 @@
                                         @endif
                                     </div>
                                 <div class="form-group">
-                                    <div class="col-md-12 mb-3">
-                                        <label for="validationCustom01">Type</label>
-                                        <select name="type" class="form-control">
-                                            <option value="0">Select Type</option>
-                                            <option value="eye-wear" {{(old('type')== 'eye-wear')? 'selected':''}}>Eye Wear</option>
-                                            {{--<option value="kid-wear" {{(old('type')== 'kid-wear')? 'selected':''}}>Kid Wear</option>--}}
-                                            <option value="sunglass" {{(old('type')== 'sunglass')? 'selected':''}}>Sunglass</option>
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <label for="validationCustom01">Type</label>
+                                            <select name="type" class="form-control">
+                                                <option value="0">Select Type</option>
+                                                <option value="eye-wear" {{(old('type')== 'eye-wear')? 'selected':''}}>Eye Wear</option>
+                                                {{--<option value="kid-wear" {{(old('type')== 'kid-wear')? 'selected':''}}>Kid Wear</option>--}}
+                                                <option value="sunglass" {{(old('type')== 'sunglass')? 'selected':''}}>Sunglass</option>
 
-                                        </select>
-                                        @if ($errors->has('type'))
-                                            <span class="text-danger">{{ $errors->first('type') }}</span>
-                                        @endif
+                                            </select>
+                                            @if ($errors->has('type'))
+                                                <span class="text-danger">{{ $errors->first('type') }}</span>
+                                            @endif
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label for="validationCustom01">Gender</label>
+                                            <select name="gender" class="form-control">
+                                                <option value="0">Select gender</option>
+                                                <option value="men" {{(old('gender')== 'men')? 'selected':''}}>Men</option>
+                                                {{--<option value="kid-wear" {{(old('type')== 'kid-wear')? 'selected':''}}>Kid Wear</option>--}}
+                                                <option value="women" {{(old('gender')== 'women')? 'selected':''}}>Women</option>
+
+                                            </select>
+                                            @if ($errors->has('type'))
+                                                <span class="text-danger">{{ $errors->first('type') }}</span>
+                                            @endif
+                                        </div>
                                     </div>
+
 
                                 </div>
 
@@ -258,17 +274,7 @@
                                         @if ($errors->has('image'))
                                             <span class="text-danger">{{ $errors->first('image') }}</span>
                                         @endif
-                                        <div class="cover">
-                                            <a href="#">
 
-                                                <img id="output" title="click to delete image" data-toggle="tooltip">
-
-                                            </a>
-                                            <div class="details">
-                                                <a href="javascript:void(0)" id="clear-image"><i class="fa fa-trash"></i></a>
-                                            </div>
-
-                                        </div>
                                     </div>
                                 {{--<div class="col-md-6 mb-3">--}}
                                 {{--<label for="validationCustom01">Discount</label>--}}
