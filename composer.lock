@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1e19de57978ec887900d762307ef5f6f",
+    "content-hash": "1d65c04d45b38eb636781480e614fe8c",
     "packages": [
         {
             "name": "beyondcode/laravel-websockets",
@@ -5182,28 +5182,28 @@
         },
         {
             "name": "unisharp/laravel-filemanager",
-            "version": "v2.0.0",
+            "version": "v2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/UniSharp/laravel-filemanager.git",
-                "reference": "0d017dd8da173cadf896c9ae4882343042dc589b"
+                "reference": "a2c390b1414fa35457fc5c6d01068dcf6dac7cd2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/UniSharp/laravel-filemanager/zipball/0d017dd8da173cadf896c9ae4882343042dc589b",
-                "reference": "0d017dd8da173cadf896c9ae4882343042dc589b",
+                "url": "https://api.github.com/repos/UniSharp/laravel-filemanager/zipball/a2c390b1414fa35457fc5c6d01068dcf6dac7cd2",
+                "reference": "a2c390b1414fa35457fc5c6d01068dcf6dac7cd2",
                 "shasum": ""
             },
             "require": {
                 "ext-exif": "*",
                 "ext-fileinfo": "*",
-                "illuminate/config": "5.4.* || 5.5.* || 5.6.* || 5.7.* || 5.8.* || ^6.0",
-                "illuminate/container": "5.4.* || 5.5.* || 5.6.* || 5.7.* || 5.8.* || ^6.0",
-                "illuminate/filesystem": "5.4.* || 5.5.* || 5.6.* || 5.7.* || 5.8.* || ^6.0",
-                "illuminate/http": "5.4.* || 5.5.* || 5.6.* || 5.7.* || 5.8.* || ^6.0",
-                "illuminate/support": "5.4.* || 5.5.* || 5.6.* || 5.7.* || 5.8.* || ^6.0",
+                "illuminate/config": "5.4.* || 5.5.* || 5.6.* || 5.7.* || 5.8.* || ^6.0 || ^7.0",
+                "illuminate/container": "5.4.* || 5.5.* || 5.6.* || 5.7.* || 5.8.* || ^6.0 || ^7.0",
+                "illuminate/filesystem": "5.4.* || 5.5.* || 5.6.* || 5.7.* || 5.8.* || ^6.0 || ^7.0",
+                "illuminate/http": "5.4.* || 5.5.* || 5.6.* || 5.7.* || 5.8.* || ^6.0 || ^7.0",
+                "illuminate/support": "5.4.* || 5.5.* || 5.6.* || 5.7.* || 5.8.* || ^6.0 || ^7.0",
                 "intervention/image": "2.*",
-                "php": ">=5.4.0"
+                "php": ">=7.2.0"
             },
             "require-dev": {
                 "mockery/mockery": "^0.9.9",
@@ -5253,7 +5253,7 @@
                 "tinymce",
                 "upload"
             ],
-            "time": "2020-01-08T09:44:46+00:00"
+            "time": "2020-05-10T10:10:07+00:00"
         },
         {
             "name": "vlucas/phpdotenv",

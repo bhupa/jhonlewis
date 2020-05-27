@@ -1,58 +1,51 @@
 @extends('frontend.app')
-@section('title',$brand->name)
+@section('title','New Arrival')
 @section('css_script')
 @endsection
 @section('content')
     <div id="all">
         <div id="content">
             <div class="container">
-                <div class="service-lists-content">
-                    <h4 class="single-page-title">{{$brand->name}}</h4>
+                <div class="service-lists-content" style="text-transform: capitalize;">
+                    <h4 class="single-page-title">New Arrival
+                    <span style="text-transform: capitalize; margin:2px;">
+                            /
+                        </span>
+                    {{ $brand->name }}
+                    </h4>
                     @include('brand.collection')
                     <hr>
-                    <div class="row" id="frames-brand">
-                        <div class="col-lg-6">
-                            <div class="frame-wrapper-title brand-product-lists">
-                                <img src="{{asset('storage/'.$brand->image)}}" alt="{{$brand->name}}">
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="frame-wrapper">
-                                {!! $brand->description !!}
-                            </div>
-                        </div>
-                    </div>
 
 
-                        <div class="row products">
+                    <div class="row products">
 
-                            @foreach($products as $product)
-                                <div class="col-lg-4 col-md-6">
-                                    <div class="product-single-item">
-                                        <a href="{{route('product.show',[$product->slug ])}}" class="shop-lists">
-                                            <img src="{{asset('storage/'.$product->image)}}" alt="{{$product->title}}">
+                        @foreach($products as $product)
+                            <div class="col-lg-4 col-md-6">
+                                <div class="product-single-item">
+                                    <a href="{{route('product.show',[$product->slug ])}}" class="shop-lists">
+                                        <img src="{{asset('storage/'.$product->image)}}" alt="{{$product->title}}">
 
-                                        </a>
-                                        <p><span class="model text-left">Mod: {{$product->shape}}</span>
-                                        </p>
-                                        <p>
-                                            <span class="brand">Brand:{{$product->brand->name}}</span></p>
-                                    </div>
-
-                                    <!-- /.product            -->
+                                    </a>
+                                    <p><span class="model text-left">Mod: {{$product->shape}}</span>
+                                    </p>
+                                    <p>
+                                        <span class="brand">Brand:{{$product->brand->name}}</span></p>
                                 </div>
-                        @endforeach
 
-                        <!-- /.products-->
-                        </div>
-                        <div class="pages" style="margin-bottom: 100px;">
-                            <nav aria-label="Page navigation example" class="d-flex justify-content-center">
-                                <nav aria-label="Page navigation example" class="d-flex justify-content-center">
-                                    {{ $products->links('vendor.pagination.default') }}
-                                </nav>
-                            </nav>
-                        </div>
+                                <!-- /.product            -->
+                            </div>
+                    @endforeach
+
+                    <!-- /.products-->
                     </div>
+                    <div class="pages" style="margin-bottom: 100px;">
+                        <nav aria-label="Page navigation example" class="d-flex justify-content-center">
+                            <nav aria-label="Page navigation example" class="d-flex justify-content-center">
+                                {{ $products->links('vendor.pagination.default') }}
+                            </nav>
+                        </nav>
+                    </div>
+                </div>
 
                 <!-- /.col-lg-9-->
             </div>

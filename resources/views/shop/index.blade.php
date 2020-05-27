@@ -34,23 +34,26 @@
                     <div class="row">
                         @foreach($brands as $brand)
                         <div class="col-md-6 col-lg-4">
-                            <div class="card">
-                                <div class="card-img-actions ">
-                                    <img class="card-img img-fluid" src="{{asset('storage/'.$brand->image)}}" alt="{{$brand->name}}" style=" height:200px;">
+                            <a href="{{route('brands.show',[$brand->slug])}}">
+                                <div class="card">
+                                    <div class="card-img-actions ">
+                                        <img class="card-img img-fluid" src="{{asset('storage/'.$brand->image)}}" alt="{{$brand->name}}" style=" height:200px;">
 
-                                    <div class="card-img-actions-overlay card-img">
-                                        <a href="{{url('brands/'.$brand->slug.'/eye-wear')}}" data-toggle="lightbox" data-tour-image="tour-image" class="brand-type-eye btn btn-outline    border-2 btn-icon rounded-round">
+                                        <div class="card-img-actions-overlay card-img">
+                                            {{--<a href="{{url('brands/'.$brand->slug.'/eye-wear')}}" data-toggle="lightbox" data-tour-image="tour-image" class="brand-type-eye btn btn-outline    border-2 btn-icon rounded-round">--}}
 
-                                        Eye Wear {{$brand->type}}
-                                        </a>
+                                            {{--Eye Wear {{$brand->type}}--}}
+                                            {{--</a>--}}
 
-                                        <a href="{{url('brands/'.$brand->slug.'/sunglass')}}" data-type="1" data-tour-image="1" class="brand-type-sunglass btn btn-outline   border-2 btn-icon rounded-round ml-2 delete-galleries-image">
-                                           Sunglass
+                                            {{--<a href="{{url('brands/'.$brand->slug.'/sunglass')}}" data-type="1" data-tour-image="1" class="brand-type-sunglass btn btn-outline   border-2 btn-icon rounded-round ml-2 delete-galleries-image">--}}
+                                            {{--Sunglass--}}
 
-                                        </a>
+                                            {{--</a>a--}}
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            </a>
+
 
 
                             {{--<div class="brand-wrapper">--}}

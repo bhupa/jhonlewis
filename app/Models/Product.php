@@ -44,7 +44,8 @@ class Product extends Model
         'shipping',
         'brand_id',
         'model',
-        'type'
+        'type',
+        'gender'
 
 
 

@@ -29,6 +29,7 @@ class ProductUpdateRequest extends FormRequest
             'size'=>'required',
 //            'description'=>'required',
             'image'=>'nullable|mimes:jpeg,png,jpg,svg',
+            'gender'=>'in:men,women',
             'shape'=>'required',
 //            'style'=>'required',
 //            'frame_id'=>'nullable|exists:frames,id',
