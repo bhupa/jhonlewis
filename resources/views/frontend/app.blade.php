@@ -244,9 +244,9 @@ _________________________________________________________
                     <li><a href="{{route('blog.index')}}">Blogs</a></li>
                     @foreach($footer  as $menu)
                     @if($menu->child->isEmpty() && $menu->parent_id == '' )
-
+                            @if($menu->slug != 'terms-conditions'  && $menu->slug != 'privacy-policy' )
                     <li><a href="{{route('content.show',[$menu->slug])}}">{{$menu->title}}</a></li>
-
+                        @endif
                    @endif
                     @endforeach
                 </ul>
