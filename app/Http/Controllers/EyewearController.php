@@ -20,9 +20,10 @@ class EyewearController extends Controller
 
         $brand = $this->brand->where('slug',$request)->first();
 //        $products = $this->products->where('is_active','1')->orderBy('created_at','desc')->pagination('20');
+        dd();
         $products = $this->product->where('is_active','1')->where('brand_id',$brand->id)->where('gender',$slug)->orderBy('created_at','desc')->paginate(20);
 
 
-        return  view('eye-wear.show')->withBrand($brand)->withProducts($products);
+        return  view('eye-wear.index')->withBrand($brand)->withProducts($products);
     }
 }
