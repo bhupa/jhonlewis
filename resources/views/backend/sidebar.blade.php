@@ -58,33 +58,33 @@
                 </a>
 
             </li>
-            <li class="nav-item has-treeview">
-                <a href="javascript:void(0)" class="nav-link">
-                    <i class="nav-icon fas fa-chart-pie"></i>
-                    <p>
-                        Blog
-                        <i class="right fas fa-angle-left"></i>
-                    </p>
-                </a>
-                <ul class="nav nav-treeview">
-                    <li class="nav-item">
-                        <a href="{{route('blog_categories.index')}}" class="nav-link">
-                            <i class="nav-icon far fa-file"></i>
-                            <p>
-                                Category
-                            </p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{route('blogs.index')}}" class="nav-link">
-                            <i class="nav-icon far fa-file"></i>
-                            <p>
-                                Blog
-                            </p>
-                        </a>
-                    </li>
-                </ul>
-            </li>
+            {{--<li class="nav-item has-treeview">--}}
+                {{--<a href="javascript:void(0)" class="nav-link">--}}
+                    {{--<i class="nav-icon fas fa-chart-pie"></i>--}}
+                    {{--<p>--}}
+                        {{--Blog--}}
+                        {{--<i class="right fas fa-angle-left"></i>--}}
+                    {{--</p>--}}
+                {{--</a>--}}
+                {{--<ul class="nav nav-treeview">--}}
+                    {{--<li class="nav-item">--}}
+                        {{--<a href="{{route('blog_categories.index')}}" class="nav-link">--}}
+                            {{--<i class="nav-icon far fa-file"></i>--}}
+                            {{--<p>--}}
+                                {{--Category--}}
+                            {{--</p>--}}
+                        {{--</a>--}}
+                    {{--</li>--}}
+                    {{--<li class="nav-item">--}}
+                        {{--<a href="{{route('blogs.index')}}" class="nav-link">--}}
+                            {{--<i class="nav-icon far fa-file"></i>--}}
+                            {{--<p>--}}
+                                {{--Blog--}}
+                            {{--</p>--}}
+                        {{--</a>--}}
+                    {{--</li>--}}
+                {{--</ul>--}}
+            {{--</li>--}}
             <li class="nav-item">
                 <a href="{{route('contacts.index')}}" class="nav-link">
                     <i class="nav-icon far fa-address-card"></i>
@@ -109,14 +109,14 @@
                     </p>
                 </a>
             </li>
-            <li class="nav-item">
-                <a href="{{route('doctors.index')}}" class="nav-link">
-                    <i class="nav-icon fa fa-user-md"></i>
-                    <p>
-                        Doctor
-                    </p>
-                </a>
-            </li>
+            {{--<li class="nav-item">--}}
+                {{--<a href="{{route('doctors.index')}}" class="nav-link">--}}
+                    {{--<i class="nav-icon fa fa-user-md"></i>--}}
+                    {{--<p>--}}
+                        {{--Doctor--}}
+                    {{--</p>--}}
+                {{--</a>--}}
+            {{--</li>--}}
             <li class="nav-item">
                 <a href="{{route('email-subscribes.index')}}" class="nav-link">
                     <i class="nav-icon fa fa-envelope"></i>
@@ -133,15 +133,15 @@
                     </p>
                 </a>
             </li>
-            <li class="nav-item has-treeview">
-                <a href="{{route('packages.index')}}" class="nav-link">
-                    <i class="nav-icon fas fa-boxes"></i>
-                    <p>
-                        Pacakages
-                    </p>
-                </a>
+            {{--<li class="nav-item has-treeview">--}}
+                {{--<a href="{{route('packages.index')}}" class="nav-link">--}}
+                    {{--<i class="nav-icon fas fa-boxes"></i>--}}
+                    {{--<p>--}}
+                        {{--Pacakages--}}
+                    {{--</p>--}}
+                {{--</a>--}}
 
-            </li>
+            {{--</li>--}}
             <li class="nav-item has-treeview">
                 <a href="{{route('products.index')}}" class="nav-link">
                     <i class="nav-icon fa fa-box"></i>
@@ -230,24 +230,24 @@
                 </a>
 
             </li>
-            <li class="nav-item has-treeview">
-                <a href="{{route('testimonials.index')}}" class="nav-link">
-                    <i class="nav-icon fas fa-comment"></i>
-                    <p>
-                        Testimonial
-                    </p>
-                </a>
+            {{--<li class="nav-item has-treeview">--}}
+                {{--<a href="{{route('testimonials.index')}}" class="nav-link">--}}
+                    {{--<i class="nav-icon fas fa-comment"></i>--}}
+                    {{--<p>--}}
+                        {{--Testimonial--}}
+                    {{--</p>--}}
+                {{--</a>--}}
 
-            </li>
-            <li class="nav-item has-treeview">
-                <a href="{{route('users.index')}}" class="nav-link">
-                    <i class="nav-icon fas fa-users"></i>
-                    <p>
-                        Users
-                    </p>
-                </a>
+            {{--</li>--}}
+            {{--<li class="nav-item has-treeview">--}}
+                {{--<a href="{{route('users.index')}}" class="nav-link">--}}
+                    {{--<i class="nav-icon fas fa-users"></i>--}}
+                    {{--<p>--}}
+                        {{--Users--}}
+                    {{--</p>--}}
+                {{--</a>--}}
 
-            </li>
+            {{--</li>--}}
 
 
         </ul>
