@@ -238,8 +238,10 @@ _________________________________________________________
     <div class="container">
         <div class="row">
             <div class="col-lg-4 col-md-6">
-                <h4 class="mb-3 footer-header">Pages</h4>
+                <h4 class="mb-3 footer-header">SUPPORT</h4>
                 <ul class="list-unstyled" id="footer-menu">
+                    <li><a href="{{route('shop.index')}}">Shop Online</a></li>
+                    <li><a href="{{route('blog.index')}}">Blogs</a></li>
                     @foreach($footer  as $menu)
                     @if($menu->child->isEmpty() && $menu->parent_id == '' )
 
@@ -251,38 +253,60 @@ _________________________________________________________
             </div>
             <!-- /.col-lg-3-->
             <div class="col-lg-4 col-md-6">
-                <h4 class="mb-3 footer-header">Links</h4>
+                <h4 class="mb-3 footer-header">LEGAL</h4>
 
                 <ul class="list-unstyled" id="footer-menu">
-                    <li><a href="{{route('shop.index')}}">Shop Online</a></li>
-                    <li><a href="{{route('blog.index')}}">Blogs</a></li>
+                    @foreach($footer  as $menu)
 
+                        @if($menu->slug == 'terms-conditions' )
+                    <li><a href="{{route('content.show',[$menu->slug])}}">Term & Conditions</a></li>
+                            @endif
+                        @if($menu->slug == 'privacy-policy' )
+                        <li><a href="{{route('content.show',[$menu->slug])}}">Privacy Policy</a></li>
+                        @endif
+                        @endforeach
 
                 </ul>
 
-                @foreach($contents as $content)
-                    @if($content->slug == 'opening-hours')
-                        {!! $content->description !!}
-                    @endif
+                <div class="footer-payment-img">
+                    <h4 class="mb-3 footer-header">PAYMENT METHODS</h4>
 
-                @endforeach
+                    <div class="footer-payment-wrapper">
+                        <img src="{{asset('frontend/img/footer-logo.png')}}" alt="jhonlewis-payment-method">
+                    </div>
+                </div>
+
+
+
+
 
 
             </div>
             <!-- /.col-lg-3-->
             <div class="col-lg-4 col-md-7">
-                <h4 class="mb-3 footer-header">Where to find us</h4>
-                @foreach($settings as $setting)
-                    @if($setting->slug == 'address')
-                <p class="footer-address"><i class="fa fa-map-marker"></i>{{$setting->value}}</p>
-                    @endif
-                        @if($setting->slug == 'phone')
-                            <p class="footer-address"><i class="fa fa-phone"></i>{{$setting->value}}</p>
-                        @endif
-                        @if($setting->slug == 'email')
-                            <p class="footer-address"><i class="fa fa-envelope"></i>{{$setting->value}}</p>
-                        @endif
-                    @endforeach
+                <h4 class="mb-3 footer-header">CONNECT WITH US</h4>
+                <ul class="footer-social-link">
+                    <li>
+                        <a href="https://www.facebook.com/John-Lewis-Opticians-362143557290200/"><i class="fa fa-facebook"></i></a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/johnlewis1121"><i class="fa fa-twitter"></i></a>
+                    </li>
+                    <li>
+                        <a href="https://www.instagram.com/johnlewisopticians/"><i class="fa fa-instagram"></i></a>
+                    </li>
+                </ul>
+                {{--@foreach($settings as $setting)--}}
+                    {{--@if($setting->slug == 'address')--}}
+                {{--<p class="footer-address"><i class="fa fa-map-marker"></i>{{$setting->value}}</p>--}}
+                    {{--@endif--}}
+                        {{--@if($setting->slug == 'phone')--}}
+                            {{--<p class="footer-address"><i class="fa fa-phone"></i>{{$setting->value}}</p>--}}
+                        {{--@endif--}}
+                        {{--@if($setting->slug == 'email')--}}
+                            {{--<p class="footer-address"><i class="fa fa-envelope"></i>{{$setting->value}}</p>--}}
+                        {{--@endif--}}
+                    {{--@endforeach--}}
 
             </div>
             <!-- /.col-lg-3-->

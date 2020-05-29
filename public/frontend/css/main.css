@@ -37,7 +37,7 @@ textarea {
 }
 #footer-menu li {
     /*border-bottom: 1px solid #ffffff;*/
-    padding: 7px 10px;
+    padding: 1px 10px;
 }
 #footer-menu li a {
     color: #ffffff;
@@ -1885,7 +1885,33 @@ btn_upload {
 .collection-wrapper ul li a:hover {
     border-left: 3px solid #ffffff;
 }
+.footer-payment-wrapper img {
+    width: 100%;
+    margin-top: 10px;
+}
+.footer-social-link {
+    padding: 0;
+    list-style: none;
+}
+.footer-social-link li {
+    display: inline-block;
+}
+.footer-social-link li a {
+    padding: 10px;
+    font-size: 24px;
+    transition: 0.3s;
+}
+.footer-social-link li a .fa {
+    color: #f6b243;
+    /* font-size: 30px; */
+    border: 1px solid #ffffff;
+    padding: 9px 17px;
 
+}
+.footer-social-link li a:hover  .fa{
+    background: #000;
+    ;
+}
 
 
 
