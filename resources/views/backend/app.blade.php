@@ -158,20 +158,21 @@ to get the desired effect
  //    socket.on('my-channel:App\\Events\\Order\\NewOrder', function(data){
    //    alert(data);
      //})
+
     $(function() {
         //you define socket - you can use IP
         // var socket = io.connect('http://68.183.35.136:3000');
         // var socket = io.connect('http://127.0.0.1:3000');
 
-        var socket = io.connect('http://127.0.0.1:3000');
-
-
+        var socket = io.connect('http://139.59.75.68/socket');
         socket.emit('login',{'email': "{{auth()->user()->email}}" })
 
         //you capture message data
 
+	
         socket.on('notification-load', function(message){
-            $.ajax({
+   alert(message);        
+    $.ajax({
                 type: "get",
                 url: "{{ route('notifications.index') }}",
                 headers: {
