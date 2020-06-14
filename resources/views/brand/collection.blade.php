@@ -39,10 +39,10 @@
                     </div>
                     <ul>
                         <li>
-                            <a href="{{route('new-arrival.show',[$brand->slug])}}">New Arrivals</a>
+                            <a href="{{url('sunglass/'.$brand->slug.'/men')}}">Men</a>
                         </li>
                         <li>
-                            {{--<a href="">Present Collection</a>--}}
+                            <a href="{{url('sunglass/'.$brand->slug.'/women')}}">Women</a>
                         </li>
                     </ul>
                 </div>
