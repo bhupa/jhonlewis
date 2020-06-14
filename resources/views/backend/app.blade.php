@@ -164,13 +164,16 @@ to get the desired effect
         // var socket = io.connect('http://127.0.0.1:3000');
 
         var socket = io.connect('http://127.0.0.1:3000');
-
+            console.log(socket);
 
         socket.emit('login',{'email': "{{auth()->user()->email}}" })
 
         //you capture message data
 
+
+
         socket.on('notification-load', function(message){
+            alert(message);
             $.ajax({
                 type: "get",
                 url: "{{ route('notifications.index') }}",

@@ -285,6 +285,20 @@ _________________________________________________________
             <!-- /.col-lg-3-->
             <div class="col-lg-4 col-md-7">
                 <h4 class="mb-3 footer-header">CONNECT WITH US</h4>
+
+
+                @foreach($settings as $setting)
+                    @if($setting->slug == 'address')
+                <p class="footer-address"><i class="fa fa-map-marker"></i>{{$setting->value}}</p>
+                    @endif
+                        @if($setting->slug == 'phone')
+                            <p class="footer-address"><i class="fa fa-phone"></i>{{$setting->value}}</p>
+                        @endif
+                        @if($setting->slug == 'email')
+                            <p class="footer-address"><i class="fa fa-envelope"></i>{{$setting->value}}</p>
+                        @endif
+                @endforeach
+
                 <ul class="footer-social-link">
                     <li>
                         <a href="https://www.facebook.com/John-Lewis-Opticians-362143557290200/"><i class="fa fa-facebook"></i></a>
@@ -296,19 +310,9 @@ _________________________________________________________
                         <a href="https://www.instagram.com/johnlewisopticians/"><i class="fa fa-instagram"></i></a>
                     </li>
                 </ul>
-                {{--@foreach($settings as $setting)--}}
-                    {{--@if($setting->slug == 'address')--}}
-                {{--<p class="footer-address"><i class="fa fa-map-marker"></i>{{$setting->value}}</p>--}}
-                    {{--@endif--}}
-                        {{--@if($setting->slug == 'phone')--}}
-                            {{--<p class="footer-address"><i class="fa fa-phone"></i>{{$setting->value}}</p>--}}
-                        {{--@endif--}}
-                        {{--@if($setting->slug == 'email')--}}
-                            {{--<p class="footer-address"><i class="fa fa-envelope"></i>{{$setting->value}}</p>--}}
-                        {{--@endif--}}
-                    {{--@endforeach--}}
 
             </div>
+
             <!-- /.col-lg-3-->
             {{--<div class="col-lg-3 col-md-5">--}}
                 {{--<h4 class="mb-3">Get the news</h4>--}}

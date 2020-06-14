@@ -22,6 +22,7 @@ sub.on('message', async function (channel, message) {
     //     io.in(message.email).emit('notification-load', message.payload)
     // }
 });
+
 io.on('connection', function (socket) {
     socket.on('login', function(request){
         console.log('Logged In', request.email)
@@ -35,6 +36,7 @@ io.on('connection', function (socket) {
     redisClient.on("message", function(channel, data) {
         console.log("mew message add in queue "+ data['message'] + " channel");
         socket.emit(channel, data);
+
     });
 });
 server.listen(port);
