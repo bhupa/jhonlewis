@@ -122,7 +122,7 @@
                                                         <li><strong><a href="mailto:">{{$setting->value}}</a></strong></li>
                                                     @endif
                                                 @endforeach
-                                                <li><strong><a href="{{route('appointment.index')}}">Appointment</a></strong> - You Can Appointment For Chekup</li>
+                                                <li><strong><a href="{{route('appointment.index')}}">Appointment</a></strong> - You Can Appointment For Checkup</li>
                                             </ul>
                                         </div>
                                         <hr>
