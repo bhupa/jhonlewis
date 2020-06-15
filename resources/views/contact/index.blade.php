@@ -36,7 +36,7 @@
 
                                     @endif
                                     <div class="row">
-                                        <div class="col-md-12">
+                                        <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="firstname">Firstname</label>
                                                 <input id="firstname" name="firstname" type="text" class="form-control">
@@ -45,7 +45,7 @@
                                                 @endif
                                             </div>
                                         </div>
-                                        <div class="col-md-12">
+                                        <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="lastname">Lastname</label>
                                                 <input id="lastname" name="lastname" type="text" class="form-control">
@@ -54,7 +54,7 @@
                                                 @endif
                                             </div>
                                         </div>
-                                        <div class="col-md-12">
+                                        <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="email">Email</label>
                                                 <input id="email" type="text" name="email" class="form-control">
@@ -63,7 +63,7 @@
                                                 @endif
                                             </div>
                                         </div>
-                                        <div class="col-md-12">
+                                        <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="subject">Subject</label>
                                                 <input id="subject" name="subject" type="text" class="form-control">
@@ -89,41 +89,45 @@
                                     {!! Form::close() !!}
                                 </div>
 
-                                <div class="col-lg-6">
-                                    <div class="col-md-12">
-                                        <h3><i class="fa fa-map-marker"></i>Address</h3>
-                                        {{--                                    <p>13/25 New Avenue<br>New Heaven<br>45Y 73J<br>England<br><strong>Great Britain</strong></p>--}}
-                                        @foreach($settings as $setting)
-                                            @if($setting->slug == 'address')
-                                                <p>{{$setting->value}}</p>
-                                            @endif
-                                        @endforeach
-                                    </div>
-                                    <!-- /.col-sm-4-->
-                                    <div class="col-md-12">
-                                        <h3><i class="fa fa-phone"></i> Call center</h3>
-                                        <p class="text-muted">This number is toll free if calling from Great Britain otherwise we advise you to use the electronic form of communication.</p>
-                                        @foreach($settings as $setting)
-                                            @if($setting->slug == 'phone')
-                                                <p><strong>{{$setting->value}}</strong></p>
-                                            @endif
-                                        @endforeach
-                                    </div>
-                                    <!-- /.col-sm-4-->
+                                <div class="col-lg-6 ">
+                                    <div class="contact-page-right">
+                                        <div class="col-md-12">
 
-                                    <div class="col-md-12">
-                                        <h3><i class="fa fa-envelope"></i> Electronic support</h3>
-                                        <p class="text-muted">Please feel free to write an email to us or to use our electronic ticketing system.</p>
-                                        <ul>
+                                            {{--                                    <p>13/25 New Avenue<br>New Heaven<br>45Y 73J<br>England<br><strong>Great Britain</strong></p>--}}
                                             @foreach($settings as $setting)
-                                                @if($setting->slug == 'email')
-                                                    <li><strong><a href="mailto:">{{$setting->value}}</a></strong></li>
+                                                @if($setting->slug == 'address')
+                                                    <h3><i class="fa fa-map-marker" style="margin-right: 10px"></i>{{$setting->value}}</h3>
                                                 @endif
                                             @endforeach
-                                            <li><strong><a href="{{route('appointment.index')}}">Appointment</a></strong> - You Can Appointment For Chekup</li>
-                                        </ul>
+                                        </div>
+                                        <!-- /.col-sm-4-->
+                                        <div class="col-md-12">
+
+                                            <p class="text-muted"></p>
+                                            @foreach($settings as $setting)
+                                                @if($setting->slug == 'phone')
+                                                    {{--<p><strong>{{$setting->value}}</strong></p>--}}
+                                                    <h3><i class="fa fa-phone" style="margin-right: 10px"></i>{{$setting->value}}</h3>
+                                                @endif
+                                            @endforeach
+                                        </div>
+                                        <!-- /.col-sm-4-->
+
+                                        <div class="col-md-12">
+                                            {{--<h3><i class="fa fa-envelope" style="margin-right: 10px"></i> support</h3>--}}
+                                            <p class="text-muted">Please feel free to write an email to us or to use our electronic ticketing system.</p>
+                                            <ul>
+                                                @foreach($settings as $setting)
+                                                    @if($setting->slug == 'email')
+                                                        <li><strong><a href="mailto:">{{$setting->value}}</a></strong></li>
+                                                    @endif
+                                                @endforeach
+                                                <li><strong><a href="{{route('appointment.index')}}">Appointment</a></strong> - You Can Appointment For Chekup</li>
+                                            </ul>
+                                        </div>
+                                        <hr>
                                     </div>
-                                    <hr>
+
                                     {{--<div id="map">--}}
                                         {{--<div class="google-map" style="background-image: url('{{asset('frontend/img/google.png')}}');height: 400px">--}}
                                             {{--<div class="container">--}}

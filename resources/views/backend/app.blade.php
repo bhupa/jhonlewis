@@ -164,29 +164,18 @@ to get the desired effect
         // var socket = io.connect('http://68.183.35.136:3000');
         // var socket = io.connect('http://127.0.0.1:3000');
 
-<<<<<<< HEAD
-        var socket = io.connect('http://127.0.0.1:3000');
-            console.log(socket);
 
-=======
-        var socket = io.connect('http://139.59.75.68/socket');
->>>>>>> cd88ca7eac83707fbffbd1fff39d3e1839018765
+        var socket = io.connect('http://127.0.0.1:3000');
+
         socket.emit('login',{'email': "{{auth()->user()->email}}" })
 
         //you capture message data
 
-<<<<<<< HEAD
-
 
         socket.on('notification-load', function(message){
-            alert(message);
-            $.ajax({
-=======
-	
-        socket.on('notification-load', function(message){
-   alert(message);        
+
     $.ajax({
->>>>>>> cd88ca7eac83707fbffbd1fff39d3e1839018765
+
                 type: "get",
                 url: "{{ route('notifications.index') }}",
                 headers: {

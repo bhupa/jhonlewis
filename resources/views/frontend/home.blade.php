@@ -357,15 +357,16 @@
     </div>
 </div>
 
-    <div id="map">
-        <div class="google-map" style="background-image: url('{{asset('frontend/img/google.png')}}')">
-            <div class="container">
-                <div class="googl-map-inner" >
+    {{--<div id="map">--}}
+        {{--<div class="google-map" style="background-image: url('{{asset('frontend/img/google.png')}}')">--}}
+            {{--<div class="container">--}}
+                {{--<div class="googl-map-inner" >--}}
 
-                </div>
-            </div>
-        </div>
-    </div>
+                {{--</div>--}}
+            {{--</div>--}}
+        {{--</div>--}}
+    {{--</div>--}}
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2484.2153447680557!2d0.06920631530132262!3d51.49091561973007!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d8a8c1ceb86f69%3A0x5f31c5de7325f729!2sJohn%20Lewis%20Opticians!5e0!3m2!1sen!2snp!4v1592116587032!5m2!1sen!2snp" width="100%" height="450" frameborder="0" style="border:0; margin-top: 20px;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
 
         {{--<div id="hot">--}}
             {{--<div class="box py-4">--}}

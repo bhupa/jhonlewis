@@ -474,6 +474,13 @@ ul#menu li ul.sub-menu li:hover ul {
     width: 60px;
 }
 
+.contact-page-right {
+    padding: 65px 20px;
+}
+.contact-page-right h3 {
+    font-size: 17px;
+}
+
 #decrement-btn {
     font-size: 24px;
     margin-left: 11px;
