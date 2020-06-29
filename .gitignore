@@ -6,7 +6,6 @@
 /public/js/server.js
 /resources/view/backend/app.blade.php
 .env
-/public/js/server.js
 .phpunit.result.cache
 Homestead.json
 Homestead.yaml

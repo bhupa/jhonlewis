@@ -29,7 +29,7 @@
                                 <th scope="col">Name</th>
                                 <th scope="col">Email</th>
                                 <th scope="col">Phone</th>
-                                <th scope="col" >Address</th>
+                                {{--<th scope="col" >Address</th>--}}
                                 <th scope="col" >Date</th>
 {{--                                <th scope="col">action</th>--}}
                             </tr>
@@ -42,7 +42,7 @@
                                     <td>{{$item->firstname}} &nbsp;{{$item->lastname}}</td>
                                     <td>{{$item->email}}</td>
                                     <td>{{$item->phone}}</td>
-                                    <td>{{$item->address}}</td>
+                                    {{--<td>{{$item->address}}</td>--}}
                                     <td>{{date('d-M-Y', strtotime($item->date)) }}</td>
 {{--                                    <td>--}}
 {{--                                        --}}{{-- @if(auth()->user()->can('edit-banner')) --}}

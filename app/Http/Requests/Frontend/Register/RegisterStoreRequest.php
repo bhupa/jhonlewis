@@ -31,7 +31,7 @@ class RegisterStoreRequest extends FormRequest
             'password'=>'required',
             'confirm'=>'required|same:password',
             'postal_code'=>'required',
-            'zip_code'=>'required',
+//            'zip_code'=>'r',
 
         ];
     }

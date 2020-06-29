@@ -325,7 +325,7 @@
         <!-- Remind Passowrd -->
         <div id="formFooter">
             <a class="underlineHover" href="{{route('password.reset')}}">Forgot Password?</a>
-            <a class="underlineHover" href="{{route('register')}}">Sing Up</a>
+            <a class="underlineHover" href="{{route('register')}}">Sign Up</a>
         </div>
 
     </div>

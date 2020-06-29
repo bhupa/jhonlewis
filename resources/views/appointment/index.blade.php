@@ -269,6 +269,7 @@
             $('.datepicker').datepicker({
                 format: "dd-mm-yyyy",
                 todayHighlight: true,
+                startDate: new Date(),
                 beforeShowDay: function(date){
                     var d = date;
                     var curr_date = d.getDate();
