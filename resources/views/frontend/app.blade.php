@@ -100,11 +100,14 @@
                         @if(Auth::check())
                             <li class="list-inline-item"><a href="{{route('profile')}}">Profile</a></li>
                             <li class="list-inline-item"><a href="{{route('logout')}}">Logout</a></li>
+                            <li class="list-inline-item"><a href="{{route('appointment.index')}}">Book An Appointment</a></li>
+
                         @else
                         <li class="list-inline-item"><a href="#" data-toggle="modal" data-target="#login-modal">Login</a></li>
                         <li class="list-inline-item"><a href="{{route('register')}}">Register</a></li>
+                            <li class="list-inline-item"><a href="javascript:void(0)" id="appointment-btn" data-type="{{route('appointment.index')}}">Book An Appointment</a></li>
+
                         @endif
-                        <li class="list-inline-item"><a href="{{route('appointment.index')}}">Book An Appointment</a></li>
                     </ul>
                 </div>
             </div>
@@ -427,6 +430,12 @@ _________________________________________________________
     var baseUrl = '{!! url('') !!}';
 
     $(document).ready(function(){
+
+        $('#appointment-btn').on('click',function(){
+           $('#login-modal').modal('show');
+            $('#login-modal #url').val($('#appointment-btn').attr('data-type'))
+
+        });
     $('.datepicker').datepicker();
         $('#table').DataTable();
 

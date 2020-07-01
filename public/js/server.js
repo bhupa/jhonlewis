@@ -47,6 +47,7 @@ var redis = require('redis');
 var sub = redis.createClient();
 sub.subscribe('LARAVEL_APP');
 const port = 3000;
+// const port = 8080;
 
 
 sub.on('message', async function (channel, message) {

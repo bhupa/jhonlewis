@@ -127,7 +127,7 @@ class AppointmentController extends Controller
                 'compnay_email'=> $adminEmail['value']
             ];
 
-            Mail::to($appointment->email)->send(new AppointmentConfirmationMail($data,$appointment));
+            Mail::to($appointment->email)->send(new AppointmentConfirmationMail($appointment,$company));
 
             return redirect()->to('/appointment')->with('success','Appointment booked successfully!'.'<br>'.' We will contact you soon');
         }
