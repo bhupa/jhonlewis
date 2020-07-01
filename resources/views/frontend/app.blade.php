@@ -105,7 +105,7 @@
                         @else
                         <li class="list-inline-item"><a href="#" data-toggle="modal" data-target="#login-modal">Login</a></li>
                         <li class="list-inline-item"><a href="{{route('register')}}">Register</a></li>
-                            <li class="list-inline-item"><a href="javascript:void(0)" id="appointment-btn" data-type="{{route('appointment.index')}}">Book An Appointment</a></li>
+                            <li class="list-inline-item"><a href="javascript:void(0)" class="appointment-btn-modal" data-type="{{route('appointment.index')}}">Book An Appointment</a></li>
 
                         @endif
                     </ul>
@@ -431,9 +431,9 @@ _________________________________________________________
 
     $(document).ready(function(){
 
-        $('#appointment-btn').on('click',function(){
+        $('.appointment-btn-modal').on('click',function(){
            $('#login-modal').modal('show');
-            $('#login-modal #url').val($('#appointment-btn').attr('data-type'))
+            $('#login-modal #url').val($('.appointment-btn-modal').attr('data-type'))
 
         });
     $('.datepicker').datepicker();

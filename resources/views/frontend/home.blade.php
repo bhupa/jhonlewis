@@ -352,7 +352,14 @@
 <div class="appointment-section">
     <div class="container">
         <div class="appointment-section-wrapper">
-            <a href="{{route('appointment.index')}}">Book An Appointment</a>
+
+            @if(Auth::check())
+                <a href="{{route('appointment.index')}}">Book An Appointment</a>
+
+            @else
+                <a href="javascript:void(0)" class="appointment-btn-modal" data-type="{{route('appointment.index')}}">Book An Appointment</a>
+
+            @endif
         </div>
     </div>
 </div>

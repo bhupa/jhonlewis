@@ -122,7 +122,17 @@
                                                         <li><strong><a href="mailto:">{{$setting->value}}</a></strong></li>
                                                     @endif
                                                 @endforeach
-                                                <li><strong><a href="{{route('appointment.index')}}">Appointment</a></strong> - You Can Appointment For Checkup</li>
+                                                <li><strong>
+
+                                                        @if(Auth::check())
+                                                            <a href="{{route('appointment.index')}}">Appointment</a>
+
+                                                        @else
+                                                            <a href="javascript:void(0)" class="appointment-btn-modal" data-type="{{route('appointment.index')}}">Appointment</a>
+
+                                                        @endif
+
+                                                    </strong> - You Can Appointment For Checkup</li>
                                             </ul>
                                         </div>
                                         <hr>
