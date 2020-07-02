@@ -155,8 +155,8 @@
 <!-- body -->
 <table class="body-wrap" bgcolor="#f6f6f6">
     <thead class="text-uppercase bg-primary">
-    <tr><td colspan="3">
-            <a href="{!! route('home') !!}">
+    <tr ><td colspan="3" >
+            <a href="{!! route('home') !!}" >
                 <img alt="logo" src="{{asset('frontend/img/logosm.png')}}" width="93px"; height="60px">
             </a>
         </td></tr>

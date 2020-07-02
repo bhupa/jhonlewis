@@ -176,9 +176,9 @@
 
 <!-- body -->
 <table class="body-wrap" bgcolor="#f6f6f6">
-    <tr><td colspan="3">
-            <a href="{!! route('home') !!}">
-                <img alt="logo" src="{{asset('frontend/img/logosm.png')}}">
+    <tr ><td colspan="3" >
+            <a href="{!! route('home') !!}" >
+                <img alt="logo" src="{{asset('frontend/img/logosm.png')}}" width="93px"; height="60px">
             </a>
         </td></tr>
 

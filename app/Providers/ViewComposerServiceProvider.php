@@ -72,5 +72,12 @@ class ViewComposerServiceProvider extends ServiceProvider
             ],
             'App\Http\ViewComposer\Backend\DashboardComposer'
         );
+        view()->composer(
+            [
+                'backend.email.appointment-booking','backend.email.appointmentConfirmation'
+                ,
+            ],
+            'App\Http\ViewComposer\Backend\SettingComposer'
+        );
     }
 }

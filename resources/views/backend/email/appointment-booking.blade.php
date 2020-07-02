@@ -184,26 +184,16 @@
 
 
     <!-- content -->
-    <tr class="container" bgcolor="#FFFFFF"><br><strong>Dear {{$data['gender']}} {{$data['firstname']}} {{$data['lastname']}}
+    <tr class="container" bgcolor="#FFFFFF"><br><strong>Dear Admin,
         </strong><br>
         <p>
-            This is email confirms your eye test appointment on  {{date('d-M-Y', strtotime($data['date'])) }} with Optometrist at John Lewis Opticians.
-            If you have nay additional question use, the contact details below to get in touch with us.To cancel or reschedule your appointment before the schedule,
-            please click Management Appointment URL. Thanks for booking with John Lewis Opticians
+            This is to notify you that {{$data['gender']}}, {{$data['firstname']}} {{$data['lastname']}} has booked appointment for {{date('d-M-Y', strtotime($data['date'])) }}.
         </p>
     </tr>
-    <tr class="container" bgcolor="#FFFFFF"><td><strong>Contact Detials</strong><br>
-            @foreach($settings as $setting)
-                @if($setting->slug == 'address')
-                    <p><i class="fa fa-map-marker" style="margin-right: 10px"></i>{{$setting->value}}</p><br>
-                @endif
-                @if($setting->slug == 'phone')
-                    <p><i class="fa fa-phone" style="margin-right: 10px"></i>{{$setting->value}}</p>
-                @endif
-            @endforeach
-        </td>
-    </tr>
-
+    <tr class="container" bgcolor="#FFFFFF"><td>Check Up Details:{!! $data['details'] !!}</td></tr>
+    <tr class="container" bgcolor="#FFFFFF"><td>Date:{{date('d-M-Y', strtotime($data['date'])) }}</td></tr>
+    <tr class="container" bgcolor="#FFFFFF"><td>Time:{!! $data['time'] !!}</td></tr>
+    <tr class="container" bgcolor="#FFFFFF"><td>Phone:{!! $data['phone'] !!}</td></tr>
 
 
     <!-- footer -->
@@ -233,4 +223,10 @@
 
 </body>
 </html>
+
+
+
+
+
+
 

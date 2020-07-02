@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Frontend\Appointment\AppointmentStoreRequest;
+use App\Mail\AppointmentBookingMail;
 use App\Mail\AppointmentConfirmationMail;
 use App\Models\EventModel;
 use App\Repositories\AppointmentRepository;
@@ -121,6 +122,8 @@ class AppointmentController extends Controller
             $adminEmail = $this->setting->where('slug','for-admin')->first();
             $companyName = $this->setting->where('slug','compant-name')->first();
             $fromEmail = $this->setting->where('slug','reply-email')->first();
+
+            $receiver = $this->setting->where('slug','email')->first();
             $company = [
                 'name'=>$companyName['value'],
                 'email'=> $fromEmail['value'],
@@ -128,6 +131,7 @@ class AppointmentController extends Controller
             ];
 
             Mail::to($appointment->email)->send(new AppointmentConfirmationMail($appointment,$company));
+            Mail::to($receiver['value'])->send(new AppointmentBookingMail($appointment,$company));
 
             return redirect()->to('/appointment')->with('success','Appointment booked successfully!'.'<br>'.' We will contact you soon');
         }
