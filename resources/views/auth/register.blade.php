@@ -30,7 +30,7 @@
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-lg-6">
-                                            <label for="name">User Name</label>
+                                            <label for="name">Name</label>
                                             <input id="name" name="name" type="text" class="form-control" value="{{old('name')}}">
                                             @if ($errors->has('name'))
                                                 <span class="text-danger">{{ $errors->first('name') }}</span>

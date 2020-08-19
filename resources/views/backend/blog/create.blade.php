@@ -45,7 +45,7 @@
                                     <div class="col-md-12 mb-3">
                                         <label for="validationCustom01">Category</label>
                                         <select name="category_id" class="form-control">
-                                            <option value="0">Select Country</option>
+                                            <option value="0">Select Category</option>
                                             @foreach($categories as $category)
                                                 <option value="{{$category->id}}">{{$category->name}}</option>
                                             @endforeach

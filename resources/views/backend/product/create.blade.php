@@ -265,17 +265,27 @@
                                 {{--</div>--}}
 
                                 <div class="form-group">
-                                        <label for="exampleInputFile">Upload Image</label>
-                                        <div class="upload-btn-wrapper">
-                                            <button type="button" class="btn">Upload a file</button>
-                                            <input type="file" class="form-control" accept="image/*" id="upload-image" name="image">
-
-                                        </div>
-                                        @if ($errors->has('image'))
-                                            <span class="text-danger">{{ $errors->first('image') }}</span>
-                                        @endif
+                                    <label for="exampleInputFile">Upload Image</label>
+                                    <div class="upload-btn-wrapper">
+                                        <button type="button" class="btn">Upload a file</button>
+                                        <input type="file" class="form-control" accept="image/*" id="upload-image" name="image">
 
                                     </div>
+                                    @if ($errors->has('image'))
+                                        <span class="text-danger">{{ $errors->first('image') }}</span>
+                                    @endif
+                                    <div class="cover">
+                                        <a href="#">
+
+                                            <img id="output" title="click to delete image" data-toggle="tooltip">
+
+                                        </a>
+                                        <div class="details">
+                                            <a href="javascript:void(0)" id="clear-image"><i class="fa fa-trash"></i></a>
+                                        </div>
+
+                                    </div>
+                                </div>
                                 {{--<div class="col-md-6 mb-3">--}}
                                 {{--<label for="validationCustom01">Discount</label>--}}
                                 {{--<select name="discount_id" class="form-control">--}}
@@ -395,3 +405,5 @@
                 });
             </script>
 @endsection
+
+
