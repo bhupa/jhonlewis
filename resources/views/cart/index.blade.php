@@ -126,10 +126,10 @@
                             </form>
                         </div>
                         <!-- /.box-->
-                        <div class="row  products">
+                        <div class="row service-lists-content  products">
 
                                 @foreach($products as $product)
-                                    <div class="col-lg-3 col-md-4">
+                                    <div class="col-lg-4 col-md-6">
                                         <div class="product-single-item">
                                             <a href="{{route('product.show',[$product->slug ])}}" class="shop-lists">
                                                 <img src="{{asset('storage/'.$product->image)}}" alt="{{$product->title}}">
