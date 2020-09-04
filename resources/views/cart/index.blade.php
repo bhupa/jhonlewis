@@ -33,7 +33,7 @@
                                     </div>
                                 @endif
                                 <div class="table-responsive">
-                                    <div class="cartlist">
+                                    <div class="cart_page_form">
                                     <table class="table">
                                         <thead>
                                         <tr>
