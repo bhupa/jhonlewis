@@ -23,7 +23,7 @@ h1 {
   padding: 10px 0;
 }
 #top .offer {
-  color: #0000;
+  color: #fff;
 }
 #top .offer .btn {
   text-transform: uppercase;
@@ -40,7 +40,7 @@ h1 {
   }
 }
 #top a {
-  color: #fff;
+  color: #000;
 }
 #top ul.menu {
   padding-top: 5px;
